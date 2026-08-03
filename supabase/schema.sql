@@ -1,0 +1,5 @@
+-- Math Missions — source-of-truth schema
+-- Run individual migration files from supabase/migrations/ in the Supabase SQL editor.
+-- This file mirrors what production should look like once all migrations are applied.
+--
+-- Empty for now. First real migration will land in supabase/migrations/ during v1 build.
