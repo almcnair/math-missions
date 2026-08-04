@@ -1,0 +1,319 @@
+{
+  "title": "Teacher Moves Toolkit",
+  "subtitle": "A comprehensive guide for CDSI lab leaders to master classroom management, instructional pacing, and student engagement using a quest framework.",
+  "moves": [
+    {
+      "n": 1,
+      "icon": "⚓",
+      "title": "Avoid Power Struggles",
+      "quest": "Guide the ship, don't fight the crew",
+      "tone": "magenta",
+      "tags": ["behavior", "sel"],
+      "concept": "Guide the ship alongside your students as a First Mate — not a military commander. Debate requires enormous cognitive effort, and your lab has to feel emotionally safe for that learning to happen. Middle schoolers are testing boundaries to establish autonomy, identity, and peer status. Public reprimands feel like a direct threat to their social standing, so instead of complying, they dig their heels in to protect their ego in front of their peers. The trap: a public correction doesn't just fail — it hardens the behavior you're trying to change.",
+      "looksLike": [
+        { "label": "Refusal", "text": "Won't start prep. Sitting with arms folded during a drill." },
+        { "label": "Defiance", "text": "Arguing with feedback. Escalating volume when redirected." },
+        { "label": "Disruption", "text": "Off-task behavior that pulls in an audience — jokes, noises, side chatter." }
+      ],
+      "whyItMatters": "Engaging in a battle of wills doesn't just waste time — it shuts down the brain's ability to learn. Perceived threats (like being yelled at in front of peers) trigger the amygdala and shut down the prefrontal cortex, so a cornered student literally cannot process debate theory or feedback in the moment. Fight-or-flight kicks in, they focus on self-preservation instead of the material, and the emotional wall (the affective filter) goes up. They're not being difficult on purpose — their thinking brain is offline. Emotional safety is the prerequisite to academic engagement.",
+      "strategies": [
+        {
+          "name": "Assign Competence",
+          "body": "Publicly recognize a specific, intellectual contribution from a quiet or marginalized student. Validating their intellect fulfills their need for status through learning instead of defiance.",
+          "say": "Marcus just made a really sharp link argument — everyone, borrow that move on your next speech."
+        },
+        {
+          "name": "Structured Autonomy",
+          "body": "Give students a choice inside your parameters. Middle schoolers crave independence; a choice gives them ownership without giving up structure.",
+          "say": "Do you want to bullet-point your contentions first, or verbally talk them out with your partner while I scribe?"
+        },
+        {
+          "name": "The Recast",
+          "body": "If a student uses informal or inappropriate language to express an idea, paraphrase it back using academic debate vocabulary. You validate the thought while upgrading the language.",
+          "say": "So you're saying their solvency claim is weak because the plan doesn't actually cause the outcome — that's a great link turn."
+        },
+        {
+          "name": "Planned Ignoring",
+          "body": "For mild, purely attention-seeking behavior (pen tapping, silly faces), strategically ignore it. Remove the audience — your reaction — and redirect with a visual cue or a return to the lesson once the moment passes.",
+          "say": "(No script. Eyes on the material. Come back with a redirect once the moment passes.)"
+        },
+        {
+          "name": "Anchor to Their Goal, Not Your Authority",
+          "body": "Keep each student's debate goal visible on their desk (e.g., \"Improve cross-x questions\"). When you redirect, tie it back to their goal rather than to your authority.",
+          "say": "Let's get back to prep so we can hit that cross-x goal we set this morning."
+        }
+      ],
+      "execute": [
+        { "label": "Read the Room First", "text": "Before you redirect, notice: is this refusal, defiance, or disruption? Different signals call for different plays." },
+        { "label": "Never Correct in Public", "text": "Move to proximity — walk over and speak quietly. Removing the audience removes the pressure to dig in." },
+        { "label": "Redirect Toward, Not Away", "text": "Tell them what to do next, not what to stop. A clear next step gives them a face-saving off-ramp." }
+      ],
+      "say": [
+        "Hey, I want to make sure you hit the goal you set this morning. Let's take one minute together and figure out your next move.",
+        "Take a breath. When you're ready, let's look at this argument together."
+      ]
+    },
+    {
+      "n": 2,
+      "icon": "🤝",
+      "title": "Community Agreement",
+      "quest": "Write the contract together",
+      "tone": "violet",
+      "tags": ["setup", "sel", "behavior"],
+      "concept": "The community agreement is the upstream system that makes every redirect easier. On day one, co-write a short set of norms with your lab — how you'll handle prep time, feedback, cross-examination, and disagreement. Keep it highly visible for the rest of camp. From that point on, every correction points at the shared contract instead of at you. That single change transforms your role from enforcer to referee.",
+      "execute": [
+        { "label": "Co-Write on Day One", "text": "Don't hand down rules. Ask the lab what they need from each other to feel focused, safe, and challenged. Write their words on the poster." },
+        { "label": "Keep it Short", "text": "Five to seven norms max. \"Attack the argument, not the person\" is a whole ethic in one line." },
+        { "label": "Make it Visible", "text": "Large poster or a permanent whiteboard section. If students can't see it from their seats, it doesn't exist." }
+      ],
+      "strategies": [
+        {
+          "name": "The Visual Anchor",
+          "body": "When a boundary is tested, don't verbally reprimand. Pause the activity, make eye contact with the student, and point to the specific line on the board. It neutralizes conflict — it's not you telling them what to do, it's the contract they helped write.",
+          "say": "(Silent point at the agreement. Eye contact. Wait.)"
+        },
+        {
+          "name": "Call In, Don't Call Out",
+          "body": "For minor infractions during high-energy prep, use proximity. Walk over and quietly \"call them in\" instead of correcting across the room. Scaffolded correction without public embarrassment — treats the moment as a skill to practice, not a rule that was broken.",
+          "say": "Hey — remember our agreement about sharing evidence? I'm noticing a little friction. How can we reset so everyone's getting a fair look at the files?"
+        },
+        {
+          "name": "The Debate Pause",
+          "body": "When the room gets too loud, or cross-examination practice turns into a genuine argument, call a structured pause. Mimicking the \"prep time\" format of a debate round makes the behavioral reset feel strategic, not punitive.",
+          "say": "Hold on — let's hit pause. Our agreement says 'attack the argument, not the person.' Are we honoring that right now? Take 30 seconds with your partner to reset before we resume time."
+        },
+        {
+          "name": "The End-of-Day Audit",
+          "body": "Don't wait for a blowout to reference the agreement. Spend the last five minutes on a self-assessment. Reinforces that the agreement is a living document and trains students to self-monitor — which builds exceptional teamwork for team debate formats.",
+          "say": "Looking at our agreements on the board — what is one thing we did really well today as a lab? What's one thing we need to level up on tomorrow?"
+        },
+        {
+          "name": "Revise the Agreement",
+          "body": "Sometimes a new friction point appears that the original agreement didn't cover. Pause and ask the group if the contract needs an update. Gives students ownership of the solution and treats them as mature collaborators who can problem-solve their own community issues.",
+          "say": "We're having trouble transitioning from lunch back into speech drills. Our current agreement isn't covering it — do we need to add a new clause about how we handle focus time?"
+        }
+      ],
+      "say": [
+        "Let's build our lab's community agreement together. What do you need from each other to feel like this room is a good place to think hard and debate hard?",
+        "Take thirty seconds and look at our agreement on the board. Are we living it right now?"
+      ]
+    },
+    {
+      "n": 3,
+      "icon": "🪪",
+      "title": "Know Students' Names",
+      "quest": "Recruit the party",
+      "tone": "cyan",
+      "tags": ["setup", "engagement"],
+      "concept": "Knowing a student's name is the fastest way to build trust and respect. If you don't know their name, they won't feel accountable to you or the lab. For middle schoolers, hearing their name validates that they are an important part of the team.",
+      "execute": [
+        { "label": "The Door Greeting", "text": "Welcome all students by name as they enter the room or the first time you see them each day. It sets a positive tone immediately." },
+        { "label": "Deploy Name Tents", "text": "On day one, have everyone create a visible name tent and keep them on desks all week." },
+        { "label": "Map the Room", "text": "Create a quick seating chart on your clipboard or tablet and refer to it constantly." }
+      ],
+      "say": [
+        "Good morning, Sarah. Glad you're here.",
+        "Jordan, what do you think about the argument Marcus just made?"
+      ]
+    },
+    {
+      "n": 4,
+      "icon": "📜",
+      "title": "Review Expectations",
+      "quest": "Rules of engagement",
+      "tone": "magenta",
+      "tags": ["setup", "behavior"],
+      "concept": "Middle schoolers thrive on predictability. Before launching a new debate activity or practice speech, clearly define the behavioral and academic norms. If players know the parameters of the quest, they are much more likely to succeed.",
+      "execute": [
+        { "label": "Pause and Anchor", "text": "Before giving instructions, pause whatever is happening. Have all students look at you to ensure they are fully listening before you begin." },
+        { "label": "Be Explicit", "text": "Never assume they 'just know' how to behave during a cross-examination drill. Tell them exactly what it looks and sounds like." },
+        { "label": "Frame Positively", "text": "Tell them what to do, not just what not to do. Keep it visible on the board or a screen." }
+      ],
+      "say": [
+        "Everyone, pause your typing and bring your eyes up here. Thank you. Before we start this drill, let's review our rules of engagement: one mic, respectful feedback only, and timers ready.",
+        "During this prep time, the expectation is that we're at a Level 1 volume, working only with our partner, and finalizing our affirmative speech doc."
+      ]
+    },
+    {
+      "n": 5,
+      "icon": "🪑",
+      "title": "Assigned Seats",
+      "quest": "Set the map",
+      "tone": "cyan",
+      "tags": ["setup", "behavior"],
+      "concept": "Where students sit dictates how well they focus. Strategic positioning minimizes distractions, pairs complementary skill sets, and keeps the environment structured. A seating chart is a tool for success, not a punishment.",
+      "execute": [
+        { "label": "Assign on Day One", "text": "Have seating assignments ready the moment they walk in. It immediately establishes that you are guiding the experience." },
+        { "label": "Strategic Proximity", "text": "Assign talkative or easily distracted students to seats near you so you can provide support and redirection." },
+        { "label": "Balance the Party", "text": "Pair enthusiastic speakers with quieter researchers so they can help balance each other out during partner work." }
+      ],
+      "say": [
+        "Take a look at the screen to find your starting base for today's session.",
+        "We're going to switch up our party positioning for the afternoon quest so you can practice debating against new styles."
+      ]
+    },
+    {
+      "n": 6,
+      "icon": "🎖️",
+      "title": "Student Jobs",
+      "quest": "Assign class roles",
+      "tone": "magenta",
+      "tags": ["engagement", "behavior"],
+      "concept": "Delegating tasks gives students a sense of ownership over the lab. When they have a specific role, they are actively contributing to the community, which boosts engagement.",
+      "execute": [
+        { "label": "Channel the Energy", "text": "For talkative or easily distracted students, assigning them a concrete daily job keeps them anchored and productive." },
+        { "label": "Define the Roles", "text": "Timekeeper (manages the timer), Scribe (writes key vocab on the board), Tech Support (helps peers format docs)." }
+      ],
+      "say": [
+        "David, you are our Timekeeper for this phase. Please let the room know when prep time is at the one-minute warning.",
+        "Who feels confident as Tech Support right now? Maya needs a quick hand formatting her headers."
+      ]
+    },
+    {
+      "n": 7,
+      "icon": "☕",
+      "title": "Brain Breaks",
+      "quest": "Cognitive cooldown",
+      "tone": "cyan",
+      "tags": ["pacing", "sel"],
+      "concept": "Middle schoolers are processing an immense amount of complex debate theory. Their focus meters deplete quickly. Scheduled, structured pauses allow them to reset mentally so they don't burn out before the final activity.",
+      "execute": [
+        { "label": "The 20-Minute Timer", "text": "Set a visible timer to stop instruction every 20 minutes for a mandatory cooldown." },
+        { "label": "Student-Led Choices", "text": "Assign a student to choose and lead the brain break. Eventually they'll run this routine entirely on their own." },
+        { "label": "Keep it Structured", "text": "A break is a defined 3-5 minute window. Put a timer on the board so students know exactly when the game resumes." }
+      ],
+      "say": [
+        "That's our 20-minute alarm. Screen lids down. Marcus, you are leading our cognitive cooldown today — what are we doing?"
+      ],
+      "tool": {
+        "label": "Brain Breaks Wheel",
+        "href": "/brain-breaks",
+        "description": "Spin the wheel to pick a random brain break — 24 activities across physical, academic, social, and games categories. Project it in class."
+      }
+    },
+    {
+      "n": 8,
+      "icon": "🧩",
+      "title": "Chunk Information",
+      "quest": "Mini-quests",
+      "tone": "cyan",
+      "tags": ["pacing", "engagement"],
+      "concept": "Handing a middle schooler a 50-page debate file or lecturing for 20 minutes is overwhelming. Breaking massive tasks into bite-sized, 5-to-10 minute phases keeps the momentum high and prevents students from giving up before they start.",
+      "execute": [
+        { "label": "One Step at a Time", "text": "Deliver a short piece of instruction, then give them a quick task to apply it immediately before moving on." },
+        { "label": "Use Checklists", "text": "Give them a visual checklist of the 3 or 4 mini-quests they need to complete." },
+        { "label": "Celebrate the Micro-Wins", "text": "Acknowledge when the room completes a phase before assigning the next one." }
+      ],
+      "say": [
+        "Instead of looking at the whole speech doc, your only mission for the next 5 minutes is to highlight the tags. That's phase one.",
+        "Step one is just reading the plan text. Do not look at the advantages yet. Just read the plan text and give me a thumbs up when you're done."
+      ]
+    },
+    {
+      "n": 9,
+      "icon": "👍",
+      "title": "Checks for Understanding",
+      "quest": "Status checks",
+      "tone": "magenta",
+      "tags": ["pacing", "engagement"],
+      "concept": "Asking 'Does anyone have any questions?' usually results in silence, which novice teachers mistake for comprehension. You need active verification from everyone to ensure the whole party is ready to advance.",
+      "execute": [
+        { "label": "Thumbs Up/Down", "text": "Fastest and most effective way to get a full-room read. Require every student to physically show a thumb before you move on." },
+        { "label": "Turn and Talk", "text": "Have students explain a concept to the person next to them while you listen in." },
+        { "label": "Targeted Questions", "text": "Ask a specific question about the material rather than a general request for confusion." }
+      ],
+      "say": [
+        "I need a status check from every single person: Thumbs up if you're ready to move on, thumbs down if we need to review that definition one more time."
+      ]
+    },
+    {
+      "n": 10,
+      "icon": "⏳",
+      "title": "Wait Time",
+      "quest": "Loading screens",
+      "tone": "cyan",
+      "tags": ["pacing", "engagement"],
+      "concept": "After asking a question, it's natural to want to call on the very first hand that shoots up. But that only rewards the fastest processors. Pausing in silence levels the playing field and gives all students the necessary processing time to formulate an answer.",
+      "execute": [
+        { "label": "The 5-Second Rule", "text": "Ask the question, physically step back, and count to five silently before calling on anyone." },
+        { "label": "Announce the Pause", "text": "Tell students you're giving them time to think so they don't feel rushed." },
+        { "label": "Hold the Space", "text": "Be comfortable with a few seconds of silence. It means they're thinking." }
+      ],
+      "say": [
+        "I'm going to ask a question, and I want everyone to hold their answers and think about it for five full seconds. Hands down for now. Here's the question…",
+        "I see two hands, but I'm going to wait until I see at least five players ready to share."
+      ]
+    },
+    {
+      "n": 11,
+      "icon": "🪜",
+      "title": "Scaffold the Basics",
+      "quest": "Play the tutorial",
+      "tone": "violet",
+      "tags": ["engagement", "pacing"],
+      "concept": "For non-teachers, 'scaffolding' means giving students temporary support tools — like training wheels — so they can understand complex material before they're ready to do it independently. You cannot expect middle schoolers to jump straight into a boss fight without playing the tutorial first.",
+      "execute": [
+        { "label": "Use Graphic Organizers", "text": "Instead of handing them a blank legal pad to flow a speech, give them visual charts or pre-formatted tables to help map out arguments." },
+        { "label": "Define Unfamiliar Words", "text": "Middle school debate is full of jargon. Explicitly define words like 'fiat' or 'link' before using them, and keep a visible vocab bank on the whiteboard." },
+        { "label": "Sentence Starters", "text": "Give them the first half of a sentence to get them talking during drills — e.g., 'The affirmative plan fails because…'" }
+      ],
+      "say": [
+        "Before we read this evidence, let's look at the vocabulary bank on the board so we know what these three terms mean."
+      ]
+    },
+    {
+      "n": 12,
+      "icon": "💜",
+      "title": "SEL Check-Ins",
+      "quest": "Party morale",
+      "tone": "violet",
+      "tags": ["sel"],
+      "concept": "Social-Emotional Learning (SEL) is recognizing that students are humans first. If their 'morale' is low due to frustration, a disagreement with a partner, or outside stress, they cannot process debate theory. Addressing their emotional state is a prerequisite to academic success.",
+      "execute": [
+        { "label": "1-on-1 Side Quests", "text": "Pull students aside privately to troubleshoot struggles. Ask how they're feeling, not just what they're working on." },
+        { "label": "Validate Frustration", "text": "When the material is hard, name it. Validating their feelings builds massive trust." },
+        { "label": "The Mood Meter", "text": "Start the morning or afternoon session by having students rate their energy on a scale of 1-5 so you know what you're working with." }
+      ],
+      "say": [
+        "I know formatting these blocks is frustrating right now, and it's totally okay to feel stuck. Take a breath, and let's look at it together.",
+        "Hey Zoe, let's step into the hall for a quick side quest. You seem a little quiet today — how is camp going for you?"
+      ]
+    },
+    {
+      "n": 13,
+      "icon": "✨",
+      "title": "Positive Redirection",
+      "quest": "Buffs, not debuffs",
+      "tone": "magenta",
+      "tags": ["behavior", "sel"],
+      "concept": "When a student is off-task, telling them what not to do (a debuff) often leads to arguments or confusion. Telling them exactly what they should be doing (a buff) provides a clear path back to success. It keeps the environment encouraging and clearly defines the expected behavior.",
+      "execute": [
+        { "label": "The 'Do' Command", "text": "Replace phrases like 'Stop talking' with 'Please bring your voice to a Level 0.'" },
+        { "label": "Assume Positive Intent", "text": "Frame corrections as a helpful reminder of the rules of the quest, not as a punishment." },
+        { "label": "Praise the Correction", "text": "As soon as the student adjusts their behavior, offer a quick, quiet acknowledgment to reinforce the positive choice." }
+      ],
+      "say": [
+        "Instead of looking at the other team, keep your eyes on your flow pad while they're speaking.",
+        "Make sure your laptops are closed during this explanation so we can level up our focus."
+      ]
+    },
+    {
+      "n": 14,
+      "icon": "🗺️",
+      "title": "Circulating",
+      "quest": "Map patrol",
+      "tone": "magenta",
+      "tags": ["behavior", "engagement"],
+      "concept": "Proximity is a powerful classroom management tool. If you teach entirely from behind your desk or a podium, students in the back of the room will check out. Constantly moving throughout the map keeps everyone engaged and lets you catch minor issues before they become major disruptions.",
+      "execute": [
+        { "label": "Leave the Base", "text": "During independent or partner work, immediately get up and start walking the room." },
+        { "label": "Check the Screens", "text": "Walk behind students so you can see their monitors. This naturally prevents off-task browsing without you saying a word." },
+        { "label": "The 'Drive-By' Support", "text": "Stop briefly at a group to point out a great argument or fix a quick formatting error, then keep moving. Don't get stuck at one table for ten minutes." }
+      ],
+      "say": [
+        "I'm going to be walking the map while you prep. If you get stuck on a piece of evidence, raise your hand and I'll come to your station.",
+        "Great link story here, group three. Keep writing. (Said while walking by.)"
+      ]
+    }
+  ]
+}

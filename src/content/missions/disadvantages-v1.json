@@ -1,0 +1,579 @@
+{
+  "id": "disadvantages-v1",
+  "campaignId": "cdsi-2026-summer",
+  "sectorId": "negative-fundamentals",
+  "number": 6,
+  "title": "Disadvantages (DAs)",
+  "subtitle": "Negative Fundamentals · Mission 06",
+  "tagline": "The AFF's plan sounds nice. You prove it {{amber:causes something worse}}. Meet the {{amber:DA}} — the Negative's most feared weapon — and its three parts.",
+  "estimatedMinutes": 14,
+  "difficulty": "core",
+  "rewards": {
+    "credits": 140,
+    "rankXp": 90
+  },
+  "unlocks": [],
+  "prerequisites": [],
+  "protectedTerms": [
+    "disadvantage",
+    "DA",
+    "uniqueness",
+    "link",
+    "impact",
+    "off-case",
+    "negative",
+    "affirmative",
+    "outweigh"
+  ],
+  "passingCriteria": {
+    "requireAllCfu": true,
+    "minCorrectCfu": 4,
+    "shieldsAtZero": "allow-continue"
+  },
+  "slides": [
+    {
+      "id": "s1-hook",
+      "type": "hook",
+      "headline": "🐶 THE PUPPY PROBLEM",
+      "body": [
+        "You really want a puppy. You've made your case: *\"It'll be fun. I'll take care of it. Please.\"* 🥺",
+        "Your parents say: *\"If we get a puppy, {{amber:nobody will walk it}}, {{amber:it'll destroy the furniture}}, and {{amber:we'll have to move}} because of the pet deposit.\"*",
+        "They didn't say \"no.\" They didn't attack your plan directly. They ran a {{amber:Disadvantage}} — a chain of bad side effects that make your plan a {{amber:bad idea}} even if it works. 💥",
+        "The Negative team does this in every round. It's their favorite weapon. Today: {{amber:learn to build one}}."
+      ],
+      "sidebar": {
+        "title": "MISSION BRIEFING",
+        "items": [
+          {
+            "num": "01",
+            "label": "Define the {{amber:Disadvantage}} and why it's the Neg's top weapon",
+            "state": "todo"
+          },
+          {
+            "num": "02",
+            "label": "Master the three parts: {{amber:Uniqueness · Link · Impact}}",
+            "state": "todo"
+          },
+          {
+            "num": "03",
+            "label": "Diagnose a broken DA using {{amber:Disad Dan}} on the cliff",
+            "state": "todo"
+          }
+        ],
+        "kind": "stock-list"
+      },
+      "tag": "Day 2 Lesson 6"
+    },
+    {
+      "id": "s2-define-da",
+      "type": "define",
+      "term": "Disadvantage",
+      "pronunciation": "DIS-ad-VAN-tij  ·  aka {{amber:DA}}",
+      "definition": "A {{amber:Disadvantage}} (DA) is the Negative's most common {{amber:off-case}} attack. It says: *\"Sure, the plan might sound fine — but it causes {{amber:this terrible side effect}} that outweighs anything good.\"* 💥",
+      "plainWords": "You don't argue the plan won't work. You argue that it works AND causes something worse. Net bad.",
+      "analogy": "Think of it like {{amber:medicine}}. 💊 The plan cures the headache — sure. But it also gives you a horrible stomachache. If the stomachache is worse than the headache, you {{amber:don't take the medicine}}. That's the whole game.",
+      "image": {
+        "src": "",
+        "alt": ""
+      }
+    },
+    {
+      "id": "s3-concept-uli",
+      "type": "concept",
+      "headline": "U-L-I: THE THREE PARTS OF A DA",
+      "intro": "Every winning Disadvantage has {{amber:three parts}} — in order. Miss one and the DA falls apart. Learn to say the names out loud: {{amber:Uniqueness → Link → Impact}}.",
+      "cards": [
+        {
+          "id": "card-uniqueness",
+          "icon": "🧊",
+          "name": "U — UNIQUENESS",
+          "description": "Things are {{amber:okay right now}}. The disaster hasn't happened yet. This proves the plan is what changes things — not something else already going on.",
+          "example": {
+            "label": "Sounds like",
+            "text": "*\"The economy is stable right now — steady growth, low unemployment.\"* Uniqueness locked in. ✅"
+          },
+          "accent": "cyan"
+        },
+        {
+          "id": "card-link",
+          "icon": "🔗",
+          "name": "L — LINK",
+          "description": "The {{amber:plan specifically}} causes the problem. Not \"stuff in general\" — {{amber:this plan}} pushes the domino. Point to the exact action.",
+          "example": {
+            "label": "Sounds like",
+            "text": "*\"Their plan spends $2 trillion — that shock crashes the stable economy.\"* Link locked in. 🔗"
+          },
+          "accent": "amber"
+        },
+        {
+          "id": "card-impact",
+          "icon": "💥",
+          "name": "I — IMPACT",
+          "description": "The disaster the plan {{amber:causes}}. Big, scary, real. This is what makes the judge care. Higher magnitude = stronger DA.",
+          "example": {
+            "label": "Sounds like",
+            "text": "*\"Recession costs 3 million jobs and drags the world into economic crisis.\"* Impact locked in. 💥"
+          },
+          "accent": "amber"
+        }
+      ]
+    },
+    {
+      "id": "s4-strategy-disad-dan",
+      "type": "strategy",
+      "headline": "🧍 MEET DISAD DAN",
+      "intro": "Here's the trick every good Neg debater knows: the three parts of a DA are just {{amber:Disad Dan on a cliff}}. He can only be pushed off if he's {{amber:right on the edge}}. Diagnose your DA before you run it — is Dan in the right spot?",
+      "rows": [
+        {
+          "name": "🏔️ Dan's cliff = Uniqueness",
+          "description": "Dan has to be standing {{amber:right on the edge}} — safe *for now*, but one push away from falling. That's Uniqueness. Things are okay {{amber:right now}}, but fragile.",
+          "counter": {
+            "label": "In a round",
+            "text": "*\"The economy is stable — but growth is slow and one shock could tip it.\"* Dan's on the edge. 🧍"
+          }
+        },
+        {
+          "name": "🤖 The push = Link",
+          "description": "The AFF plan is the {{amber:hand that pushes Dan}}. You have to prove {{amber:this plan}} — not some other plan, not \"policy in general\" — is what shoves him.",
+          "counter": {
+            "label": "In a round",
+            "text": "*\"Their plan spends $2T — that's the push. No other bill on the table does that.\"* 🤖"
+          }
+        },
+        {
+          "name": "💥 The fall = Impact",
+          "description": "Dan falls into disaster. This is the {{amber:big scary thing}} the judge votes on. Bigger fall = stronger DA.",
+          "counter": {
+            "label": "In a round",
+            "text": "*\"He falls into a recession. 3 million jobs lost. Global crisis.\"* 💥"
+          }
+        },
+        {
+          "name": "⚠️ Diagnose before you run it",
+          "description": "If Dan is {{amber:too far from the edge}} → your push doesn't matter (no real Uniqueness). If Dan is {{amber:already falling}} → the plan isn't the cause (Aff will say *\"it's happening anyway\"*). Only {{amber:right on the edge}} = a DA that wins.",
+          "counter": {
+            "label": "Pro tip",
+            "text": "*\"Before you read the DA, ask: is Dan on the edge? If he's already falling, {{amber:pick a different DA}}.\"*"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s5-cfu-match-uli",
+      "type": "cfu-match",
+      "tag": "⚡ TACTICAL DRILL · CFU 01",
+      "tagTone": "amber",
+      "prompt": {
+        "label": "PARTS MATCH",
+        "scenario": "A Neg team is running an *\"Economy DA\"* against a spending plan. Three sentences from their speech are below. Match each one to the part of the DA it's doing.",
+        "question": "Drag each sentence on the left to the right {{amber:part of the DA}} on the right."
+      },
+      "leftColumn": {
+        "label": "THE SENTENCE",
+        "items": [
+          {
+            "id": "L1",
+            "text": "*\"Their plan spends two trillion dollars — that shock crashes the market.\"*",
+            "pairId": "p1"
+          },
+          {
+            "id": "L2",
+            "text": "*\"A recession would cost three million jobs and trigger a global crisis.\"*",
+            "pairId": "p2"
+          },
+          {
+            "id": "L3",
+            "text": "*\"The economy is stable right now — steady growth, low unemployment.\"*",
+            "pairId": "p3"
+          }
+        ]
+      },
+      "rightColumn": {
+        "label": "THE PART",
+        "items": [
+          {
+            "id": "R1",
+            "text": "🔗 LINK — the plan causes it",
+            "pairId": "p1"
+          },
+          {
+            "id": "R2",
+            "text": "💥 IMPACT — the disaster",
+            "pairId": "p2"
+          },
+          {
+            "id": "R3",
+            "text": "🧊 UNIQUENESS — things are OK right now",
+            "pairId": "p3"
+          }
+        ]
+      },
+      "scoring": {
+        "creditsOnCorrect": 20,
+        "shieldOnWrong": true,
+        "breaksStreakOnWrong": false,
+        "maxAttempts": 2,
+        "mode": "partial"
+      },
+      "feedback": {
+        "correct": {
+          "title": "✓ THREE PARTS LOCKED IN",
+          "body": [
+            "That's the DA architecture. {{cyan:Uniqueness}} sets the scene (*things are OK*). {{amber:Link}} is the plan-specific push (*this plan breaks it*). {{amber:Impact}} is the disaster (*here's why the judge should care*). Every DA needs all three. 🎯"
+          ],
+          "followup": "**Pro move:** In a speech, say the words out loud in order: *\"Uniqueness — [scene]. Link — [plan causes]. Impact — [disaster].\"* The judge is listening for those three words."
+        },
+        "wrongDefault": {
+          "title": "✕ RESHUFFLE",
+          "body": [
+            "Quick test: {{cyan:Uniqueness}} = *\"things are okay right now.\"* {{amber:Link}} = *\"the plan specifically breaks it.\"* {{amber:Impact}} = *\"here's the disaster.\"* Re-read each sentence and ask which of the three questions it's answering."
+          ]
+        }
+      }
+    },
+    {
+      "id": "s6-cfu-mcq-climate",
+      "type": "cfu-mcq",
+      "tag": "⚡ TACTICAL DRILL · CFU 02",
+      "tagTone": "amber",
+      "prompt": {
+        "label": "THE CLIMATE TRAP",
+        "scenario": "A Neg team wants to run *\"The plan causes climate change\"* as a Disadvantage. But climate change is {{amber:already happening}} — scientists say the planet is already warming.\n\nWhy is this DA broken?",
+        "question": "Which part of the DA falls apart when the impact is {{amber:already happening}}?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "letter": "A",
+          "text": "The Link — you can't link a plan to climate change"
+        },
+        {
+          "id": "b",
+          "letter": "B",
+          "text": "The Uniqueness — if it's already happening, you can't blame the plan"
+        },
+        {
+          "id": "c",
+          "letter": "C",
+          "text": "The Impact — climate change isn't a big enough impact"
+        },
+        {
+          "id": "d",
+          "letter": "D",
+          "text": "Nothing is broken — it's still a good DA"
+        }
+      ],
+      "correctOptionId": "b",
+      "scoring": {
+        "creditsOnCorrect": 15,
+        "shieldOnWrong": true,
+        "breaksStreakOnWrong": true,
+        "maxAttempts": 1,
+        "mode": "all-or-nothing"
+      },
+      "feedback": {
+        "correct": {
+          "title": "✓ CAUGHT THE TRAP",
+          "body": [
+            "Exactly. {{cyan:Uniqueness}} means *the disaster hasn't happened yet*. If climate change is {{amber:already underway}}, the Aff will just say: *\"That's happening anyway — it's not our plan's fault.\"* {{amber:Disad Dan is already falling}} — no push needed. 🧍‍♂️💨"
+          ],
+          "followup": "**Pro tip:** Before you run any DA, check Uniqueness first. If the disaster is already happening, {{amber:pick a different DA}}. Climate change makes a great {{amber:Impact}} — but only if you can prove the plan {{amber:uniquely}} makes it worse."
+        },
+        "wrongByChoice": {
+          "a": {
+            "title": "✕ LINK ISN'T THE PROBLEM",
+            "body": [
+              "Actually, you probably {{amber:can}} link a plan to climate change (e.g. \"the plan increases emissions\"). The problem is different: even if you link it, climate change is already happening, so the Aff will say *\"that's happening anyway.\"* That's a {{amber:Uniqueness}} problem, not a Link one."
+            ]
+          },
+          "c": {
+            "title": "✕ IMPACT IS FINE",
+            "body": [
+              "Climate change is a {{amber:huge}} impact — one of the biggest in debate. That's not the issue. The issue is {{cyan:Uniqueness}}: if it's already happening, you can't say the {{amber:plan}} is what causes it."
+            ]
+          },
+          "d": {
+            "title": "✕ IT'S BROKEN",
+            "body": [
+              "The Aff will crush this DA with one sentence: *\"Climate change is happening anyway — the Neg needs to prove {{amber:our plan uniquely makes it worse}}.\"* Without Uniqueness, the DA is dead."
+            ]
+          }
+        },
+        "wrongDefault": {
+          "title": "✕ MISFIRE",
+          "body": [
+            "The answer is {{cyan:B — Uniqueness}}. If the disaster is already happening, you can't blame the plan. Disad Dan is already falling."
+          ]
+        }
+      }
+    },
+    {
+      "id": "s7-cfu-sort-uli",
+      "type": "cfu-sort",
+      "tag": "⚡ TACTICAL DRILL · CFU 03",
+      "tagTone": "amber",
+      "prompt": {
+        "label": "DA TRIAGE",
+        "scenario": "You're building a *\"Federal Spending DA\"* against an infrastructure plan. Six lines from your notes are jumbled. Sort each one into {{cyan:UNIQUENESS}}, {{amber:LINK}}, or {{amber:IMPACT}}.",
+        "question": "Drop each line into the right bin."
+      },
+      "bins": [
+        {
+          "id": "bin-uniqueness",
+          "icon": "🧊",
+          "label": "UNIQUENESS",
+          "accent": "cyan"
+        },
+        {
+          "id": "bin-link",
+          "icon": "🔗",
+          "label": "LINK",
+          "accent": "amber"
+        },
+        {
+          "id": "bin-impact",
+          "icon": "💥",
+          "label": "IMPACT",
+          "accent": "amber"
+        }
+      ],
+      "cards": [
+        {
+          "id": "c1",
+          "text": "*\"The federal deficit is currently manageable — Congress just passed a stable budget.\"*",
+          "correctBinId": "bin-uniqueness"
+        },
+        {
+          "id": "c2",
+          "text": "*\"The plan adds $1.5 trillion in new spending on top of the existing deficit.\"*",
+          "correctBinId": "bin-link"
+        },
+        {
+          "id": "c3",
+          "text": "*\"A debt crisis would collapse the dollar and trigger a global depression.\"*",
+          "correctBinId": "bin-impact"
+        },
+        {
+          "id": "c4",
+          "text": "*\"The plan's specific funding mechanism requires new Treasury bonds.\"*",
+          "correctBinId": "bin-link"
+        },
+        {
+          "id": "c5",
+          "text": "*\"Investor confidence in U.S. debt is high right now.\"*",
+          "correctBinId": "bin-uniqueness"
+        },
+        {
+          "id": "c6",
+          "text": "*\"Global depressions kill millions through poverty, unrest, and collapsed healthcare.\"*",
+          "correctBinId": "bin-impact"
+        }
+      ],
+      "allowPartialCredit": true,
+      "scoring": {
+        "creditsOnCorrect": 25,
+        "shieldOnWrong": true,
+        "breaksStreakOnWrong": false,
+        "maxAttempts": 2,
+        "mode": "partial"
+      },
+      "feedback": {
+        "correct": {
+          "title": "✓ TRIAGE COMPLETE",
+          "body": [
+            "That's how a Neg debater preps a DA. Group your notes by part. {{cyan:Uniqueness}} lines = *right now*. {{amber:Link}} lines = *this plan specifically*. {{amber:Impact}} lines = *the disaster*."
+          ],
+          "followup": "**Pro move:** If any bin is {{amber:empty}}, your DA has a hole. No Uniqueness card? The Aff says *\"already happening.\"* No Link card? The Aff says *\"not our plan.\"* No Impact card? The judge says *\"so what?\"* Build all three or {{amber:the DA loses}}."
+        },
+        "wrongDefault": {
+          "title": "✕ RE-TRIAGE",
+          "body": [
+            "Litmus test: is the sentence about {{cyan:how things are now}} → **Uniqueness**. About {{amber:the plan doing something specific}} → **Link**. About {{amber:the disaster that follows}} → **Impact**."
+          ]
+        }
+      }
+    },
+    {
+      "id": "s8-cfu-mcq-disad-dan",
+      "type": "cfu-mcq",
+      "tag": "⚡ TACTICAL DRILL · CFU 04",
+      "tagTone": "amber",
+      "prompt": {
+        "label": "DIAGNOSE DAN",
+        "scenario": "Three Neg teams are pitching Disadvantages. In each case, {{amber:Disad Dan}} is in a different spot. Which DA is actually going to win?",
+        "question": "Pick the DA where Disad Dan is {{amber:right on the edge}}."
+      },
+      "options": [
+        {
+          "id": "a",
+          "letter": "A",
+          "text": "*\"The plan causes climate change.\"* — Dan is already falling (climate change is already happening)"
+        },
+        {
+          "id": "b",
+          "letter": "B",
+          "text": "*\"The plan causes a recession.\"* — Dan is on the edge (economy is stable but fragile, plan is the push)"
+        },
+        {
+          "id": "c",
+          "letter": "C",
+          "text": "*\"The plan makes politicians unpopular.\"* — Dan is too far from the edge (politicians are already unpopular)"
+        },
+        {
+          "id": "d",
+          "letter": "D",
+          "text": "*\"The plan will end all life on Earth eventually.\"* — Dan is nowhere near the cliff (no realistic link)"
+        }
+      ],
+      "correctOptionId": "b",
+      "scoring": {
+        "creditsOnCorrect": 15,
+        "shieldOnWrong": true,
+        "breaksStreakOnWrong": true,
+        "maxAttempts": 1,
+        "mode": "all-or-nothing"
+      },
+      "feedback": {
+        "correct": {
+          "title": "✓ DIAGNOSIS CORRECT",
+          "body": [
+            "That's the winning DA. {{amber:Uniqueness}} = economy is stable *but fragile*. {{amber:Link}} = this plan's spending is the push. {{amber:Impact}} = recession. All three parts hold. Dan gets shoved off the cliff. 💥"
+          ],
+          "followup": "**Big lesson:** A DA can have an amazing Impact and still lose if Dan is {{amber:already falling}} or {{amber:too far from the edge}}. Diagnose Dan {{amber:before}} you commit to running the DA."
+        },
+        "wrongByChoice": {
+          "a": {
+            "title": "✕ DAN'S ALREADY FALLING",
+            "body": [
+              "Climate change is already happening — Dan's mid-fall. Aff says *\"happening anyway.\"* No {{amber:Uniqueness}} = broken DA. Try again."
+            ]
+          },
+          "c": {
+            "title": "✕ DAN'S TOO FAR BACK",
+            "body": [
+              "If politicians are {{amber:already}} unpopular, the plan can't make them *more* unpopular in a way that matters. No {{amber:Uniqueness}} = the push doesn't do anything."
+            ]
+          },
+          "d": {
+            "title": "✕ DAN'S IN THE PARKING LOT",
+            "body": [
+              "Huge impact, but the {{amber:Link}} is a fantasy — no real chain from \"the plan\" to \"end of all life.\" Judges will laugh this out of the room. The best DA has a {{amber:believable}} link."
+            ]
+          }
+        },
+        "wrongDefault": {
+          "title": "✕ MISFIRE",
+          "body": [
+            "The answer is {{cyan:B}}. The recession DA has all three parts: stable-but-fragile Uniqueness, plan-specific Link, and a real Impact. Dan is right on the edge."
+          ]
+        }
+      }
+    },
+    {
+      "id": "s9-cfu-mcq-medicine",
+      "type": "cfu-mcq",
+      "tag": "⚡ TACTICAL DRILL · CFU 05",
+      "tagTone": "amber",
+      "prompt": {
+        "label": "BIG IDEA CHECK",
+        "question": "🎯 The DA is like {{amber:medicine that cures your headache but gives you a stomachache}}. What does this analogy actually teach you about running a DA?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "letter": "A",
+          "text": "You don't have to prove the plan fails — you just have to prove the {{amber:side effects}} are worse than the benefits"
+        },
+        {
+          "id": "b",
+          "letter": "B",
+          "text": "You have to prove the plan doesn't do anything good at all"
+        },
+        {
+          "id": "c",
+          "letter": "C",
+          "text": "The judge always votes for the team with the smaller impact"
+        },
+        {
+          "id": "d",
+          "letter": "D",
+          "text": "DAs only work if the plan is about medicine or health"
+        }
+      ],
+      "correctOptionId": "a",
+      "scoring": {
+        "creditsOnCorrect": 15,
+        "shieldOnWrong": true,
+        "breaksStreakOnWrong": true,
+        "maxAttempts": 1,
+        "mode": "all-or-nothing"
+      },
+      "feedback": {
+        "correct": {
+          "title": "✓ THAT'S THE WHOLE GAME",
+          "body": [
+            "Exactly. The DA doesn't say *\"the plan won't work.\"* It says *\"the plan works AND causes something worse.\"* {{amber:Net bad}}. The Aff can prove their whole case and {{amber:still lose}} because the DA outweighs. 💊"
+          ],
+          "followup": "**Pro tip:** This is why the DA is the Neg's favorite weapon. It doesn't fight the Aff head-on — it makes the plan {{amber:net bad}}. Combine it with the {{amber:impact calculus}} you learned last mission and you have a knockout."
+        },
+        "wrongByChoice": {
+          "b": {
+            "title": "✕ TOO STRONG",
+            "body": [
+              "You don't need to prove the plan does *nothing* — that's an on-case attack. The DA {{amber:concedes}} the plan does something and argues the {{amber:side effects}} are worse."
+            ]
+          },
+          "c": {
+            "title": "✕ BACKWARDS",
+            "body": [
+              "The judge votes for the team whose impacts {{amber:outweigh}} — usually the {{amber:bigger}} and more likely impact wins. The DA is trying to make the Neg's impact *bigger* than the Aff's."
+            ]
+          },
+          "d": {
+            "title": "✕ IT'S AN ANALOGY",
+            "body": [
+              "The medicine is just a metaphor. DAs work on {{amber:any}} kind of plan — spending, foreign policy, education, anything. The point is *side effects worse than the fix*."
+            ]
+          }
+        },
+        "wrongDefault": {
+          "title": "✕ MISFIRE",
+          "body": [
+            "The answer is {{cyan:A}}. A DA doesn't kill the plan by proving it fails — it kills the plan by proving the {{amber:side effects outweigh}} the benefits. Net bad."
+          ]
+        }
+      }
+    },
+    {
+      "id": "s10-complete",
+      "type": "complete",
+      "headline": "DA LOCKED IN 💥",
+      "subtext": "You've got the DA — the Negative's favorite weapon. Three parts: {{cyan:Uniqueness}} (things are OK right now), {{amber:Link}} (the plan specifically breaks it), {{amber:Impact}} (disaster). Diagnose {{amber:Disad Dan}} on the cliff before every DA. If he's on the edge, push. If he's already falling or too far back — pick a different DA.",
+      "rewards": [
+        {
+          "icon": "💳",
+          "label": "Credits earned",
+          "staticValue": "+140"
+        },
+        {
+          "icon": "⭐",
+          "label": "Rank XP",
+          "staticValue": "+90"
+        },
+        {
+          "icon": "🧠",
+          "label": "Protected vocab",
+          "staticValue": "Disadvantage · DA · Uniqueness · Link · Impact · Off-Case · Outweigh"
+        }
+      ],
+      "primaryCta": {
+        "label": "RETURN TO BRIDGE",
+        "action": "return-bridge"
+      },
+      "secondaryCta": {
+        "label": "NEXT MISSION",
+        "action": "next-mission"
+      }
+    }
+  ]
+}

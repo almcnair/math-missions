@@ -1,0 +1,689 @@
+{
+  "id": "negative-superpower-v1",
+  "campaignId": "cdsi-2026-summer",
+  "sectorId": "negative-fundamentals",
+  "number": 5,
+  "title": "The Negative Superpower",
+  "subtitle": "Negative Fundamentals · Mission 05",
+  "tagline": "Today you {{amber:switch sides}}. The Negative team doesn't build — they {{amber:break}}. Learn the two attack routes and the six-step formula that dismantles any plan.",
+  "estimatedMinutes": 12,
+  "difficulty": "core",
+  "rewards": {
+    "credits": 120,
+    "rankXp": 75
+  },
+  "unlocks": [],
+  "prerequisites": [],
+  "protectedTerms": [
+    "negative",
+    "affirmative",
+    "on-case",
+    "off-case",
+    "ITAPIN",
+    "solvency",
+    "neg block",
+    "refutation"
+  ],
+  "passingCriteria": {
+    "requireAllCfu": true,
+    "minCorrectCfu": 4,
+    "shieldsAtZero": "allow-continue"
+  },
+  "slides": [
+    {
+      "id": "s1-hook",
+      "type": "hook",
+      "headline": "🛡️ SWITCH SIDES, DEBATER",
+      "body": [
+        "You know that one friend who *always* plays devil's advocate? 😏 The one who hears any idea and says **\"Actually, that's not true because...\"**?",
+        "In policy debate, that friend has a name: the {{amber: Negative}}. And being negative isn't rude — it's a {{amber: superpower}}.",
+        "The Aff has to build a whole plan. You don't. Your only job is to prove their plan is a {{amber: bad idea}}. You poke holes. You ask hard questions. You stop a weak plan before it gets a vote. 🎯",
+        "Today: meet your two attack routes and the six-step formula that turns any hole into a knockout. 💥"
+      ],
+      "sidebar": {
+        "title": "MISSION BRIEFING",
+        "items": [
+          {
+            "num": "01",
+            "label": "Define the {{amber: Negative}}'s job in a policy round",
+            "state": "todo"
+          },
+          {
+            "num": "02",
+            "label": "Tell apart {{cyan: on-case}} and {{amber: off-case}} attacks",
+            "state": "todo"
+          },
+          {
+            "num": "03",
+            "label": "Run the {{amber: ITAPIN}} formula to dismantle an argument",
+            "state": "todo"
+          }
+        ],
+        "kind": "stock-list"
+      },
+      "tag": "Day 2 Lesson 1"
+    },
+    {
+      "id": "s2-define-negative",
+      "type": "define",
+      "term": "Negative",
+      "pronunciation": "NEG-uh-tiv",
+      "definition": "The {{amber: Negative}} is the team that says *NO* to the resolution. Their job is to prove the {{cyan: Affirmative}}'s plan is a **bad idea** — either because it won't work, or because it makes something else worse. 🛡️",
+      "plainWords": "You're the defense. You don't have to fix anything. You just have to show what's broken with their fix.",
+      "analogy": "Think of it like a {{amber: shield}}. The Aff throws a plan at the judge. You block it, break it, or turn it around. If nothing gets through, you win. 🛡️",
+      "image": {
+        "src": "",
+        "alt": ""
+      }
+    },
+    {
+      "id": "s3-concept-two-attacks",
+      "type": "concept",
+      "headline": "TWO WAYS TO ATTACK",
+      "intro": "The Negative team gets two attack routes. You can hit the Aff's plan head-on, or bring in a totally new reason it's a bad idea. Some rounds you'll use one. Great debaters use both.",
+      "cards": [
+        {
+          "id": "card-on-case",
+          "icon": "🎯",
+          "name": "ON-CASE",
+          "description": "Attack the plan {{cyan: head-on}}. Say the problem isn't big. Say nobody's really hurt. Say it's already being fixed. Or say the plan won't {{cyan: actually work}}.",
+          "example": {
+            "label": "Sounds like",
+            "text": "\"Their plan won't fix hunger. Free lunch programs already fail in most schools.\""
+          },
+          "accent": "cyan"
+        },
+        {
+          "id": "card-off-case",
+          "icon": "⚡",
+          "name": "OFF-CASE",
+          "description": "Bring a {{amber: new}} reason the plan is bad. Even if it works, it causes a whole new problem the Aff didn't warn the judge about.",
+          "example": {
+            "label": "Sounds like",
+            "text": "\"Sure, the plan might help schools. But it costs so much it crashes the economy.\""
+          },
+          "accent": "amber"
+        },
+        {
+          "id": "card-neg-block",
+          "icon": "🔒",
+          "name": "THE NEG BLOCK",
+          "description": "The {{amber: Neg}}'s secret weapon: **13 straight minutes** of back-to-back speeches (2NC + 1NR) that the Aff can't interrupt. Use it to bury them in attacks.",
+          "example": {
+            "label": "Sounds like",
+            "text": "\"That's five arguments the 1AR has to answer in five minutes. Good luck.\""
+          },
+          "accent": "amber"
+        }
+      ]
+    },
+    {
+      "id": "s4-strategy-itapin",
+      "type": "strategy",
+      "headline": "⚡ THE ITAPIN FORMULA",
+      "intro": "Knowing when to attack isn't enough. You need to know *how*. Every time you refute an argument, run the six-step {{amber: ITAPIN}} sequence — in order. The word spells the first letter of each step.",
+      "rows": [
+        {
+          "name": "🎯 I — Identify",
+          "description": "Name the exact argument you're attacking. Not \"their whole case.\" One argument. Point to it so the judge knows where to look.",
+          "counter": {
+            "label": "Sounds like",
+            "text": "*\"Look at their Solvency argument.\"*"
+          }
+        },
+        {
+          "name": "🗣️ T — They Say",
+          "description": "Repeat what the Aff claimed in their own words. This shows the judge you were {{cyan: listening}} — and it locks in what you're about to break.",
+          "counter": {
+            "label": "Sounds like",
+            "text": "*\"They say their plan reduces poverty by 50%.\"*"
+          }
+        },
+        {
+          "name": "🥊 A — Argument",
+          "description": "Tell the judge {{amber: why they're wrong}}. This is your counter-attack. One clear sentence beats a paragraph of mush.",
+          "counter": {
+            "label": "Sounds like",
+            "text": "*\"We say that number is way too high — it's not realistic.\"*"
+          }
+        },
+        {
+          "name": "🏆 P — Prefer because",
+          "description": "Explain why the judge should believe {{amber: you}} over them. Your logic, your evidence, your source — what makes your side stronger?",
+          "counter": {
+            "label": "Sounds like",
+            "text": "*\"Prefer our argument because a similar plan in the past only cut poverty by 2%.\"*"
+          }
+        },
+        {
+          "name": "💥 I — Impact",
+          "description": "Say {{amber: why it matters}} for the round. Not just \"they're wrong\" — but *\"because they're wrong, you can't vote for their plan.\"*",
+          "counter": {
+            "label": "Sounds like",
+            "text": "*\"Because their plan doesn't solve, you cannot vote Aff.\"*"
+          }
+        },
+        {
+          "name": "📄 N — New Evidence",
+          "description": "Back it up with a fresh {{cyan: card}}. New quote, new source, new proof. Optional — but a card sells the point to the judge.",
+          "counter": {
+            "label": "Sounds like",
+            "text": "*\"I'm reading the Smith 2024 study now.\"*"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s5-cfu-mcq-neg-job",
+      "type": "cfu-mcq",
+      "tag": "⚡ TACTICAL DRILL · CFU 01",
+      "tagTone": "amber",
+      "prompt": {
+        "label": "QUICK CHECK",
+        "question": "🛡️ What is the {{amber: Negative}} team's job in a policy round?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "letter": "A",
+          "text": "Bring their own plan and prove it works"
+        },
+        {
+          "id": "b",
+          "letter": "B",
+          "text": "Prove the Affirmative's plan is a bad idea"
+        },
+        {
+          "id": "c",
+          "letter": "C",
+          "text": "Agree with the Affirmative and add more evidence"
+        },
+        {
+          "id": "d",
+          "letter": "D",
+          "text": "Decide who wins the round"
+        }
+      ],
+      "correctOptionId": "b",
+      "scoring": {
+        "creditsOnCorrect": 15,
+        "shieldOnWrong": true,
+        "breaksStreakOnWrong": true,
+        "maxAttempts": 1,
+        "mode": "all-or-nothing"
+      },
+      "feedback": {
+        "correct": {
+          "title": "✓ TARGET ACQUIRED",
+          "body": [
+            "Locked in. The {{amber: Neg}} doesn't have to build anything — they just have to **break** the Aff's plan. Poke holes. Show what's wrong. Stop the plan before it gets a vote."
+          ],
+          "followup": "**Pro move:** This is why the Neg is a *superpower*. The Aff has to defend a whole plan. You only have to find **one** thing wrong with it."
+        },
+        "wrongByChoice": {
+          "a": {
+            "title": "✕ WRONG TEAM",
+            "body": [
+              "The {{cyan: Aff}} brings a plan. The {{amber: Neg}} tears one down. You don't need your own plan — you just need to prove theirs is a **bad idea**."
+            ]
+          },
+          "c": {
+            "title": "✕ OPPOSITE JOB",
+            "body": [
+              "The Neg *disagrees* with the Aff. If you agreed, there'd be no debate. Your job is to show the plan is {{amber: broken}}."
+            ]
+          },
+          "d": {
+            "title": "✕ THAT'S THE JUDGE",
+            "body": [
+              "The {{cyan: Judge}} picks the winner. The {{amber: Neg}}'s job is to **argue** — specifically, to argue the Aff's plan is a bad idea."
+            ]
+          }
+        },
+        "wrongDefault": {
+          "title": "✕ MISFIRE",
+          "body": [
+            "The answer is {{cyan: B}}. The Neg's whole job is proving the Aff's plan is a **bad idea**."
+          ]
+        }
+      },
+      "hint": {
+        "imageUrl": "/mission-images/negative-superpower-v1/1783182215174_Neg.png",
+        "altText": ""
+      }
+    },
+    {
+      "id": "s6-cfu-match-on-off-case",
+      "type": "cfu-match",
+      "tag": "⚡ TACTICAL DRILL · CFU 02",
+      "tagTone": "amber",
+      "prompt": {
+        "label": "ATTACK ROUTE MATCH",
+        "scenario": "Match each Negative attack to the right route.",
+        "question": "Drag each attack on the left to {{cyan: ON-CASE}} or {{amber: OFF-CASE}} on the right."
+      },
+      "leftColumn": {
+        "label": "THE ATTACK",
+        "items": [
+          {
+            "id": "L1",
+            "text": "\"Their plan won't actually work.\"",
+            "pairId": "p1"
+          },
+          {
+            "id": "L2",
+            "text": "\"Their plan will crash the economy.\"",
+            "pairId": "p2"
+          },
+          {
+            "id": "L3",
+            "text": "\"Nobody is really being hurt right now.\"",
+            "pairId": "p1"
+          }
+        ]
+      },
+      "rightColumn": {
+        "label": "THE ROUTE",
+        "items": [
+          {
+            "id": "R1",
+            "text": "🎯 ON-CASE — attacks the plan directly",
+            "pairId": "p1"
+          },
+          {
+            "id": "R2",
+            "text": "⚡ OFF-CASE — brings a NEW reason the plan is bad",
+            "pairId": "p2"
+          },
+          {
+            "id": "R3",
+            "text": "🎯 ON-CASE — attacks the plan directly",
+            "pairId": "p1"
+          }
+        ]
+      },
+      "scoring": {
+        "creditsOnCorrect": 20,
+        "shieldOnWrong": true,
+        "breaksStreakOnWrong": false,
+        "maxAttempts": 2,
+        "mode": "partial"
+      },
+      "feedback": {
+        "correct": {
+          "title": "✓ ROUTES LOCKED IN",
+          "body": [
+            "Clean match. {{cyan: On-case}} attacks live *inside* the Aff's plan — the problem, the harms, the solvency. {{amber: Off-case}} attacks come from *outside* — new consequences the Aff didn't see coming."
+          ],
+          "followup": "**Pro move:** The strongest Neg strategies run *both* routes. Break their case AND show a new problem. Now the Aff has to defend on two fronts."
+        },
+        "wrongDefault": {
+          "title": "✕ ROUTES CROSSED",
+          "body": [
+            "Quick test: is the attack {{cyan: about the plan itself}} (won't work, problem isn't big, nobody hurt)? → **On-case**. Or does it bring a {{amber: new bad thing}} the plan causes? → **Off-case**."
+          ]
+        }
+      },
+      "hint": {
+        "imageUrl": "/mission-images/negative-superpower-v1/1783182264366_On_Case.png",
+        "altText": "",
+        "delaySeconds": 15
+      }
+    },
+    {
+      "id": "s7-cfu-mcq-solvency",
+      "type": "cfu-mcq",
+      "tag": "⚡ TACTICAL DRILL · CFU 03",
+      "tagTone": "amber",
+      "prompt": {
+        "label": "STOCK ISSUE READ",
+        "scenario": "The Affirmative just said: *\"Our plan will fix hunger because schools will give every kid free lunch.\"* 🍎\n\nYou stand up and say: *\"Their plan won't actually work — free lunch programs already fail in most schools.\"*",
+        "question": "Which {{cyan: on-case}} stock issue are you attacking?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "letter": "A",
+          "text": "Significance — you're saying the problem isn't big enough"
+        },
+        {
+          "id": "b",
+          "letter": "B",
+          "text": "Harms — you're saying nobody is really hurt"
+        },
+        {
+          "id": "c",
+          "letter": "C",
+          "text": "Inherency — you're saying it's already being fixed"
+        },
+        {
+          "id": "d",
+          "letter": "D",
+          "text": "Solvency — you're saying their plan won't actually work"
+        }
+      ],
+      "correctOptionId": "d",
+      "scoring": {
+        "creditsOnCorrect": 15,
+        "shieldOnWrong": true,
+        "breaksStreakOnWrong": true,
+        "maxAttempts": 1,
+        "mode": "all-or-nothing"
+      },
+      "feedback": {
+        "correct": {
+          "title": "✓ CLEAN HIT",
+          "body": [
+            "Right. When you say *\"their plan won't work,\"* you're attacking {{amber: Solvency}} — the stock issue that asks: *does the plan actually fix the problem?* 🎯"
+          ],
+          "followup": "**Memory trick:** Every on-case attack lines up with one of the {{cyan: 4 stock issues}}: **Significance** (size), **Harms** (hurt), **Inherency** (already fixed), or **Solvency** (does it work)."
+        },
+        "wrongByChoice": {
+          "a": {
+            "title": "✕ WRONG STOCK ISSUE",
+            "body": [
+              "{{cyan: Significance}} asks *\"is the problem big enough to care about?\"* You weren't attacking how big hunger is. You were attacking the **plan itself** — that's {{amber: Solvency}}."
+            ]
+          },
+          "b": {
+            "title": "✕ WRONG STOCK ISSUE",
+            "body": [
+              "{{cyan: Harms}} asks *\"is anyone really getting hurt?\"* You weren't saying kids aren't hungry. You were saying the plan {{amber: won't work}} — that's Solvency."
+            ]
+          },
+          "c": {
+            "title": "✕ WRONG STOCK ISSUE",
+            "body": [
+              "{{cyan: Inherency}} asks *\"is someone already fixing this?\"* You didn't say free lunch is already happening. You said {{amber: their fix doesn't fix it}} — that's Solvency."
+            ]
+          }
+        },
+        "wrongDefault": {
+          "title": "✕ MISFIRE",
+          "body": [
+            "The answer is {{cyan: D — Solvency}}. Re-read what you said: *\"Their plan won't actually work.\"* That sentence attacks the plan itself."
+          ]
+        }
+      },
+      "hint": {
+        "imageUrl": "/mission-images/negative-superpower-v1/1783182378321_Harms.png",
+        "altText": "",
+        "delaySeconds": 15
+      }
+    },
+    {
+      "id": "s8-cfu-sort-itapin",
+      "type": "cfu-sort",
+      "tag": "⚡ TACTICAL DRILL · CFU 04",
+      "tagTone": "amber",
+      "prompt": {
+        "label": "BUILD THE ATTACK",
+        "scenario": "Your Neg partner started an {{amber: ITAPIN}} attack — but the lines are scrambled. Sort each line into either the {{cyan: SETUP}} half (Identify + They Say + Argument) or the {{amber: FINISH}} half (Prefer + Impact + New Evidence).",
+        "question": "Drop each line into the right half."
+      },
+      "bins": [
+        {
+          "id": "bin-setup",
+          "icon": "🎯",
+          "label": "SETUP (I · T · A)",
+          "accent": "cyan"
+        },
+        {
+          "id": "bin-finish",
+          "icon": "💥",
+          "label": "FINISH (P · I · N)",
+          "accent": "amber"
+        }
+      ],
+      "cards": [
+        {
+          "id": "c1",
+          "text": "\"Look at their Solvency argument.\" 🎯",
+          "correctBinId": "bin-setup"
+        },
+        {
+          "id": "c2",
+          "text": "\"They say their plan cuts poverty by 50%.\" 🗣️",
+          "correctBinId": "bin-setup"
+        },
+        {
+          "id": "c3",
+          "text": "\"We say that number is way too high.\" 🥊",
+          "correctBinId": "bin-setup"
+        },
+        {
+          "id": "c4",
+          "text": "\"Prefer our argument — a real plan only cut it by 2%.\" 🏆",
+          "correctBinId": "bin-finish"
+        },
+        {
+          "id": "c5",
+          "text": "\"Because their plan doesn't solve, you can't vote Aff.\" 💥",
+          "correctBinId": "bin-finish"
+        },
+        {
+          "id": "c6",
+          "text": "\"I'm reading the Smith 2024 study now.\" 📄",
+          "correctBinId": "bin-finish"
+        }
+      ],
+      "allowPartialCredit": true,
+      "scoring": {
+        "creditsOnCorrect": 25,
+        "shieldOnWrong": true,
+        "breaksStreakOnWrong": false,
+        "maxAttempts": 2,
+        "mode": "partial"
+      },
+      "feedback": {
+        "correct": {
+          "title": "✓ FORMULA ASSEMBLED",
+          "body": [
+            "Clean sort. The {{cyan: setup}} names the target, repeats what they said, and lands your point. The {{amber: finish}} tells the judge *why to prefer you*, *why it matters*, and *what proof you've got*."
+          ],
+          "followup": "**Pro move:** Weak Negs stop after the Argument step. Great Negs {{amber: always}} do the finish — that's what actually wins the argument on the flow."
+        },
+        "wrongDefault": {
+          "title": "✕ MISALIGNED",
+          "body": [
+            "Litmus test: if the line is telling the judge *what you're attacking or why they're wrong*, it's {{cyan: setup}}. If it's telling the judge *why to prefer you, why it matters, or handing them proof*, it's {{amber: finish}}."
+          ]
+        }
+      },
+      "hint": {
+        "imageUrl": "/mission-images/negative-superpower-v1/1783182499803_NegStrat.png",
+        "altText": "",
+        "delaySeconds": 15
+      }
+    },
+    {
+      "id": "s9-cfu-fill-run-itapin",
+      "type": "cfu-fill",
+      "tag": "⚡ TACTICAL DRILL · CFU 05",
+      "tagTone": "amber",
+      "prompt": {
+        "label": "FIELD DEPLOYMENT",
+        "scenario": "The Affirmative just said: *\"Our plan reduces poverty by 50%.\"* You're on your feet. Fill in your ITAPIN attack.",
+        "question": "Drop the right word into each blank."
+      },
+      "template": "Identify: Look at their {{1}} argument.\n\nThey Say: They say their plan cuts poverty by 50%.\n\nArgument: We say that number is way too {{2}}.\n\nPrefer because: A similar plan in the past only cut poverty by {{3}}%.",
+      "blanks": [
+        {
+          "index": 1,
+          "acceptedAnswers": [
+            "solvency",
+            "Solvency",
+            "SOLVENCY"
+          ],
+          "hint": "Which stock issue asks 'does the plan actually work?'"
+        },
+        {
+          "index": 2,
+          "acceptedAnswers": [
+            "high",
+            "High",
+            "HIGH",
+            "big",
+            "Big",
+            "large",
+            "Large"
+          ],
+          "hint": "50% is unrealistic — the number is too ___"
+        },
+        {
+          "index": 3,
+          "acceptedAnswers": [
+            "2",
+            "two",
+            "Two"
+          ],
+          "hint": "From the briefing — a real plan only cut it by this much."
+        }
+      ],
+      "wordBank": [
+        "Solvency",
+        "high",
+        "2"
+      ],
+      "caseSensitive": false,
+      "scoring": {
+        "creditsOnCorrect": 20,
+        "shieldOnWrong": true,
+        "breaksStreakOnWrong": false,
+        "maxAttempts": 2,
+        "mode": "partial"
+      },
+      "feedback": {
+        "correct": {
+          "title": "✓ FORMULA DEPLOYED",
+          "body": [
+            "That's a real ITAPIN attack. You named the target ({{amber: Solvency}}), repeated what they claimed, said why they're wrong (number too high), and backed it up with proof (only 2% in real life)."
+          ],
+          "followup": "**Pro move:** Add the {{amber: Impact}} step — *\"because their plan doesn't solve, you can't vote Aff\"* — and the {{amber: New Evidence}} step, and you've got a full refutation the judge can flow."
+        },
+        "wrongDefault": {
+          "title": "✕ REBUILD",
+          "body": [
+            "Three checkpoints: {{cyan: Solvency}} = the stock issue about whether the plan works. If 50% is unrealistic, the number is too {{cyan: high}}. And the example proof said a real plan only cut poverty by {{cyan: 2}}%."
+          ]
+        }
+      },
+      "hint": {
+        "imageUrl": "/mission-images/negative-superpower-v1/1783182499803_NegStrat.png",
+        "altText": "",
+        "delaySeconds": 15
+      }
+    },
+    {
+      "id": "s10-cfu-mcq-big-idea",
+      "type": "cfu-mcq",
+      "tag": "⚡ TACTICAL DRILL · CFU 06",
+      "tagTone": "amber",
+      "prompt": {
+        "label": "BIG IDEA CHECK",
+        "question": "🎯 What makes the {{amber: Negative}} different from just being *that friend who disagrees with everything*?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "letter": "A",
+          "text": "The Neg follows a formula (ITAPIN) and attacks with evidence — not just gut reactions"
+        },
+        {
+          "id": "b",
+          "letter": "b",
+          "text": "The Neg is louder"
+        },
+        {
+          "id": "c",
+          "letter": "C",
+          "text": "The Neg only disagrees about food and phones"
+        },
+        {
+          "id": "d",
+          "letter": "D",
+          "text": "There's no difference — both are just being negative"
+        }
+      ],
+      "correctOptionId": "a",
+      "scoring": {
+        "creditsOnCorrect": 15,
+        "shieldOnWrong": true,
+        "breaksStreakOnWrong": true,
+        "maxAttempts": 1,
+        "mode": "all-or-nothing"
+      },
+      "feedback": {
+        "correct": {
+          "title": "✓ THAT'S THE WHOLE GAME",
+          "body": [
+            "Exactly. A contrarian friend just says *\"nuh-uh.\"* A {{amber: Neg debater}} names the argument, repeats it, breaks it, tells you why to prefer their side, why it matters, and reads a card. That's not being negative — that's being {{amber: precise}}. 🎯"
+          ],
+          "followup": "**Pro tip:** This is why {{amber: Neg}} is a superpower and not a personality trait. Anyone can disagree. Only a debater can *refute*."
+        },
+        "wrongByChoice": {
+          "b": {
+            "title": "✕ LOUDER ISN'T BETTER",
+            "body": [
+              "Yelling loses rounds in debate. The Neg wins with {{amber: structure}} — the ITAPIN formula — not volume."
+            ]
+          },
+          "c": {
+            "title": "✕ NOT THE TOPIC",
+            "body": [
+              "The Neg can argue against {{amber: anything}} the Aff proposes — plans, harms, evidence, solutions. The difference isn't *what* they argue. It's {{amber: how}}."
+            ]
+          },
+          "d": {
+            "title": "✕ THERE'S A BIG DIFFERENCE",
+            "body": [
+              "A contrarian friend disagrees with a shrug. A {{amber: Neg}} disagrees with a **6-step formula**, evidence, and a plan to change the judge's mind. That's the game."
+            ]
+          }
+        },
+        "wrongDefault": {
+          "title": "✕ MISFIRE",
+          "body": [
+            "The answer is {{cyan: A}}. What separates a Neg from a contrarian is {{amber: ITAPIN}} plus evidence — structure, not attitude."
+          ]
+        }
+      },
+      "hint": {
+        "imageUrl": "/mission-images/negative-superpower-v1/1783182499803_NegStrat.png",
+        "altText": "",
+        "delaySeconds": 15
+      }
+    },
+    {
+      "id": "s11-complete",
+      "type": "complete",
+      "headline": "BRIEFING COMPLETE ✅",
+      "subtext": "You've got the Negative Superpower. Two attack routes: {{cyan: on-case}} (hit the plan) and {{amber: off-case}} (bring a new problem). One formula: {{amber: ITAPIN}} — Identify, They Say, Argument, Prefer, Impact, New Evidence. The bridge opens up. 🛡️",
+      "rewards": [
+        {
+          "icon": "💳",
+          "label": "Credits earned",
+          "staticValue": "+120"
+        },
+        {
+          "icon": "⭐",
+          "label": "Rank XP",
+          "staticValue": "+75"
+        },
+        {
+          "icon": "🧠",
+          "label": "Protected vocab",
+          "staticValue": "Negative · On-Case · Off-Case · ITAPIN · Solvency · Neg Block · Refutation"
+        }
+      ],
+      "primaryCta": {
+        "label": "RETURN TO BRIDGE",
+        "action": "return-bridge"
+      },
+      "secondaryCta": {
+        "label": "NEXT MISSION",
+        "action": "next-mission"
+      }
+    }
+  ]
+}

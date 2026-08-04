@@ -1,3 +1,6 @@
+// Server-side Supabase client — used in Server Components, Route Handlers,
+// Server Actions. Reads/writes cookies so auth state persists across requests.
+
 import { createServerClient } from "@supabase/ssr";
 import { cookies } from "next/headers";
 
@@ -14,15 +17,14 @@ export async function createClient() {
         },
         setAll(cookiesToSet) {
           try {
-            cookiesToSet.forEach(({ name, value, options }) =>
-              cookieStore.set(name, value, options),
-            );
+            cookiesToSet.forEach(({ name, value, options }) => {
+              cookieStore.set(name, value, options);
+            });
           } catch {
-            // Called from a Server Component — safe to ignore if middleware
-            // is refreshing sessions on every request.
+            // Server Component context — middleware will refresh cookies.
           }
         },
       },
-    },
+    }
   );
 }

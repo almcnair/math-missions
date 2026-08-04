@@ -1,0 +1,530 @@
+{
+  "_comment": "Reference mission demonstrating every CFU type in the schema. Not a real mission — a worked example for the player implementation.",
+  "id": "cfu-demo-v1",
+  "campaignId": "internal-demo",
+  "sectorId": "internal-demo",
+  "number": 0,
+  "title": "CFU Type Demo",
+  "subtitle": "Internal · Schema Demo",
+  "tagline": "Every CFU mode in one mission.",
+  "estimatedMinutes": 8,
+  "difficulty": "intro",
+  "rewards": {
+    "credits": 0,
+    "rankXp": 0
+  },
+  "unlocks": [],
+  "prerequisites": [],
+  "protectedTerms": [
+    "resolution",
+    "plan",
+    "stock issues",
+    "1AC",
+    "1NC",
+    "1AR",
+    "link",
+    "impact"
+  ],
+  "passingCriteria": {
+    "requireAllCfu": false,
+    "shieldsAtZero": "allow-continue"
+  },
+  "slides": [
+    {
+      "id": "cfu-mcq-demo",
+      "type": "cfu-mcq",
+      "tag": "⚡ CFU 01 · MULTIPLE CHOICE",
+      "tagTone": "amber",
+      "prompt": {
+        "question": "Which team proposes the **plan** in a policy debate round?"
+      },
+      "options": [
+        {
+          "id": "aff",
+          "letter": "A",
+          "text": "Affirmative"
+        },
+        {
+          "id": "neg",
+          "letter": "B",
+          "text": "Negative"
+        },
+        {
+          "id": "judge",
+          "letter": "C",
+          "text": "The judge"
+        },
+        {
+          "id": "both",
+          "letter": "D",
+          "text": "Both teams together"
+        }
+      ],
+      "correctOptionId": "aff",
+      "scoring": {
+        "creditsOnCorrect": 10,
+        "shieldOnWrong": true,
+        "breaksStreakOnWrong": true,
+        "maxAttempts": 1
+      },
+      "feedback": {
+        "correct": {
+          "title": "✓ TARGET ACQUIRED",
+          "body": [
+            "The **Affirmative** proposes the plan. The **Negative** attacks it."
+          ]
+        },
+        "wrongDefault": {
+          "title": "✕ MISFIRE",
+          "body": [
+            "The **Affirmative** team is the one that proposes the plan."
+          ]
+        }
+      }
+    },
+    {
+      "id": "cfu-multi-demo",
+      "type": "cfu-multi",
+      "tag": "⚡ CFU 02 · PICK ALL THAT APPLY",
+      "tagTone": "amber",
+      "prompt": {
+        "question": "Which of these are **stock issues**? (Pick all that apply.)"
+      },
+      "options": [
+        {
+          "id": "top",
+          "letter": "A",
+          "text": "Topicality"
+        },
+        {
+          "id": "inh",
+          "letter": "B",
+          "text": "Inherency"
+        },
+        {
+          "id": "sol",
+          "letter": "C",
+          "text": "Solvency"
+        },
+        {
+          "id": "fla",
+          "letter": "D",
+          "text": "Flair"
+        },
+        {
+          "id": "har",
+          "letter": "E",
+          "text": "Harms"
+        }
+      ],
+      "correctOptionIds": [
+        "top",
+        "inh",
+        "sol",
+        "har"
+      ],
+      "scoring": {
+        "creditsOnCorrect": 15,
+        "shieldOnWrong": true,
+        "breaksStreakOnWrong": false,
+        "mode": "partial"
+      },
+      "hint": {
+        "imageUrl": "/mission-images/cfu-demo-v1/hint-stock-issues.svg",
+        "altText": "Mnemonic card showing the four stock issues: Topicality, Inherency, Solvency, Harms. Each letter has a one-line question.",
+        "delaySeconds": 10
+      },
+      "feedback": {
+        "correct": {
+          "title": "✓ ALL ID'D",
+          "body": [
+            "The four stock issues here are Topicality, Inherency, Solvency, and Harms. \"Flair\" is not a stock issue (and not a real debate term)."
+          ]
+        },
+        "wrongDefault": {
+          "title": "✕ PARTIAL HIT",
+          "body": [
+            "The stock issues are Topicality, Inherency, Solvency, and Harms. \"Flair\" is a distractor."
+          ]
+        }
+      }
+    },
+    {
+      "id": "cfu-order-demo",
+      "type": "cfu-order",
+      "tag": "⚡ CFU 03 · ORDER THE SEQUENCE",
+      "tagTone": "amber",
+      "prompt": {
+        "question": "Drag these speeches into the correct **speaking order**."
+      },
+      "intro": "Just the first four constructive speeches.",
+      "items": [
+        {
+          "id": "1ac",
+          "text": "1AC — First Affirmative Constructive",
+          "correctPosition": 1
+        },
+        {
+          "id": "1nc",
+          "text": "1NC — First Negative Constructive",
+          "correctPosition": 2
+        },
+        {
+          "id": "2ac",
+          "text": "2AC — Second Affirmative Constructive",
+          "correctPosition": 3
+        },
+        {
+          "id": "2nc",
+          "text": "2NC — Second Negative Constructive",
+          "correctPosition": 4
+        }
+      ],
+      "scoring": {
+        "creditsOnCorrect": 15,
+        "shieldOnWrong": true,
+        "breaksStreakOnWrong": false,
+        "mode": "partial"
+      },
+      "feedback": {
+        "correct": {
+          "title": "✓ ORDER LOCKED",
+          "body": [
+            "Constructives alternate: **1AC → 1NC → 2AC → 2NC**. Aff opens, Neg replies, Aff replies, Neg replies."
+          ]
+        },
+        "wrongDefault": {
+          "title": "✕ OUT OF SEQUENCE",
+          "body": [
+            "Constructives go **1AC → 1NC → 2AC → 2NC**. Each side gets two constructives, alternating."
+          ]
+        }
+      }
+    },
+    {
+      "id": "cfu-match-demo",
+      "type": "cfu-match",
+      "tag": "⚡ CFU 04 · MATCH PAIRS",
+      "tagTone": "amber",
+      "prompt": {
+        "question": "Match each **stock issue** to what it asks."
+      },
+      "leftColumn": {
+        "label": "STOCK ISSUE",
+        "items": [
+          {
+            "id": "topicality",
+            "text": "Topicality",
+            "pairId": "p-top"
+          },
+          {
+            "id": "inherency",
+            "text": "Inherency",
+            "pairId": "p-inh"
+          },
+          {
+            "id": "significance",
+            "text": "Significance",
+            "pairId": "p-sig"
+          },
+          {
+            "id": "solvency",
+            "text": "Solvency",
+            "pairId": "p-sol"
+          }
+        ]
+      },
+      "rightColumn": {
+        "label": "ASKS…",
+        "items": [
+          {
+            "id": "ask-top",
+            "text": "Does the plan fit the resolution?",
+            "pairId": "p-top"
+          },
+          {
+            "id": "ask-inh",
+            "text": "Why hasn't the problem been fixed already?",
+            "pairId": "p-inh"
+          },
+          {
+            "id": "ask-sig",
+            "text": "Is the harm big enough to matter?",
+            "pairId": "p-sig"
+          },
+          {
+            "id": "ask-sol",
+            "text": "Does the plan actually fix the problem?",
+            "pairId": "p-sol"
+          }
+        ]
+      },
+      "scoring": {
+        "creditsOnCorrect": 20,
+        "shieldOnWrong": true,
+        "breaksStreakOnWrong": false,
+        "mode": "partial"
+      },
+      "feedback": {
+        "correct": {
+          "title": "✓ ALL PAIRS MATCHED",
+          "body": [
+            "These four questions are the spine of every Aff case. Memorize them."
+          ]
+        },
+        "wrongDefault": {
+          "title": "✕ PAIRS OFF",
+          "body": [
+            "Topicality = does it fit. Inherency = why's it still there. Significance = is it big. Solvency = does the plan fix it."
+          ]
+        }
+      }
+    },
+    {
+      "id": "cfu-fill-demo",
+      "type": "cfu-fill",
+      "tag": "⚡ CFU 05 · FILL IN THE BLANK",
+      "tagTone": "amber",
+      "prompt": {
+        "question": "Fill in the blanks."
+      },
+      "template": "The {{1}} team proposes the {{2}}. The {{3}} team attacks it.",
+      "blanks": [
+        {
+          "index": 1,
+          "acceptedAnswers": [
+            "affirmative",
+            "aff"
+          ]
+        },
+        {
+          "index": 2,
+          "acceptedAnswers": [
+            "plan"
+          ]
+        },
+        {
+          "index": 3,
+          "acceptedAnswers": [
+            "negative",
+            "neg"
+          ]
+        }
+      ],
+      "caseSensitive": false,
+      "scoring": {
+        "creditsOnCorrect": 15,
+        "shieldOnWrong": true,
+        "breaksStreakOnWrong": false,
+        "mode": "partial"
+      },
+      "feedback": {
+        "correct": {
+          "title": "✓ TEXT LOCKED",
+          "body": [
+            "The **Affirmative** proposes the **plan**. The **Negative** attacks it."
+          ]
+        },
+        "wrongDefault": {
+          "title": "✕ RECALIBRATE",
+          "body": [
+            "Answers: Affirmative → plan → Negative."
+          ]
+        }
+      }
+    },
+    {
+      "id": "cfu-fill-wordbank-demo",
+      "type": "cfu-fill",
+      "tag": "⚡ CFU 06 · FILL IN THE BLANK (WORD BANK)",
+      "tagTone": "amber",
+      "prompt": {
+        "question": "Drop the right word into each blank."
+      },
+      "template": "A {{1}} is the chain from your plan to the harm. The {{2}} is how bad that harm gets.",
+      "blanks": [
+        {
+          "index": 1,
+          "acceptedAnswers": [
+            "link"
+          ]
+        },
+        {
+          "index": 2,
+          "acceptedAnswers": [
+            "impact"
+          ]
+        }
+      ],
+      "wordBank": [
+        "link",
+        "impact",
+        "voter",
+        "turn"
+      ],
+      "caseSensitive": false,
+      "scoring": {
+        "creditsOnCorrect": 15,
+        "shieldOnWrong": true,
+        "breaksStreakOnWrong": false,
+        "mode": "partial"
+      },
+      "feedback": {
+        "correct": {
+          "title": "✓ LINKED",
+          "body": [
+            "**Link** = the chain. **Impact** = how bad the harm is."
+          ]
+        },
+        "wrongDefault": {
+          "title": "✕ MISWIRED",
+          "body": [
+            "Link is the chain to the harm. Impact is the size of the harm."
+          ]
+        }
+      }
+    },
+    {
+      "id": "cfu-highlight-demo",
+      "type": "cfu-highlight",
+      "tag": "⚡ CFU 07 · HIGHLIGHT",
+      "tagTone": "amber",
+      "prompt": {
+        "label": "FIELD READ",
+        "question": "Click every word that names a **stock issue**."
+      },
+      "passage": "Every Aff case has to prove topicality, harms, significance, inherency, and solvency before the round even starts.",
+      "mode": "words",
+      "correctIds": [
+        "topicality",
+        "harms",
+        "significance",
+        "inherency",
+        "solvency"
+      ],
+      "scoring": {
+        "creditsOnCorrect": 20,
+        "shieldOnWrong": true,
+        "breaksStreakOnWrong": false,
+        "mode": "partial"
+      },
+      "feedback": {
+        "correct": {
+          "title": "✓ TARGETS HIT",
+          "body": [
+            "Topicality, harms, significance, inherency, solvency — the five stock issues."
+          ]
+        },
+        "wrongDefault": {
+          "title": "✕ MIXED HITS",
+          "body": [
+            "The stock issues hidden in that sentence are: topicality, harms, significance, inherency, solvency."
+          ]
+        }
+      }
+    },
+    {
+      "id": "cfu-label-demo",
+      "type": "cfu-label",
+      "tag": "⚡ CFU 08 · LABEL THE DIAGRAM",
+      "tagTone": "amber",
+      "prompt": {
+        "question": "Drop each label onto the right spot on the flow sheet."
+      },
+      "image": {
+        "src": "/assets/diagrams/flow-sheet-blank.svg",
+        "alt": "Blank flow sheet with eight speech columns",
+        "aspectRatio": 1.6
+      },
+      "targets": [
+        {
+          "id": "t1",
+          "x": 0.02,
+          "y": 0.1,
+          "width": 0.1,
+          "height": 0.8,
+          "correctLabelId": "1ac"
+        },
+        {
+          "id": "t2",
+          "x": 0.14,
+          "y": 0.1,
+          "width": 0.1,
+          "height": 0.8,
+          "correctLabelId": "1nc"
+        },
+        {
+          "id": "t3",
+          "x": 0.26,
+          "y": 0.1,
+          "width": 0.1,
+          "height": 0.8,
+          "correctLabelId": "2ac"
+        },
+        {
+          "id": "t4",
+          "x": 0.38,
+          "y": 0.1,
+          "width": 0.1,
+          "height": 0.8,
+          "correctLabelId": "2nc"
+        }
+      ],
+      "labels": [
+        {
+          "id": "1ac",
+          "text": "1AC"
+        },
+        {
+          "id": "1nc",
+          "text": "1NC"
+        },
+        {
+          "id": "2ac",
+          "text": "2AC"
+        },
+        {
+          "id": "2nc",
+          "text": "2NC"
+        }
+      ],
+      "scoring": {
+        "creditsOnCorrect": 20,
+        "shieldOnWrong": true,
+        "breaksStreakOnWrong": false,
+        "mode": "partial"
+      },
+      "feedback": {
+        "correct": {
+          "title": "✓ FLOW LABELED",
+          "body": [
+            "Columns run left to right in speaking order: 1AC, 1NC, 2AC, 2NC."
+          ]
+        },
+        "wrongDefault": {
+          "title": "✕ LABELS OFF",
+          "body": [
+            "Left to right: 1AC → 1NC → 2AC → 2NC."
+          ]
+        }
+      }
+    },
+    {
+      "id": "demo-complete",
+      "type": "complete",
+      "headline": "DEMO COMPLETE",
+      "subtext": "All eight CFU modes fired cleanly.",
+      "rewards": [
+        {
+          "icon": "★",
+          "label": "ACCURACY",
+          "dynamicValue": "accuracy"
+        }
+      ],
+      "primaryCta": {
+        "label": "RETURN TO BRIDGE",
+        "action": "return-bridge"
+      }
+    }
+  ]
+}

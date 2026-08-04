@@ -1,0 +1,518 @@
+{
+  "id": "welcome-aboard-v1",
+  "campaignId": "cdsi-2026-summer",
+  "sectorId": "orientation",
+  "number": 1,
+  "title": "Welcome Aboard",
+  "subtitle": "Orientation · Mission 01",
+  "tagline": "Policy debate is a **team mission**. You don't fly solo — you fly with a partner. Find out who's on your crew and what each debater does.",
+  "estimatedMinutes": 8,
+  "difficulty": "intro",
+  "rewards": {
+    "credits": 40,
+    "rankXp": 1
+  },
+  "unlocks": [],
+  "prerequisites": [],
+  "protectedTerms": [
+    "policy debate",
+    "affirmative",
+    "negative",
+    "partner",
+    "squad",
+    "constructive",
+    "rebuttal",
+    "cross-examination",
+    "prep time",
+    "round"
+  ],
+  "passingCriteria": {
+    "requireAllCfu": true,
+    "shieldsAtZero": "allow-continue"
+  },
+  "slides": [
+    {
+      "id": "s1-hook",
+      "type": "hook",
+      "tag": "⟡ BRIEFING",
+      "headline": "Welcome aboard, {{cyan: debater}}.",
+      "body": [
+        "Policy debate is a **team mission** — two debaters versus two debaters. Today you learn who's on your crew, what each role does, and how a debate is built.",
+        "Commander K is waiting on the bridge."
+      ],
+      "quote": {
+        "text": "You don't fly solo here. Find your partner. Learn the four roles. Map the speeches. By the end of this block, you'll know the shape of every round you'll ever debate.",
+        "cite": "— COMMANDER K"
+      }
+    },
+    {
+      "id": "s2-define",
+      "type": "define",
+      "tag": "⟡ CORE CONCEPT",
+      "term": "Policy Debate",
+      "pronunciation": "/ˈpɒləsi dɪˈbeɪt/ · noun · academic activity",
+      "definition": "A {{cyan: two-on-two}} team activity where one side argues a {{amber: big change should happen}} and the other side argues it {{amber: shouldn't}}.",
+      "plainWords": "Two of you. Two of them. One question on the table. Rules, timers, turns.",
+      "analogy": "Like a doubles tennis match — except instead of a ball, you're trading arguments."
+    },
+    {
+      "id": "s3-roles",
+      "type": "concept",
+      "tag": "⟡ FIELD MANUAL",
+      "headline": "The Four Crew Roles",
+      "intro": "Every policy round has exactly **four debaters**. Two on the **Affirmative** team. Two on the **Negative** team. Each debater has a number and a side.",
+      "cards": [
+        {
+          "id": "aff",
+          "icon": "▲",
+          "name": "AFFIRMATIVE",
+          "description": "The team that says: *YES, this change should happen.* Their two debaters are **1A** and **2A**.",
+          "example": {
+            "label": "THEIR JOB",
+            "text": "Build the plan. Defend it. Show why the world is better if it passes."
+          },
+          "accent": "cyan"
+        },
+        {
+          "id": "neg",
+          "icon": "▽",
+          "name": "NEGATIVE",
+          "description": "The team that says: *NO — that change is a bad idea or it won't work.* Their two debaters are **1N** and **2N**.",
+          "example": {
+            "label": "THEIR JOB",
+            "text": "Attack the plan. Show its problems. Argue the world is better without it."
+          },
+          "accent": "amber"
+        },
+        {
+          "id": "partner",
+          "icon": "⧗",
+          "name": "PARTNER",
+          "description": "Your one teammate. You **share** prep time, strategy, and the win.",
+          "example": {
+            "label": "RULE",
+            "text": "2-on-2. Always. Not 1v1. Not 3v3. Two debaters per side."
+          },
+          "accent": "cyan"
+        }
+      ]
+    },
+    {
+      "id": "s4-speeches",
+      "type": "concept",
+      "tag": "⟡ FIELD MANUAL",
+      "headline": "Speeches, Cross-Ex, and Prep",
+      "intro": "Every debater does the same three things during a round: **build, respond, and question**.",
+      "cards": [
+        {
+          "id": "constructive",
+          "icon": "◧",
+          "name": "CONSTRUCTIVE",
+          "description": "Your **first** speech. You *construct* — you build your main arguments.",
+          "example": {
+            "label": "ANALOGY",
+            "text": "Like the opening paragraph of an essay. You set everything up."
+          },
+          "accent": "cyan"
+        },
+        {
+          "id": "rebuttal",
+          "icon": "◨",
+          "name": "REBUTTAL",
+          "description": "Your **second** speech. You respond to the other team and explain why you win.",
+          "example": {
+            "label": "ANALOGY",
+            "text": "Like a closing argument in court. Last chance to convince the judge."
+          },
+          "accent": "amber"
+        },
+        {
+          "id": "cx",
+          "icon": "?",
+          "name": "CROSS-EXAMINATION",
+          "description": "A **3-minute** chunk where you ask the other team questions and they answer.",
+          "example": {
+            "label": "ANALOGY",
+            "text": "Like a press conference after the game. You're the reporter."
+          },
+          "accent": "cyan"
+        },
+        {
+          "id": "prep",
+          "icon": "⏱",
+          "name": "PREP TIME",
+          "description": "A **shared bank** of minutes (usually 8 or 10) you and your partner split however you want.",
+          "example": {
+            "label": "ANALOGY",
+            "text": "Like timeouts in basketball — your team decides when to spend them."
+          },
+          "accent": "amber"
+        }
+      ]
+    },
+    {
+      "id": "cfu1-team-size",
+      "type": "cfu-mcq",
+      "tag": "⟡ COMPREHENSION CHECK · 1 OF 5",
+      "prompt": {
+        "label": "QUICK CHECK",
+        "question": "How many debaters are on **one team** in a policy debate round?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "letter": "A",
+          "text": "One — you debate solo."
+        },
+        {
+          "id": "b",
+          "letter": "B",
+          "text": "Two — you and your partner."
+        },
+        {
+          "id": "c",
+          "letter": "C",
+          "text": "Three — you, your partner, and a coach."
+        },
+        {
+          "id": "d",
+          "letter": "D",
+          "text": "Four — two on each side together."
+        }
+      ],
+      "correctOptionId": "b",
+      "scoring": {
+        "creditsOnCorrect": 15,
+        "shieldOnWrong": true,
+        "breaksStreakOnWrong": true
+      },
+      "feedback": {
+        "correct": {
+          "title": "✓ TARGET ACQUIRED",
+          "body": [
+            "Two debaters per team. Two-on-two. That's the whole shape of policy debate — you and your **partner** versus their two.",
+            "There are **four** debaters in the room total (two Aff, two Neg), but each *team* is two."
+          ],
+          "followup": "Key idea: you never fly solo."
+        },
+        "wrongByChoice": {
+          "a": {
+            "title": "✕ MISFIRE — RECALIBRATE",
+            "body": [
+              "Solo debate exists in other formats (like Lincoln-Douglas), but **policy debate** is built around partnership. You share prep, strategy, and speeches with one other debater."
+            ]
+          },
+          "d": {
+            "title": "✕ MISFIRE — RECALIBRATE",
+            "body": [
+              "There are **four debaters in the round** total, but they're split into **two teams of two**. One team is Affirmative, the other is Negative."
+            ]
+          }
+        },
+        "wrongDefault": {
+          "title": "✕ MISFIRE — RECALIBRATE",
+          "body": [
+            "Policy debate is a **two-on-two** activity. Two debaters per team. You and your partner versus their two."
+          ]
+        }
+      }
+    },
+    {
+      "id": "cfu2-aff-neg",
+      "type": "cfu-match",
+      "tag": "⟡ COMPREHENSION CHECK · 2 OF 5",
+      "prompt": {
+        "label": "MATCH THE SIDE",
+        "question": "Match each **side** to what they argue in the round."
+      },
+      "leftColumn": {
+        "label": "SIDE",
+        "items": [
+          {
+            "id": "aff",
+            "text": "Affirmative (AFF)",
+            "pairId": "p1"
+          },
+          {
+            "id": "neg",
+            "text": "Negative (NEG)",
+            "pairId": "p2"
+          },
+          {
+            "id": "partner",
+            "text": "Partner",
+            "pairId": "p3"
+          },
+          {
+            "id": "squad",
+            "text": "Squad",
+            "pairId": "p4"
+          }
+        ]
+      },
+      "rightColumn": {
+        "label": "WHAT THEY ARE",
+        "items": [
+          {
+            "id": "yes",
+            "text": "Says YES — this change should happen.",
+            "pairId": "p1"
+          },
+          {
+            "id": "no",
+            "text": "Says NO — this change is a bad idea or won't work.",
+            "pairId": "p2"
+          },
+          {
+            "id": "one",
+            "text": "Your one teammate in the round.",
+            "pairId": "p3"
+          },
+          {
+            "id": "all",
+            "text": "Everyone from your whole school or program.",
+            "pairId": "p4"
+          }
+        ]
+      },
+      "scoring": {
+        "creditsOnCorrect": 15,
+        "shieldOnWrong": true,
+        "breaksStreakOnWrong": true,
+        "mode": "partial"
+      },
+      "feedback": {
+        "correct": {
+          "title": "✓ TARGET ACQUIRED",
+          "body": [
+            "Clean matches. Affirmative = *yes, change it.* Negative = *no, don't.* **Partner** is the one debater next to you in the round. **Squad** is the bigger group — everyone from your school."
+          ],
+          "followup": "Tactical note: Aff and Neg aren't *good guys* and *bad guys* — they're just the two sides of an argument."
+        },
+        "wrongDefault": {
+          "title": "✕ MISFIRE — RECALIBRATE",
+          "body": [
+            "Re-check the easy mix-up: **partner** is your one teammate in the round; **squad** is your whole school's debate program. **Aff** says *yes, change it*; **Neg** says *no.*"
+          ]
+        }
+      }
+    },
+    {
+      "id": "cfu3-speech-types",
+      "type": "cfu-mcq",
+      "tag": "⟡ COMPREHENSION CHECK · 3 OF 5",
+      "prompt": {
+        "label": "BUILD vs. RESPOND",
+        "scenario": "Debater 1A stands up for her **first** speech of the round. She lays out her team's plan, explains why the problem is real, and why her plan fixes it.",
+        "question": "What kind of speech is this?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "letter": "A",
+          "text": "A **constructive** speech — she's building her team's arguments."
+        },
+        {
+          "id": "b",
+          "letter": "B",
+          "text": "A **rebuttal** speech — she's responding to the other team."
+        },
+        {
+          "id": "c",
+          "letter": "C",
+          "text": "A **cross-examination** — she's asking questions."
+        },
+        {
+          "id": "d",
+          "letter": "D",
+          "text": "**Prep time** — she's planning what to say."
+        }
+      ],
+      "correctOptionId": "a",
+      "scoring": {
+        "creditsOnCorrect": 15,
+        "shieldOnWrong": true,
+        "breaksStreakOnWrong": true
+      },
+      "feedback": {
+        "correct": {
+          "title": "✓ TARGET ACQUIRED",
+          "body": [
+            "Yes — it's a **constructive**. The word literally means *construct* — to build. Every debater's first speech is a constructive: it's where you set up your case.",
+            "Their **second** speech is a **rebuttal** — that's where you respond and explain why you win."
+          ],
+          "followup": "Memory hook: Constructive = *build it.* Rebuttal = *finish it.*"
+        },
+        "wrongByChoice": {
+          "b": {
+            "title": "✕ MISFIRE — RECALIBRATE",
+            "body": [
+              "A **rebuttal** is the *second* speech — where you respond to the other team. This was 1A's **first** speech, where she's building her case. That's a **constructive**."
+            ]
+          },
+          "c": {
+            "title": "✕ MISFIRE — RECALIBRATE",
+            "body": [
+              "**Cross-examination** is the 3-minute Q&A — one debater *asks*, the other *answers*. 1A is delivering a speech, not running a Q&A. Her first speech is a **constructive**."
+            ]
+          },
+          "d": {
+            "title": "✕ MISFIRE — RECALIBRATE",
+            "body": [
+              "**Prep time** is the quiet planning bank you and your partner use *between* speeches. 1A is standing and speaking — that's a **constructive**."
+            ]
+          }
+        },
+        "wrongDefault": {
+          "title": "✕ MISFIRE — RECALIBRATE",
+          "body": [
+            "Every debater gives **two** speeches. The first is the **constructive** (you *build*). The second is the **rebuttal** (you *respond and finish*). 1A is on her first — that's a constructive."
+          ]
+        }
+      }
+    },
+    {
+      "id": "cfu4-prep-time",
+      "type": "cfu-fill",
+      "tag": "⟡ COMPREHENSION CHECK · 4 OF 5",
+      "prompt": {
+        "label": "FILL THE GAP",
+        "question": "Complete the sentence about how prep time works."
+      },
+      "template": "Prep time is a {{1}} bank of minutes that you and your {{2}} can spend however you want before any of your speeches.",
+      "blanks": [
+        {
+          "index": 1,
+          "acceptedAnswers": [
+            "shared",
+            "joint",
+            "team",
+            "combined"
+          ],
+          "hint": "It's not just yours alone."
+        },
+        {
+          "index": 2,
+          "acceptedAnswers": [
+            "partner",
+            "teammate"
+          ],
+          "hint": "The one debater on your team."
+        }
+      ],
+      "wordBank": [
+        "shared",
+        "partner",
+        "solo",
+        "judge",
+        "coach",
+        "private"
+      ],
+      "caseSensitive": false,
+      "scoring": {
+        "creditsOnCorrect": 15,
+        "shieldOnWrong": true,
+        "breaksStreakOnWrong": true,
+        "mode": "partial"
+      },
+      "feedback": {
+        "correct": {
+          "title": "✓ TARGET ACQUIRED",
+          "body": [
+            "Exactly. Prep time is **shared** between you and your **partner**. Usually 8 or 10 minutes total — and you split it however you decide.",
+            "If you burn 6 minutes before your constructive, your partner only has the leftover minutes for their rebuttal. **Spend it together.**"
+          ],
+          "followup": "Tactical note: prep is one of the few things in a round you fully control. Don't waste it."
+        },
+        "wrongDefault": {
+          "title": "✕ MISFIRE — RECALIBRATE",
+          "body": [
+            "Prep time isn't private and it isn't unlimited. It's a **shared** bank you split with your **partner**. Think basketball timeouts — the *team* decides when to call one."
+          ]
+        }
+      }
+    },
+    {
+      "id": "cfu5-speech-order",
+      "type": "cfu-order",
+      "tag": "⟡ COMPREHENSION CHECK · 5 OF 5",
+      "prompt": {
+        "label": "MAP THE ROUND",
+        "scenario": "A policy round always opens the same way. Each side gives a **constructive** before anyone gives a rebuttal — and the Affirmative always speaks first.",
+        "question": "Put the **first four speeches** of a round in the correct order."
+      },
+      "intro": "Drag each speech into its correct position (1 = first, 4 = fourth).",
+      "items": [
+        {
+          "id": "1ac",
+          "text": "1AC — First Affirmative Constructive",
+          "correctPosition": 1
+        },
+        {
+          "id": "1nc",
+          "text": "1NC — First Negative Constructive",
+          "correctPosition": 2
+        },
+        {
+          "id": "2ac",
+          "text": "2AC — Second Affirmative Constructive",
+          "correctPosition": 3
+        },
+        {
+          "id": "2nc",
+          "text": "2NC — Second Negative Constructive",
+          "correctPosition": 4
+        }
+      ],
+      "scoring": {
+        "creditsOnCorrect": 15,
+        "shieldOnWrong": true,
+        "breaksStreakOnWrong": true,
+        "mode": "partial"
+      },
+      "feedback": {
+        "correct": {
+          "title": "✓ TARGET ACQUIRED",
+          "body": [
+            "Perfect order: **1AC → 1NC → 2AC → 2NC**. Every constructive happens before any rebuttal — both teams have to *build* before either side gets to *finish*.",
+            "After these four constructives come the four **rebuttals** (1NR, 1AR, 2NR, 2AR). And between each speech there's a **3-minute cross-examination**."
+          ],
+          "followup": "Memory hook: **Aff always speaks first.** Every single time."
+        },
+        "wrongDefault": {
+          "title": "✕ MISFIRE — RECALIBRATE",
+          "body": [
+            "Two rules to lock in: **Affirmative always speaks first** (so 1AC opens the round), and **all four constructives happen before any rebuttals**. The order is 1AC → 1NC → 2AC → 2NC."
+          ]
+        }
+      }
+    },
+    {
+      "id": "s-complete",
+      "type": "complete",
+      "headline": "MISSION COMPLETE",
+      "subtext": "You know the shape of every round you'll ever debate. Two debaters per team. Four roles. Constructive, then rebuttal. Cross-ex in between. Prep time shared.",
+      "rewards": [
+        {
+          "icon": "◈",
+          "label": "CREDITS EARNED",
+          "credits": 40
+        },
+        {
+          "icon": "★",
+          "label": "RANK XP",
+          "xp": 1
+        },
+        {
+          "icon": "🔓",
+          "label": "NEXT MISSION",
+          "unlock": "The Clock — speech times & prep bank"
+        }
+      ],
+      "primaryCta": {
+        "label": "Return to Bridge",
+        "action": "return-bridge"
+      }
+    }
+  ]
+}

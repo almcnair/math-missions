@@ -1,0 +1,541 @@
+{
+  "id": "aff-basics-v1",
+  "campaignId": "cdsi-2026-summer",
+  "sectorId": "stock-issues",
+  "number": 4,
+  "title": "AFF Basics: The Affirmative Core",
+  "subtitle": "Stock Issues · Mission 04",
+  "tagline": "Every year, the whole country picks {{cyan:one}} big problem. As the {{amber:Affirmative}}, you have to prove four things to win — or your case falls apart.",
+  "estimatedMinutes": 14,
+  "difficulty": "intro",
+  "rewards": {
+    "credits": 140,
+    "rankXp": 90
+  },
+  "unlocks": [],
+  "prerequisites": [
+    "claim-warrant-impact-v1"
+  ],
+  "protectedTerms": [
+    "resolution",
+    "affirmative",
+    "negative",
+    "stock issues",
+    "significance",
+    "harms",
+    "inherency",
+    "solvency",
+    "plan"
+  ],
+  "passingCriteria": {
+    "requireAllCfu": false,
+    "minCorrectCfu": 4,
+    "shieldsAtZero": "allow-continue"
+  },
+  "slides": [
+    {
+      "id": "s1-hook",
+      "type": "hook",
+      "tag": "⟡ MISSION BRIEFING 04",
+      "headline": "WELCOME TO THE BRIDGE, CADETS",
+      "body": [
+        "Think about something in the world right now that feels {{amber: unfair}} to you. A rule, a system, a problem nobody seems to be fixing.",
+        "Every year, the entire country of policy debaters picks {{amber: one}} of those problems and argues about how to fix it. That topic is called the `resolution`.",
+        "If you debate `Affirmative`, your mission is to convince the judge that the resolution is a {{cyan: great idea}}. But you can't just say so — you have to prove **four specific things**, or your whole case fails.",
+        "Today you learn what those four things are. Log in with your Debate Partner. Let's launch."
+      ],
+      "sidebar": {
+        "kind": "stock-list",
+        "title": "MISSION OBJECTIVES",
+        "items": [
+          {
+            "num": "01",
+            "label": "Explain the {{cyan: resolution}} in your own words",
+            "state": "todo"
+          },
+          {
+            "num": "02",
+            "label": "Identify the {{amber: 4 Stock Issues (S.H.I.S.)}}",
+            "state": "todo"
+          },
+          {
+            "num": "03",
+            "label": "Know why every {{cyan: AFF}} case needs a {{amber: Plan}}",
+            "state": "todo"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s2-define-resolution",
+      "type": "define",
+      "tag": "⟡ KEY TERM",
+      "term": "Resolution",
+      "pronunciation": "rez-uh-LOO-shun · noun · debate",
+      "definition": "The `resolution` is the {{cyan:single topic statement}} the Affirmative team must support and the Negative team must argue against — picked once a year for the whole country.",
+      "plainWords": "It's the mission statement for the entire debate season. One sentence. Everyone debates it. You'll argue *both* sides at tournaments.",
+      "analogy": "Think of it like a galaxy-wide directive: one objective, two teams, every round. The {{cyan: AFF}} says *\"yes, this is a great idea.\"* The {{amber: NEG}} says *\"no, this will not work or is a bad idea.\"*",
+      "image": {
+        "src": "/mission-images/aff-basics-v1/1782921404567_Resolution.png",
+        "alt": ""
+      }
+    },
+    {
+      "id": "s3-concept-stock-issues",
+      "type": "concept",
+      "tag": "⟡ THE 4 STOCK ISSUES",
+      "headline": "S.H.I.S. — THE AFFIRMATIVE BURDEN",
+      "intro": "An Affirmative case is like a pizza: dough, sauce, cheese, toppings. Forget the dough and you don't have a pizza — you have a mess. In debate, if you miss even **one** of these four `stock issues`, your whole mission fails. We call them {{amber:S.H.I.S.}}",
+      "cards": [
+        {
+          "id": "significance",
+          "icon": "🔍",
+          "name": "SIGNIFICANCE",
+          "description": "{{cyan:The Scale.}} You can't ask the whole country to change its rules for a tiny problem. Prove the problem is **massive** — millions of people, billions of dollars, something big.",
+          "example": {
+            "label": "CORE QUESTION",
+            "text": "How big is the problem?"
+          },
+          "accent": "cyan"
+        },
+        {
+          "id": "harms",
+          "icon": "💔",
+          "name": "HARMS",
+          "description": "{{amber:The Damage.}} Identify exactly what bad things are happening **right now** because of the problem. Real people, real damage.",
+          "example": {
+            "label": "CORE QUESTION",
+            "text": "Who is getting hurt?"
+          },
+          "accent": "amber"
+        },
+        {
+          "id": "inherency",
+          "icon": "🔒",
+          "name": "INHERENCY",
+          "description": "{{cyan:The Barrier.}} If the problem is so big and harmful, why hasn't someone fixed it yet? Prove the current system is *stuck* and cannot fix itself.",
+          "example": {
+            "label": "CORE QUESTION",
+            "text": "Why is it stuck?"
+          },
+          "accent": "cyan"
+        },
+        {
+          "id": "solvency",
+          "icon": "🔧",
+          "name": "SOLVENCY",
+          "description": "{{amber:The Cure.}} It's not enough to complain about a problem. Prove that your specific `plan` will actually **repair the damage**.",
+          "example": {
+            "label": "CORE QUESTION",
+            "text": "Does the fix actually work?"
+          },
+          "accent": "amber"
+        }
+      ],
+      "image": {
+        "src": "/mission-images/aff-basics-v1/1782921501511_Aff_Burden.png",
+        "alt": ""
+      }
+    },
+    {
+      "id": "s4-define-plan",
+      "type": "define",
+      "tag": "⟡ KEY TERM",
+      "term": "Plan",
+      "pronunciation": "plan · noun · debate",
+      "definition": "The `plan` is the Affirmative's {{cyan:specific, concrete policy proposal}} to fix the harms. Without a plan, you're just complaining about a problem — you don't have a debate case.",
+      "plainWords": "It's your blueprint. A winning Commander always brings one. It answers four questions: *who* does it, *what* exactly they do, *how* it's paid for, and *when* it starts.",
+      "analogy": "Think of an architect drawing up plans for a building. You wouldn't hire a contractor who just shouted *\"the old building is bad!\"* and showed up with no blueprint. Same in debate."
+    },
+    {
+      "id": "s5-strategy-plan-blueprint",
+      "type": "strategy",
+      "tag": "⟡ TACTICAL GUIDE",
+      "headline": "THE BLUEPRINT: WRITING YOUR PLAN",
+      "intro": "Every solid Affirmative plan answers four questions. Miss one and the {{amber: NEG}} will hammer you for it.",
+      "rows": [
+        {
+          "name": "AGENT — Who will do it?",
+          "description": "Name the actor with the power to actually carry out your plan: Congress, the Supreme Court, the EPA, the United Nations. Be specific.",
+          "counter": {
+            "label": "WATCH OUT",
+            "text": "*\"The government\"* is too vague. Which branch? Which agency?"
+          }
+        },
+        {
+          "name": "ACTION — What exactly will they do?",
+          "description": "Spell out the policy in plain language. Pass this law. Ban this thing. Fund this program. One clear sentence beats five fuzzy ones.",
+          "counter": {
+            "label": "WATCH OUT",
+            "text": "Vague verbs like *\"address\"* or *\"improve\"* leave the NEG room to misread your plan."
+          }
+        },
+        {
+          "name": "FUNDING — How will we pay for it?",
+          "description": "Even a great plan needs a wallet. Existing budgets, new taxes, redirected military spending — pick one and own it.",
+          "counter": {
+            "label": "WATCH OUT",
+            "text": "*\"It pays for itself\"* is a claim. You'll need a {{cyan: warrant}} for that."
+          }
+        },
+        {
+          "name": "TIMELINE — When does it start?",
+          "description": "Immediately on passage? In phases over five years? The timeline shapes whether the plan can actually achieve `solvency`.",
+          "counter": {
+            "label": "WATCH OUT",
+            "text": "A plan that *\"starts someday\"* solves *\"nothing today.\"*"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s6-cfu-match-shis",
+      "type": "cfu-match",
+      "tag": "⟡ DIAGNOSTIC: SHIS MATRIX",
+      "prompt": {
+        "label": "SYSTEM CHECK",
+        "scenario": "The four stock issues each answer a different `core question`. Match each one to the question it answers.",
+        "question": "Match each stock issue to its core question."
+      },
+      "leftColumn": {
+        "label": "STOCK ISSUE",
+        "items": [
+          {
+            "id": "left-s",
+            "text": "Significance",
+            "pairId": "p-s"
+          },
+          {
+            "id": "left-h",
+            "text": "Harms",
+            "pairId": "p-h"
+          },
+          {
+            "id": "left-i",
+            "text": "Inherency",
+            "pairId": "p-i"
+          },
+          {
+            "id": "left-so",
+            "text": "Solvency",
+            "pairId": "p-so"
+          }
+        ]
+      },
+      "rightColumn": {
+        "label": "CORE QUESTION",
+        "items": [
+          {
+            "id": "right-s",
+            "text": "How big is the problem?",
+            "pairId": "p-s"
+          },
+          {
+            "id": "right-h",
+            "text": "Who is getting hurt right now?",
+            "pairId": "p-h"
+          },
+          {
+            "id": "right-i",
+            "text": "Why isn't it fixed already?",
+            "pairId": "p-i"
+          },
+          {
+            "id": "right-so",
+            "text": "Does the fix actually work?",
+            "pairId": "p-so"
+          }
+        ]
+      },
+      "scoring": {
+        "creditsOnCorrect": 20,
+        "shieldOnWrong": true,
+        "breaksStreakOnWrong": true,
+        "maxAttempts": 1,
+        "mode": "partial"
+      },
+      "feedback": {
+        "correct": {
+          "title": "✓ TARGET ACQUIRED",
+          "body": [
+            "All four locked in. {{cyan:S.H.I.S.}} isn't a random list — each one fills a different job in your case.",
+            "**Significance** sizes it up. **Harms** names who suffers. **Inherency** explains why it's stuck. **Solvency** proves your fix works."
+          ],
+          "followup": "Memorize the acronym: S-H-I-S. You'll use it every round you debate Affirmative."
+        },
+        "wrongDefault": {
+          "title": "✕ MISFIRE — RECALIBRATE",
+          "body": [
+            "Close, but not all four lined up. The trickiest one to keep straight is usually `inherency` — it asks *\"why hasn't this been fixed already?\"* not *\"how do we fix it?\"* (that's `solvency`).",
+            "Try the matching again with that distinction in mind."
+          ]
+        }
+      },
+      "hint": {
+        "imageUrl": "/mission-images/aff-basics-v1/1782921579713_SHIS.png",
+        "altText": ""
+      }
+    },
+    {
+      "id": "s7-cfu-mcq-inherency",
+      "type": "cfu-mcq",
+      "tag": "⟡ SCENARIO INTERCEPT",
+      "prompt": {
+        "label": "INHERENCY CHECK",
+        "scenario": "Your Affirmative case argues the U.S. should ban a certain pesticide. The NEG stands up and says: *\"The EPA is already phasing out that pesticide next year.\"*",
+        "question": "Which stock issue is the NEG attacking?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "letter": "A",
+          "text": "Significance — they're saying the problem is too small"
+        },
+        {
+          "id": "b",
+          "letter": "B",
+          "text": "Harms — they're saying nobody is actually being hurt"
+        },
+        {
+          "id": "c",
+          "letter": "C",
+          "text": "Inherency — they're saying the problem is already getting fixed"
+        },
+        {
+          "id": "d",
+          "letter": "D",
+          "text": "Solvency — they're saying our plan won't work"
+        }
+      ],
+      "correctOptionId": "c",
+      "scoring": {
+        "creditsOnCorrect": 15,
+        "shieldOnWrong": true,
+        "breaksStreakOnWrong": true,
+        "maxAttempts": 1
+      },
+      "feedback": {
+        "correct": {
+          "title": "✓ TARGET ACQUIRED",
+          "body": [
+            "Exactly. `Inherency` asks *\"why hasn't this been fixed already?\"* If the NEG can show the system is **already fixing it** without your plan, your inherency collapses and there's nothing left for your plan to do.",
+            "Your counter: prove the EPA's phase-out is too slow, too narrow, or won't actually finish — that the barrier is still there."
+          ],
+          "followup": "Inherency is the trickiest stock issue. Half of NEG strategy lives here."
+        },
+        "wrongByChoice": {
+          "a": {
+            "title": "✕ MISFIRE",
+            "body": [
+              "Significance is about the **size** of the problem (*\"this is too small to matter\"*). The NEG isn't saying the pesticide problem is small — they're saying it's **already being handled**. That's `inherency`."
+            ]
+          },
+          "b": {
+            "title": "✕ MISFIRE",
+            "body": [
+              "Harms attacks *who is getting hurt right now*. The NEG didn't deny anyone's getting hurt — they said the system is **already fixing it**. That's `inherency`."
+            ]
+          },
+          "d": {
+            "title": "✕ MISFIRE",
+            "body": [
+              "Solvency is about whether **your plan** works. The NEG didn't talk about your plan at all — they talked about what's **already happening** without it. That's `inherency`."
+            ]
+          }
+        },
+        "wrongDefault": {
+          "title": "✕ MISFIRE — RECALIBRATE",
+          "body": [
+            "The clue is *\"already phasing out.\"* When the NEG says the status quo is **already moving** to solve the problem, they're attacking `inherency` — the barrier you claimed exists."
+          ]
+        }
+      },
+      "hint": {
+        "imageUrl": "/mission-images/aff-basics-v1/1782921579713_SHIS.png",
+        "altText": ""
+      }
+    },
+    {
+      "id": "s8-cfu-mcq-needs-plan",
+      "type": "cfu-mcq",
+      "tag": "⟡ PLAN CHECK",
+      "prompt": {
+        "label": "BLUEPRINT REVIEW",
+        "scenario": "A cadet stands up to give a 1AC. They talk for five minutes about how terrible plastic pollution is — statistics, stories, photos of beaches covered in trash. They sit down. They never proposed a specific policy.",
+        "question": "What's the biggest problem with this Affirmative case?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "letter": "A",
+          "text": "Nothing — proving harms is enough on its own"
+        },
+        {
+          "id": "b",
+          "letter": "B",
+          "text": "There's no `plan`, so there's no `solvency`. The case is incomplete."
+        },
+        {
+          "id": "c",
+          "letter": "C",
+          "text": "They needed more statistics about pollution"
+        },
+        {
+          "id": "d",
+          "letter": "D",
+          "text": "They should have debated the Negative side instead"
+        }
+      ],
+      "correctOptionId": "b",
+      "scoring": {
+        "creditsOnCorrect": 15,
+        "shieldOnWrong": true,
+        "breaksStreakOnWrong": true,
+        "maxAttempts": 1
+      },
+      "feedback": {
+        "correct": {
+          "title": "✓ TARGET ACQUIRED",
+          "body": [
+            "Right. Without a `plan`, the cadet is just **complaining about a problem**. They've established harms, maybe significance — but `solvency` is impossible to prove because there's no specific solution to test.",
+            "*\"A winning Commander always brings a blueprint.\"* No blueprint, no win."
+          ],
+          "followup": "Every Affirmative case needs Agent, Action, Funding, Timeline. Memorize those four."
+        },
+        "wrongByChoice": {
+          "a": {
+            "title": "✕ MISFIRE",
+            "body": [
+              "Harms alone don't win debates. Even if every harm is real and massive, the NEG just has to ask *\"so what do you want us to **do** about it?\"* and you'll have no answer."
+            ]
+          },
+          "c": {
+            "title": "✕ MISFIRE",
+            "body": [
+              "More stats wouldn't fix it. Even a 20-minute speech full of pollution data is still missing the `plan` — the specific policy proposal that lets you argue `solvency`."
+            ]
+          },
+          "d": {
+            "title": "✕ MISFIRE",
+            "body": [
+              "The cadet's side isn't the issue — the **missing plan** is. An Affirmative case without a plan fails *no matter which side they were assigned*."
+            ]
+          }
+        },
+        "wrongDefault": {
+          "title": "✕ MISFIRE — RECALIBRATE",
+          "body": [
+            "Without a specific policy proposal, you can't prove `solvency` — there's nothing concrete to defend. Every Affirmative case needs a `plan`."
+          ]
+        }
+      }
+    },
+    {
+      "id": "s9-cfu-fill-plan-parts",
+      "type": "cfu-fill",
+      "tag": "⟡ BLUEPRINT ASSEMBLY",
+      "prompt": {
+        "label": "BUILD THE PLAN",
+        "scenario": "Every Affirmative `plan` answers four questions. Drop the right term into each blank.",
+        "question": "Complete the blueprint."
+      },
+      "template": "The {{1}} is **who** carries out the plan. The {{2}} is **what** they actually do. The {{3}} is **how** the plan is paid for. The {{4}} is **when** the plan starts.",
+      "blanks": [
+        {
+          "index": 1,
+          "acceptedAnswers": [
+            "agent"
+          ]
+        },
+        {
+          "index": 2,
+          "acceptedAnswers": [
+            "action"
+          ]
+        },
+        {
+          "index": 3,
+          "acceptedAnswers": [
+            "funding"
+          ]
+        },
+        {
+          "index": 4,
+          "acceptedAnswers": [
+            "timeline"
+          ]
+        }
+      ],
+      "wordBank": [
+        "Action",
+        "Agent",
+        "Funding",
+        "Timeline"
+      ],
+      "caseSensitive": false,
+      "scoring": {
+        "creditsOnCorrect": 20,
+        "shieldOnWrong": true,
+        "breaksStreakOnWrong": true,
+        "maxAttempts": 1,
+        "mode": "partial"
+      },
+      "feedback": {
+        "correct": {
+          "title": "✓ BLUEPRINT ARMED",
+          "body": [
+            "**Agent · Action · Funding · Timeline.** That's the whole blueprint.",
+            "Every time you write a 1AC plan text, run through those four. Miss one, and the NEG has a free shot at your `solvency`."
+          ],
+          "followup": "Pro tip: write your plan **before** you write the rest of your case. Everything else builds on it."
+        },
+        "wrongDefault": {
+          "title": "✕ MISFIRE — RECALIBRATE",
+          "body": [
+            "The four parts of a plan are **Agent** (who), **Action** (what), **Funding** (how), and **Timeline** (when). Try the matching again."
+          ]
+        }
+      },
+      "hint": {
+        "imageUrl": "/mission-images/aff-basics-v1/1782921579713_SHIS.png",
+        "altText": ""
+      }
+    },
+    {
+      "id": "s10-complete",
+      "type": "complete",
+      "headline": "MISSION COMPLETE — AFF CORE ARMED",
+      "subtext": "You've got the Affirmative burden locked in. S.H.I.S. + a Plan. The Stock Issues sector opens up — Inherency is next.",
+      "rewards": [
+        {
+          "icon": "◈",
+          "label": "CREDITS EARNED",
+          "dynamicValue": "credits"
+        },
+        {
+          "icon": "▲",
+          "label": "RANK XP",
+          "staticValue": "+90 XP"
+        },
+        {
+          "icon": "★",
+          "label": "ACCURACY",
+          "dynamicValue": "accuracy"
+        },
+        {
+          "icon": "🔓",
+          "label": "UNLOCKED NEXT",
+          "dynamicValue": "unlocked-next"
+        }
+      ],
+      "primaryCta": {
+        "label": "NEXT MISSION",
+        "action": "next-mission"
+      },
+      "secondaryCta": {
+        "label": "RETURN TO BRIDGE",
+        "action": "return-bridge"
+      }
+    }
+  ]
+}

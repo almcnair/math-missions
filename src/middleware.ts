@@ -1,21 +1,25 @@
 // ============================================================================
 // Middleware — auth gating + role-based route protection
 // ----------------------------------------------------------------------------
-// Runs on every request (minus static assets). Handles two things:
+// Runs on every request (minus static assets). Handles three things:
 //
-//   1. AUTH GATE — non-public routes require a Supabase session. Anonymous
+//   1. /author PROD LOCKDOWN — the Authoring Studio writes to the local
+//      filesystem; on Vercel the FS is read-only, so we 404 /author on prod.
+//
+//   2. AUTH GATE — non-public routes require a Supabase session. Anonymous
 //      requests redirect to /login?next=<original-path>.
 //
-//   2. ROLE GATE — /teacher/* requires role='teacher' or 'admin'. Students
-//      who paste a /teacher URL get bounced back to /practice.
+//   3. ROLE GATE — /coach/* requires role='teacher' or 'admin'. Students who
+//      paste a /coach URL get bounced to /bridge.
 //
-// Public routes: /, /login/*, /auth/*, /api/public/*. Everything else is
-// gated. As Math Missions grows we may add marketing pages here.
+// Public routes: /, /landing/*, /glossary, /brain-breaks, /toolkit,
+// /resources, /teacher-moves, /games/*, /login, /auth/*, /api/public/*.
+// Everything else is gated.
 //
 // Cookie handling: Supabase's session refresh rotates cookies during
 // getUser(); we forward those onto the redirect response so the refreshed
 // token actually reaches the browser (otherwise the next request looks
-// logged out again). This bit is subtle — PD101 learned it the painful way.
+// logged out again).
 // ============================================================================
 
 import { NextRequest, NextResponse } from "next/server";
@@ -23,9 +27,23 @@ import { createServerClient } from "@supabase/ssr";
 
 // Prefix match. Root "/" is handled separately.
 const PUBLIC_PREFIXES = [
+  "/landing",
+  "/glossary",
+  "/brain-breaks",
+  "/toolkit",
+  "/resources",
+  "/teacher-moves",
+  "/games",
   "/login",
   "/auth",
   "/api/public",
+  // 2026-07-08: /privacy is the site's data-collection notice, linked
+  // from landing + in-app footers. Must be reachable without login.
+  "/privacy",
+  // Coach magic-link invite entry point and its "expired" landing.
+  // Anonymous visitors must be able to click the invite URL, and the
+  // expired page must render even for users who never became a teacher.
+  "/coach/join",
 ];
 
 function isPublicRoute(pathname: string): boolean {
@@ -35,6 +53,11 @@ function isPublicRoute(pathname: string): boolean {
 
 export async function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
+
+  // ---- /author production lockdown --------------------------------------
+  if (process.env.VERCEL_ENV === "production" && pathname.startsWith("/author")) {
+    return new NextResponse("Not found", { status: 404 });
+  }
 
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
@@ -58,9 +81,7 @@ export async function middleware(request: NextRequest) {
     },
   });
 
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  const { data: { user } } = await supabase.auth.getUser();
   const isPublic = isPublicRoute(pathname);
 
   // ---- Auth gate --------------------------------------------------------
@@ -73,8 +94,11 @@ export async function middleware(request: NextRequest) {
     return redirect;
   }
 
-  // ---- Role gate: /teacher/* is teacher/admin only ---------------------
-  if (user && pathname.startsWith("/teacher")) {
+  // ---- Role gate: /coach/* is teacher/admin only -----------------------
+  // Exempts /coach/join/* — that path is the magic-link invite claim flow
+  // and MUST be reachable by students (and even anonymous visitors, though
+  // they're handled by the public-route branch above).
+  if (user && pathname.startsWith("/coach") && !pathname.startsWith("/coach/join")) {
     const { data: profile } = await supabase
       .from("profiles")
       .select("role")
@@ -84,7 +108,7 @@ export async function middleware(request: NextRequest) {
     const role = profile?.role;
     if (role !== "teacher" && role !== "admin") {
       const bounce = request.nextUrl.clone();
-      bounce.pathname = "/practice";
+      bounce.pathname = "/bridge";
       bounce.search = "";
       const redirect = NextResponse.redirect(bounce);
       response.cookies.getAll().forEach((c) => redirect.cookies.set(c));

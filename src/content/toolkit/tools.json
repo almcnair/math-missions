@@ -1,0 +1,149 @@
+{
+  "site": {
+    "name": "POLICY DEBATE 101",
+    "href": "/"
+  },
+  "collections": [
+    {
+      "id": "lab-leader",
+      "name": "LAB LEADER TOOLKIT",
+      "hubHref": "/toolkit",
+      "tagline": "Everything a CDSI lab leader needs to run a great debate class — reference material for the room, projection tools for reset moments, and playbooks for the adults in the front.",
+      "audienceChips": [
+        { "id": "all",        "label": "All Tools" },
+        { "id": "leaders",    "label": "For Lab Leaders" },
+        { "id": "projection", "label": "Classroom Projection" },
+        { "id": "students",   "label": "Student Reference" }
+      ],
+      "sections": [
+        { "id": "adults",     "label": "For the Adults",    "toolIds": ["teacher-moves"] },
+        { "id": "curriculum", "label": "Curriculum",        "toolIds": ["study-aids"] },
+        { "id": "classroom",  "label": "In the Classroom",  "toolIds": ["brain-breaks", "jeopardy-day1"] },
+        { "id": "preview",    "label": "Preview Student View", "toolIds": ["debater-missions-preview"] },
+        { "id": "reference",  "label": "Reference (shared with debaters)", "toolIds": ["speech-timeline", "glossary"] }
+      ]
+    },
+    {
+      "id": "debater",
+      "name": "DEBATER RESOURCES",
+      "hubHref": "/resources",
+      "tagline": "Reference material and study tools for policy debate students — search terms, review the slides from class, and grab worksheets for practice.",
+      "audienceChips": [
+        { "id": "all",       "label": "All Resources" },
+        { "id": "students",  "label": "For Students" }
+      ],
+      "sections": [
+        { "id": "practice",  "label": "Practice",  "toolIds": ["missions"] },
+        { "id": "study",     "label": "Study",     "toolIds": ["study-aids"] },
+        { "id": "reference", "label": "Reference", "toolIds": ["speech-timeline", "glossary"] }
+      ]
+    }
+  ],
+  "tools": [
+    {
+      "id": "teacher-moves",
+      "collectionId": "lab-leader",
+      "title": "TEACHER MOVES",
+      "shortTitle": "Teacher Moves",
+      "href": "/teacher-moves",
+      "icon": "🧭",
+      "tone": "magenta",
+      "audience": "For Lab Leaders",
+      "audienceChip": "leaders",
+      "description": "Twelve teacher moves framed as quest mechanics — for lab leaders who've never run a classroom before.",
+      "meta": "12 moves · scripts included"
+    },
+    {
+      "id": "brain-breaks",
+      "collectionId": "lab-leader",
+      "title": "BRAIN BREAKS",
+      "shortTitle": "Brain Breaks",
+      "href": "/brain-breaks",
+      "icon": "🎯",
+      "tone": "cyan",
+      "audience": "Classroom Projection",
+      "audienceChip": "projection",
+      "description": "Spin the wheel for a two-minute activity to reset the room mid-lesson. 24 activities from the CDSI curriculum.",
+      "meta": "Project on the board · 12 per spin"
+    },
+    {
+      "id": "jeopardy-day1",
+      "collectionId": "lab-leader",
+      "title": "JEOPARDY GAMES",
+      "shortTitle": "Jeopardy Games",
+      "href": "/toolkit/jeopardy",
+      "icon": "🎮",
+      "tone": "magenta",
+      "audience": "Classroom Projection",
+      "audienceChip": "projection",
+      "description": "Projector-friendly hub of Jeopardy-style review games. One click to project — every game opens in a new tab so the hub stays open for the next one.",
+      "meta": "Day 1 ready · more coming"
+    },
+    {
+      "id": "missions",
+      "collectionId": "debater",
+      "title": "MISSIONS",
+      "shortTitle": "Missions",
+      "href": "/bridge",
+      "icon": "🚀",
+      "tone": "cyan",
+      "audience": "For Students",
+      "audienceChip": "students",
+      "description": "Interactive missions with rank progression — sign in to save your progress and level up as you play.",
+      "meta": "Sign in to play"
+    },
+    {
+      "id": "debater-missions-preview",
+      "collectionId": "lab-leader",
+      "title": "PREVIEW MISSIONS",
+      "shortTitle": "Preview Missions",
+      "href": "/bridge",
+      "icon": "🚀",
+      "tone": "violet",
+      "audience": "For Lab Leaders",
+      "audienceChip": "leaders",
+      "description": "See what your students see — open the debater Bridge to browse the mission path before class.",
+      "meta": "Opens the student mission list"
+    },
+    {
+      "id": "study-aids",
+      "collectionId": "debater",
+      "title": "LESSONS",
+      "shortTitle": "Lessons",
+      "href": "/resources/study-aids",
+      "icon": "📊",
+      "tone": "magenta",
+      "audience": "Slides & Graphic Organizers",
+      "audienceChip": "students",
+      "description": "Review the slides from class and download the graphic organizer for each lesson — nine lessons, one page.",
+      "meta": "9 lessons · PDF viewer + download"
+    },
+    {
+      "id": "speech-timeline",
+      "collectionId": "debater",
+      "title": "ROUND PLAYBOOK",
+      "shortTitle": "Round Playbook",
+      "href": "/games/speech-timeline.html",
+      "newTab": true,
+      "icon": "⏱",
+      "tone": "cyan",
+      "audience": "Student Reference",
+      "audienceChip": "students",
+      "description": "Interactive timeline of every speech in a policy round — your mission, what to say to the judge, and one pro move per speech. Hover any debate term for a definition.",
+      "meta": "9 speeches · hover-to-define"
+    },
+    {
+      "id": "glossary",
+      "collectionId": "debater",
+      "title": "GLOSSARY",
+      "shortTitle": "Glossary",
+      "href": "/glossary",
+      "icon": "📖",
+      "tone": "cyan",
+      "audience": "Student Reference",
+      "audienceChip": "students",
+      "description": "Every policy debate term a novice will meet, with plain-English definitions and links to related concepts.",
+      "meta": "Searchable · cross-linked"
+    }
+  ]
+}

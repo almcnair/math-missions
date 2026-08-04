@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Policy Debate 101 — Learn Policy Debate, One Mission at a Time</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Reset & Base ─────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 18px; }
+    body {
+      background: #090C1F;
+      color: #A1A1AA;
+      font-family: 'DM Sans', system-ui, sans-serif;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ── CSS Variables ────────────────────────────────── */
+    :root {
+      /* 2026-07-01: aligned to Orbital Robot brand palette.
+         Signal Cyan / Nova Magenta / Status Mint / Bridge Violet / Deep Indigo / Void Navy.
+         Amber and yellow retired. */
+      --aqua:     #22D3EE; /* Signal Cyan */
+      --magenta:  #EC5D9E; /* Nova Magenta */
+      --green:    #4CB86A; /* Status Mint */
+      --violet:   #6B5CA5; /* Bridge Violet */
+      --surface:  #2D2A6E; /* Deep Indigo */
+      --border:   #27364D;
+      --text-dim: #A1A1AA;
+      /* Bumped 2026-06-29 from #6B7280 to meet WCAG AA (≥4.5:1) on dark bg.
+         Old value scored 3.66 on terminal-meta and 2.01 on LOCKED labels. */
+      --text-lo:  #9CA3AF;
+      --white:    #FFFFFF;
+    }
+
+    /* ── Utilities ────────────────────────────────────── */
+    .font-chakra { font-family: 'Chakra Petch', monospace; }
+    .gradient-text {
+      background: linear-gradient(135deg, var(--magenta) 0%, var(--aqua) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .sr-only {
+      position: absolute; width: 1px; height: 1px;
+      padding: 0; margin: -1px; overflow: hidden;
+      clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+    }
+    .sr-only:focus {
+      position: fixed; top: 0.5rem; left: 1rem;
+      width: auto; height: auto; clip: auto;
+      white-space: normal; z-index: 9999;
+      background: var(--aqua); color: #090C1F;
+      font-family: 'Chakra Petch', monospace;
+      font-weight: 700; font-size: 1rem;
+      padding: 0.5rem 1.25rem; border-radius: 0.5rem;
+    }
+    *:focus-visible {
+      outline: 2px solid var(--aqua);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+
+    /* ── Scanline Animation ───────────────────────────── */
+    @keyframes scanline {
+      0%   { transform: translateY(-4px); opacity: 0; }
+      5%   { opacity: 1; }
+      95%  { opacity: 1; }
+      100% { transform: translateY(100vh); opacity: 0; }
+    }
+    @keyframes ping {
+      0%   { transform: scale(1); opacity: 0.7; }
+      75%, 100% { transform: scale(2); opacity: 0; }
+    }
+    @keyframes orbit-dot {
+      from { transform: rotate(0deg) translateX(19px) rotate(0deg); }
+      to   { transform: rotate(360deg) translateX(19px) rotate(-360deg); }
+    }
+    @keyframes fadeinup {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes stagger1 { from { opacity:0; transform:translateY(28px); } to { opacity:1; transform:translateY(0); } }
+
+    .scanline-el {
+      position: absolute; left: 0; right: 0; height: 3px;
+      background: linear-gradient(180deg, transparent 0%, rgba(34,211,238,0.2) 50%, transparent 100%);
+      animation: scanline 8s linear infinite;
+      pointer-events: none;
+    }
+    .ping-ring {
+      position: absolute; inset: 0; border-radius: 50%;
+      animation: ping 1.5s ease-out infinite;
+    }
+    .animate-fadein {
+      animation: fadeinup 0.7s cubic-bezier(0.22,1,0.36,1) both;
+    }
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.2s; }
+    .delay-3 { animation-delay: 0.3s; }
+    .delay-4 { animation-delay: 0.45s; }
+    .delay-5 { animation-delay: 0.6s; }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+      }
+      .scanline-el { display: none !important; }
+    }
+
+    /* ═══════════════════════════════════════════════════
+       HEADER
+    ═══════════════════════════════════════════════════ */
+    .header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(1,4,15,0.82);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .header-inner {
+      max-width: 1280px; margin: 0 auto;
+      padding: 0 2rem;
+      height: 80px;
+      display: flex; align-items: center;
+      justify-content: space-between;
+    }
+    .header-left { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+    .header-left:hover .logo-label { color: #fff; }
+    .logo-label {
+      font-family: 'Chakra Petch', monospace;
+      /* Scaled up alongside the mascot so the lockup reads as one unit. */
+      font-size: clamp(1rem, 1.6vw, 1.2rem);
+      letter-spacing: 0.16em;
+      text-transform: uppercase; color: var(--aqua);
+      transition: color 0.2s;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .header-right {
+      display: flex; align-items: center; justify-content: flex-end; gap: 1.5rem;
+    }
+    .nav-link {
+      font-family: 'Chakra Petch', monospace;
+      font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--text-dim); text-decoration: none;
+      transition: color 0.2s;
+      padding: 2px 4px; border-radius: 4px;
+    }
+    .nav-link:hover { color: var(--aqua); }
+    .btn-cta {
+      font-family: 'Chakra Petch', monospace;
+      font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 8px 16px; border-radius: 8px;
+      border: 1px solid var(--aqua); color: var(--aqua);
+      background: transparent; cursor: pointer; text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+      white-space: nowrap;
+    }
+    .btn-cta:hover { background: var(--aqua); color: #090C1F; }
+
+    /* ── Orbital Robot mascot (header) ───────────────── */
+    /* 2026-07-01 rebrand: replaced .orbital-wrap SVG mark styles.
+       Size chosen so the mascot's face is legible — the mark is a
+       character, not a bullet. 64px keeps the ring intact inside
+       an 80px header per BRAND_AND_STYLE_GUIDE.md §3.7.3 (clear
+       space = mascot face height). */
+    .header-mascot {
+      width: 64px; height: 64px;
+      flex-shrink: 0;
+      display: block;
+      filter: drop-shadow(0 4px 14px rgba(107, 92, 165, 0.55));
+      transition: transform 0.2s ease;
+    }
+    .header-left:hover .header-mascot {
+      transform: translateY(-1px) rotate(-3deg);
+    }
+
+    /* ═══════════════════════════════════════════════════
+       HERO
+    ═══════════════════════════════════════════════════ */
+    .hero {
+      position: relative; min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+      /* 2026-07-06: bumped from 64px → 120px so the status badge clears
+         the 80px fixed header when the hero content is taller than the
+         viewport (which it is now with the split sign-in card). Bottom
+         padding lets the card breathe before the scroll cue. */
+      padding-top: 120px; padding-bottom: 40px;
+    }
+    .hero-grid {
+      position: absolute; inset: 0; pointer-events: none;
+      background-image:
+        linear-gradient(rgba(34,211,238,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(34,211,238,0.04) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+    .hero-glow {
+      position: absolute; inset: 0; pointer-events: none;
+      background: radial-gradient(ellipse 65% 55% at 50% 40%, rgba(34,211,238,0.06) 0%, transparent 70%);
+    }
+    .hero-scanline-wrap {
+      position: absolute; inset: 0; pointer-events: none; overflow: hidden;
+    }
+    .hero-content {
+      position: relative; z-index: 10;
+      text-align: center; padding: 0 1.5rem;
+      max-width: 860px; margin: 0 auto;
+    }
+    .status-badge {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 8px 18px; border-radius: 999px; margin-bottom: 2rem;
+      border: 1px solid rgba(34,211,238,0.2);
+      background: rgba(34,211,238,0.05);
+    }
+    .status-dot-wrap { position: relative; width: 10px; height: 10px; flex-shrink: 0; }
+    .status-dot-core {
+      position: absolute; inset: 0; border-radius: 50%;
+      background: var(--green);
+    }
+    .status-dot-ring {
+      background: var(--green);
+    }
+    .status-badge-text {
+      font-family: 'Chakra Petch', monospace;
+      font-size: 0.72rem; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--green);
+    }
+    .hero-h1 {
+      font-family: 'Chakra Petch', monospace;
+      font-weight: 700;
+      font-size: clamp(2.2rem, 6vw, 4rem);
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      line-height: 1.1;
+      margin-bottom: 1.25rem;
+    }
+    .hero-sub {
+      color: var(--text-dim);
+      font-size: clamp(1rem, 1.8vw, 1.2rem);
+      line-height: 1.65;
+      max-width: 640px;
+      margin: 0 auto 2.5rem;
+    }
+    .cta-row {
+      display: flex; gap: 1rem; justify-content: center;
+      flex-wrap: wrap; margin-bottom: 3rem;
+    }
+    .btn-primary {
+      font-family: 'Chakra Petch', monospace;
+      font-size: 1rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 700;
+      padding: 12px 32px; border-radius: 10px;
+      background: var(--magenta); color: #090C1F; border: none;
+      cursor: pointer; text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+      display: inline-block;
+    }
+    .btn-primary:hover { background: #f9a8d4; }
+    .btn-outline {
+      font-family: 'Chakra Petch', monospace;
+      font-size: 1rem; letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 12px 32px; border-radius: 10px;
+      border: 1px solid var(--aqua); color: var(--aqua);
+      background: transparent; cursor: pointer; text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+      display: inline-block;
+    }
+    .btn-outline:hover { background: var(--aqua); color: #090C1F; }
+
+    @media (max-width: 780px) {
+      .header-inner { padding: 0 1rem; }
+    }
+
+    /* ── Primary CTA stack (2026-07-12) ───────────────
+       Student-primary layout: one big spotlit magenta button, tiny
+       secondary link below. Replaces the earlier split sign-in card. */
+    .primary-cta-stack {
+      display: flex; flex-direction: column; align-items: center;
+      gap: 1.25rem;
+      margin: 0 auto 2.5rem;
+      max-width: 520px;
+    }
+    .primary-cta-form { width: 100%; margin: 0; }
+    .btn-primary-hero {
+      width: 100%;
+      display: flex; flex-direction: column; align-items: center;
+      gap: 6px;
+      padding: 22px 28px 20px;
+      border-radius: 16px;
+      border: none;
+      background: linear-gradient(180deg, #EC5D9E 0%, #C6407F 100%);
+      color: #090C1F;
+      cursor: pointer; text-decoration: none;
+      font-family: 'Chakra Petch', monospace;
+      font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+      box-shadow:
+        0 0 0 1px rgba(255,255,255,0.15) inset,
+        0 20px 60px rgba(236,93,158,0.35),
+        0 0 80px rgba(236,93,158,0.25);
+      transition: transform 0.15s ease, box-shadow 0.2s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-primary-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(120deg, transparent 40%, rgba(255,255,255,0.18) 50%, transparent 60%);
+      transform: translateX(-100%);
+      transition: transform 0.6s ease;
+      pointer-events: none;
+    }
+    .btn-primary-hero:hover {
+      transform: translateY(-2px);
+      box-shadow:
+        0 0 0 1px rgba(255,255,255,0.25) inset,
+        0 24px 70px rgba(236,93,158,0.45),
+        0 0 100px rgba(236,93,158,0.35);
+    }
+    .btn-primary-hero:hover::before { transform: translateX(100%); }
+    .btn-primary-hero-icon {
+      width: 26px; height: 26px;
+      background: #fff; border-radius: 50%;
+      padding: 4px;
+      margin-bottom: 4px;
+    }
+    .btn-primary-hero-label {
+      font-size: 1.4rem;
+      letter-spacing: 0.1em;
+      line-height: 1;
+    }
+    .btn-primary-hero-sub {
+      font-family: 'DM Sans', system-ui, sans-serif;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: none;
+      color: rgba(9,12,31,0.75);
+    }
+    .primary-cta-footnote {
+      font-family: 'Chakra Petch', monospace;
+      font-size: 0.65rem; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--text-lo); margin: 0;
+    }
+    /* ── Magic-link sign-in field (2026-07-20) ─────────────
+       Single email input that sits above the primary button. Styled to
+       match the magenta hero button so the whole stack reads as one
+       launch panel. Public sign-up: anyone with an email can join. */
+    .pin-fields {
+      display: flex; flex-direction: column; gap: 10px;
+      width: 100%;
+    }
+    .pin-field-label {
+      display: flex; flex-direction: column; gap: 4px;
+      font-family: 'Chakra Petch', monospace;
+      font-size: 0.65rem; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--text-lo);
+    }
+    .pin-field-input {
+      width: 100%;
+      padding: 14px 16px;
+      border-radius: 10px;
+      border: 1px solid rgba(236,93,158,0.35);
+      background: rgba(9,12,31,0.55);
+      color: var(--text-hi);
+      font-family: 'Chakra Petch', monospace;
+      font-size: 1rem; letter-spacing: 0.08em;
+      transition: border-color 0.15s, box-shadow 0.15s, background 0.15s;
+    }
+    .pin-field-input::placeholder {
+      color: rgba(255,255,255,0.28);
+      letter-spacing: 0.05em;
+      text-transform: none;
+    }
+    .pin-field-input:focus {
+      outline: none;
+      border-color: rgba(236,93,158,0.85);
+      background: rgba(9,12,31,0.75);
+      box-shadow: 0 0 0 3px rgba(236,93,158,0.18);
+    }
+    .pin-error {
+      font-family: 'Chakra Petch', monospace;
+      font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
+      color: #F97286;
+      background: rgba(249,114,134,0.08);
+      border: 1px solid rgba(249,114,134,0.35);
+      border-radius: 8px;
+      padding: 8px 12px;
+      margin: 0;
+      text-align: center;
+    }
+    .secondary-cta-link {
+      display: inline-flex; flex-direction: column; align-items: center;
+      gap: 4px;
+      padding: 12px 22px; border-radius: 10px;
+      text-decoration: none;
+      border: 1px solid rgba(34,211,238,0.22);
+      background: rgba(34,211,238,0.04);
+      transition: background 0.2s, border-color 0.2s, transform 0.15s;
+    }
+    .secondary-cta-link:hover {
+      background: rgba(34,211,238,0.09);
+      border-color: rgba(34,211,238,0.5);
+      transform: translateY(-1px);
+    }
+    .secondary-cta-eyebrow {
+      font-family: 'Chakra Petch', monospace;
+      font-size: 0.62rem; letter-spacing: 0.28em; text-transform: uppercase;
+      color: var(--aqua); font-weight: 700;
+    }
+    .secondary-cta-body {
+      font-family: 'DM Sans', system-ui, sans-serif;
+      font-size: 0.9rem; color: var(--text-dim);
+    }
+    .secondary-cta-link:hover .secondary-cta-body { color: #fff; }
+
+    /* Nav coach link tint */
+    .nav-link-coach { color: var(--aqua); }
+    .nav-link-coach:hover { color: #fff; }
+
+    /* Hero bottom fade */
+    .hero-fade {
+      position: absolute; bottom: 0; left: 0; right: 0; height: 120px;
+      pointer-events: none;
+      background: linear-gradient(to bottom, transparent, #090C1F);
+    }
+
+    /* Scroll cue */
+    @keyframes scrollNudge {
+      0%, 100% { transform: translateY(0); opacity: 0.55; }
+      50%      { transform: translateY(6px); opacity: 1; }
+    }
+    .scroll-cue {
+      display: inline-flex; flex-direction: column; align-items: center; gap: 6px;
+      font-family: 'Chakra Petch', monospace;
+      font-size: 0.7rem; letter-spacing: 0.28em; text-transform: uppercase;
+      color: var(--text-dim); text-decoration: none;
+      padding: 8px 14px; border-radius: 6px;
+      transition: color 0.2s;
+      animation: scrollNudge 2.4s ease-in-out infinite;
+    }
+    .scroll-cue:hover { color: var(--aqua); }
+    .scroll-cue svg { width: 18px; height: 18px; }
+
+    /* ═══════════════════════════════════════════════════
+       CONTROL PANEL
+    ═══════════════════════════════════════════════════ */
+    .section {
+      max-width: 1280px; margin: 0 auto;
+      padding: 80px 2rem;
+    }
+    .section-eyebrow {
+      font-family: 'Chakra Petch', monospace;
+      font-size: 0.72rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--aqua); margin-bottom: 6px;
+    }
+    .section-h2 {
+      font-family: 'Chakra Petch', monospace;
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--white); margin-bottom: 10px;
+    }
+    .section-sub {
+      color: var(--text-dim); font-size: 1rem;
+      max-width: 520px; line-height: 1.6; margin-bottom: 3rem;
+    }
+
+    /* 3-col HUD grid */
+    .hud-grid {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 1.15fr 1fr;
+      gap: 16px;
+      align-items: start;
+    }
+    @media (max-width: 900px) {
+      .hud-grid { grid-template-columns: 1fr; }
+      .hud-divider { display: none; }
+    }
+    .hud-divider {
+      position: absolute; top: 0; bottom: 0; width: 1px;
+      pointer-events: none;
+      background: linear-gradient(to bottom, transparent 0%, var(--border) 20%, var(--border) 80%, transparent 100%);
+      opacity: 0.4;
+    }
+    .hud-col { display: flex; flex-direction: column; gap: 10px; }
+    .hud-col.center { position: relative; z-index: 10; }
+
+    .col-header {
+      border-radius: 12px; padding: 16px;
+      border: 1px solid;
+    }
+    .col-header-inner { display: flex; align-items: center; gap: 12px; margin-bottom: 4px; }
+    .col-accent-bar { width: 4px; height: 24px; border-radius: 2px; flex-shrink: 0; }
+    .col-title {
+      font-family: 'Chakra Petch', monospace;
+      font-size: 1.1rem; font-weight: 700;
+      letter-spacing: 0.15em; text-transform: uppercase;
+    }
+    .col-subtitle { font-size: 0.9rem; color: var(--text-dim); margin-left: 16px; }
+
+    .lesson-card {
+      background: #0A0F1E; border: 1px solid var(--border);
+      border-radius: 8px; padding: 14px;
+      display: flex; flex-direction: column; gap: 8px;
+      transition: border-color 0.2s;
+    }
+    .lesson-card:hover { border-color: rgba(34,211,238,0.35); }
+    .lesson-card.locked { opacity: 0.5; }
+    .lesson-title-row { display: flex; align-items: flex-start; gap: 10px; }
+    .lesson-dot-wrap { position: relative; width: 10px; height: 10px; margin-top: 4px; flex-shrink: 0; }
+    .lesson-dot { position: absolute; inset: 0; border-radius: 50%; }
+    .lesson-dot-ping { border-radius: 50%; animation: ping 1.5s ease-out infinite; }
+    .lesson-title {
+      font-family: 'Chakra Petch', monospace;
+      font-size: 0.9rem; font-weight: 600; line-height: 1.3;
+    }
+    .lesson-desc { font-size: 0.88rem; color: var(--text-dim); line-height: 1.5; padding-left: 20px; }
+    .btn-load {
+      align-self: flex-start;
+      font-family: 'Chakra Petch', monospace;
+      font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
+      padding: 5px 12px; border-radius: 6px; border: 1px solid currentColor;
+      background: transparent; cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+    }
+    .btn-load:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    /* ═══════════════════════════════════════════════════
+       RESOURCE TERMINALS
+    ═══════════════════════════════════════════════════ */
+    .terminals-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    @media (max-width: 780px) {
+      .terminals-grid { grid-template-columns: 1fr; }
+    }
+
+    /* Terminal cards — mission / system / status readout cards.
+     *
+     * Design v2.3 (2026-07-07, "Terminal Readout"):
+     *   - Card background is DARKER than the page navy, so it reads as a
+     *     terminal readout emerging FROM the void, not stuck on top of it.
+     *   - Strong tone-colored border. The tone comes from a per-card
+     *     `--card-tone` CSS variable set inline (magenta for missions,
+     *     cyan for systems, green for status).
+     *   - Corner brackets echo the ".corner" motif used in the app's
+     *     modal cards — unifies the landing + app visual language.
+     *
+     * Was: flat `var(--surface)` deep-indigo fill with barely-visible
+     * border. That felt muddy and detached from the app design system.
+     */
+    .terminal-card {
+      --card-tone: rgba(236, 93, 158, 1);       /* fallback: magenta */
+      --card-tone-glow: rgba(236, 93, 158, 0.18);
+      position: relative;
+      background: rgba(9, 12, 31, 0.85);
+      border-radius: 12px;
+      border: 1.5px solid var(--card-tone);
+      transition: box-shadow 0.2s ease, transform 0.15s ease;
+      display: flex; flex-direction: column;
+      box-shadow:
+        inset 0 0 0 1px rgba(255, 255, 255, 0.04),
+        0 0 20px var(--card-tone-glow),
+        0 6px 30px rgba(0, 0, 0, 0.5);
+    }
+    .terminal-card:hover:not(.locked-card) {
+      box-shadow:
+        inset 0 0 0 1px rgba(255, 255, 255, 0.06),
+        0 0 28px var(--card-tone-glow),
+        0 8px 34px rgba(0, 0, 0, 0.55);
+    }
+    /* Corner brackets on active (non-locked) cards. Use the card's
+       accent tone so magenta / cyan / green mission cards each get
+       tone-matched brackets. */
+    .terminal-card:not(.locked-card)::before,
+    .terminal-card:not(.locked-card)::after {
+      content: "";
+      position: absolute;
+      width: 14px; height: 14px;
+      border-color: var(--card-tone);
+      border-style: solid;
+      border-width: 0;
+      pointer-events: none;
+    }
+    .terminal-card:not(.locked-card)::before {
+      top: -1px; left: -1px;
+      border-top-width: 2px; border-left-width: 2px;
+    }
+    .terminal-card:not(.locked-card)::after {
+      bottom: -1px; right: -1px;
+      border-bottom-width: 2px; border-right-width: 2px;
+    }
+    /* Locked cards — no accent, no glow. Sits below the page brightness. */
+    .terminal-card.locked-card {
+      --card-tone: rgba(255, 255, 255, 0.1);
+      --card-tone-glow: transparent;
+      opacity: 0.7;
+      background: rgba(9, 12, 31, 0.65);
+    }
+
+    .terminal-topbar {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    .terminal-topbar-left { display: flex; align-items: center; gap: 10px; }
+    .term-icon { width: 28px; height: 28px; flex-shrink: 0; }
+    .term-status-row { display: flex; align-items: center; gap: 7px; }
+    .term-status-dot-wrap { position: relative; width: 10px; height: 10px; }
+    .term-status-dot { position: absolute; inset: 0; border-radius: 50%; }
+    .term-status-label {
+      font-family: 'Chakra Petch', monospace;
+      font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase;
+    }
+    .term-badge {
+      font-family: 'Chakra Petch', monospace;
+      font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase;
+      padding: 3px 10px; border-radius: 999px;
+    }
+
+    .terminal-body { padding: 16px 16px 10px; flex: 1; }
+    .terminal-title {
+      font-family: 'Chakra Petch', monospace;
+      font-size: 1.05rem; font-weight: 600; line-height: 1.3;
+      margin-bottom: 8px;
+    }
+    .terminal-desc { color: var(--text-dim); font-size: 0.95rem; line-height: 1.6; }
+
+    .progress-wrap {
+      margin-top: 12px;
+      height: 5px; border-radius: 999px; background: rgba(255,255,255,0.08); overflow: hidden;
+    }
+    @keyframes progressfill { from { width:0 } to { width: 65% } }
+    .progress-bar {
+      height: 100%; border-radius: 999px;
+      animation: progressfill 3s ease-in-out forwards;
+    }
+    .progress-label { font-family: 'Chakra Petch', monospace; font-size: 0.7rem; color: var(--text-lo); margin-top: 5px; }
+
+    .terminal-footer { padding: 0 16px 16px; display: flex; flex-direction: column; gap: 10px; }
+    .terminal-meta { display: flex; gap: 18px; color: var(--text-lo); font-family: 'Chakra Petch', monospace; font-size: 0.78rem; }
+    .terminal-meta span { display: flex; align-items: center; gap: 6px; }
+    .btn-access {
+      width: 100%;
+      font-family: 'Chakra Petch', monospace;
+      font-size: 0.9rem; letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 11px 16px; border-radius: 8px; border: 1px solid currentColor;
+      background: transparent; cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+    .btn-access:hover:not(:disabled) { color: #090C1F !important; }
+    .btn-access:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    /* ═══════════════════════════════════════════════════
+       FOOTER
+    ═══════════════════════════════════════════════════ */
+    .footer {
+      border-top: 1px solid var(--border);
+      padding: 40px 2rem;
+    }
+    .footer-inner {
+      max-width: 1280px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 24px; flex-wrap: wrap;
+    }
+    .footer-brand { display: flex; flex-direction: column; gap: 4px; }
+    .footer-title {
+      font-family: 'Chakra Petch', monospace;
+      font-size: 1.1rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+    }
+    .footer-tagline { font-size: 0.88rem; color: var(--text-dim); }
+    .footer-nav { display: flex; flex-wrap: wrap; gap: 10px 20px; }
+    .footer-nav a {
+      font-family: 'Chakra Petch', monospace;
+      font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--text-dim); text-decoration: none;
+      transition: color 0.2s; padding: 2px 4px; border-radius: 4px;
+    }
+    .footer-nav a:hover { color: var(--aqua); }
+    .footer-nav a.footer-coach {
+      text-transform: none; letter-spacing: 0.02em;
+      color: var(--text-lo); font-size: 0.74rem;
+      margin-left: auto;
+    }
+    .footer-nav a.footer-coach:hover { color: var(--aqua); }
+    .footer-legal {
+      max-width: 1280px; margin: 24px auto 0;
+      padding-top: 20px; border-top: 1px solid var(--border);
+      text-align: center; color: var(--text-lo); font-size: 0.82rem;
+    }
+
+    /* ── Divider between major sections ──────────────── */
+    .section-divider {
+      max-width: 1280px; margin: 0 auto;
+      border: none; border-top: 1px solid var(--border);
+    }
+  </style>
+
+  <!--
+    Analytics (2026-07-08). This static landing page can't use the React
+    <Analytics /> component from the Next app, so we inject Vercel's
+    script-tag version directly. Cookie-less, no PII, no consent banner.
+    See /privacy for details.
+  -->
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <script defer src="/_vercel/speed-insights/script.js"></script>
+</head>
+<body>
+
+<!-- Skip Link -->
+<a href="#main-content" class="sr-only">Skip to main content</a>
+
+<!-- ═══════════════════════════════════════════════════════
+     HEADER
+═══════════════════════════════════════════════════════ -->
+<header class="header" role="banner">
+  <div class="header-inner">
+
+    <!-- Left: Logo + wordmark -->
+    <!-- 2026-07-01 rebrand: swapped retired v1 orbit-dot SVG mark for the
+         Orbital Robot mascot. See BRAND_AND_STYLE_GUIDE.md §3.7. -->
+    <a href="#home" class="header-left" aria-label="Policy Debate 101 — home">
+      <img
+        src="/brand/logo-mascot.png"
+        alt=""
+        aria-hidden="true"
+        class="header-mascot"
+        width="64"
+        height="64"
+      />
+      <span class="logo-label">Policy Debate 101</span>
+    </a>
+
+    <!-- Right: Nav
+         2026-07-12 (v2 mock): One-door student-primary layout.
+         Header now only shows nav links + one small "For Coaches →" link.
+         The debater sign-in lives inside the hero as the single primary CTA.
+         Coaches still have a two-click path: header link → /coach login page. -->
+    <nav class="header-right" aria-label="Main navigation">
+      <a href="#missions" class="nav-link">Missions</a>
+      <a href="#toolkit" class="nav-link">Toolkit</a>
+      <a href="/glossary" class="nav-link">Glossary</a>
+      <a href="/coach" class="nav-link nav-link-coach">For Coaches →</a>
+    </nav>
+
+  </div>
+</header>
+
+<!-- ═══════════════════════════════════════════════════════
+     MAIN
+═══════════════════════════════════════════════════════ -->
+<main id="main-content" tabindex="-1">
+
+  <!-- ── HERO ────────────────────────────────────────── -->
+  <section class="hero" id="home" aria-labelledby="hero-heading">
+    <div class="hero-grid" aria-hidden="true"></div>
+    <div class="hero-glow"  aria-hidden="true"></div>
+    <div class="hero-scanline-wrap" aria-hidden="true">
+      <div class="scanline-el"></div>
+    </div>
+
+    <div class="hero-content">
+      <!-- Status badge -->
+      <div class="status-badge animate-fadein" role="status" aria-label="Policy Debate 101 Space Station online, now boarding">
+        <div class="status-dot-wrap" aria-hidden="true">
+          <span class="ping-ring status-dot-ring" style="background:var(--green); position:absolute; inset:0;"></span>
+          <span class="status-dot-core"></span>
+        </div>
+        <span class="status-badge-text">Station Online — Now Boarding</span>
+      </div>
+
+      <!-- Headline -->
+      <h1 id="hero-heading" class="hero-h1 gradient-text animate-fadein delay-1">
+        LEARN POLICY DEBATE.<br>ONE MISSION AT A TIME.
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="hero-sub animate-fadein delay-2">
+        Speak up. Share your ideas. Win the argument.<br>
+        Board the ship, earn your rank, and launch your first mission.
+      </p>
+
+      <!-- Primary CTA — email + password (2026-07-20)
+           One form, one submit. /auth/debater-signin tries sign-in first;
+           if the email doesn't exist yet, creates the account and signs
+           the student in the same request. No confirmation email, no
+           magic link. Rostered camp students still use /login/pin. -->
+      <div class="primary-cta-stack animate-fadein delay-3">
+        <form action="/auth/debater-signin" method="post" class="primary-cta-form">
+          <input type="hidden" name="next" value="/bridge" />
+
+          <div class="pin-fields">
+            <label class="pin-field-label">
+              Email
+              <input
+                type="email"
+                name="email"
+                required
+                autocomplete="email"
+                autocapitalize="none"
+                autocorrect="off"
+                spellcheck="false"
+                placeholder="you@school.edu"
+                class="pin-field-input"
+              />
+            </label>
+            <label class="pin-field-label">
+              Password
+              <input
+                type="password"
+                name="password"
+                required
+                minlength="6"
+                autocomplete="current-password"
+                placeholder="At least 6 characters"
+                class="pin-field-input"
+              />
+            </label>
+          </div>
+
+          <button type="submit" class="btn-primary-hero" aria-label="Sign in or sign up with email and password" style="margin-top: 14px;">
+            <span class="btn-primary-hero-label">▸ Sign In / Sign Up</span>
+            <span class="btn-primary-hero-sub">Same button for new and returning debaters</span>
+          </button>
+        </form>
+
+        <p class="primary-cta-footnote">Returning? Same email + password. New? We&rsquo;ll create your account automatically.</p>
+
+        <a href="/coach" class="secondary-cta-link">
+          <span class="secondary-cta-eyebrow">◈ For Coaches</span>
+          <span class="secondary-cta-body">Roster, missions, and progress dashboards →</span>
+        </a>
+
+        <a href="/login/pin" class="secondary-cta-link" style="margin-top: 8px;">
+          <span class="secondary-cta-eyebrow">◇ Camp Student</span>
+          <span class="secondary-cta-body">Signing in with a PIN? Click here →</span>
+        </a>
+      </div>
+
+      <!-- Scroll cue -->
+      <a href="#missions" class="scroll-cue animate-fadein delay-4" aria-label="Scroll to missions">
+        <span>Scroll for missions</span>
+        <svg viewBox="0 0 18 18" fill="none" aria-hidden="true">
+          <path d="M4 7 L9 12 L14 7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+
+    <div class="hero-fade" aria-hidden="true"></div>
+  </section>
+
+  <!-- ── CONTROL PANEL ──────────────────────────────── -->
+  <section id="missions" aria-labelledby="missions-heading">
+    <div class="section">
+      <p class="section-eyebrow">◉ Incoming Transmission</p>
+      <h2 id="missions-heading" class="section-h2">YOUR FIRST MISSION</h2>
+      <p class="section-sub">
+        Every debater starts here. Learn the crew, the speeches, and how a round
+        flies — then launch.
+      </p>
+
+      <div class="terminals-grid">
+
+        <!-- Mission 01 — Welcome Aboard (ACTIVE) -->
+        <article class="terminal-card" style="--card-tone: rgba(236,93,158,0.9); --card-tone-glow: rgba(236,93,158,0.18);"
+          aria-labelledby="m1-title">
+          <div class="terminal-topbar">
+            <div class="terminal-topbar-left">
+              <svg class="term-icon" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+                <path d="M14 3 C10 3 8 9 8 16 L14 18 L20 16 C20 9 18 3 14 3Z" fill="#EC5D9E" opacity="0.75"/>
+                <path d="M14 3 L11 8 L17 8 Z" fill="#EC5D9E"/>
+                <path d="M8 16 L5 22 L10 20 Z"  fill="#EC5D9E" opacity="0.45"/>
+                <path d="M20 16 L23 22 L18 20 Z" fill="#EC5D9E" opacity="0.45"/>
+                <circle cx="14" cy="12" r="2.5" fill="#090C1F" stroke="#EC5D9E" stroke-width="1"/>
+              </svg>
+              <div class="term-status-row" role="status" aria-label="Status: Active">
+                <div class="term-status-dot-wrap" aria-hidden="true">
+                  <span class="ping-ring term-status-dot" style="background:var(--green)"></span>
+                  <span class="term-status-dot" style="background:var(--green)"></span>
+                </div>
+                <span class="term-status-label" style="color:var(--green)">ACTIVE</span>
+              </div>
+            </div>
+            <span class="term-badge" style="color:var(--magenta);background:rgba(236,93,158,0.1)">MISSION 01</span>
+          </div>
+          <div class="terminal-body">
+            <h3 id="m1-title" class="terminal-title" style="color:var(--magenta)">Welcome Aboard</h3>
+            <p class="terminal-desc">
+              Day 1 · Block 1 · Two-Person Team. Meet Commander&nbsp;K. Learn your role,
+              your partner's role, and the order of speeches in a policy round.
+            </p>
+          </div>
+          <div class="terminal-footer">
+            <div class="terminal-meta">
+              <span>🎯 5 checkpoints</span>
+              <span>💰 40 credits</span>
+            </div>
+            <a class="btn-access" style="color:var(--magenta);text-decoration:none;" href="/login"
+              onmouseenter="this.style.background='#EC5D9E';this.style.color='#090C1F'"
+              onmouseleave="this.style.background='';this.style.color='var(--magenta)'"
+              aria-label="Sign in to launch Welcome Aboard mission">Sign In to Launch</a>
+          </div>
+        </article>
+
+        <!-- Mission 02 — LOCKED -->
+        <article class="terminal-card locked-card"
+          aria-labelledby="m2-title">
+          <div class="terminal-topbar">
+            <div class="terminal-topbar-left">
+              <svg class="term-icon" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+                <rect x="8" y="12" width="12" height="10" rx="2" fill="#6B7280" opacity="0.5"/>
+                <path d="M10 12 V9 a4 4 0 0 1 8 0 V12" stroke="#6B7280" stroke-width="1.5" fill="none" opacity="0.6"/>
+                <circle cx="14" cy="17" r="1.5" fill="#090C1F"/>
+              </svg>
+              <div class="term-status-row" role="status" aria-label="Status: Locked">
+                <div class="term-status-dot-wrap" aria-hidden="true">
+                  <span class="term-status-dot" style="background:var(--text-lo)"></span>
+                </div>
+                <span class="term-status-label" style="color:var(--text-lo)">LOCKED</span>
+              </div>
+            </div>
+            <span class="term-badge" style="color:var(--magenta);background:rgba(236,93,158,0.07)">MISSION 02</span>
+          </div>
+          <div class="terminal-body">
+            <h3 id="m2-title" class="terminal-title" style="color:var(--text-lo)">Coming Online Soon</h3>
+            <p class="terminal-desc">
+              Clear Mission 01 first. The next briefing decrypts when Commander&nbsp;K
+              confirms you're ready.
+            </p>
+          </div>
+          <div class="terminal-footer">
+            <div class="terminal-meta">
+              <span>🔒 Locked</span>
+            </div>
+            <button class="btn-access" style="color:var(--text-lo)" disabled aria-label="Mission 02 — locked">— LOCKED —</button>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- STATION SYSTEMS (hidden 2026-07-05 — see nav change to Coaches) -->
+  <hr class="section-divider" hidden />
+
+  <section id="systems" aria-labelledby="systems-heading" hidden style="display:none">
+    <div class="section">
+      <p class="section-eyebrow">◉ Station Systems</p>
+      <h2 id="systems-heading" class="section-h2">HOW IT WORKS</h2>
+      <p class="section-sub">
+        Two systems keep you in orbit while you learn.
+      </p>
+
+      <div class="terminals-grid">
+
+        <article class="terminal-card" style="--card-tone: rgba(34,211,238,0.9); --card-tone-glow: rgba(34,211,238,0.18);" aria-labelledby="s1-title">
+          <div class="terminal-topbar">
+            <div class="terminal-topbar-left">
+              <svg class="term-icon" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+                <circle cx="14" cy="14" r="3" fill="#22D3EE"/>
+                <circle cx="14" cy="14" r="7" stroke="#22D3EE" stroke-width="1.2" opacity="0.45" fill="none"/>
+                <circle cx="14" cy="14" r="11" stroke="#22D3EE" stroke-width="1" opacity="0.25" fill="none"/>
+              </svg>
+              <div class="term-status-row"><span class="term-status-label" style="color:var(--aqua)">CORE</span></div>
+            </div>
+            <span class="term-badge" style="color:var(--aqua);background:rgba(34,211,238,0.1)">SYSTEM</span>
+          </div>
+          <div class="terminal-body">
+            <h3 id="s1-title" class="terminal-title" style="color:var(--aqua)">Missions</h3>
+            <p class="terminal-desc">
+              Short briefings on policy debate — case construction, evidence,
+              cross-ex, rebuttals. Each one teaches, checks, and ranks you up.
+            </p>
+          </div>
+        </article>
+
+        <article class="terminal-card" style="--card-tone: rgba(76,184,106,0.9); --card-tone-glow: rgba(76,184,106,0.18);" aria-labelledby="s2-title">
+          <div class="terminal-topbar">
+            <div class="terminal-topbar-left">
+              <svg class="term-icon" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+                <path d="M14 3 L23 7 V14 C23 19 19 23 14 25 C9 23 5 19 5 14 V7 Z" fill="#4CB86A" opacity="0.4" stroke="#4CB86A" stroke-width="1.4"/>
+                <path d="M10 14 L13 17 L18 11" stroke="#090C1F" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <div class="term-status-row"><span class="term-status-label" style="color:var(--green)">ACTIVE</span></div>
+            </div>
+            <span class="term-badge" style="color:var(--green);background:rgba(76,184,106,0.1)">SYSTEM</span>
+          </div>
+          <div class="terminal-body">
+            <h3 id="s2-title" class="terminal-title" style="color:var(--green)">Shields &amp; Streaks</h3>
+            <p class="terminal-desc">
+              Three shields per mission. Lose one for each wrong checkpoint.
+              Streaks carry across missions. Shields reset; pride doesn't.
+            </p>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+
+</main><!-- /main -->
+
+<!-- ═══════════════════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════════════════ -->
+<footer class="footer" role="contentinfo">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="footer-title gradient-text">POLICY DEBATE 101 SPACE STATION</span>
+      <span class="footer-tagline">Policy debate training, one mission at a time.</span>
+    </div>
+    <nav class="footer-nav" aria-label="Footer navigation">
+      <a href="/privacy">Privacy</a>
+      <a href="#home">Home</a>
+      <a href="#missions">Missions</a>
+      <a href="/login/teacher" class="footer-coach">Coaches</a>
+      <a href="/login">Sign In</a>
+    </nav>
+  </div>
+  <p class="footer-legal">
+    © 2026 PolicyDebate101 · <a href="/privacy" style="color:inherit;text-decoration:underline;">Privacy</a> · Built for accessible learning. All debate content is for educational purposes.
+  </p>
+</footer>
+
+</body>
+</html>

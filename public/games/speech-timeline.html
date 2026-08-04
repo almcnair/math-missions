@@ -1,0 +1,1265 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>The Round Playbook · Policy Debate 101</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:        #05071a;
+    --panel:     #0c1430;
+    --panel-2:   #111a3d;
+    --cyan:      #00d4ff;
+    --cyan-soft: #6fe3ff;
+    --amber:     #ffa726;
+    --amber-soft:#ffc97a;
+    --magenta:   #ff3d9a;
+    --text:      #e6edff;
+    --text-dim:  #8a9ac9;
+    --good:      #4ade80;
+    --warn:      #ff5c5c;
+
+    --aff:       var(--cyan);
+    --aff-soft:  var(--cyan-soft);
+    --neg:       var(--amber);
+    --neg-soft:  var(--amber-soft);
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: radial-gradient(ellipse at 20% -10%, #0a1440 0%, var(--bg) 55%, #02030c 100%);
+    color: var(--text);
+    font-family: 'Rajdhani', system-ui, sans-serif;
+    font-weight: 500;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* starfield */
+  .stars, .stars::before, .stars::after {
+    content: ''; position: fixed; inset: 0; pointer-events: none;
+    background-image:
+      radial-gradient(1px 1px at 12% 18%, rgba(230,237,255,.7), transparent 60%),
+      radial-gradient(1px 1px at 82% 44%, rgba(230,237,255,.5), transparent 60%),
+      radial-gradient(1px 1px at 45% 78%, rgba(230,237,255,.6), transparent 60%),
+      radial-gradient(1px 1px at 68% 12%, rgba(230,237,255,.4), transparent 60%),
+      radial-gradient(1px 1px at 30% 62%, rgba(230,237,255,.5), transparent 60%),
+      radial-gradient(1.5px 1.5px at 90% 88%, rgba(111,227,255,.6), transparent 60%),
+      radial-gradient(1.5px 1.5px at 8% 90%, rgba(255,167,38,.35), transparent 60%);
+    background-size: 800px 800px;
+  }
+  .stars::before { background-position: 200px 300px; opacity: .5; }
+  .stars::after  { background-position: 600px 100px; opacity: .35; }
+
+  .wrap {
+    position: relative;
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 32px 24px 96px;
+    z-index: 1;
+  }
+
+  /* Header */
+  .brand-line {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text-dim);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .brand-line .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--cyan); box-shadow: 0 0 10px var(--cyan); }
+  .brand-line .sep { opacity: .5; }
+
+  h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 900;
+    font-size: clamp(28px, 4vw, 44px);
+    letter-spacing: .04em;
+    margin: 0 0 8px;
+    line-height: 1.05;
+    text-shadow: 0 0 30px rgba(0, 212, 255, .25);
+  }
+  h1 .accent { color: var(--cyan); }
+  .subtitle {
+    color: var(--text-dim);
+    font-size: 16px;
+    max-width: 780px;
+    line-height: 1.5;
+    margin: 0 0 28px;
+  }
+
+  /* Controls */
+  .controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 22px;
+    align-items: center;
+  }
+  .btn {
+    background: rgba(12, 20, 48, .7);
+    border: 1px solid rgba(138, 154, 201, .25);
+    color: var(--text);
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    padding: 10px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all .18s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    backdrop-filter: blur(6px);
+  }
+  .btn:hover { border-color: rgba(230,237,255,.4); transform: translateY(-1px); }
+  .btn .count {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--text-dim);
+    padding: 2px 6px;
+    border-radius: 3px;
+    background: rgba(230,237,255,.06);
+  }
+  .btn.aff-btn.on {
+    background: rgba(0, 212, 255, .12);
+    border-color: var(--cyan);
+    color: var(--cyan);
+    box-shadow: 0 0 24px rgba(0, 212, 255, .25);
+  }
+  .btn.aff-btn.on .count { background: rgba(0, 212, 255, .18); color: var(--cyan-soft); }
+  .btn.neg-btn.on {
+    background: rgba(255, 167, 38, .12);
+    border-color: var(--amber);
+    color: var(--amber);
+    box-shadow: 0 0 24px rgba(255, 167, 38, .25);
+  }
+  .btn.neg-btn.on .count { background: rgba(255, 167, 38, .18); color: var(--amber-soft); }
+  .btn.reset { color: var(--text-dim); }
+  .legend {
+    margin-left: auto;
+    color: var(--text-dim);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .legend .swatch { display: inline-flex; align-items: center; gap: 6px; }
+  .legend .sw {
+    width: 10px; height: 10px; border-radius: 2px;
+  }
+  .legend .sw.aff { background: var(--cyan); box-shadow: 0 0 8px var(--cyan); }
+  .legend .sw.neg { background: var(--amber); box-shadow: 0 0 8px var(--amber); }
+  .legend .sw.cx  { border: 1.5px solid var(--text-dim); background: transparent; }
+
+  /* Timeline */
+  .timeline-shell {
+    position: relative;
+    background:
+      linear-gradient(180deg, rgba(12, 20, 48, .8) 0%, rgba(12, 20, 48, .55) 100%);
+    border: 1px solid rgba(138, 154, 201, .18);
+    border-radius: 14px;
+    padding: 22px 22px 18px;
+    box-shadow:
+      inset 0 1px 0 rgba(230, 237, 255, .04),
+      0 20px 60px rgba(0, 0, 0, .35);
+  }
+  .timeline-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 12px;
+  }
+  .timeline-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: .2em;
+    color: var(--text-dim);
+    text-transform: uppercase;
+  }
+  .timeline-label .accent { color: var(--cyan); }
+  .total-time {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: .18em;
+    color: var(--text-dim);
+    text-transform: uppercase;
+  }
+  .total-time strong { color: var(--text); font-weight: 500; }
+
+  /* Negative-block bracket */
+  .negblock-bracket {
+    position: relative;
+    height: 22px;
+    margin-bottom: 4px;
+  }
+  .negblock-bracket .br {
+    position: absolute;
+    top: 12px;
+    height: 10px;
+    border: 1.5px solid var(--amber);
+    border-bottom: none;
+    border-radius: 6px 6px 0 0;
+    opacity: .7;
+  }
+  .negblock-bracket .lbl {
+    position: absolute;
+    top: -4px;
+    transform: translateX(-50%);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: .2em;
+    color: var(--amber);
+    text-transform: uppercase;
+    white-space: nowrap;
+    background: var(--panel);
+    padding: 1px 8px;
+    border-radius: 3px;
+    text-shadow: 0 0 8px rgba(255, 167, 38, .5);
+  }
+
+  /* Timeline blocks — flex row proportional to duration */
+  .timeline {
+    display: flex;
+    gap: 4px;
+    align-items: stretch;
+    min-height: 92px;
+  }
+  .block {
+    position: relative;
+    border-radius: 6px;
+    cursor: pointer;
+    padding: 10px 8px 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all .22s ease;
+    min-width: 0;
+    overflow: hidden;
+    background: rgba(230, 237, 255, .04);
+    border: 1px solid rgba(138, 154, 201, .18);
+  }
+  .block:hover {
+    transform: translateY(-2px);
+    border-color: rgba(230, 237, 255, .35);
+  }
+  .block.aff {
+    background: linear-gradient(180deg, rgba(0, 212, 255, .18) 0%, rgba(0, 212, 255, .06) 100%);
+    border-color: rgba(0, 212, 255, .5);
+  }
+  .block.neg {
+    background: linear-gradient(180deg, rgba(255, 167, 38, .18) 0%, rgba(255, 167, 38, .06) 100%);
+    border-color: rgba(255, 167, 38, .5);
+  }
+  .block.cx {
+    background: transparent;
+    border: 1.5px dashed rgba(138, 154, 201, .5);
+    flex: 0 0 44px;
+  }
+  .block .name {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: .05em;
+    color: var(--text);
+  }
+  .block.aff .name { color: var(--cyan); text-shadow: 0 0 12px rgba(0, 212, 255, .5); }
+  .block.neg .name { color: var(--amber); text-shadow: 0 0 12px rgba(255, 167, 38, .5); }
+  .block.cx .name  {
+    font-size: 11px; color: var(--text-dim); writing-mode: vertical-rl;
+    transform: rotate(180deg); text-align: center; letter-spacing: .2em;
+    margin: auto;
+  }
+  .block .time {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: .15em;
+    color: var(--text-dim);
+    text-transform: uppercase;
+  }
+  .block.aff .time, .block.neg .time { color: rgba(230, 237, 255, .75); }
+  .block .role {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: .18em;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    opacity: .7;
+  }
+  .block.cx .role, .block.cx .time { display: none; }
+
+  /* Dim / highlight modes */
+  .dim .block:not(.match) { opacity: .28; filter: saturate(.5); }
+  .dim .block.match {
+    box-shadow: 0 0 32px rgba(0, 212, 255, .35);
+    transform: translateY(-2px);
+  }
+  .dim .block.match.neg { box-shadow: 0 0 32px rgba(255, 167, 38, .35); }
+
+  /* Selected state */
+  .block.selected {
+    outline: 2px solid var(--text);
+    outline-offset: 2px;
+  }
+  .block.selected::after {
+    content: '';
+    position: absolute;
+    bottom: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0; height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid var(--panel-2);
+    filter: drop-shadow(0 -1px 0 rgba(230,237,255,.3));
+  }
+
+  /* Detail panel */
+  .detail {
+    margin-top: 24px;
+    background: linear-gradient(180deg, var(--panel-2) 0%, var(--panel) 100%);
+    border: 1px solid rgba(138, 154, 201, .25);
+    border-radius: 14px;
+    padding: 28px 32px 32px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, .35);
+    position: relative;
+    overflow: hidden;
+  }
+  .detail::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--cyan) 0%, transparent 100%);
+  }
+  .detail.side-neg::before { background: linear-gradient(90deg, var(--amber) 0%, transparent 100%); }
+
+  .detail-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 22px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid rgba(138, 154, 201, .15);
+  }
+  .detail-title {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 900;
+    font-size: 26px;
+    letter-spacing: .04em;
+    margin: 0;
+    line-height: 1.15;
+  }
+  .detail-title .code { color: var(--cyan); }
+  .detail.side-neg .detail-title .code { color: var(--amber); }
+  .detail-sub {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: .2em;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    margin-top: 6px;
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  .detail-sub .pill {
+    padding: 2px 8px;
+    border-radius: 3px;
+    background: rgba(0, 212, 255, .15);
+    color: var(--cyan);
+  }
+  .detail.side-neg .detail-sub .pill { background: rgba(255, 167, 38, .15); color: var(--amber); }
+  .detail-sub .pill.time { background: rgba(230, 237, 255, .08); color: var(--text); }
+
+  .detail-nav {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+  .nav-btn {
+    background: transparent;
+    border: 1px solid rgba(138, 154, 201, .3);
+    color: var(--text-dim);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all .18s ease;
+  }
+  .nav-btn:hover { color: var(--text); border-color: rgba(230, 237, 255, .5); }
+
+  /* ── Detail section labels (shared) ── */
+  .section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .section-label .glyph {
+    font-size: 14px;
+    filter: drop-shadow(0 0 8px currentColor);
+  }
+  .section-label.mission .glyph { color: var(--cyan); }
+  .section-label.hook    .glyph { color: var(--amber); }
+  .section-label.say     .glyph { color: var(--cyan-soft); }
+  .section-label.pro     .glyph { color: var(--amber-soft); }
+
+  .section-body {
+    font-size: 16px;
+    line-height: 1.55;
+    color: var(--text);
+  }
+  .section-body em { font-style: italic; color: var(--text-dim); }
+  .section-body strong { color: var(--cyan); font-weight: 600; }
+  .detail.side-neg .section-body strong { color: var(--amber); }
+
+  /* ── Glossary terms (tap/hover for definition) ── */
+  t {
+    color: var(--cyan);
+    font-weight: 600;
+    border-bottom: 1px dotted rgba(0, 212, 255, .55);
+    cursor: help;
+    padding: 0 1px;
+    border-radius: 2px;
+    transition: background .18s ease, color .18s ease;
+  }
+  t:hover, t:focus { background: rgba(0, 212, 255, .12); outline: none; }
+  .detail.side-neg t {
+    color: var(--amber);
+    border-bottom-color: rgba(255, 167, 38, .55);
+  }
+  .detail.side-neg t:hover, .detail.side-neg t:focus { background: rgba(255, 167, 38, .12); }
+  /* Terms inside the mono say-box: keep mono, tone down glow */
+  .say-box t { font-family: inherit; font-weight: 500; }
+
+  /* Tooltip */
+  .term-tip {
+    position: absolute;
+    z-index: 100;
+    max-width: 300px;
+    background: linear-gradient(180deg, #0a1234 0%, #050818 100%);
+    border: 1px solid var(--cyan);
+    border-radius: 8px;
+    padding: 14px 16px 12px;
+    box-shadow:
+      0 0 30px rgba(0, 212, 255, .35),
+      0 20px 40px rgba(0, 0, 0, .5);
+    color: var(--text);
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    animation: tipIn .16s ease-out;
+  }
+  .term-tip.side-neg {
+    border-color: var(--amber);
+    box-shadow:
+      0 0 30px rgba(255, 167, 38, .35),
+      0 20px 40px rgba(0, 0, 0, .5);
+  }
+  @keyframes tipIn {
+    from { opacity: 0; transform: translateY(4px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .term-tip .tip-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 8px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(138, 154, 201, .18);
+  }
+  .term-tip .tip-title {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: .06em;
+    color: var(--cyan);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .term-tip.side-neg .tip-title { color: var(--amber); }
+  .term-tip .tip-title .glyph { font-size: 16px; }
+  .term-tip .tip-short {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: .15em;
+    color: var(--text-dim);
+    padding: 2px 6px;
+    background: rgba(230, 237, 255, .06);
+    border-radius: 3px;
+  }
+  .term-tip .tip-def {
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+  .term-tip .tip-foot {
+    display: flex;
+    justify-content: flex-end;
+  }
+  .term-tip .tip-link {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: var(--cyan);
+    text-decoration: none;
+    padding: 4px 8px;
+    border: 1px solid rgba(0, 212, 255, .35);
+    border-radius: 4px;
+    transition: all .18s ease;
+  }
+  .term-tip.side-neg .tip-link {
+    color: var(--amber);
+    border-color: rgba(255, 167, 38, .35);
+  }
+  .term-tip .tip-link:hover {
+    background: rgba(0, 212, 255, .15);
+    color: var(--cyan-soft);
+  }
+  .term-tip.side-neg .tip-link:hover {
+    background: rgba(255, 167, 38, .15);
+    color: var(--amber-soft);
+  }
+  /* Little arrow */
+  .term-tip::before {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: var(--arrow-x, 20px);
+    width: 10px; height: 10px;
+    background: #050818;
+    border-right: 1px solid var(--cyan);
+    border-bottom: 1px solid var(--cyan);
+    transform: rotate(45deg);
+  }
+  .term-tip.side-neg::before {
+    border-right-color: var(--amber);
+    border-bottom-color: var(--amber);
+  }
+  .term-tip.below::before {
+    bottom: auto; top: -6px;
+    border-right: none; border-bottom: none;
+    border-left: 1px solid var(--cyan);
+    border-top: 1px solid var(--cyan);
+  }
+  .term-tip.side-neg.below::before {
+    border-left-color: var(--amber);
+    border-top-color: var(--amber);
+  }
+
+  /* ── Row 1: Mission strip (full width) ── */
+  .row-mission {
+    background: rgba(0, 212, 255, .06);
+    border-left: 3px solid var(--cyan);
+    border-radius: 6px;
+    padding: 16px 20px;
+    margin-bottom: 22px;
+  }
+  .detail.side-neg .row-mission {
+    background: rgba(255, 167, 38, .06);
+    border-left-color: var(--amber);
+  }
+  .row-mission .headline {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 1.2;
+    letter-spacing: .02em;
+    color: var(--cyan);
+    margin-bottom: 6px;
+    text-shadow: 0 0 20px rgba(0, 212, 255, .35);
+  }
+  .detail.side-neg .row-mission .headline {
+    color: var(--amber);
+    text-shadow: 0 0 20px rgba(255, 167, 38, .35);
+  }
+  .row-mission .detail-line {
+    color: var(--text);
+    opacity: .82;
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  /* ── Row 2: Hook (image + text side by side) ── */
+  .row-hook {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 24px;
+    align-items: center;
+    margin-bottom: 22px;
+  }
+  .hook-visual {
+    aspect-ratio: 4 / 3;
+    background:
+      radial-gradient(ellipse at 30% 30%, rgba(0, 212, 255, .28) 0%, transparent 55%),
+      radial-gradient(ellipse at 70% 70%, rgba(255, 167, 38, .18) 0%, transparent 55%),
+      linear-gradient(180deg, #0a1234 0%, #050818 100%);
+    border: 1px solid rgba(138, 154, 201, .18);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hook-visual .hook-glyph {
+    font-size: 72px;
+    line-height: 1;
+    margin-bottom: 12px;
+    filter: drop-shadow(0 0 24px var(--cyan));
+  }
+  .detail.side-neg .hook-visual .hook-glyph { filter: drop-shadow(0 0 24px var(--amber)); }
+  .hook-visual .hook-cap {
+    color: var(--text-dim);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    opacity: .8;
+  }
+  .row-hook .hook-copy .section-body {
+    font-size: 17px;
+    line-height: 1.55;
+  }
+
+  /* ── Row 3: Say to Judge (hero) + Pro Move (sidebar) ── */
+  .row-say {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 24px;
+    align-items: stretch;
+  }
+  .say-box {
+    background: rgba(5, 7, 26, .65);
+    border: 1px solid rgba(0, 212, 255, .35);
+    border-left: 3px solid var(--cyan);
+    border-radius: 8px;
+    padding: 18px 20px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--text);
+    box-shadow: inset 0 0 30px rgba(0, 212, 255, .08);
+  }
+  .detail.side-neg .say-box {
+    border-color: rgba(255, 167, 38, .35);
+    border-left-color: var(--amber);
+    box-shadow: inset 0 0 30px rgba(255, 167, 38, .08);
+  }
+  .say-box::before {
+    content: '// SAY TO JUDGE';
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: .22em;
+    color: var(--text-dim);
+    margin-bottom: 10px;
+  }
+
+  .pro-box {
+    background: rgba(255, 167, 38, .08);
+    border: 1px solid rgba(255, 167, 38, .25);
+    border-radius: 8px;
+    padding: 16px 18px;
+    display: flex;
+    flex-direction: column;
+  }
+  .pro-box .section-label { margin-bottom: 8px; }
+  .pro-box .section-body { font-size: 15px; line-height: 1.5; }
+  .pro-box .section-body strong { color: var(--amber); }
+  .detail.side-neg .pro-box .section-body strong { color: var(--cyan); }
+
+  /* Mobile */
+  @media (max-width: 820px) {
+    .wrap { padding: 22px 14px 80px; }
+    .timeline { flex-direction: column; min-height: 0; }
+    .block { min-height: 60px; padding: 12px; flex-direction: row; align-items: center; gap: 12px; }
+    .block.cx { flex: 0 0 auto; min-height: 40px; }
+    .block.cx .name { writing-mode: horizontal-tb; transform: none; }
+    .block .role { display: none; }
+    .block.selected::after { display: none; }
+    .negblock-bracket { display: none; }
+    .row-hook { grid-template-columns: 1fr; }
+    .row-say  { grid-template-columns: 1fr; }
+    .legend { display: none; }
+    .detail { padding: 22px 18px; }
+    .term-tip { max-width: calc(100vw - 32px); }
+  }
+
+  .footer-note {
+    margin-top: 40px;
+    text-align: center;
+    color: var(--text-dim);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    opacity: .6;
+  }
+</style>
+</head>
+<body>
+<div class="stars"></div>
+
+<div class="wrap">
+
+  <div class="brand-line">
+    <span class="dot"></span>
+    <span>CDSI Space Station</span>
+    <span class="sep">·</span>
+    <span>Mission Reference</span>
+    <span class="sep">·</span>
+    <span>Sector: Policy Round</span>
+  </div>
+
+  <h1>The <span class="accent">Round Playbook</span></h1>
+  <p class="subtitle">
+    Every policy debate follows the same order. Click any speech on the timeline to
+    see your mission, what to say to the judge, and one pro move that turns rookies
+    into champs.
+  </p>
+
+  <div class="controls">
+    <button class="btn aff-btn" data-action="highlight-aff">
+      Highlight Affirmative
+      <span class="count">4 speeches · 16 min</span>
+    </button>
+    <button class="btn neg-btn" data-action="highlight-neg">
+      Highlight Negative
+      <span class="count">4 speeches · 16 min</span>
+    </button>
+    <button class="btn reset" data-action="reset">Reset</button>
+
+    <div class="legend">
+      <span class="swatch"><span class="sw aff"></span>AFF</span>
+      <span class="swatch"><span class="sw neg"></span>NEG</span>
+      <span class="swatch"><span class="sw cx"></span>Cross-Ex</span>
+    </div>
+  </div>
+
+  <!-- Timeline shell -->
+  <div class="timeline-shell">
+    <div class="timeline-header">
+      <div class="timeline-label"><span class="accent">◈</span> ROUND ORDER · CLICK ANY SPEECH</div>
+      <div class="total-time"><strong>MIDDLE SCHOOL FORMAT</strong> · CONSTRUCTIVES 5 MIN · CX 2 MIN · REBUTTALS 3 MIN</div>
+    </div>
+
+    <!-- Negative block bracket -->
+    <div class="negblock-bracket" id="negBracket">
+      <!-- positioned by JS to hover the 2NC + 1NR blocks -->
+    </div>
+
+    <div class="timeline" id="timeline">
+      <!-- blocks rendered by JS -->
+    </div>
+  </div>
+
+  <!-- Detail panel -->
+  <section class="detail" id="detail" aria-live="polite">
+    <!-- rendered by JS -->
+  </section>
+
+  <div class="footer-note">
+    Click any speech · hover debate terms for definitions · <a href="/glossary" style="color: var(--cyan); text-decoration: none;">Open the full glossary →</a>
+  </div>
+</div>
+
+<script>
+  // ────────────────────────────────────────────────────────────────
+  // Glossary: pulled from ~/dev/policydebate101-app/src/app/glossary/terms.json
+  const GLOSSARY_URL = 'https://www.policydebate101.com/glossary';
+  const GLOSSARY = {
+    "solvency":     { term: "Solvency",                    short: null,  emoji: "🔧", def: "Whether or not your plan actually works to fix the problem." },
+    "harms":        { term: "Harms",                       short: null,  emoji: "🩹", def: "Who is being hurt by the problem right now." },
+    "inherency":    { term: "Inherency",                   short: null,  emoji: "🚧", def: "Why the problem isn't fixed already." },
+    "topicality":   { term: "Topicality",                  short: "T",   emoji: "📐", def: "An argument that says the Affirmative's plan doesn't match the resolution, which is like calling them out for breaking the rules of the game." },
+    "significance": { term: "Significance",                short: null,  emoji: "📏", def: "How big the problem is." },
+    "constructive": { term: "Constructive Speech",         short: null,  emoji: "🏗️", def: "Your first speech, where you build your main arguments and read your evidence." },
+    "rebuttal":     { term: "Rebuttal Speech",             short: null,  emoji: "🔁", def: "Your second speech, where you respond to the other team and explain why you should win." },
+    "cx":           { term: "Cross-Examination",           short: "CX",  emoji: "❓", def: "A 3-minute chunk of time where you ask the other team questions and they have to answer." },
+    "prep-time":    { term: "Prep Time",                   short: null,  emoji: "⏳", def: "A shared bank of minutes you and your partner can use to think before any of your speeches." },
+    "neg-block":    { term: "NEG Block",                   short: null,  emoji: "🧱", def: "When the Negative team gets to give two back-to-back speeches without the Affirmative interrupting." },
+    "flow":         { term: "Flow",                        short: null,  emoji: "📊", def: "Your written notes of every argument in the round, laid out in columns." },
+    "flowing":      { term: "Flowing",                     short: null,  emoji: "📓", def: "A special kind of debate note-taking done on a piece of paper turned sideways to track arguments." },
+    "affirmative":  { term: "Affirmative",                 short: "AFF", emoji: "✅", def: "The team that says: \"YES, this change should happen.\"" },
+    "negative":     { term: "Negative",                    short: "NEG", emoji: "❌", def: "The team that says: \"NO, that change is a bad idea, or it won't work.\"" },
+    "resolution":   { term: "Resolution",                  short: null,  emoji: "📜", def: "The big topic that the whole country debates for the entire year." },
+    "status-quo":   { term: "Status Quo",                  short: null,  emoji: "🌍", def: "The way things are right now, before the AFF's plan." },
+    "ballot":       { term: "Ballot",                      short: null,  emoji: "📝", def: "The paper (or online form) where the judge writes down who won and why." },
+    "da":           { term: "Disadvantage",                short: "DA",  emoji: "⚠️", def: "An argument that the Affirmative's plan will cause terrible new side effects, making things worse." },
+    "cp":           { term: "Counterplan",                 short: "CP",  emoji: "🔄", def: "A different plan the NEG offers that solves the problem better than the AFF's." },
+    "kritik":       { term: "Kritik",                      short: "K",   emoji: "🧠", def: "An argument that the AFF's whole way of thinking about the problem is wrong." },
+    "link":         { term: "Link",                        short: null,  emoji: "🔗", def: "The part of an argument that connects the AFF's plan to a bad (or good) result." },
+    "link-turn":    { term: "Link Turn",                   short: null,  emoji: "↕️", def: "Saying the AFF's plan does the opposite of what the NEG claims." },
+    "internal-link":{ term: "Internal Link",               short: null,  emoji: "⛓️", def: "The step-by-step chain that shows how one thing leads to another." },
+    "uniqueness":   { term: "Uniqueness",                  short: null,  emoji: "❄️", def: "The part of an argument that says something is (or isn't) already happening right now." },
+    "impact":       { term: "Impact",                      short: null,  emoji: "💥", def: "Why your idea matters (the bottom bread of the sandwich)." },
+    "impact-calc":  { term: "Impact Calculus",             short: null,  emoji: "⚖️", def: "Comparing your team's impact to the other team's impact to see which one is more likely, happens sooner, or affects more people." },
+    "turn":         { term: "Turn",                        short: null,  emoji: "↩️", def: "Flipping the other team's argument so it becomes a reason to vote for YOU." },
+    "impact-turn":  { term: "Impact Turn",                 short: null,  emoji: "🙃", def: "Saying the \"bad thing\" the other team is worried about is actually good." },
+    "card":         { term: "Card",                        short: null,  emoji: "🃏", def: "A single piece of evidence, with a tag, the author's name, and the quote itself." },
+    "evidence":     { term: "Evidence",                    short: null,  emoji: "📚", def: "A quote from an article, book, or expert that backs up what you're saying." },
+    "cite":         { term: "Cite",                        short: null,  emoji: "📖", def: "The author's name, their job, and the date of the article the card comes from." },
+    "warrant":      { term: "Warrant",                     short: null,  emoji: "⛽", def: "Your reason or evidence (the filling of the sandwich)." },
+    "claim":        { term: "Claim",                       short: null,  emoji: "💬", def: "Your big idea (the top bread of the argument sandwich)." },
+    "drop":         { term: "Drop",                        short: null,  emoji: "🥚", def: "An argument that a team forgot to answer. In debate, an unanswered argument is treated as true by the judge." },
+    "line-by-line": { term: "Line-by-Line",                short: null,  emoji: "📊", def: "Looking at your flow notes and answering your opponent's arguments one by one, in order." },
+    "plan":         { term: "Plan",                        short: null,  emoji: "📋", def: "The Affirmative team's specific policy proposal or solution to a problem." },
+    "1ac":          { term: "First Affirmative Constructive",  short: "1AC", emoji: "1️⃣", def: "The very first speech. The AFF reads their plan and case." },
+    "1nc":          { term: "First Negative Constructive",     short: "1NC", emoji: "🔴", def: "The NEG's first speech. They attack the AFF and read new arguments." },
+    "2ac":          { term: "Second Affirmative Constructive", short: "2AC", emoji: "2️⃣", def: "The AFF's second speech. They answer everything the NEG said." },
+    "2nc":          { term: "Second Negative Constructive",    short: "2NC", emoji: "🔴", def: "The NEG's second speech. Start of the NEG block." },
+    "1ar":          { term: "First Affirmative Rebuttal",      short: "1AR", emoji: "💪", def: "The AFF's hardest speech. They answer the whole NEG block by themselves." },
+    "1nr":          { term: "First Negative Rebuttal",         short: "1NR", emoji: "🔴", def: "The NEG's third speech. Second half of the NEG block." },
+    "2ar":          { term: "Second Affirmative Rebuttal",     short: "2AR", emoji: "🏁", def: "The AFF's last speech. Final chance to explain why they win." },
+    "2nr":          { term: "Second Negative Rebuttal",        short: "2NR", emoji: "🎯", def: "The NEG's last speech. They pick the arguments they want to win on." },
+    "extend":       { term: "Extend",                          short: null, emoji: "➡️", def: "Bringing an argument forward from an earlier speech into a later one." }
+  };
+
+  // Data: 9 speech-like slots in real round order
+  //   flex value = duration in minutes (so 5-min blocks are ~2.5× a CX)
+  // ────────────────────────────────────────────────────────────────
+  const SPEECHES = [
+    {
+      id: '1AC', side: 'aff', duration: 5, role: 'Constructive',
+      name: 'First Affirmative Constructive',
+      mission: 'Build the foundation of your case.',
+      missionDetail: 'This speech is written ahead of time. You introduce the big problem in the world and share your plan to fix it.',
+      hookGlyph: '📄',
+      hookLabel: 'Opening Paragraph of an Essay',
+      hookText: 'Like presenting the opening paragraph of an essay — you set everything up here.',
+      say: '“Judge, the U.S. healthcare system leaves millions uninsured and costs so much it is ruining our economy. Our plan is to create a tax-financed single-payer healthcare system to fix this.”',
+      pro: 'This speech is <strong>pre-written</strong>. Read it clearly and don\'t rush — you have all 5 minutes to sound calm and prepared.'
+    },
+    {
+      id: 'CX·1', side: 'cx', duration: 2, role: 'Cross-Ex',
+      name: 'Cross-Examination of 1AC',
+      mission: 'Ask the other team questions — or answer theirs.',
+      missionDetail: 'Every constructive is followed by a 2-minute cross-ex. Ask short, direct questions — no speeches.',
+      hookGlyph: '🔍',
+      hookLabel: 'Detective at a Press Conference',
+      hookText: 'Like a detective looking for clues, or standing at a press conference mic.',
+      say: '“Isn\'t it true your plan doesn\'t say how much it will cost?” — short, direct questions only. No speeches, no yelling.',
+      pro: 'The <strong>Negative asks the 1A</strong> questions here. Prep 3–5 short questions before the round starts so you\'re never caught blank.'
+    },
+    {
+      id: '1NC', side: 'neg', duration: 5, role: 'Constructive',
+      name: 'First Negative Constructive',
+      mission: 'Attack the Affirmative case. Bring new reasons the plan fails.',
+      missionDetail: 'The <t data-term="negative">Negative</t>\'s first big speech. Attack the <t data-term="affirmative">Affirmative</t> case with <t data-term="da">Disadvantages</t>, <t data-term="cp">Counterplans</t>, or on-case arguments — give the judge reasons the <t data-term="plan">plan</t> fails.',
+      hookGlyph: '🎭',
+      hookLabel: 'Devil\'s Advocate Friend',
+      hookText: 'The friend who plays Devil\'s Advocate: "Actually, that won\'t work because…"',
+      say: '“Judge, the plan is a bad idea. A single-payer system will actually cost too much money, and it will cause huge delays at the doctor\'s office.”',
+      pro: 'You have <strong>4 more Negative speeches</strong> after this one. Don\'t use every argument you have — leave room for the block to unpack the best ones.'
+    },
+    {
+      id: 'CX·2', side: 'cx', duration: 2, role: 'Cross-Ex',
+      name: 'Cross-Examination of 1NC',
+      mission: 'The 2AC questions the 1N.',
+      missionDetail: 'Test their <t data-term="evidence">Evidence</t>. Ask about the <t data-term="warrant">Warrant</t> — the reason behind the argument — not just the <t data-term="claim">Claim</t>.',
+      hookGlyph: '🔍',
+      hookLabel: 'Detective at a Press Conference',
+      hookText: 'Same detective work — this time the Affirmative is asking.',
+      say: '“Does your evidence say the delays happen in every country with a single-payer system, or just one?” — pin down the scope.',
+      pro: 'Use CX to <strong>set up your 2AC</strong>. If you can get them to say something helpful here, quote it in your speech.'
+    },
+    {
+      id: '2AC', side: 'aff', duration: 5, role: 'Constructive',
+      name: 'Second Affirmative Constructive',
+      mission: 'Defend the 1AC. Answer every Negative attack.',
+      missionDetail: 'If you skip an argument, it counts as a <t data-term="drop">Drop</t> — the judge assumes the <t data-term="negative">Negative</t> wins that point. Cover every attack, <t data-term="line-by-line">line-by-line</t>.',
+      hookGlyph: '🥅',
+      hookLabel: 'Soccer Goalie Blocking Shots',
+      hookText: 'You are a soccer goalie, blocking every single shot the other team kicks at your net.',
+      say: '“They said our plan costs too much — but a single-payer system actually saves $5.1 trillion by cutting confusing insurance paperwork. That\'s a <t data-term="link-turn">Link Turn</t> on their <t data-term="da">Disadvantage</t>.”',
+      pro: 'Answer in the <strong>same order</strong> the <t data-term="1nc">1NC</t> attacked. Judges track the <t data-term="flow">Flow</t> <t data-term="line-by-line">line-by-line</t> — help them find your answers.'
+    },
+    {
+      id: 'CX·3', side: 'cx', duration: 2, role: 'Cross-Ex',
+      name: 'Cross-Examination of 2AC',
+      mission: 'The 1N questions the 2A.',
+      missionDetail: 'Set up the <t data-term="neg-block">Negative Block</t>. Get them to say things you can quote in the <t data-term="2nc">2NC</t>.',
+      hookGlyph: '🔍',
+      hookLabel: 'Detective at a Press Conference',
+      hookText: 'Detective work, round three.',
+      say: '“Your <strong>evidence</strong> about savings — does it account for the cost of transitioning everyone at once?”',
+      pro: 'This CX <strong>directly feeds the 2NC</strong>. Coordinate with your 2N: what admissions should you set up for the <strong>Block</strong>?'
+    },
+    {
+      id: '2NC', side: 'neg', duration: 5, role: 'Constructive',
+      name: 'Second Negative Constructive',
+      mission: 'Open the Negative Block. Extend your best 1NC attacks.',
+      missionDetail: 'First half of the <t data-term="neg-block">Negative Block</t>. Pick your strongest <t data-term="1nc">1NC</t> arguments — usually a <t data-term="da">Disadvantage</t> or <t data-term="cp">Counterplan</t> — and go deep.',
+      hookGlyph: '🤼',
+      hookLabel: 'Tag-Team Wrestling Handoff',
+      hookText: 'Tag-team wrestling — you tag your partner in to keep the pressure on.',
+      say: '“The <t data-term="affirmative">Affirmative</t> said single-payer saves money, but their own <t data-term="evidence">evidence</t> doesn\'t count the cost of switching everyone at once. <t data-term="extend">Extend</t> our <t data-term="da">Disadvantage</t>: the transition tanks the economy — that\'s our <t data-term="impact">Impact</t>.”',
+      pro: '<strong>Don\'t re-cover everything</strong> from the 1NC. Pick 2 or 3 arguments and go deep. Your partner covers the rest in the 1NR.'
+    },
+    {
+      id: '1NR', side: 'neg', duration: 3, role: 'Rebuttal',
+      name: 'First Negative Rebuttal',
+      mission: 'Close the Negative Block. Mop up whatever the 2NC didn\'t cover.',
+      missionDetail: 'Second half of the <t data-term="neg-block">Negative Block</t>. This is a <t data-term="rebuttal">Rebuttal</t> — no new arguments, just extending what your partner started.',
+      hookGlyph: '🎤',
+      hookLabel: 'Backup Singer Stepping In',
+      hookText: 'You are the backup singer, jumping in to make sure the song stays perfect.',
+      say: '“My partner covered the <t data-term="da">Disadvantage</t>. I\'m going to <t data-term="extend">extend</t> our <t data-term="solvency">Solvency</t> take-outs — their plan doesn\'t actually cover everyone who needs healthcare.”',
+      pro: 'Split the <t data-term="flow">Flow</t> with your 2N <strong>before the speech</strong>. Never re-cover what they already did — that wastes the <t data-term="neg-block">Block</t>.'
+    },
+    {
+      id: 'CX·4', side: 'cx', duration: 2, role: 'Cross-Ex',
+      name: 'Cross-Examination of 2NC',
+      mission: 'The 1A questions the 2N.',
+      missionDetail: 'Last CX of the round. Set up the 1AR.',
+      hookGlyph: '🔍',
+      hookLabel: 'Detective at a Press Conference',
+      hookText: 'Detective work, final round.',
+      say: '“You said switching healthcare systems would hurt the economy — is your <strong>evidence</strong> about the U.S. specifically, or just about other countries?”',
+      pro: 'The <t data-term="1ar">1AR</t> is <strong>the hardest speech in debate</strong>. Any concessions you get here save your partner time.'
+    },
+    {
+      id: '1AR', side: 'aff', duration: 3, role: 'Rebuttal',
+      name: 'First Affirmative Rebuttal',
+      mission: 'Answer 8 minutes of Negative Block in 3 minutes.',
+      missionDetail: 'The hardest speech in debate. Cover every argument the <t data-term="neg-block">Negative Block</t> made — any <t data-term="drop">Drop</t> means the judge assumes you lost that point.',
+      hookGlyph: '🚒',
+      hookLabel: 'Firefighter Putting Out Fires',
+      hookText: 'A firefighter putting out fires as fast as you can — quick, targeted, everything at once.',
+      say: '“Group their arguments — all three of their <t data-term="link">Link</t> arguments say the same thing about costs, and our savings <t data-term="evidence">Evidence</t> answers all three.”',
+      pro: '<strong>Group arguments</strong> that make the same point. Never answer them one by one — that\'s how you run out of time.'
+    },
+    {
+      id: '2NR', side: 'neg', duration: 3, role: 'Rebuttal',
+      name: 'Second Negative Rebuttal',
+      mission: 'The final Negative speech. Tell the story of the round.',
+      missionDetail: 'Don\'t try to win every argument. Pick your best <t data-term="da">Disadvantage</t> or <t data-term="cp">Counterplan</t> and make it the whole story of the round.',
+      hookGlyph: '⚖️',
+      hookLabel: 'Lawyer\'s Closing Argument',
+      hookText: 'You are the lawyer giving the closing argument on a courtroom TV show.',
+      say: '“Judge, vote <t data-term="negative">Negative</t>. Our <t data-term="impact">Impact</t> — economic collapse and doctor shortages — outweighs their <t data-term="impact">Impact</t> on Magnitude and Probability. The <t data-term="plan">plan</t> causes more harm than it solves.”',
+      pro: 'Give the judge <strong>one clear reason to vote <t data-term="negative">Negative</t></strong>. If you leave the round without one sentence they can write on the <t data-term="ballot">Ballot</t>, you\'ve lost.'
+    },
+    {
+      id: '2AR', side: 'aff', duration: 3, role: 'Rebuttal',
+      name: 'Second Affirmative Rebuttal',
+      mission: 'The last word. Explain why the world with your plan wins.',
+      missionDetail: 'The final speech. Do <t data-term="impact-calc">Impact Calculus</t> — compare your <t data-term="impact">Impact</t> to theirs on Magnitude, Probability, and Timeframe — and leave the judge with your best line.',
+      hookGlyph: '🏀',
+      hookLabel: 'Buzzer-Beater Basketball Shot',
+      hookText: 'The buzzer-beater at the end of the game.',
+      say: '“Judge, vote <t data-term="affirmative">Affirmative</t>. Even if their <t data-term="da">Disadvantage</t> is real, our plan saves millions of uninsured people. Our <t data-term="impact">Impact</t> wins on Magnitude — more lives — and Probability — their evidence is speculative.”',
+      pro: 'Do <t data-term="impact-calc">Impact Calculus</t>. Line up your <t data-term="impact">Impact</t> against theirs on Magnitude, Probability, and Timeframe. That\'s the <t data-term="ballot">Ballot</t>.'
+    }
+  ];
+
+  // ────────────────────────────────────────────────────────────────
+  // Render timeline
+  // ────────────────────────────────────────────────────────────────
+  const timelineEl  = document.getElementById('timeline');
+  const bracketEl   = document.getElementById('negBracket');
+  const detailEl    = document.getElementById('detail');
+
+  let selectedIdx = 0;
+  let affOn = false;
+  let negOn = false;
+
+  function renderTimeline() {
+    timelineEl.innerHTML = '';
+    SPEECHES.forEach((s, i) => {
+      const el = document.createElement('div');
+      el.className = `block ${s.side}`;
+      el.style.flex = s.side === 'cx' ? '0 0 auto' : `${s.duration} 1 0`;
+      el.dataset.idx = i;
+      el.dataset.side = s.side;
+
+      if (s.side === 'cx') {
+        el.innerHTML = `<div class="name">CX</div>`;
+      } else {
+        el.innerHTML = `
+          <div>
+            <div class="name">${s.id}</div>
+            <div class="role">${s.role}</div>
+          </div>
+          <div class="time">${s.duration} MIN</div>
+        `;
+      }
+
+      el.addEventListener('click', () => selectSpeech(i));
+      timelineEl.appendChild(el);
+    });
+    positionBracket();
+    highlightSelected();
+    applyHighlightMode();
+  }
+
+  function positionBracket() {
+    // Find 2NC and 1NR blocks; draw a bracket spanning both
+    const blocks = [...timelineEl.querySelectorAll('.block')];
+    const twoNC = blocks[SPEECHES.findIndex(s => s.id === '2NC')];
+    const oneNR = blocks[SPEECHES.findIndex(s => s.id === '1NR')];
+    if (!twoNC || !oneNR) return;
+
+    const shellRect = timelineEl.getBoundingClientRect();
+    const l = twoNC.getBoundingClientRect().left  - shellRect.left;
+    const r = oneNR.getBoundingClientRect().right - shellRect.left;
+
+    bracketEl.innerHTML = `
+      <div class="br" style="left:${l}px; width:${r - l}px;"></div>
+      <div class="lbl" style="left:${(l + r) / 2}px;">◈ Negative Block · 8 min back-to-back</div>
+    `;
+  }
+
+  window.addEventListener('resize', () => {
+    positionBracket();
+  });
+
+  // ────────────────────────────────────────────────────────────────
+  // Select + render detail
+  // ────────────────────────────────────────────────────────────────
+  function selectSpeech(i) {
+    selectedIdx = i;
+    if (typeof closeTip === 'function') closeTip();
+    highlightSelected();
+    renderDetail();
+    // Scroll detail into view on small screens
+    if (window.innerWidth < 820) {
+      setTimeout(() => detailEl.scrollIntoView({ behavior: 'smooth', block: 'start' }), 60);
+    }
+  }
+
+  function highlightSelected() {
+    [...timelineEl.querySelectorAll('.block')].forEach((b, i) => {
+      b.classList.toggle('selected', i === selectedIdx);
+    });
+  }
+
+  function renderDetail() {
+    const s = SPEECHES[selectedIdx];
+    const isNeg = s.side === 'neg';
+    detailEl.classList.toggle('side-neg', isNeg);
+
+    const prevIdx = (selectedIdx - 1 + SPEECHES.length) % SPEECHES.length;
+    const nextIdx = (selectedIdx + 1) % SPEECHES.length;
+
+    const sidePill = s.side === 'aff' ? 'AFFIRMATIVE'
+                   : s.side === 'neg' ? 'NEGATIVE'
+                   : 'CROSS-EXAMINATION';
+
+    detailEl.innerHTML = `
+      <div class="detail-head">
+        <div>
+          <h2 class="detail-title"><span class="code">${s.id}</span> · ${s.name}</h2>
+          <div class="detail-sub">
+            <span class="pill">${sidePill}</span>
+            <span class="pill time">⏱ ${s.duration} MIN</span>
+            <span>Role: ${s.role}</span>
+          </div>
+        </div>
+        <div class="detail-nav">
+          <button class="nav-btn" data-nav="${prevIdx}">← ${SPEECHES[prevIdx].id}</button>
+          <button class="nav-btn" data-nav="${nextIdx}">${SPEECHES[nextIdx].id} →</button>
+        </div>
+      </div>
+
+      <!-- Row 1: Mission strip (full width) -->
+      <div class="section-label mission"><span class="glyph">🎯</span> Your Mission</div>
+      <div class="row-mission">
+        <div class="headline">${s.mission}</div>
+        <div class="detail-line">${s.missionDetail}</div>
+      </div>
+
+      <!-- Row 2: Hero image + hook copy -->
+      <div class="row-hook">
+        <div class="hook-visual">
+          <div>
+            <div class="hook-glyph">${s.hookGlyph}</div>
+            <div class="hook-cap">${s.hookLabel}</div>
+          </div>
+        </div>
+        <div class="hook-copy">
+          <div class="section-label hook"><span class="glyph">🌍</span> Think of it Like…</div>
+          <div class="section-body">${s.hookText}</div>
+        </div>
+      </div>
+
+      <!-- Row 3: Say to Judge (hero) + Pro Move (sidebar) -->
+      <div class="row-say">
+        <div>
+          <div class="section-label say"><span class="glyph">🗣</span> What to Say to the Judge</div>
+          <div class="say-box">${s.say}</div>
+        </div>
+        <div class="pro-box">
+          <div class="section-label pro"><span class="glyph">💡</span> Pro Move</div>
+          <div class="section-body">${s.pro}</div>
+        </div>
+      </div>
+    `;
+
+    detailEl.querySelectorAll('.nav-btn').forEach(btn => {
+      btn.addEventListener('click', e => selectSpeech(parseInt(e.currentTarget.dataset.nav, 10)));
+    });
+  }
+
+  // ────────────────────────────────────────────────────────────────
+  // Highlight buttons
+  // ────────────────────────────────────────────────────────────────
+  function applyHighlightMode() {
+    const dim = affOn || negOn;
+    timelineEl.classList.toggle('dim', dim);
+    [...timelineEl.querySelectorAll('.block')].forEach(b => {
+      const side = b.dataset.side;
+      const match = (affOn && side === 'aff') || (negOn && side === 'neg');
+      b.classList.toggle('match', match);
+    });
+    document.querySelector('.aff-btn').classList.toggle('on', affOn);
+    document.querySelector('.neg-btn').classList.toggle('on', negOn);
+  }
+
+  document.querySelector('.aff-btn').addEventListener('click', () => {
+    affOn = !affOn; applyHighlightMode();
+  });
+  document.querySelector('.neg-btn').addEventListener('click', () => {
+    negOn = !negOn; applyHighlightMode();
+  });
+  document.querySelector('.btn.reset').addEventListener('click', () => {
+    affOn = false; negOn = false; applyHighlightMode();
+  });
+
+  // ────────────────────────────────────────────────────────────────
+  // Init
+  // ────────────────────────────────────────────────────────────────
+  // Glossary tooltip (declared before init so selectSpeech can call closeTip safely)
+  let activeTip = null;
+  let hoverTimer = null;
+
+  function closeTip() {
+    if (activeTip) { activeTip.remove(); activeTip = null; }
+  }
+
+  renderTimeline();
+  selectSpeech(0);
+
+  function openTip(termEl) {
+    closeTip();
+    const id = termEl.dataset.term;
+    const entry = GLOSSARY[id];
+    if (!entry) return;
+
+    const isNeg = !!termEl.closest('.detail.side-neg');
+
+    const tip = document.createElement('div');
+    tip.className = 'term-tip' + (isNeg ? ' side-neg' : '');
+    tip.setAttribute('role', 'tooltip');
+    tip.dataset.forId = id;
+    tip.innerHTML = `
+      <div class="tip-head">
+        <div class="tip-title">
+          <span class="glyph">${entry.emoji || '◈'}</span>
+          <span>${entry.term}</span>
+        </div>
+        ${entry.short ? `<span class="tip-short">${entry.short}</span>` : ''}
+      </div>
+      <div class="tip-def">${entry.def}</div>
+      <div class="tip-foot">
+        <a class="tip-link" href="${GLOSSARY_URL}#${id}" target="_blank" rel="noopener">
+          Full entry →
+        </a>
+      </div>
+    `;
+    document.body.appendChild(tip);
+
+    // Position: above the term, flip below if not enough room
+    const rect = termEl.getBoundingClientRect();
+    const tipRect = tip.getBoundingClientRect();
+    const scrollY = window.scrollY;
+    const gap = 10;
+    const spaceAbove = rect.top;
+    const placeBelow = spaceAbove < tipRect.height + gap + 8;
+
+    let top  = placeBelow
+      ? rect.bottom + scrollY + gap
+      : rect.top    + scrollY - tipRect.height - gap;
+    let left = rect.left + (rect.width / 2) - (tipRect.width / 2);
+
+    // Clamp horizontally
+    const pad = 12;
+    const maxLeft = window.innerWidth - tipRect.width - pad;
+    if (left < pad)     left = pad;
+    if (left > maxLeft) left = maxLeft;
+
+    tip.style.top  = top  + 'px';
+    tip.style.left = left + 'px';
+    tip.classList.toggle('below', placeBelow);
+
+    // Point arrow at the term center
+    const arrowX = rect.left + rect.width / 2 - left - 5;
+    tip.style.setProperty('--arrow-x', Math.max(10, Math.min(tipRect.width - 20, arrowX)) + 'px');
+
+    activeTip = tip;
+  }
+
+  // Delegated events
+  document.addEventListener('mouseover', e => {
+    const t = e.target.closest('t[data-term]');
+    if (!t) return;
+    clearTimeout(hoverTimer);
+    hoverTimer = setTimeout(() => openTip(t), 180);
+  });
+  document.addEventListener('mouseout', e => {
+    const t = e.target.closest('t[data-term]');
+    if (!t) return;
+    clearTimeout(hoverTimer);
+    setTimeout(() => {
+      if (activeTip && !activeTip.matches(':hover')) closeTip();
+    }, 140);
+  });
+  document.addEventListener('click', e => {
+    const t = e.target.closest('t[data-term]');
+    if (t) {
+      e.preventDefault();
+      if (activeTip && activeTip.dataset.forId === t.dataset.term) {
+        closeTip();
+      } else {
+        openTip(t);
+      }
+      return;
+    }
+    if (activeTip && !e.target.closest('.term-tip')) closeTip();
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeTip();
+  });
+  window.addEventListener('scroll', closeTip, { passive: true });
+  window.addEventListener('resize', closeTip);
+</script>
+</body>
+</html>

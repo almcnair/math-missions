@@ -1,0 +1,554 @@
+{
+  "campName": "CDSI 2026 · Middle School Novice Policy",
+  "days": [
+    {
+      "date": "2026-07-13",
+      "label": "Monday · July 13",
+      "dayLabel": "Week 1 · Day 1",
+      "blocks": [
+        {
+          "start": "08:00",
+          "end": "09:00",
+          "title": "Drop-Off & Optional Breakfast",
+          "location": "Skinner West · 1260 W Adams St",
+          "note": null
+        },
+        {
+          "start": "09:00",
+          "end": "10:00",
+          "title": "Lab Time — Welcome to Camp",
+          "location": null,
+          "note": "Meet your coach and labmates. We'll go over camp norms and take a short beginning-of-camp survey."
+        },
+        {
+          "start": "10:00",
+          "end": "12:00",
+          "title": "Lab Time",
+          "location": null,
+          "note": null
+        },
+        {
+          "start": "12:00",
+          "end": "13:00",
+          "title": "Recess & Lunch",
+          "location": null,
+          "note": null
+        },
+        {
+          "start": "13:00",
+          "end": "14:00",
+          "title": "Lecture — Intro to the HC Topic",
+          "location": "Library",
+          "note": "Whole-camp lecture (HS + MS Novice) on this year's healthcare resolution."
+        },
+        {
+          "start": "14:00",
+          "end": "15:00",
+          "title": "Lab Time — Debrief + Kahoot",
+          "location": null,
+          "note": "Debrief the topic lecture. Kahoot game — winners get candy."
+        },
+        {
+          "start": "15:30",
+          "end": "15:30",
+          "title": "Dismissal",
+          "location": "Downstairs by 3:30",
+          "note": null
+        }
+      ]
+    },
+    {
+      "date": "2026-07-14",
+      "label": "Tuesday · July 14",
+      "dayLabel": "Week 1 · Day 2",
+      "blocks": [
+        {
+          "start": "08:00",
+          "end": "10:00",
+          "title": "Drop-Off & Optional Breakfast",
+          "location": "Skinner West · 1260 W Adams St",
+          "note": null
+        },
+        {
+          "start": "10:00",
+          "end": "12:00",
+          "title": "Lab Time — Intro to Policy Pt. 1",
+          "location": null,
+          "note": "Argumentation basics: claim, warrant, data, impact. Practice activity."
+        },
+        {
+          "start": "12:00",
+          "end": "13:00",
+          "title": "Recess & Lunch",
+          "location": null,
+          "note": null
+        },
+        {
+          "start": "13:00",
+          "end": "15:30",
+          "title": "Lab Time — More Argumentation Practice",
+          "location": null,
+          "note": null
+        },
+        {
+          "start": "15:30",
+          "end": "15:30",
+          "title": "Dismissal",
+          "location": "Downstairs by 3:30",
+          "note": null
+        }
+      ]
+    },
+    {
+      "date": "2026-07-15",
+      "label": "Wednesday · July 15",
+      "dayLabel": "Week 1 · Day 3",
+      "blocks": [
+        {
+          "start": "08:00",
+          "end": "09:00",
+          "title": "Drop-Off & Optional Breakfast",
+          "location": "Skinner West · 1260 W Adams St",
+          "note": null
+        },
+        {
+          "start": "09:00",
+          "end": "10:15",
+          "title": "Lab Time — Intro to Policy Pt. 2",
+          "location": null,
+          "note": "Walk through the packet aff. Every stock issue explained. Flowing activity using the packet aff."
+        },
+        {
+          "start": "10:15",
+          "end": "12:00",
+          "title": "Demo Debate (All Labs)",
+          "location": "Multi-Use Room",
+          "note": "Watch a full demo debate. Prizes for the top 3 flow-ers in each lab."
+        },
+        {
+          "start": "12:00",
+          "end": "13:00",
+          "title": "Recess & Lunch",
+          "location": null,
+          "note": null
+        },
+        {
+          "start": "13:00",
+          "end": "15:30",
+          "title": "Lab Time",
+          "location": null,
+          "note": null
+        },
+        {
+          "start": "15:30",
+          "end": "15:30",
+          "title": "Dismissal",
+          "location": "Downstairs by 3:30",
+          "note": null
+        }
+      ]
+    },
+    {
+      "date": "2026-07-16",
+      "label": "Thursday · July 16",
+      "dayLabel": "Week 1 · Day 4",
+      "blocks": [
+        {
+          "start": "08:00",
+          "end": "09:00",
+          "title": "Drop-Off & Optional Breakfast",
+          "location": "Skinner West · 1260 W Adams St",
+          "note": null
+        },
+        {
+          "start": "09:00",
+          "end": "11:00",
+          "title": "Lab Time",
+          "location": null,
+          "note": null
+        },
+        {
+          "start": "11:00",
+          "end": "12:00",
+          "title": "Lab Time",
+          "location": null,
+          "note": null
+        },
+        {
+          "start": "12:00",
+          "end": "13:00",
+          "title": "Recess & Lunch",
+          "location": null,
+          "note": null
+        },
+        {
+          "start": "13:00",
+          "end": "14:30",
+          "title": "Lab Time",
+          "location": null,
+          "note": null
+        },
+        {
+          "start": "14:30",
+          "end": "15:30",
+          "title": "Fun Time",
+          "location": null,
+          "note": null
+        },
+        {
+          "start": "15:30",
+          "end": "15:30",
+          "title": "Dismissal",
+          "location": "Downstairs by 3:30",
+          "note": null
+        }
+      ]
+    },
+    {
+      "date": "2026-07-17",
+      "label": "Friday · July 17",
+      "dayLabel": "Week 1 · Day 5",
+      "blocks": [
+        {
+          "start": "08:00",
+          "end": "09:00",
+          "title": "Drop-Off & Optional Breakfast",
+          "location": "Skinner West · 1260 W Adams St",
+          "note": null
+        },
+        {
+          "start": "09:00",
+          "end": "10:00",
+          "title": "Lab Time — How NOT to Debate",
+          "location": null,
+          "note": "What great debaters DON'T do. Learn the pitfalls before you fall in them."
+        },
+        {
+          "start": "10:00",
+          "end": "11:00",
+          "title": "Lab Time",
+          "location": null,
+          "note": null
+        },
+        {
+          "start": "11:00",
+          "end": "12:00",
+          "title": "Lab Time",
+          "location": null,
+          "note": null
+        },
+        {
+          "start": "12:00",
+          "end": "13:00",
+          "title": "Recess & Lunch",
+          "location": null,
+          "note": null
+        },
+        {
+          "start": "13:00",
+          "end": "14:00",
+          "title": "Lab Time",
+          "location": null,
+          "note": null
+        },
+        {
+          "start": "14:00",
+          "end": "15:00",
+          "title": "Elective — Impact Turn (MS)",
+          "location": null,
+          "note": "Sign up on the mastersheet. Options for MS: Impact Turn · Judge Adaptation."
+        },
+        {
+          "start": "15:00",
+          "end": "15:30",
+          "title": "Fun Time",
+          "location": null,
+          "note": null
+        },
+        {
+          "start": "15:30",
+          "end": "15:30",
+          "title": "Dismissal",
+          "location": "Downstairs by 3:30",
+          "note": null
+        }
+      ]
+    },
+    {
+      "date": "2026-07-20",
+      "label": "Monday · July 20",
+      "dayLabel": "Week 2 · Day 1",
+      "blocks": [
+        {
+          "start": "08:00",
+          "end": "09:00",
+          "title": "Drop-Off & Optional Breakfast",
+          "location": "Skinner West · 1260 W Adams St",
+          "note": null
+        },
+        {
+          "start": "09:00",
+          "end": "12:00",
+          "title": "Lab Time",
+          "location": null,
+          "note": null
+        },
+        {
+          "start": "12:00",
+          "end": "13:00",
+          "title": "Recess & Lunch",
+          "location": null,
+          "note": null
+        },
+        {
+          "start": "13:00",
+          "end": "14:30",
+          "title": "Lab Time",
+          "location": null,
+          "note": null
+        },
+        {
+          "start": "14:30",
+          "end": "15:30",
+          "title": "Lab Time",
+          "location": null,
+          "note": null
+        },
+        {
+          "start": "15:30",
+          "end": "15:30",
+          "title": "Dismissal",
+          "location": "Downstairs by 3:30",
+          "note": null
+        }
+      ]
+    },
+    {
+      "date": "2026-07-21",
+      "label": "Tuesday · July 21",
+      "dayLabel": "Week 2 · Day 2",
+      "blocks": [
+        {
+          "start": "08:00",
+          "end": "09:00",
+          "title": "Drop-Off & Optional Breakfast",
+          "location": "Skinner West · 1260 W Adams St",
+          "note": null
+        },
+        {
+          "start": "09:00",
+          "end": "12:00",
+          "title": "Lab Time",
+          "location": null,
+          "note": null
+        },
+        {
+          "start": "12:00",
+          "end": "13:00",
+          "title": "Recess & Lunch",
+          "location": null,
+          "note": null
+        },
+        {
+          "start": "13:00",
+          "end": "14:30",
+          "title": "Elective — Debate Leadership (MS)",
+          "location": null,
+          "note": "MS-specific elective. Sign up on the mastersheet."
+        },
+        {
+          "start": "14:30",
+          "end": "15:30",
+          "title": "Lab Time",
+          "location": null,
+          "note": null
+        },
+        {
+          "start": "15:30",
+          "end": "15:30",
+          "title": "Dismissal",
+          "location": "Downstairs by 3:30",
+          "note": null
+        }
+      ]
+    },
+    {
+      "date": "2026-07-22",
+      "label": "Wednesday · July 22",
+      "dayLabel": "Week 2 · Day 3",
+      "blocks": [
+        {
+          "start": "08:00",
+          "end": "09:00",
+          "title": "Drop-Off & Optional Breakfast",
+          "location": "Skinner West · 1260 W Adams St",
+          "note": null
+        },
+        {
+          "start": "09:00",
+          "end": "11:00",
+          "title": "Elective — Advanced Counterplan Debate (MS)",
+          "location": null,
+          "note": "MS-specific elective. Sign up on the mastersheet."
+        },
+        {
+          "start": "11:00",
+          "end": "12:00",
+          "title": "Lab Time — Prep for Scrimmage",
+          "location": null,
+          "note": "New evidence due for scrimmage. No new off-cases."
+        },
+        {
+          "start": "12:00",
+          "end": "13:00",
+          "title": "Recess & Lunch",
+          "location": null,
+          "note": null
+        },
+        {
+          "start": "13:00",
+          "end": "15:30",
+          "title": "Lab Time",
+          "location": null,
+          "note": null
+        },
+        {
+          "start": "15:30",
+          "end": "15:30",
+          "title": "Dismissal",
+          "location": "Downstairs by 3:30",
+          "note": null
+        }
+      ]
+    },
+    {
+      "date": "2026-07-23",
+      "label": "Thursday · July 23",
+      "dayLabel": "Week 2 · Day 4 · Tournament",
+      "blocks": [
+        {
+          "start": "08:00",
+          "end": "09:00",
+          "title": "Tournament Drop-Off",
+          "location": "Chicago Debates · 67 E Madison St Ste 1616",
+          "note": "Different location today — Chicago Debates downtown."
+        },
+        {
+          "start": "09:00",
+          "end": "10:30",
+          "title": "Tournament Prep",
+          "location": null,
+          "note": null
+        },
+        {
+          "start": "10:30",
+          "end": "11:45",
+          "title": "Round #1",
+          "location": null,
+          "note": null
+        },
+        {
+          "start": "11:45",
+          "end": "12:45",
+          "title": "MS Recess & Lunch",
+          "location": null,
+          "note": null
+        },
+        {
+          "start": "12:45",
+          "end": "14:00",
+          "title": "Round #2",
+          "location": null,
+          "note": null
+        },
+        {
+          "start": "14:00",
+          "end": "14:45",
+          "title": "Varsity Final Round (Watch)",
+          "location": null,
+          "note": null
+        },
+        {
+          "start": "14:45",
+          "end": "15:30",
+          "title": "Awards",
+          "location": null,
+          "note": null
+        },
+        {
+          "start": "15:30",
+          "end": "15:30",
+          "title": "Dismissal",
+          "location": "Downstairs by 3:30",
+          "note": null
+        }
+      ]
+    },
+    {
+      "date": "2026-07-24",
+      "label": "Friday · July 24",
+      "dayLabel": "Week 2 · Day 5 · Last Day",
+      "blocks": [
+        {
+          "start": "08:00",
+          "end": "09:00",
+          "title": "Drop-Off & Optional Breakfast",
+          "location": "Skinner West · 1260 W Adams St",
+          "note": null
+        },
+        {
+          "start": "09:00",
+          "end": "11:00",
+          "title": "Lab Time — Post-Tournament Debrief",
+          "location": null,
+          "note": "No new evidence today. Debrief the tournament and reflect on the two weeks."
+        },
+        {
+          "start": "11:00",
+          "end": "12:00",
+          "title": "Lab Time",
+          "location": null,
+          "note": null
+        },
+        {
+          "start": "12:00",
+          "end": "13:00",
+          "title": "Recess & Lunch",
+          "location": null,
+          "note": null
+        },
+        {
+          "start": "13:00",
+          "end": "15:00",
+          "title": "Lab Time — Camp Wrap-Up",
+          "location": null,
+          "note": "End-of-camp reflection and celebration."
+        },
+        {
+          "start": "15:00",
+          "end": "15:30",
+          "title": "Fun Time",
+          "location": null,
+          "note": null
+        },
+        {
+          "start": "15:30",
+          "end": "15:30",
+          "title": "Dismissal",
+          "location": "Downstairs by 3:30",
+          "note": null
+        }
+      ]
+    }
+  ],
+  "announcements": [
+    {
+      "text": "Welcome to CDSI 2026! Bring a water bottle every day.",
+      "dateAdded": "2026-07-13"
+    },
+    {
+      "text": "Thursday July 23 is the tournament day — different location: Chicago Debates, 67 E Madison St Ste 1616.",
+      "dateAdded": "2026-07-13"
+    }
+  ]
+}

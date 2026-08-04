@@ -1,56 +1,25 @@
-// ============================================================================
-// /auth/teacher-signin — Teacher magic-link request.
-// ----------------------------------------------------------------------------
-// Teacher submits email from /login. We send them a Supabase magic link
-// (email OTP) that lands on /auth/callback. On callback we ensure their
-// profile row exists (auto-create trigger handles this, but we sanity-check).
-//
-// This route intentionally does NOT check whether the email is already
-// enrolled as a teacher. If Austin invited a colleague, they'll get promoted
-// to teacher after clicking. If a random person tries, they'll land as a
-// student with no teacher powers — the /teacher role gate keeps them out.
-//
-// Later we may add an invite-token flow (see PD101 /coach/join) to
-// restrict who can become a teacher. For now: anyone can request a link,
-// but the role gate is the actual security boundary.
-// ============================================================================
+// /auth/teacher-signin — Teacher email+password sign-in via Route Handler.
+// Same cookie-reliability reason as student-signin.
 
 import { NextRequest, NextResponse } from "next/server";
 import { createServerClient } from "@supabase/ssr";
+import { adminClient } from "@/lib/supabase/admin";
 
 export async function POST(request: NextRequest) {
   const form = await request.formData();
-  const email = String(form.get("email") ?? "").trim().toLowerCase();
-  const nextRaw = String(form.get("next") ?? "").trim();
-  const next = nextRaw.startsWith("/") ? nextRaw : "/teacher";
-
+  const email = String(form.get("email") ?? "").trim();
+  const password = String(form.get("password") ?? "").trim();
   const origin = new URL(request.url).origin;
 
   const errorBack = (msg: string) => {
-    const url = new URL("/login", origin);
+    const url = new URL("/login/teacher", origin);
     url.searchParams.set("error", msg);
-    if (email) url.searchParams.set("email", email);
-    if (next && next !== "/teacher") url.searchParams.set("next", next);
     return NextResponse.redirect(url, { status: 303 });
   };
 
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-    return errorBack("Please enter a valid email address.");
-  }
-  // Guard against the synthetic student email domain.
-  if (email.endsWith("@math.local")) {
-    return errorBack("Please use your real email address.");
-  }
+  if (!email || !password) return errorBack("Email and password required.");
 
-  // We build the request-scoped server client (no cookie writes expected
-  // during signInWithOtp, but keep the plumbing consistent).
-  const response = NextResponse.redirect(
-    new URL(
-      `/login?sent=1${next && next !== "/teacher" ? `&next=${encodeURIComponent(next)}` : ""}`,
-      origin,
-    ),
-    { status: 303 },
-  );
+  const response = NextResponse.redirect(new URL("/coach", origin), { status: 303 });
 
   const supabase = createServerClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -69,35 +38,24 @@ export async function POST(request: NextRequest) {
     },
   );
 
-  const callbackUrl = new URL("/auth/callback", origin);
-  if (next && next !== "/teacher") callbackUrl.searchParams.set("next", next);
-
-  const { error } = await supabase.auth.signInWithOtp({
-    email,
-    options: {
-      emailRedirectTo: callbackUrl.toString(),
-      // We don't want to auto-create Supabase auth users from the login
-      // form — but for a first-teacher bootstrap, Austin needs SOME way in.
-      // Leaving shouldCreateUser: true for now; revisit when invite tokens
-      // land.
-      shouldCreateUser: true,
-    },
-  });
-
-  if (error) {
-    // Surface the real Supabase error to Vercel logs so we can debug what's
-    // actually going wrong (email rate-limit, redirect URL not allow-listed,
-    // SMTP not configured, etc.). Do NOT surface this to the user — error
-    // detail on auth surfaces can leak enumeration.
-    console.error("[teacher-signin] signInWithOtp error:", {
-      message: error.message,
-      status: error.status,
-      code: (error as { code?: string }).code,
-      emailDomain: email.split("@")[1],
-      redirect: callbackUrl.toString(),
-    });
-    return errorBack("Could not send sign-in link. Try again in a moment.");
+  const { error, data } = await supabase.auth.signInWithPassword({ email, password });
+  if (error || !data.user) {
+    return errorBack("Wrong email or password.");
   }
 
+  // Verify the account is actually a teacher.
+  const admin = adminClient();
+  const { data: profile } = await admin
+    .from("profiles")
+    .select("role")
+    .eq("id", data.user.id)
+    .maybeSingle();
+  if (!profile || (profile.role !== "teacher" && profile.role !== "admin")) {
+    await supabase.auth.signOut();
+    return errorBack("That account is not a teacher account.");
+  }
+
+  // Flush cookies before returning the redirect.
+  await supabase.auth.getUser();
   return response;
 }

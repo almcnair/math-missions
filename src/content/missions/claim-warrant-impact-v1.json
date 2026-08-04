@@ -1,0 +1,653 @@
+{
+  "id": "claim-warrant-impact-v1",
+  "campaignId": "cdsi-2026-summer",
+  "sectorId": "argument-foundations",
+  "number": 2,
+  "title": "Claim, Warrant, Impact",
+  "subtitle": "Argument Foundations · Mission 03",
+  "tagline": "Every argument that {{cyan:wins}} has three parts. Every argument that {{amber:loses}} is missing one of them.",
+  "estimatedMinutes": 12,
+  "difficulty": "core",
+  "rewards": {
+    "credits": 120,
+    "rankXp": 80
+  },
+  "unlocks": [],
+  "prerequisites": [],
+  "protectedTerms": [
+    "claim",
+    "warrant",
+    "impact",
+    "argument"
+  ],
+  "passingCriteria": {
+    "requireAllCfu": true,
+    "minCorrectCfu": 4,
+    "shieldsAtZero": "allow-continue"
+  },
+  "slides": [
+    {
+      "id": "s1-hook",
+      "type": "hook",
+      "headline": "30 SECONDS TO SAVE RECESS",
+      "body": [
+        "Your principal just announced: *\"We're canceling recess. Forever.\"*",
+        "You have **30 seconds** to change their mind. What do you say?",
+        "Whatever just popped into your head — congratulations, that's an {{cyan: argument}}. But was it a *good* one? Would it actually beat a principal who's already made up their mind?",
+        "Today you learn the three-part recipe that turns a good idea into an argument that {{amber: actually wins}}."
+      ],
+      "quote": {
+        "text": "An argument is not the same thing as a contradiction. An argument is a connected series of statements intended to establish a definite proposition.",
+        "cite": "Monty Python (yes, really) — and also every debate judge ever"
+      },
+      "sidebar": {
+        "title": "MISSION BRIEFING",
+        "items": [
+          {
+            "num": "01",
+            "label": "Identify the three parts of a complete argument",
+            "state": "todo"
+          },
+          {
+            "num": "02",
+            "label": "Spot what's missing when an argument falls flat",
+            "state": "todo"
+          },
+          {
+            "num": "03",
+            "label": "Build your own {{cyan: Claim → Warrant → Impact}} chain",
+            "state": "todo"
+          }
+        ],
+        "kind": "stock-list"
+      },
+      "tag": "Day 1 Lesson 2",
+      "image": {
+        "src": "/mission-images/claim-warrant-impact-v1/1782739482093_Day_1_Lesson_2_The_Argument_Sandwich__2_.pptx.png",
+        "alt": ""
+      }
+    },
+    {
+      "id": "s2-define-argument",
+      "type": "define",
+      "term": "Argument",
+      "pronunciation": "AR-gyoo-mənt",
+      "definition": "In debate, an {{cyan: argument}} is a complete unit of reasoning made of three parts: a `claim` (what you believe), a `warrant` (why it's true), and an `impact` (why anyone should care).",
+      "plainWords": "Not a fight. Not just an opinion. A *case* you build, piece by piece, so a judge can follow your logic from \"here's what I think\" all the way to \"here's why it matters.\"",
+      "analogy": "Think of it as a **sandwich**. The {{cyan: claim}} is the top bun. The {{amber: warrant}} is the filling — the meat, cheese, whatever makes it worth eating. The {{cyan: impact}} is the bottom bun holding it all up. Take any layer out and the whole thing collapses in your hands.",
+      "image": {
+        "src": "/mission-images/claim-warrant-impact-v1/1782410863164_The_Argument_Sandwich_Debate_Guide.png",
+        "alt": ""
+      }
+    },
+    {
+      "id": "s3-concept-three-parts",
+      "type": "concept",
+      "headline": "THE ARGUMENT SANDWICH",
+      "intro": "Three layers. Every winning argument has all three. Learn to spot them — and learn what your argument is missing when it isn't landing.",
+      "cards": [
+        {
+          "id": "card-claim",
+          "icon": "🍞",
+          "name": "CLAIM",
+          "description": "The {{cyan: big idea}} you're defending. One sentence. Take a side.",
+          "example": {
+            "label": "Sounds like",
+            "text": "\"Schools should keep recess.\""
+          },
+          "accent": "cyan"
+        },
+        {
+          "id": "card-warrant",
+          "icon": "🥬",
+          "name": "WARRANT",
+          "description": "The {{amber: reason or evidence}} that makes your claim true. *Why* should anyone believe you?",
+          "example": {
+            "label": "Sounds like",
+            "text": "\"…because studies show students focus better after physical activity…\""
+          },
+          "accent": "amber"
+        },
+        {
+          "id": "card-impact",
+          "icon": "🍞",
+          "name": "IMPACT",
+          "description": "Why your claim {{cyan: matters}}. What happens in the real world if you're right — or if no one listens?",
+          "example": {
+            "label": "Sounds like",
+            "text": "\"…which means better test scores and happier students.\""
+          },
+          "accent": "cyan"
+        }
+      ]
+    },
+    {
+      "id": "s4-strategy-whats-missing",
+      "type": "strategy",
+      "headline": "WHAT BREAKS WHEN A LAYER IS MISSING",
+      "intro": "Half the arguments you'll hear in real life — and in debate rounds — are missing a layer. Learn to diagnose them in your opponents *and* in yourself.",
+      "rows": [
+        {
+          "name": "Claim only",
+          "description": "Just a statement, no reason. This is {{amber: an opinion}} — not an argument.",
+          "counter": {
+            "label": "Example",
+            "text": "*\"Pizza is the best food.\"* — Cool. Why? Says who? You haven't given anyone a reason to agree."
+          }
+        },
+        {
+          "name": "Claim + Warrant, no Impact",
+          "description": "You've explained *why* it's true, but not *why it matters*. This is {{amber: a fun fact}} — interesting, not persuasive.",
+          "counter": {
+            "label": "Example",
+            "text": "*\"Recess helps students focus because exercise increases blood flow to the brain.\"* — Okay… so what? The judge needs to know what's at stake."
+          }
+        },
+        {
+          "name": "Warrant + Impact, no Claim",
+          "description": "You're rambling about reasons and consequences, but you never said what you actually believe. The judge can't vote for a position you didn't take.",
+          "counter": {
+            "label": "Example",
+            "text": "*\"Exercise helps focus, and focused students get better grades.\"* — Great. What are you arguing *for*? Pick a side."
+          }
+        }
+      ]
+    },
+    {
+      "id": "s5-cfu-mcq-three-parts",
+      "type": "cfu-mcq",
+      "tag": "⚡ TACTICAL DRILL · CFU 01",
+      "tagTone": "amber",
+      "prompt": {
+        "label": "QUICK CHECK",
+        "question": "What are the three parts of a complete argument?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "letter": "A",
+          "text": "Opinion, evidence, conclusion"
+        },
+        {
+          "id": "b",
+          "letter": "B",
+          "text": "Claim, warrant, impact"
+        },
+        {
+          "id": "c",
+          "letter": "C",
+          "text": "Topic, thesis, summary"
+        },
+        {
+          "id": "d",
+          "letter": "D",
+          "text": "Question, answer, rebuttal"
+        }
+      ],
+      "correctOptionId": "b",
+      "scoring": {
+        "creditsOnCorrect": 15,
+        "shieldOnWrong": true,
+        "breaksStreakOnWrong": true,
+        "maxAttempts": 1,
+        "mode": "all-or-nothing"
+      },
+      "feedback": {
+        "correct": {
+          "title": "✓ TARGET ACQUIRED",
+          "body": [
+            "Locked in. Every complete argument has a {{cyan: claim}} (your big idea), a {{amber: warrant}} (your reason), and a {{cyan: impact}} (why it matters)."
+          ],
+          "followup": "**Pro move:** When you're prepping a speech, write out C-W-I in three separate lines *before* you write any sentences. It forces you to actually have all three."
+        },
+        "wrongByChoice": {
+          "a": {
+            "title": "✕ CLOSE — BUT NOT THE LANGUAGE WE USE",
+            "body": [
+              "\"Opinion, evidence, conclusion\" is what an English teacher might say. In debate, we use {{cyan: claim, warrant, impact}} — same idea, sharper words."
+            ],
+            "followup": "**Why it matters:** Saying \"opinion\" makes your side sound weak. *Claim* sounds like you're staking a position. Words shape how the judge hears you."
+          },
+          "c": {
+            "title": "✕ THAT'S AN ESSAY STRUCTURE",
+            "body": [
+              "Topic / thesis / summary is the shape of a *paper*. An argument is a smaller, sharper thing: {{cyan: claim}}, {{amber: warrant}}, {{cyan: impact}}."
+            ]
+          },
+          "d": {
+            "title": "✕ THAT'S A DEBATE *EXCHANGE*",
+            "body": [
+              "Question / answer / rebuttal describes a *round* — two debaters going back and forth. The argument itself, the thing each debater builds, is {{cyan: claim, warrant, impact}}."
+            ]
+          }
+        },
+        "wrongDefault": {
+          "title": "✕ MISFIRE — RECALIBRATE",
+          "body": [
+            "The answer is {{cyan: B — Claim, Warrant, Impact}}. Memorize those three words. They're the backbone of every speech you'll give this summer."
+          ]
+        }
+      },
+      "hint": {
+        "imageUrl": "/mission-images/claim-warrant-impact-v1/1782410863164_The_Argument_Sandwich_Debate_Guide.png",
+        "altText": ""
+      }
+    },
+    {
+      "id": "s6-cfu-sort-label",
+      "type": "cfu-sort",
+      "tag": "⚡ TACTICAL DRILL · CFU 02",
+      "tagTone": "amber",
+      "prompt": {
+        "label": "FIELD SORT",
+        "scenario": "Here's a real argument, broken into three pieces. Sort each piece into the right bin.",
+        "question": "Drop each statement into the part of the argument it belongs to."
+      },
+      "bins": [
+        {
+          "id": "bin-claim",
+          "icon": "🍞",
+          "label": "CLAIM",
+          "accent": "cyan"
+        },
+        {
+          "id": "bin-warrant",
+          "icon": "🥬",
+          "label": "WARRANT",
+          "accent": "amber"
+        },
+        {
+          "id": "bin-impact",
+          "icon": "🍞",
+          "label": "IMPACT",
+          "accent": "cyan"
+        }
+      ],
+      "cards": [
+        {
+          "id": "c1",
+          "text": "School uniforms hurt student creativity.",
+          "correctBinId": "bin-claim"
+        },
+        {
+          "id": "c2",
+          "text": "A survey found 82% of students say they express their personality through what they wear.",
+          "correctBinId": "bin-warrant"
+        },
+        {
+          "id": "c3",
+          "text": "Less creativity leads to less classroom engagement, which lowers grades over time.",
+          "correctBinId": "bin-impact"
+        }
+      ],
+      "allowPartialCredit": true,
+      "scoring": {
+        "creditsOnCorrect": 25,
+        "shieldOnWrong": true,
+        "breaksStreakOnWrong": false,
+        "maxAttempts": 2,
+        "mode": "partial"
+      },
+      "feedback": {
+        "correct": {
+          "title": "✓ ARGUMENT ASSEMBLED",
+          "body": [
+            "Clean sort. Notice the *shape*: the {{cyan: claim}} takes a side, the {{amber: warrant}} backs it with data, the {{cyan: impact}} tells the judge what's at stake."
+          ],
+          "followup": "**Read the chain out loud:** \"Uniforms hurt creativity, *because* 82% of students express themselves through clothes, *which means* less engagement and lower grades.\" That's a winning structure."
+        },
+        "wrongDefault": {
+          "title": "✕ ARGUMENT MISALIGNED",
+          "body": [
+            "Try this litmus test: ask {{cyan: \"What am I claiming?\"}} (the big idea), {{amber: \"Why is that true?\"}} (the reason or data), and {{cyan: \"So what?\"}} (why it matters).",
+            "The statement with a *percentage* or *study* is almost always a **warrant**. The statement about *consequences* — what happens because of the claim — is the **impact**."
+          ]
+        }
+      },
+      "hint": {
+        "imageUrl": "/mission-images/claim-warrant-impact-v1/1782410863164_The_Argument_Sandwich_Debate_Guide.png",
+        "altText": ""
+      }
+    },
+    {
+      "id": "s7-cfu-mcq-missing",
+      "type": "cfu-mcq",
+      "tag": "⚡ TACTICAL DRILL · CFU 03",
+      "tagTone": "amber",
+      "prompt": {
+        "label": "DIAGNOSTIC",
+        "scenario": "A debater stands up and says: *\"Pizza is the best food. Therefore, the cafeteria should serve it every day.\"*",
+        "question": "Which part of the argument is missing?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "letter": "A",
+          "text": "The claim"
+        },
+        {
+          "id": "b",
+          "letter": "B",
+          "text": "The warrant"
+        },
+        {
+          "id": "c",
+          "letter": "C",
+          "text": "The impact"
+        },
+        {
+          "id": "d",
+          "letter": "D",
+          "text": "Nothing — it's complete"
+        }
+      ],
+      "correctOptionId": "b",
+      "scoring": {
+        "creditsOnCorrect": 15,
+        "shieldOnWrong": true,
+        "breaksStreakOnWrong": true,
+        "maxAttempts": 1,
+        "mode": "all-or-nothing"
+      },
+      "feedback": {
+        "correct": {
+          "title": "✓ DIAGNOSIS CONFIRMED",
+          "body": [
+            "Right — there's no {{amber: warrant}}. *Why* is pizza the best? Says who? Without a reason, the claim is just a personal preference dressed up as an argument."
+          ],
+          "followup": "**Field move:** When an opponent does this, your cross-ex question writes itself: *\"What's your warrant?\"* Watch them squirm."
+        },
+        "wrongByChoice": {
+          "a": {
+            "title": "✕ THE CLAIM IS RIGHT THERE",
+            "body": [
+              "*\"Pizza is the best food\"* and *\"the cafeteria should serve it every day\"* are both claims — the speaker took a position. What's missing is the {{amber: warrant}}: *why* should anyone believe them?"
+            ]
+          },
+          "c": {
+            "title": "✕ THE IMPACT IS ARGUABLY THERE",
+            "body": [
+              "You could read *\"the cafeteria should serve it every day\"* as a real-world consequence — a weak impact, but an impact. The clearest missing piece is the {{amber: warrant}}. Why is pizza the best in the first place?"
+            ]
+          },
+          "d": {
+            "title": "✕ NOT COMPLETE",
+            "body": [
+              "There's no reason given. \"Pizza is the best\" is an *assertion*, not a warranted argument. A judge would call this {{amber: unwarranted}} and move on."
+            ]
+          }
+        },
+        "wrongDefault": {
+          "title": "✕ MISFIRE",
+          "body": [
+            "The answer is {{cyan: B — the warrant}}. The speaker said *what* they believe but never *why*. No reason = no warrant = no real argument."
+          ]
+        }
+      },
+      "hint": {
+        "imageUrl": "/mission-images/claim-warrant-impact-v1/1782410863164_The_Argument_Sandwich_Debate_Guide.png",
+        "altText": ""
+      }
+    },
+    {
+      "id": "s8-cfu-match",
+      "type": "cfu-match",
+      "tag": "⚡ TACTICAL DRILL · CFU 04",
+      "tagTone": "amber",
+      "prompt": {
+        "label": "PATTERN MATCH",
+        "scenario": "Match each example statement to which part of the argument it is.",
+        "question": "Drag from the left to its match on the right."
+      },
+      "leftColumn": {
+        "label": "STATEMENT",
+        "items": [
+          {
+            "id": "L1",
+            "text": "\"Cell phones should be banned in class.\"",
+            "pairId": "p1"
+          },
+          {
+            "id": "L2",
+            "text": "\"…because a Stanford study found phones cut focus time in half.\"",
+            "pairId": "p2"
+          },
+          {
+            "id": "L3",
+            "text": "\"…which means lower test scores and weaker college applications.\"",
+            "pairId": "p3"
+          }
+        ]
+      },
+      "rightColumn": {
+        "label": "PART",
+        "items": [
+          {
+            "id": "R1",
+            "text": "CLAIM — the position being defended",
+            "pairId": "p1"
+          },
+          {
+            "id": "R2",
+            "text": "WARRANT — the reason or evidence",
+            "pairId": "p2"
+          },
+          {
+            "id": "R3",
+            "text": "IMPACT — why it matters in the real world",
+            "pairId": "p3"
+          }
+        ]
+      },
+      "scoring": {
+        "creditsOnCorrect": 20,
+        "shieldOnWrong": true,
+        "breaksStreakOnWrong": false,
+        "maxAttempts": 2,
+        "mode": "partial"
+      },
+      "feedback": {
+        "correct": {
+          "title": "✓ PATTERN LOCKED",
+          "body": [
+            "Read it as one chain: *\"Phones should be banned, **because** Stanford shows they cut focus in half, **which means** lower scores and worse college outcomes.\"* That's a {{cyan: complete}} argument."
+          ],
+          "followup": "**Bridge words to memorize:** `because` signals a **warrant** is coming. `which means` or `so` signals an **impact** is coming. Use them out loud — judges flow what they hear, not what you meant."
+        },
+        "wrongDefault": {
+          "title": "✕ CHAIN BROKEN",
+          "body": [
+            "Use the bridge words as your tell: a statement after {{amber: \"because\"}} is almost always a **warrant**. A statement after {{cyan: \"which means\"}} or {{cyan: \"so\"}} is almost always an **impact**. The opening position — the thing you're defending — is the **claim**."
+          ]
+        }
+      },
+      "hint": {
+        "imageUrl": "/mission-images/claim-warrant-impact-v1/1782410863164_The_Argument_Sandwich_Debate_Guide.png",
+        "altText": ""
+      }
+    },
+    {
+      "id": "s9-cfu-fill-build",
+      "type": "cfu-fill",
+      "tag": "⚡ TACTICAL DRILL · CFU 05",
+      "tagTone": "amber",
+      "prompt": {
+        "label": "BUILD ORDER",
+        "scenario": "You're putting together an argument about school start times. Fill in the missing labels for each part.",
+        "question": "Drop the right word into each blank."
+      },
+      "template": "Schools should start later in the morning. → This is the {{1}}.\nBecause teenagers' brains don't fully wake up until 10am, according to sleep research. → This is the {{2}}.\nWhich means students who start later get better grades, fewer car accidents, and better mental health. → This is the {{3}}.",
+      "blanks": [
+        {
+          "index": 1,
+          "acceptedAnswers": [
+            "claim",
+            "Claim",
+            "CLAIM"
+          ],
+          "hint": "The big idea — the position being taken"
+        },
+        {
+          "index": 2,
+          "acceptedAnswers": [
+            "warrant",
+            "Warrant",
+            "WARRANT"
+          ],
+          "hint": "The reason or evidence"
+        },
+        {
+          "index": 3,
+          "acceptedAnswers": [
+            "impact",
+            "Impact",
+            "IMPACT"
+          ],
+          "hint": "Why it matters in the real world"
+        }
+      ],
+      "wordBank": [
+        "claim",
+        "warrant",
+        "impact"
+      ],
+      "caseSensitive": false,
+      "scoring": {
+        "creditsOnCorrect": 20,
+        "shieldOnWrong": true,
+        "breaksStreakOnWrong": false,
+        "maxAttempts": 2,
+        "mode": "partial"
+      },
+      "feedback": {
+        "correct": {
+          "title": "✓ ARGUMENT BUILT",
+          "body": [
+            "Nicely sequenced. Notice the bridge words again: {{amber: \"because\"}} signals a warrant. {{cyan: \"which means\"}} signals an impact. Train your ear to hear them and you'll diagnose any argument in seconds."
+          ]
+        },
+        "wrongDefault": {
+          "title": "✕ REBUILD",
+          "body": [
+            "Three checkpoints: {{cyan: claim}} = the position. {{amber: warrant}} = the reason (usually follows *because*). {{cyan: impact}} = the consequence (usually follows *which means* or *so*)."
+          ]
+        }
+      },
+      "hint": {
+        "imageUrl": "/mission-images/claim-warrant-impact-v1/1782410863164_The_Argument_Sandwich_Debate_Guide.png",
+        "altText": ""
+      }
+    },
+    {
+      "id": "s10-cfu-mcq-impact",
+      "type": "cfu-mcq",
+      "tag": "⚡ TACTICAL DRILL · CFU 06",
+      "tagTone": "amber",
+      "prompt": {
+        "label": "JUDGE'S CHAIR",
+        "scenario": "Two debaters give the same claim and warrant. Only one adds an {{cyan: impact}}.",
+        "question": "Why does the one with an impact usually win the ballot?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "letter": "A",
+          "text": "Because longer speeches always win"
+        },
+        {
+          "id": "b",
+          "letter": "B",
+          "text": "Because the impact tells the judge what's at stake — it gives them a reason to vote"
+        },
+        {
+          "id": "c",
+          "letter": "C",
+          "text": "Because impacts add more vocabulary words"
+        },
+        {
+          "id": "d",
+          "letter": "D",
+          "text": "Because judges aren't allowed to vote without an impact"
+        }
+      ],
+      "correctOptionId": "b",
+      "scoring": {
+        "creditsOnCorrect": 15,
+        "shieldOnWrong": true,
+        "breaksStreakOnWrong": true,
+        "maxAttempts": 1,
+        "mode": "all-or-nothing"
+      },
+      "feedback": {
+        "correct": {
+          "title": "✓ THAT'S THE WHOLE GAME",
+          "body": [
+            "Exactly. A judge isn't voting on who has the prettiest argument — they're voting on {{cyan: what matters more}}. No impact, no stakes, no reason to vote your way."
+          ],
+          "followup": "**Pro tip:** The biggest impacts win rounds. *\"Students get slightly worse grades\"* is an impact, sure. *\"Students fall behind, drop out, and the achievement gap widens\"* is a **bigger** impact. Always ask: *can I push this further?*"
+        },
+        "wrongByChoice": {
+          "a": {
+            "title": "✕ LENGTH ISN'T THE POINT",
+            "body": [
+              "Long speeches can absolutely lose. What wins is {{cyan: stakes}} — telling the judge *what happens* if your side is right. That's the impact's job."
+            ]
+          },
+          "c": {
+            "title": "✕ NOT ABOUT VOCAB",
+            "body": [
+              "The impact isn't decoration — it's the *reason to vote*. Without it, the judge is left thinking \"okay… and?\" Always answer the *so what*."
+            ]
+          },
+          "d": {
+            "title": "✕ JUDGES *CAN* VOTE, BUT THEY USUALLY WON'T FOR YOU",
+            "body": [
+              "Nothing in the rules forbids it. But judges weigh arguments by {{cyan: impact size}}. If your opponent shows real-world consequences and you don't, they get the ballot."
+            ]
+          }
+        },
+        "wrongDefault": {
+          "title": "✕ MISFIRE",
+          "body": [
+            "The answer is {{cyan: B}}. The impact gives the judge *stakes* — a reason your side matters in the real world. No impact, no win."
+          ]
+        }
+      },
+      "hint": {
+        "imageUrl": "/mission-images/claim-warrant-impact-v1/1782410863164_The_Argument_Sandwich_Debate_Guide.png",
+        "altText": ""
+      }
+    },
+    {
+      "id": "s11-complete",
+      "type": "complete",
+      "headline": "ARGUMENT SANDWICH: ASSEMBLED",
+      "subtext": "You now have the recipe every winning debater uses. {{cyan: Claim}} → {{amber: Warrant}} → {{cyan: Impact}}. Use it in every speech, every cross-ex answer, every rebuttal — until it's automatic.",
+      "rewards": [
+        {
+          "icon": "💳",
+          "label": "Credits earned",
+          "staticValue": "+120"
+        },
+        {
+          "icon": "⭐",
+          "label": "Rank XP",
+          "staticValue": "+80"
+        },
+        {
+          "icon": "🧠",
+          "label": "Protected vocab",
+          "staticValue": "Claim · Warrant · Impact"
+        }
+      ],
+      "primaryCta": {
+        "label": "RETURN TO BRIDGE",
+        "action": "return-bridge"
+      },
+      "secondaryCta": {
+        "label": "NEXT MISSION",
+        "action": "next-mission"
+      }
+    }
+  ]
+}

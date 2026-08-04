@@ -6,11 +6,12 @@
 //   - Server Actions (functions marked "use server")
 //   - Server-only helpers
 //
-// Use cases in Math Missions:
-//   1. Student login — looking up the synthetic email for a given username
-//      BEFORE the student has an auth.uid() (RLS would block them).
-//   2. Teacher roster management — creating student accounts + resetting
-//      PINs via the Supabase auth admin API.
+// Use cases:
+//   1. Student login flow — fetching the class roster BEFORE the student
+//      has a session (no auth.uid() yet, so RLS would block them).
+//   2. Teacher roster management — creating synthetic-email users via the
+//      auth admin API, resetting PINs.
+//   3. Class join-code generation.
 //
 // Regular DB reads/writes that happen on behalf of a logged-in user should
 // keep using the per-request client from "@/lib/supabase/server" so RLS
@@ -18,9 +19,9 @@
 
 import { createClient, SupabaseClient } from "@supabase/supabase-js";
 
-// We don't have generated schema types yet; type the admin client loosely
-// so callers can interact with arbitrary tables without compile errors.
-// RLS is bypassed at runtime by the service role anyway.
+// We don't have generated schema types yet; type the admin client loosely so
+// callers can interact with arbitrary tables without compile errors. RLS is
+// bypassed at runtime by the service role anyway.
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 let cached: SupabaseClient<any, any, any> | null = null;
 

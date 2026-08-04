@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CDSI 2026 - Policy Debate Jeopardy</title>
+    <!-- Tailwind CSS for modern responsive styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Orbitron & Inter for Futuristic/Space Theme -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Tone.js for browser-synthesized audio effects -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: radial-gradient(circle at center, #1e1b4b 0%, #030712 100%);
+            color: #f3f4f6;
+        }
+        .header-font {
+            font-family: 'Orbitron', sans-serif;
+        }
+        /* Custom scrollbar for grid responsiveness */
+        .custom-scrollbar::-webkit-scrollbar {
+            height: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #1f2937;
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #4f46e5;
+            border-radius: 4px;
+        }
+        /* Card flip and glow effects */
+        .jeopardy-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .jeopardy-card:not(.played):hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.4);
+        }
+        /* Pulse for daily double animation */
+        @keyframes pulse-gold {
+            0%, 100% { box-shadow: 0 0 15px #eab308; }
+            50% { box-shadow: 0 0 30px #f59e0b; }
+        }
+        .daily-double-glow {
+            animation: pulse-gold 2s infinite;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between overflow-x-hidden">
+
+    <!-- Navigation Bar -->
+    <header class="border-b border-indigo-900/50 bg-slate-950/80 backdrop-blur-md sticky top-0 z-40 px-4 py-3">
+        <div class="max-w-7xl mx-auto flex flex-col xl:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-3">
+                <div class="p-2 bg-indigo-600/20 text-indigo-400 rounded-lg border border-indigo-500/30">
+                    <i class="fa-solid fa-user-astronaut text-2xl animate-bounce"></i>
+                </div>
+                <div>
+                    <h1 class="header-font text-lg md:text-xl font-black tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400">
+                        POLICY DEBATE JEOPARDY
+                    </h1>
+                    <p class="text-xs text-indigo-300 font-mono">CDSI 2026 - NOVICE LAB</p>
+                </div>
+            </div>
+            
+            <div class="flex flex-wrap items-center justify-center gap-2">
+                <button onclick="toggleSound()" id="sound-btn" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 rounded-lg text-xs md:text-sm flex items-center gap-2 transition">
+                    <i id="sound-icon" class="fa-solid fa-volume-high"></i> <span id="sound-text">Sound ON</span>
+                </button>
+                <button onclick="openCoachPanel()" class="px-3 py-1.5 bg-indigo-950/40 hover:bg-indigo-900/60 text-indigo-300 border border-indigo-500/30 rounded-lg text-xs md:text-sm flex items-center gap-2 transition">
+                    <i class="fa-solid fa-gears"></i> Coach's Panel
+                </button>
+                <button onclick="confirmReset()" class="px-3 py-1.5 bg-rose-950/40 hover:bg-rose-900/60 text-rose-300 border border-rose-500/30 rounded-lg text-xs md:text-sm flex items-center gap-2 transition">
+                    <i class="fa-solid fa-rotate-right"></i> Reset Board
+                </button>
+                <button onclick="triggerFinalJeopardy()" class="px-3 py-1.5 bg-amber-950/40 hover:bg-amber-900/60 text-amber-300 border border-amber-500/30 rounded-lg text-xs md:text-sm flex items-center gap-2 transition">
+                    <i class="fa-solid fa-star"></i> Go to Final
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Board Area -->
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 py-6 flex flex-col justify-center">
+        <!-- Interactive Jeopardy Grid -->
+        <div class="overflow-x-auto custom-scrollbar pb-4">
+            <div class="grid grid-cols-6 gap-3 min-w-[950px] text-center" id="jeopardy-grid">
+                <!-- Javascript will dynamically inject categories and cards here -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Floating Bottom Panel for Team Scoreboard -->
+    <footer class="bg-slate-950/90 border-t border-indigo-950/80 backdrop-blur-md py-4 px-6 sticky bottom-0 z-30">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4" id="scoreboard">
+                <!-- JavaScript generates the 4 team cards here -->
+            </div>
+        </div>
+    </footer>
+
+    <!-- Clue Overlay Modal (Daily Double, Clue Display, Answering) -->
+    <div id="clue-modal" class="fixed inset-0 bg-slate-950/95 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-slate-900 border-2 border-indigo-500/50 rounded-2xl max-w-3xl w-full overflow-hidden shadow-2xl shadow-indigo-500/10">
+            <!-- Modal Header / Clue Metadata -->
+            <div class="p-4 bg-slate-950/80 border-b border-indigo-900/50 flex justify-between items-center">
+                <span class="header-font text-indigo-400 font-bold tracking-wider uppercase text-sm" id="modal-category">CATEGORY</span>
+                <span class="header-font text-amber-400 font-extrabold text-lg" id="modal-points">$200</span>
+            </div>
+
+            <!-- Daily Double Betting Screen (Hidden by Default) -->
+            <div id="dd-wager-screen" class="p-8 text-center hidden">
+                <div class="text-amber-400 text-4xl mb-4 animate-bounce">
+                    <i class="fa-solid fa-circle-dollar-to-slot"></i>
+                </div>
+                <h2 class="header-font text-3xl font-black text-amber-400 mb-2">DAILY DOUBLE!</h2>
+                <p class="text-slate-300 mb-6">Enter a wager for the selected team <strong id="dd-team-name">Team</strong>.</p>
+                <div class="max-w-xs mx-auto mb-6">
+                    <label class="block text-left text-xs text-indigo-300 font-mono uppercase mb-2">Wager Amount (Min 5, Max <span id="dd-max-wager">1000</span>)</label>
+                    <input type="number" id="dd-wager-input" class="w-full bg-slate-950 border border-indigo-500/40 rounded-xl px-4 py-3 text-2xl font-bold text-center text-amber-300 focus:ring-2 focus:ring-amber-500 focus:outline-none" value="200">
+                </div>
+                <button onclick="confirmDailyDoubleWager()" class="px-8 py-3 bg-gradient-to-r from-amber-500 to-yellow-500 text-slate-950 font-bold rounded-xl text-lg hover:from-amber-400 hover:to-yellow-400 transition transform hover:scale-105 active:scale-95">
+                    Reveal Clue
+                </button>
+            </div>
+
+            <!-- Standard Clue Screen -->
+            <div id="clue-screen" class="p-8 flex flex-col items-center">
+                <!-- Countdown Timer -->
+                <div class="w-16 h-16 rounded-full border-4 border-indigo-500/30 flex items-center justify-center mb-6 relative">
+                    <div id="timer-ring" class="absolute inset-0 rounded-full border-4 border-indigo-400 transition-all duration-1000" style="clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 0);"></div>
+                    <span id="timer-text" class="text-2xl font-bold header-font text-indigo-300">30</span>
+                </div>
+
+                <!-- Clue text -->
+                <p class="text-2xl md:text-3xl text-center font-semibold leading-relaxed mb-8 text-slate-100 max-w-2xl" id="clue-text">
+                    This is the statement that the players must answer in the form of a question.
+                </p>
+
+                <!-- Hidden/Revealed Answer -->
+                <div id="answer-box" class="w-full bg-indigo-950/40 border border-indigo-500/20 rounded-xl p-5 mb-8 hidden text-center transform scale-95 transition-all duration-300">
+                    <p class="text-xs font-mono uppercase text-indigo-400 tracking-widest mb-1">Correct Response Format</p>
+                    <p class="text-xl md:text-2xl text-amber-400 font-bold italic" id="answer-text">
+                        What is a Response?
+                    </p>
+                </div>
+
+                <!-- Control Buttons -->
+                <div class="flex flex-wrap justify-center gap-4 w-full">
+                    <button id="show-answer-btn" onclick="revealAnswer()" class="px-6 py-3 bg-indigo-600 hover:bg-indigo-500 text-white font-bold rounded-xl shadow-lg transition flex items-center gap-2">
+                        <i class="fa-regular fa-eye"></i> Show Response
+                    </button>
+
+                    <!-- Score Management Controls within the Clue modal -->
+                    <div id="scoring-controls" class="w-full mt-6 border-t border-slate-800 pt-6 hidden">
+                        <p class="text-center text-slate-400 text-sm mb-4">Award/Deduct points for this question:</p>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-3" id="modal-team-scoring">
+                            <!-- Populated dynamically with buttons for each team -->
+                        </div>
+                    </div>
+
+                    <button id="close-clue-btn" onclick="closeClueModal()" class="px-6 py-3 bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 font-bold rounded-xl transition mt-4 hidden w-full md:w-auto">
+                        Done & Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Final Jeopardy Modal Overlay -->
+    <div id="final-jeopardy-modal" class="fixed inset-0 bg-slate-950/98 backdrop-blur-md z-50 hidden flex items-center justify-center p-4 overflow-y-auto">
+        <div class="bg-slate-900 border-2 border-amber-500/50 rounded-2xl max-w-4xl w-full p-6 md:p-8 shadow-2xl shadow-amber-500/10">
+            <div class="text-center mb-6">
+                <span class="header-font text-amber-500 text-xs font-mono tracking-widest uppercase">STATION END GAME</span>
+                <h2 class="header-font text-3xl md:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-yellow-500 mt-2">FINAL JEOPARDY</h2>
+            </div>
+
+            <!-- Phase 1: Wager Mode -->
+            <div id="fj-wager-phase" class="space-y-6">
+                <div class="text-center bg-indigo-950/30 border border-indigo-500/20 p-4 rounded-xl">
+                    <p class="text-xs uppercase text-indigo-400 tracking-wider">Final Jeopardy Category</p>
+                    <h3 class="header-font text-2xl font-bold text-slate-100 mt-1">THE ULTIMATE RESOLUTION</h3>
+                </div>
+                
+                <p class="text-sm text-slate-400 text-center">Teams may wager any amount of their current points (up to their current total). Minimum wager is 0 points.</p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="fj-wagers-container">
+                    <!-- Dynamic team inputs for final wagers -->
+                </div>
+
+                <div class="text-center pt-4">
+                    <button onclick="revealFinalJeopardyClue()" class="px-8 py-3 bg-gradient-to-r from-amber-500 to-yellow-500 text-slate-950 font-extrabold rounded-xl text-lg hover:from-amber-400 hover:to-yellow-400 shadow-lg shadow-amber-500/20 transition transform hover:scale-105">
+                        Reveal Final Clue
+                    </button>
+                </div>
+            </div>
+
+            <!-- Phase 2: Clue Reveal & Award Mode -->
+            <div id="fj-clue-phase" class="hidden space-y-6 text-center">
+                <div class="w-20 h-20 rounded-full border-4 border-amber-500/30 flex items-center justify-center mx-auto mb-4 relative">
+                    <div id="fj-timer-ring" class="absolute inset-0 rounded-full border-4 border-amber-400 transition-all duration-1000" style="clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 0);"></div>
+                    <span id="fj-timer-text" class="text-2xl font-bold header-font text-amber-300">60</span>
+                </div>
+
+                <p class="text-xs uppercase text-amber-400 tracking-wider font-mono">The Clue</p>
+                <p class="text-2xl md:text-3xl text-slate-100 font-semibold leading-relaxed max-w-3xl mx-auto" id="fj-clue-display">
+                    This is the final speech in a debate round.
+                </p>
+
+                <div id="fj-answer-box" class="bg-amber-950/40 border border-amber-500/20 rounded-xl p-4 max-w-xl mx-auto hidden">
+                    <p class="text-xs font-mono uppercase text-amber-400 tracking-widest mb-1">Correct Response</p>
+                    <p class="text-xl md:text-2xl text-slate-100 font-bold italic">What is the 2nd Affirmative Rebuttal (2AR)?</p>
+                </div>
+
+                <div class="flex justify-center gap-4">
+                    <button id="fj-show-answer-btn" onclick="revealFinalAnswer()" class="px-6 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white font-bold rounded-lg shadow transition">
+                        Show Response
+                    </button>
+                </div>
+
+                <!-- Phase 3: Selection of winners/losers for wagers -->
+                <div id="fj-scoring-phase" class="border-t border-slate-800 pt-6 hidden">
+                    <p class="text-slate-400 text-sm mb-4">Did the teams answer correctly?</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-2xl mx-auto" id="fj-result-grid">
+                        <!-- Dynamic team pass/fail buttons -->
+                    </div>
+
+                    <div class="text-center pt-8">
+                        <button onclick="finishFinalJeopardy()" class="px-8 py-3 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-xl text-lg shadow-lg shadow-emerald-500/20 transition transform hover:scale-105">
+                            Submit & Finalize Game
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Coach's Panel Modal -->
+    <div id="coach-modal" class="fixed inset-0 bg-slate-950/95 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-slate-900 border-2 border-indigo-500/50 rounded-2xl max-w-4xl w-full max-h-[90vh] flex flex-col overflow-hidden shadow-2xl shadow-indigo-500/20">
+            <!-- Header -->
+            <div class="p-5 bg-slate-950 border-b border-indigo-900/50 flex justify-between items-center">
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-gears text-indigo-400 text-xl"></i>
+                    <h2 class="header-font text-xl font-bold text-slate-100 uppercase tracking-wider">CDSI 2026 Coach's Panel</h2>
+                </div>
+                <button onclick="closeCoachPanel()" class="text-slate-400 hover:text-white transition">
+                    <i class="fa-solid fa-xmark text-xl"></i>
+                </button>
+            </div>
+
+            <!-- Content Body (Scrollable) -->
+            <div class="p-6 overflow-y-auto space-y-6 flex-grow">
+                <div>
+                    <label class="block text-xs uppercase text-indigo-300 font-mono tracking-wider mb-2">Select Category to Edit</label>
+                    <select id="coach-category-select" onchange="loadCategoryToEdit()" class="w-full bg-slate-950 border border-indigo-500/30 rounded-xl px-4 py-2.5 text-slate-100 font-semibold focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                        <option value="0">Category 1: Rules of Policy Debate</option>
+                        <option value="1">Category 2: Factions & Formats</option>
+                        <option value="2">Category 3: The Argument Sandwich</option>
+                        <option value="3">Category 4: Well Rounded</option>
+                        <option value="4">Category 5: Debate Jargon</option>
+                        <option value="5">Category 6: Stock Issues</option>
+                    </select>
+                </div>
+
+                <div class="border-t border-slate-800/80 pt-4">
+                    <label class="block text-xs uppercase text-indigo-300 font-mono tracking-wider mb-2">Category Name</label>
+                    <input type="text" id="coach-category-name" class="w-full bg-slate-950 border border-indigo-500/30 rounded-xl px-4 py-2.5 text-slate-100 font-semibold focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="Category Name">
+                </div>
+
+                <div class="space-y-4 border-t border-slate-800/80 pt-6">
+                    <h3 class="header-font text-sm font-bold text-indigo-400 uppercase tracking-widest">Edit Clues & Answers</h3>
+                    
+                    <div id="coach-clues-list" class="space-y-4">
+                        <!-- Clue editable blocks will be injected here for values 200, 400, 600, 800, 1000 -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer controls -->
+            <div class="p-4 bg-slate-950 border-t border-indigo-900/50 flex flex-col sm:flex-row justify-between items-center gap-3">
+                <button onclick="confirmResetDefaults()" class="px-4 py-2 bg-rose-950/40 hover:bg-rose-900/60 text-rose-300 border border-rose-500/30 rounded-xl text-xs transition">
+                    <i class="fa-solid fa-trash-can"></i> Reset to Original Clues
+                </button>
+                <div class="flex gap-2">
+                    <button onclick="closeCoachPanel()" class="px-5 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 rounded-xl text-xs font-bold transition">
+                        Cancel
+                    </button>
+                    <button onclick="saveCoachCategoryData()" class="px-6 py-2 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl text-xs font-bold transition flex items-center gap-2">
+                        <i class="fa-solid fa-floppy-disk"></i> Save Changes
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom Modal Confirmation Overlay -->
+    <div id="confirm-modal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-[100] hidden flex items-center justify-center p-4">
+        <div class="bg-slate-900 border-2 border-indigo-500/40 rounded-2xl p-6 max-w-sm w-full text-center space-y-4 shadow-2xl">
+            <div class="w-12 h-12 rounded-full bg-rose-950/50 border border-rose-500/30 flex items-center justify-center mx-auto text-rose-400 text-lg">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+            </div>
+            <p class="text-slate-100 font-semibold text-sm leading-relaxed" id="confirm-modal-text">Are you sure you want to proceed?</p>
+            <div class="flex justify-center gap-3 pt-2">
+                <button id="confirm-cancel-btn" onclick="handleConfirmCancel()" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 rounded-lg text-xs font-bold text-slate-300 transition">Cancel</button>
+                <button id="confirm-ok-btn" onclick="handleConfirmOk()" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-500 rounded-lg text-xs font-bold text-white transition">Yes, Proceed</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        /* SOUND / SFX MANAGEMENT via Tone.js Synth */
+        let soundEnabled = true;
+        
+        // Synth setups
+        let synth;
+        let polySynth;
+
+        function initSynth() {
+            if (!synth) {
+                synth = new Tone.Synth().toDestination();
+                polySynth = new Tone.PolySynth().toDestination();
+            }
+        }
+
+        function toggleSound() {
+            soundEnabled = !soundEnabled;
+            const icon = document.getElementById('sound-icon');
+            const txt = document.getElementById('sound-text');
+            if (soundEnabled) {
+                icon.className = "fa-solid fa-volume-high";
+                txt.innerText = "Sound ON";
+                playSfx('correct');
+            } else {
+                icon.className = "fa-solid fa-volume-xmark";
+                txt.innerText = "Sound OFF";
+            }
+        }
+
+        function playSfx(type) {
+            if (!soundEnabled) return;
+            initSynth();
+            try {
+                Tone.start();
+                if (type === 'click') {
+                    synth.triggerAttackRelease("C4", "16n");
+                } else if (type === 'correct') {
+                    const now = Tone.now();
+                    synth.triggerAttackRelease("C4", "8n", now);
+                    synth.triggerAttackRelease("E4", "8n", now + 0.1);
+                    synth.triggerAttackRelease("G4", "8n", now + 0.2);
+                    synth.triggerAttackRelease("C5", "4n", now + 0.3);
+                } else if (type === 'wrong') {
+                    const now = Tone.now();
+                    synth.triggerAttackRelease("A3", "4n", now);
+                    synth.triggerAttackRelease("G#3", "2n", now + 0.15);
+                } else if (type === 'daily_double') {
+                    const now = Tone.now();
+                    polySynth.triggerAttackRelease(["C4", "E4", "G4"], "4n", now);
+                    polySynth.triggerAttackRelease(["F4", "A4", "C5"], "4n", now + 0.25);
+                    polySynth.triggerAttackRelease(["G4", "B4", "D5"], "4n", now + 0.5);
+                    polySynth.triggerAttackRelease(["C5", "E5", "G5"], "2n", now + 0.75);
+                } else if (type === 'timer_end') {
+                    synth.triggerAttackRelease("C3", "2n");
+                }
+            } catch (err) {
+                console.warn("Audio Context blocked or failed to load standard synth", err);
+            }
+        }
+
+        /* GAME CONFIGURATION & DATA ENGINE */
+        // Default core dataset of standard categories & cards
+        const defaultGameData = [
+            {
+                category: "Rules of Policy Debate",
+                clues: [
+                    { value: 200, clue: "This is the exact number of people who work together on a single debate team.", response: "What is two people?", isPlayed: false },
+                    { value: 400, clue: "Unlike an argument at lunch, a real policy debate round always has a time limit, evidence, and this neutral person who keeps score and picks the winner.", response: "Who is the judge?", isPlayed: false },
+                    { value: 600, clue: "This is your teammate during a debate. You must work together with them to win the round.", response: "Who is your Debate Partner?", isPlayed: false },
+                    { value: 800, clue: "This is what a judge signs and tells the winner at the end of the round.", response: "What’s the ballot?", isPlayed: false },
+                    { value: 1000, clue: "This is the big end-of-week mission where you will finally put on your jumpsuit and compete in real rounds against other teams.", response: "What is the Tournament?", isPlayed: false }
+                ]
+            },
+            {
+                category: "Factions & Formats",
+                clues: [
+                    { value: 200, clue: "This team says \"YES\" to the rule change and brings a specific plan to fix a big problem.", response: "What is the Affirmative (or Aff)?", isPlayed: false },
+                    { value: 400, clue: "This team says “NO!\" There is NO problem with the status quo (or the way things are now).", response: "What is the Negative (or Neg)?", isPlayed: false },
+                    { value: 600, clue: "This 3-minute part of the round is like being a detective, where you get to ask the other team questions to find clues.", response: "What is Cross-Ex (or Cross-Examination)?", isPlayed: false },
+                    { value: 800, clue: "These shorter speeches happen at the end of the round, where no new arguments are allowed and you have to defend your case.", response: "What are Rebuttals?", isPlayed: false },
+                    { value: 1000, clue: "This is the very first speech in the round where you stand up to build your case from scratch.", response: "What is a Constructive speech?", isPlayed: false }
+                ]
+            },
+            {
+                category: "The Argument Sandwich",
+                clues: [
+                    { value: 200, clue: "This is the top bread of your sandwich—a simple, clear sentence that tells the audience your big idea.", response: "What is a Claim?", isPlayed: false },
+                    { value: 400, clue: "This filling of the sandwich is your proof or reason. Without it, your big idea is just an opinion.", response: "What is a Warrant?", isPlayed: false },
+                    { value: 600, clue: "This bottom bun of the sandwich answers the question \"So what?\" by showing how your idea changes real people's lives. This is the result of your argument. This is why the judge should care.", response: "What is an Impact?", isPlayed: false },
+                    { value: 800, clue: "If you say \"Schools should keep recess\" but do not give a single piece of proof, this is the sandwich part you forgot.", response: "What is a Warrant?", isPlayed: false },
+                    { value: 1000, clue: "In an argument about school uniforms, saying \"Losing graduation opportunities leaves students unprepared for the future\" is an example of this specific layer.", response: "What is an Impact?", isPlayed: false }
+                ]
+            },
+            {
+                category: "Well Rounded",
+                clues: [
+                    { value: 200, clue: "This is the shared 8-minute bank of time you and your partner can use to brainstorm and write before standing up to speak.", response: "What is Prep Time?", isPlayed: false },
+                    { value: 400, clue: "To make sure you get the judge's full focus, this is where you should look while you are speaking, instead of looking at the other team.", response: "What is making eye contact with the judge?", isPlayed: false },
+                    { value: 600, clue: "This is the massive 13-minute wall of speech time where the Negative team gets to speak twice in a row (consisting of the 2NC and 1NR).", response: "What is the Negative Block?", isPlayed: false },
+                    { value: 800, clue: "The first speech the Negative team gives.", response: "What is the 1NC?", isPlayed: false },
+                    { value: 1000, clue: "This is the specialized, columns-based shorthand note-taking system debaters use to track every argument made in the round.", response: "What is Flowing?", isPlayed: false }
+                ]
+            },
+            {
+                category: "Debate Jargon",
+                clues: [
+                    { value: 200, clue: "This is the shorthand word for the main policy document or action proposed by the affirmative team.", response: "What is a Plan?", isPlayed: false },
+                    { value: 400, clue: "This is the term for a debate card's brief summary paragraph, written in bold at the top.", response: "What is a Tagline (or Tag)?", isPlayed: false },
+                    { value: 600, clue: "This is the term for the highlighted or underlined parts of a piece of evidence that you actually read aloud.", response: "What is cutting or standard reading?", isPlayed: false },
+                    { value: 800, clue: "An outline of the order of arguments a debater plans to make, given before their formal speech time begins.", response: "What is an Off-Time Roadmap?", isPlayed: false },
+                    { value: 1000, clue: "This is a direct quote from a book, article, or study that you read during a round to prove your point.", response: "What is Evidence (or a Card)?", isPlayed: false }
+                ]
+            },
+            {
+                category: "Stock Issues",
+                clues: [
+                    { value: 200, clue: "When we argue, this Latin-derived term represents the current state of affairs or rules that we are arguing about changing.", response: "What is the Status Quo?", isPlayed: false },
+                    { value: 400, clue: "This is the bad thing or problem currently happening in the status quo that the Affirmative wants to fix.", response: "What is a Harm?", isPlayed: false },
+                    { value: 600, clue: "This is the reason why the status quo cannot solve the problem on its own without the affirmative's rule change.", response: "What is Inherency (or Inherent Barrier)?", isPlayed: false },
+                    { value: 800, clue: "This is the standard or proof that the affirmative's plan will actually work and solve the problems they pointed out.", response: "What is Solvency?", isPlayed: false },
+                    { value: 1000, clue: "This is a disadvantage or bad side-effect that the negative team claims will happen if the affirmative plan is passed.", response: "What is a Disadvantage (or DA)?", isPlayed: false }
+                ]
+            }
+        ];
+
+        // Active game state loaded from default or local storage
+        let gameData = [];
+
+        function loadGameData() {
+            const savedData = localStorage.getItem('cdsi_jeopardy_game_data');
+            if (savedData) {
+                try {
+                    gameData = JSON.parse(savedData);
+                } catch (e) {
+                    console.error("Error loading saved clues, defaulting", e);
+                    gameData = JSON.parse(JSON.stringify(defaultGameData));
+                }
+            } else {
+                gameData = JSON.parse(JSON.stringify(defaultGameData));
+            }
+        }
+
+        function saveGameData() {
+            localStorage.setItem('cdsi_jeopardy_game_data', JSON.stringify(gameData));
+        }
+
+        /* STATE MANAGEMENT */
+        let teams = [
+            { id: 1, name: "Alpha Squad", score: 0 },
+            { id: 2, name: "Bravo Station", score: 0 },
+            { id: 3, name: "Charlie Crew", score: 0 },
+            { id: 4, name: "Delta Defenders", score: 0 }
+        ];
+
+        let activeClue = null;
+        let selectedDailyDoubleCoords = []; // array of {catIndex, clueIndex}
+        let ddWager = 0;
+        let ddSelectingTeam = null;
+
+        // Timer references
+        let timerInterval = null;
+        let timeLeft = 30;
+
+        // Final Jeopardy State
+        let finalJeopardyWagers = {};
+        let finalJeopardyResults = {};
+
+        // Track selected team choosing current clue
+        let choosingTeamId = 1;
+
+        // Custom Confirmation dialog callback reference
+        let confirmCallback = null;
+
+        /* INITIALIZATION ENGINE */
+        window.onload = function() {
+            loadGameData();
+            setupDailyDoubles();
+            renderBoard();
+            renderScoreboard();
+        };
+
+        // Custom confirm overlay helper
+        function showConfirm(message, callback) {
+            document.getElementById('confirm-modal-text').innerText = message;
+            document.getElementById('confirm-modal').classList.remove('hidden');
+            confirmCallback = callback;
+        }
+
+        function handleConfirmOk() {
+            document.getElementById('confirm-modal').classList.add('hidden');
+            if (confirmCallback) {
+                confirmCallback();
+            }
+            confirmCallback = null;
+        }
+
+        function handleConfirmCancel() {
+            document.getElementById('confirm-modal').classList.add('hidden');
+            confirmCallback = null;
+        }
+
+        // Pick 2 random locations on the grid to be Daily Doubles
+        function setupDailyDoubles() {
+            selectedDailyDoubleCoords = [];
+            // Choose two random clues between rows 2-4 (values 400, 600, 800) to keep wagers appropriate
+            while(selectedDailyDoubleCoords.length < 2) {
+                const catIndex = Math.floor(Math.random() * 6);
+                const clueIndex = Math.floor(Math.random() * 3) + 1; // Index 1, 2, or 3 (400, 600, 800)
+                const coord = { catIndex, clueIndex };
+                
+                // Avoid duplicates
+                if (!selectedDailyDoubleCoords.some(c => c.catIndex === catIndex && c.clueIndex === clueIndex)) {
+                    selectedDailyDoubleCoords.push(coord);
+                }
+            }
+        }
+
+        // Render the Grid structure dynamically
+        function renderBoard() {
+            const gridContainer = document.getElementById('jeopardy-grid');
+            gridContainer.innerHTML = '';
+
+            // 1. Render Headers (Categories)
+            gameData.forEach((cat, index) => {
+                const catHeader = document.createElement('div');
+                catHeader.className = "bg-slate-900 border border-indigo-900/50 rounded-xl p-4 flex items-center justify-center min-h-[80px] shadow-lg shadow-indigo-950/20";
+                catHeader.innerHTML = `
+                    <h3 class="header-font text-xs md:text-sm font-bold tracking-wider text-indigo-300 uppercase leading-snug">
+                        ${cat.category}
+                    </h3>
+                `;
+                gridContainer.appendChild(catHeader);
+            });
+
+            // 2. Render Clue Grid Row by Row
+            for (let rowIndex = 0; rowIndex < 5; rowIndex++) {
+                for (let catIndex = 0; catIndex < 6; catIndex++) {
+                    const clue = gameData[catIndex].clues[rowIndex];
+                    const card = document.createElement('div');
+                    
+                    if (clue.isPlayed) {
+                        card.className = "jeopardy-card played bg-slate-950/50 border border-slate-900 text-slate-700 rounded-xl flex items-center justify-center min-h-[90px] cursor-not-allowed font-semibold text-lg line-through";
+                        card.innerText = `-$${clue.value}-`;
+                    } else {
+                        card.className = "jeopardy-card bg-slate-800/80 border border-indigo-500/20 hover:border-indigo-400 text-amber-400 rounded-xl flex items-center justify-center min-h-[90px] cursor-pointer font-black text-2xl shadow hover:shadow-indigo-500/10 hover:text-white transition duration-200 select-none";
+                        card.innerHTML = `<span class="header-font">$${clue.value}</span>`;
+                        card.onclick = () => selectClue(catIndex, rowIndex);
+                    }
+                    gridContainer.appendChild(card);
+                }
+            }
+        }
+
+        // Render current scores & team names
+        function renderScoreboard() {
+            const container = document.getElementById('scoreboard');
+            container.innerHTML = '';
+
+            teams.forEach(team => {
+                const isActiveSelector = team.id === choosingTeamId;
+                const card = document.createElement('div');
+                card.className = `bg-slate-900/90 border rounded-xl p-3.5 flex flex-col justify-between transition relative overflow-hidden ${
+                    isActiveSelector 
+                        ? 'border-indigo-500 shadow-lg shadow-indigo-500/20 ring-2 ring-indigo-500/30' 
+                        : 'border-slate-800 hover:border-slate-700'
+                }`;
+
+                card.innerHTML = `
+                    <div class="flex justify-between items-start">
+                        <input type="text" value="${team.name}" onchange="updateTeamName(${team.id}, this.value)" 
+                            class="bg-transparent font-bold text-slate-100 hover:bg-slate-800/50 px-1 rounded transition focus:outline-none focus:ring-1 focus:ring-indigo-500 w-3/4 text-sm uppercase tracking-wide">
+                        
+                        <!-- Radio selection to toggle active turn picker -->
+                        <button onclick="setChoosingTeam(${team.id})" title="Mark active picker" 
+                            class="w-5 h-5 rounded-full border-2 flex items-center justify-center ${
+                                isActiveSelector ? 'border-indigo-400 bg-indigo-500 text-white' : 'border-slate-600 text-transparent'
+                            }">
+                            <i class="fa-solid fa-check text-[10px]"></i>
+                        </button>
+                    </div>
+
+                    <div class="flex items-center justify-between mt-2.5">
+                        <span class="header-font text-2xl font-black ${team.score >= 0 ? 'text-emerald-400' : 'text-rose-500'}">
+                            $${team.score}
+                        </span>
+                        
+                        <div class="flex gap-1">
+                            <button onclick="adjustScore(${team.id}, -100)" class="w-8 h-8 rounded bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-300 flex items-center justify-center text-xs transition active:scale-90" title="Deduct $100">
+                                -100
+                            </button>
+                            <button onclick="adjustScore(${team.id}, 100)" class="w-8 h-8 rounded bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-300 flex items-center justify-center text-xs transition active:scale-90" title="Add $100">
+                                +100
+                            </button>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function setChoosingTeam(id) {
+            choosingTeamId = id;
+            playSfx('click');
+            renderScoreboard();
+        }
+
+        function updateTeamName(id, newName) {
+            const team = teams.find(t => t.id === id);
+            if (team && newName.trim() !== '') {
+                team.name = newName.trim();
+            }
+        }
+
+        function adjustScore(id, amount) {
+            const team = teams.find(t => t.id === id);
+            if (team) {
+                team.score += amount;
+                playSfx(amount > 0 ? 'correct' : 'wrong');
+                renderScoreboard();
+            }
+        }
+
+        // Select Clue and open Modal
+        function selectClue(catIndex, clueIndex) {
+            const category = gameData[catIndex].category;
+            const clue = gameData[catIndex].clues[clueIndex];
+            
+            activeClue = { ...clue, catIndex, clueIndex };
+
+            // Determine if Daily Double
+            const isDailyDouble = selectedDailyDoubleCoords.some(c => c.catIndex === catIndex && c.clueIndex === clueIndex);
+
+            // Open Modal Overlay
+            const modal = document.getElementById('clue-modal');
+            document.getElementById('modal-category').innerText = category;
+            document.getElementById('modal-points').innerText = `$${clue.value}`;
+            
+            // Clean modal states
+            document.getElementById('clue-screen').classList.add('hidden');
+            document.getElementById('dd-wager-screen').classList.add('hidden');
+            document.getElementById('answer-box').classList.add('hidden');
+            document.getElementById('scoring-controls').classList.add('hidden');
+            document.getElementById('show-answer-btn').classList.remove('hidden');
+            document.getElementById('close-clue-btn').classList.add('hidden');
+
+            modal.classList.remove('hidden');
+
+            if (isDailyDouble) {
+                playSfx('daily_double');
+                // Setup Daily Double Wager screen
+                const activeTeam = teams.find(t => t.id === choosingTeamId) || teams[0];
+                ddSelectingTeam = activeTeam;
+                
+                document.getElementById('dd-team-name').innerText = activeTeam.name;
+                
+                // Max wager is the team's current score, or 1000 if their score is less than 1000
+                const maxWager = Math.max(activeTeam.score, 1000);
+                document.getElementById('dd-max-wager').innerText = maxWager;
+                document.getElementById('dd-wager-input').max = maxWager;
+                document.getElementById('dd-wager-input').value = clue.value;
+
+                document.getElementById('dd-wager-screen').classList.remove('hidden');
+            } else {
+                playSfx('click');
+                // Show standard Clue
+                setupStandardClueView();
+            }
+        }
+
+        function confirmDailyDoubleWager() {
+            const wagerInput = document.getElementById('dd-wager-input');
+            let wagerVal = parseInt(wagerInput.value);
+            const activeTeam = ddSelectingTeam;
+            const maxWager = Math.max(activeTeam.score, 1000);
+
+            if (isNaN(wagerVal) || wagerVal < 5) {
+                wagerVal = 5;
+            } else if (wagerVal > maxWager) {
+                wagerVal = maxWager;
+            }
+
+            ddWager = wagerVal;
+            // Update active clue points on layout
+            document.getElementById('modal-points').innerText = `DAILY DOUBLE WAGER: $${ddWager}`;
+
+            document.getElementById('dd-wager-screen').classList.add('hidden');
+            setupStandardClueView();
+        }
+
+        function setupStandardClueView() {
+            document.getElementById('clue-screen').classList.remove('hidden');
+            document.getElementById('clue-text').innerText = activeClue.clue;
+            document.getElementById('answer-text').innerText = activeClue.response;
+
+            // Start countdown timer
+            timeLeft = 30;
+            document.getElementById('timer-text').innerText = timeLeft;
+            updateTimerRing(100);
+
+            clearInterval(timerInterval);
+            timerInterval = setInterval(() => {
+                timeLeft--;
+                document.getElementById('timer-text').innerText = timeLeft;
+                updateTimerRing((timeLeft / 30) * 100);
+
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    playSfx('timer_end');
+                    revealAnswer();
+                }
+            }, 1000);
+        }
+
+        function updateTimerRing(percent) {
+            const ring = document.getElementById('timer-ring');
+            if (percent <= 0) {
+                ring.style.clipPath = 'polygon(50% 50%, 0 0, 0 0, 0 0, 0 0, 0 0)';
+            } else {
+                // Approximate representation of ticking radial circle
+                ring.style.borderColor = percent < 30 ? '#ef4444' : '#6366f1';
+            }
+        }
+
+        function revealAnswer() {
+            clearInterval(timerInterval);
+            playSfx('click');
+            document.getElementById('answer-box').classList.remove('hidden');
+            document.getElementById('show-answer-btn').classList.add('hidden');
+            document.getElementById('close-clue-btn').classList.remove('hidden');
+
+            // Generate Score/Point awarding panel inside the modal
+            const scoringPanel = document.getElementById('scoring-controls');
+            scoringPanel.classList.remove('hidden');
+            
+            const teamGrid = document.getElementById('modal-team-scoring');
+            teamGrid.innerHTML = '';
+
+            // Point value to add/deduct
+            const pointValue = (ddWager > 0) ? ddWager : activeClue.value;
+
+            teams.forEach(team => {
+                const teamDiv = document.createElement('div');
+                teamDiv.className = "bg-slate-950/60 border border-slate-800 rounded-xl p-3 flex flex-col items-center gap-2";
+                teamDiv.innerHTML = `
+                    <span class="text-xs text-slate-300 font-bold text-center block max-w-full truncate">${team.name}</span>
+                    <div class="flex gap-2">
+                        <button onclick="awardCluePoints(${team.id}, ${-pointValue}, this)" class="px-2.5 py-1.5 bg-rose-950/40 hover:bg-rose-900 border border-rose-500/30 rounded text-xs text-rose-300 transition active:scale-95 flex items-center gap-1">
+                            <i class="fa-solid fa-minus"></i> -$${pointValue}
+                        </button>
+                        <button onclick="awardCluePoints(${team.id}, ${pointValue}, this)" class="px-2.5 py-1.5 bg-emerald-950/40 hover:bg-emerald-900 border border-emerald-500/30 rounded text-xs text-emerald-300 transition active:scale-95 flex items-center gap-1">
+                            <i class="fa-solid fa-plus"></i> +$${pointValue}
+                        </button>
+                    </div>
+                `;
+                teamGrid.appendChild(teamDiv);
+            });
+        }
+
+        function awardCluePoints(teamId, amount, btnElement) {
+            const team = teams.find(t => t.id === teamId);
+            if (team) {
+                team.score += amount;
+                playSfx(amount > 0 ? 'correct' : 'wrong');
+                renderScoreboard();
+                
+                // Add success visual feedback inside clue modal
+                btnElement.classList.add('ring-2', amount > 0 ? 'ring-emerald-400' : 'ring-rose-500');
+                setTimeout(() => {
+                    btnElement.classList.remove('ring-2', 'ring-emerald-400', 'ring-rose-500');
+                }, 800);
+            }
+        }
+
+        function closeClueModal() {
+            clearInterval(timerInterval);
+            
+            // Mark clue as played in the dataset
+            if (activeClue) {
+                gameData[activeClue.catIndex].clues[activeClue.clueIndex].isPlayed = true;
+                saveGameData();
+            }
+
+            // Clean up state
+            activeClue = null;
+            ddWager = 0;
+            ddSelectingTeam = null;
+
+            // Close modal
+            document.getElementById('clue-modal').classList.add('hidden');
+            
+            // Re-render Game elements
+            renderBoard();
+            renderScoreboard();
+        }
+
+        function triggerFinalJeopardy() {
+            playSfx('daily_double');
+            
+            const modal = document.getElementById('final-jeopardy-modal');
+            modal.classList.remove('hidden');
+
+            document.getElementById('fj-wager-phase').classList.remove('hidden');
+            document.getElementById('fj-clue-phase').classList.add('hidden');
+
+            // Render wagers container
+            const wagersContainer = document.getElementById('fj-wagers-container');
+            wagersContainer.innerHTML = '';
+
+            teams.forEach(team => {
+                const maxBet = Math.max(team.score, 0); // Teams can't wager if in the negatives
+                const defaultBet = Math.min(maxBet, 100);
+
+                const div = document.createElement('div');
+                div.className = "bg-slate-950/80 border border-slate-800 rounded-xl p-4 flex flex-col md:flex-row items-center justify-between gap-3";
+                div.innerHTML = `
+                    <div class="flex flex-col">
+                        <span class="font-bold text-slate-100 text-sm uppercase">${team.name}</span>
+                        <span class="text-xs text-slate-400 font-mono">Current points: $${team.score}</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-amber-500 font-bold font-mono">$</span>
+                        <input type="number" id="fj-wager-${team.id}" class="w-28 bg-slate-900 border border-slate-700 rounded px-2.5 py-1 text-center font-bold text-amber-300" 
+                            value="${defaultBet}" min="0" max="${maxBet}">
+                    </div>
+                `;
+                wagersContainer.appendChild(div);
+            });
+        }
+
+        function revealFinalJeopardyClue() {
+            playSfx('click');
+
+            // Lock wagers
+            teams.forEach(team => {
+                const input = document.getElementById(`fj-wager-${team.id}`);
+                let val = parseInt(input.value);
+                const maxBet = Math.max(team.score, 0);
+
+                if (isNaN(val) || val < 0) {
+                    val = 0;
+                } else if (val > maxBet) {
+                    val = maxBet;
+                }
+                finalJeopardyWagers[team.id] = val;
+            });
+
+            document.getElementById('fj-wager-phase').classList.add('hidden');
+            document.getElementById('fj-clue-phase').classList.remove('hidden');
+            document.getElementById('fj-answer-box').classList.add('hidden');
+            document.getElementById('fj-show-answer-btn').classList.remove('hidden');
+            document.getElementById('fj-scoring-phase').classList.add('hidden');
+
+            // Start final 60-second timer
+            let fjTime = 60;
+            document.getElementById('fj-timer-text').innerText = fjTime;
+
+            clearInterval(timerInterval);
+            timerInterval = setInterval(() => {
+                fjTime--;
+                document.getElementById('fj-timer-text').innerText = fjTime;
+
+                if (fjTime <= 0) {
+                    clearInterval(timerInterval);
+                    playSfx('timer_end');
+                    revealFinalAnswer();
+                }
+            }, 1000);
+        }
+
+        function revealFinalAnswer() {
+            clearInterval(timerInterval);
+            playSfx('correct');
+
+            document.getElementById('fj-answer-box').classList.remove('hidden');
+            document.getElementById('fj-show-answer-btn').classList.add('hidden');
+
+            // Render Pass/Fail Results selector
+            const resultsGrid = document.getElementById('fj-result-grid');
+            resultsGrid.innerHTML = '';
+
+            teams.forEach(team => {
+                const div = document.createElement('div');
+                div.className = "bg-slate-950/80 border border-slate-800 rounded-xl p-4 flex flex-col justify-between items-center gap-3";
+                div.innerHTML = `
+                    <div class="text-center">
+                        <span class="font-bold text-slate-100 uppercase text-sm block">${team.name}</span>
+                        <span class="text-xs text-amber-500 font-mono">Wagered: $${finalJeopardyWagers[team.id]}</span>
+                    </div>
+                    <div class="flex gap-2">
+                        <button id="fj-fail-${team.id}" onclick="setFinalResult(${team.id}, false)" class="px-4 py-2 bg-rose-950/40 hover:bg-rose-900 border border-rose-500/30 rounded text-rose-300 transition font-bold text-xs flex items-center gap-1">
+                            <i class="fa-solid fa-xmark"></i> Incorrect
+                        </button>
+                        <button id="fj-pass-${team.id}" onclick="setFinalResult(${team.id}, true)" class="px-4 py-2 bg-emerald-950/40 hover:bg-emerald-900 border border-emerald-500/30 rounded text-emerald-300 transition font-bold text-xs flex items-center gap-1">
+                            <i class="fa-solid fa-check"></i> Correct
+                        </button>
+                    </div>
+                `;
+                resultsGrid.appendChild(div);
+                
+                // Initialize default as failed / false
+                finalJeopardyResults[team.id] = false;
+            });
+
+            document.getElementById('fj-scoring-phase').classList.remove('hidden');
+        }
+
+        function setFinalResult(teamId, isCorrect) {
+            playSfx('click');
+            finalJeopardyResults[teamId] = isCorrect;
+
+            const passBtn = document.getElementById(`fj-pass-${teamId}`);
+            const failBtn = document.getElementById(`fj-fail-${teamId}`);
+
+            if (isCorrect) {
+                passBtn.className = "px-4 py-2 bg-emerald-600 border border-emerald-400 text-white rounded font-bold text-xs flex items-center gap-1 transition";
+                failBtn.className = "px-4 py-2 bg-rose-950/40 hover:bg-rose-900 border border-rose-500/30 rounded text-rose-300 transition font-bold text-xs flex items-center gap-1";
+            } else {
+                passBtn.className = "px-4 py-2 bg-emerald-950/40 hover:bg-emerald-900 border border-emerald-500/30 rounded text-emerald-300 transition font-bold text-xs flex items-center gap-1";
+                failBtn.className = "px-4 py-2 bg-rose-600 border border-rose-400 text-white rounded font-bold text-xs flex items-center gap-1 transition";
+            }
+        }
+
+        function finishFinalJeopardy() {
+            // Apply all wagers
+            teams.forEach(team => {
+                const wager = finalJeopardyWagers[team.id] || 0;
+                const isCorrect = finalJeopardyResults[team.id] || false;
+
+                if (isCorrect) {
+                    team.score += wager;
+                } else {
+                    team.score -= wager;
+                }
+            });
+
+            document.getElementById('final-jeopardy-modal').classList.add('hidden');
+            renderScoreboard();
+            playSfx('correct');
+
+            // Find winner
+            let highestScore = -Infinity;
+            let winners = [];
+            teams.forEach(team => {
+                if (team.score > highestScore) {
+                    highestScore = team.score;
+                    winners = [team.name];
+                } else if (team.score === highestScore) {
+                    winners.push(team.name);
+                }
+            });
+
+            // Space-themed custom success card popup instead of general alert
+            const finalWinMsg = winners.join(' & ');
+            showGameBanner(`MISSION COMPLETE! Winning Crew: ${finalWinMsg} with $${highestScore}!`);
+        }
+
+        function showGameBanner(message) {
+            const banner = document.createElement('div');
+            banner.className = "fixed top-20 left-1/2 transform -translate-x-1/2 z-50 bg-indigo-950 border-2 border-indigo-400 p-6 rounded-2xl max-w-lg w-full shadow-2xl text-center space-y-4 animate-bounce";
+            banner.innerHTML = `
+                <div class="text-amber-400 text-4xl"><i class="fa-solid fa-trophy"></i></div>
+                <h3 class="header-font font-black text-xl text-indigo-200">CONGRATULATIONS COGNITIVE CADETS!</h3>
+                <p class="text-slate-100 text-base font-semibold">${message}</p>
+                <button onclick="this.parentElement.remove()" class="px-6 py-2 bg-indigo-600 hover:bg-indigo-500 font-bold rounded-lg transition text-sm">Acknowledge</button>
+            `;
+            document.body.appendChild(banner);
+        }
+
+        function confirmReset() {
+            showConfirm("Are you sure you want to reset the board? All active scores will go back to zero and columns will refresh.", () => {
+                teams.forEach(t => t.score = 0);
+                gameData.forEach(cat => {
+                    cat.clues.forEach(clue => clue.isPlayed = false);
+                });
+                choosingTeamId = 1;
+                setupDailyDoubles();
+                renderBoard();
+                renderScoreboard();
+                playSfx('correct');
+            });
+        }
+
+        /* COACH'S PANEL MANAGEMENT */
+        function openCoachPanel() {
+            playSfx('click');
+            document.getElementById('coach-modal').classList.remove('hidden');
+            loadCategoryToEdit();
+        }
+
+        function closeCoachPanel() {
+            playSfx('click');
+            document.getElementById('coach-modal').classList.add('hidden');
+        }
+
+        function loadCategoryToEdit() {
+            const catIndex = parseInt(document.getElementById('coach-category-select').value);
+            const categoryObj = gameData[catIndex];
+            
+            // Set current category name
+            document.getElementById('coach-category-name').value = categoryObj.category;
+
+            // Generate inputs for each of the 5 clues
+            const container = document.getElementById('coach-clues-list');
+            container.innerHTML = '';
+
+            categoryObj.clues.forEach((clue, clueIdx) => {
+                const block = document.createElement('div');
+                block.className = "bg-slate-950/60 border border-indigo-500/20 rounded-xl p-4 space-y-3";
+                block.innerHTML = `
+                    <div class="flex justify-between items-center border-b border-slate-800/80 pb-2">
+                        <span class="text-xs uppercase text-amber-400 font-black header-font">$${clue.value} Clue</span>
+                        <span class="text-[10px] text-slate-500 font-mono">Index ${clueIdx + 1}</span>
+                    </div>
+                    <div>
+                        <label class="block text-[11px] text-slate-400 uppercase font-mono tracking-wider mb-1">Clue (The Statement)</label>
+                        <textarea id="coach-clue-${clueIdx}" class="w-full bg-slate-900 border border-slate-700/80 rounded-lg p-2.5 text-xs text-slate-100 focus:outline-none focus:ring-1 focus:ring-indigo-500" rows="2">${clue.clue}</textarea>
+                    </div>
+                    <div>
+                        <label class="block text-[11px] text-slate-400 uppercase font-mono tracking-wider mb-1">Response (The Answer)</label>
+                        <input type="text" id="coach-response-${clueIdx}" class="w-full bg-slate-900 border border-slate-700/80 rounded-lg p-2.5 text-xs text-amber-300 font-bold focus:outline-none focus:ring-1 focus:ring-indigo-500" value="${clue.response}">
+                    </div>
+                `;
+                container.appendChild(block);
+            });
+        }
+
+        function saveCoachCategoryData() {
+            const catIndex = parseInt(document.getElementById('coach-category-select').value);
+            const newCategoryName = document.getElementById('coach-category-name').value.trim();
+
+            if (newCategoryName === '') {
+                return; // Guard against empty category name
+            }
+
+            // Update Category Name
+            gameData[catIndex].category = newCategoryName;
+
+            // Update individual clues & responses
+            gameData[catIndex].clues.forEach((clue, clueIdx) => {
+                const updatedClue = document.getElementById(`coach-clue-${clueIdx}`).value.trim();
+                const updatedResponse = document.getElementById(`coach-response-${clueIdx}`).value.trim();
+
+                if (updatedClue !== '') clue.clue = updatedClue;
+                if (updatedResponse !== '') clue.response = updatedResponse;
+            });
+
+            // Persist to local storage & refresh GUI
+            saveGameData();
+            renderBoard();
+            
+            // Reload select options to show updated name
+            const select = document.getElementById('coach-category-select');
+            select.options[catIndex].text = `Category ${catIndex + 1}: ${newCategoryName}`;
+
+            playSfx('correct');
+            closeCoachPanel();
+        }
+
+        function confirmResetDefaults() {
+            showConfirm("Are you sure you want to restore all original clues and category names? This will wipe your custom edits.", () => {
+                gameData = JSON.parse(JSON.stringify(defaultGameData));
+                saveGameData();
+                renderBoard();
+                
+                // Update select option texts
+                const select = document.getElementById('coach-category-select');
+                gameData.forEach((cat, idx) => {
+                    select.options[idx].text = `Category ${idx + 1}: ${cat.category}`;
+                });
+
+                loadCategoryToEdit();
+                playSfx('correct');
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,762 @@
+{
+  "id": "speech-order-v1",
+  "campaignId": "cdsi-2026-summer",
+  "sectorId": "round-structure",
+  "number": 3,
+  "title": "Speech Order: The Playbook",
+  "subtitle": "Round Structure · Mission 04",
+  "tagline": "A debate round has {{cyan:8 speeches}}. Each one has a job. Learn the {{amber:playbook}} and you'll never be the kid asking 'wait — is it my turn?' again. 📋",
+  "estimatedMinutes": 12,
+  "difficulty": "core",
+  "rewards": {
+    "credits": 120,
+    "rankXp": 75
+  },
+  "unlocks": [],
+  "prerequisites": [
+    "what-is-debate-v1"
+  ],
+  "protectedTerms": [
+    "constructive",
+    "rebuttal",
+    "cross-examination",
+    "1AC",
+    "1NC",
+    "2AC",
+    "2NC",
+    "1NR",
+    "1AR",
+    "2NR",
+    "2AR"
+  ],
+  "passingCriteria": {
+    "requireAllCfu": false,
+    "minCorrectCfu": 4,
+    "shieldsAtZero": "allow-continue"
+  },
+  "slides": [
+    {
+      "id": "s1-hook",
+      "type": "hook",
+      "headline": "📋 OPEN THE MASTER SCHEDULE",
+      "body": [
+        "Think about your regular school day. 🏫 Morning announcements happen **first**. 📝 Math class comes **before lunch**. 🔔 The final bell rings at the **exact same time** every afternoon. Every student and teacher knows {{cyan:exactly}} when it's their turn to move.",
+        "Policy debate is the same. A round has **8 speeches**, and every speech has a {{cyan:specific job}} — like positions on a basketball team. The 1A is the {{cyan:starting point guard}}: they bring the ball up first. The 2A is the {{cyan:closer}}: they take the last shot. The Neg players have their own positions too.",
+        "Today you learn the playbook. By the end you'll be able to name every speech, in order, and tell which player gives it. 🎯"
+      ],
+      "sidebar": {
+        "kind": "stock-list",
+        "title": "MISSION BRIEFING",
+        "items": [
+          {
+            "num": "01",
+            "label": "Tell Constructive speeches apart from Rebuttal speeches",
+            "state": "todo"
+          },
+          {
+            "num": "02",
+            "label": "Name all 8 speeches in order",
+            "state": "todo"
+          },
+          {
+            "num": "03",
+            "label": "Match each speech to the right speaker (Debater) (1A / 2A / 1N / 2N)",
+            "state": "todo"
+          }
+        ]
+      },
+      "tag": "Day 2 Lesson 3"
+    },
+    {
+      "id": "s2-define-constructive",
+      "type": "define",
+      "term": "Constructive Speech",
+      "pronunciation": "kuhn-STRUK-tiv",
+      "definition": "A {{cyan:constructive}} is a speech where you **build** your arguments. You **read your evidence** and put your case on the table for the first time. 🧱",
+      "plainWords": "Think: *construction worker*. 👷 You're stacking up the bricks of your argument so the judge can see the whole house.",
+      "analogy": "Like the {{cyan:opening drive}} of a football game. 🏈 You're not reacting yet — you're setting up the plays. New evidence, new arguments, new ideas all come out here. There are **4 constructive speeches** in a round: 1AC, 1NC, 2AC, 2NC."
+    },
+    {
+      "id": "s3-define-rebuttal",
+      "type": "define",
+      "term": "Rebuttal Speech",
+      "pronunciation": "rih-BUH-tul",
+      "definition": "A {{amber:rebuttal}} is a speech where you **defend and attack**. You {{amber:can't read new evidence}} — you have to use what's already in the round. ⚔️",
+      "plainWords": "Think: *lawyer in court*. ⚖️ You're summarizing the strongest parts of your case and tearing down the other team's.",
+      "analogy": "Like the {{amber:final 2 minutes}} of a basketball game. 🏀 No new players, no new plays — you use the team you've got and the moves you already ran. There are **4 rebuttal speeches** in a round: 1NR, 1AR, 2NR, 2AR."
+    },
+    {
+      "id": "s4-concept-cx",
+      "type": "concept",
+      "headline": "⏱️ MEET THE CX PERIOD",
+      "intro": "Between every constructive speech, there's a **Cross-Examination** — or **CX** for short. 3 minutes where one team asks questions and the other team has to answer. Think of it as the {{cyan:Q&A period}} after a presentation.",
+      "cards": [
+        {
+          "id": "cx-purpose",
+          "icon": "❓",
+          "name": "WHAT IT IS",
+          "description": "A {{cyan:3-minute Q&A}} that happens right after each of the 4 constructive speeches. You ask, they answer. Then it's their turn to speak.",
+          "accent": "cyan"
+        },
+        {
+          "id": "cx-when",
+          "icon": "📍",
+          "name": "WHEN IT HAPPENS",
+          "description": "{{cyan:Only after constructives.}} There is **NO CX** between rebuttals. So: 1AC → CX → 1NC → CX → 2AC → CX → 2NC → CX → then straight into the 4 rebuttals.",
+          "accent": "cyan"
+        },
+        {
+          "id": "cx-who",
+          "icon": "🎤",
+          "name": "WHO ASKS FIRST",
+          "description": "The {{amber:2N}} asks the very first CX questions of the whole round (after the 1AC). It's the Negative team's first chance to {{amber:test the Aff's plan}}.",
+          "accent": "amber"
+        }
+      ]
+    },
+    {
+      "id": "s5-strategy-eight-speeches",
+      "type": "strategy",
+      "headline": "🎯 THE 8 SPEECHES IN ORDER",
+      "intro": "Memorize this order. You'll use it every single round. Notice the pattern: **Aff speaks first AND last.** That's not random — it's how the format protects the team carrying the burden of proof.",
+      "rows": [
+        {
+          "name": "🧱 CONSTRUCTIVES (1st half of the round)",
+          "description": "**1AC** → CX → **1NC** → CX → **2AC** → CX → **2NC** → CX. Four big speeches where evidence gets read for the first time. Each one is followed by a 3-minute Q&A.",
+          "counter": {
+            "label": "Memory trick",
+            "text": "**A-N-A-N.** The constructives alternate Aff-Neg-Aff-Neg. The Aff starts (because they have to prove their case). The Neg gets the last constructive (the {{amber:2NC}} — a long attack right before rebuttals start)."
+          }
+        },
+        {
+          "name": "⚔️ REBUTTALS (2nd half of the round)",
+          "description": "**1NR** → **1AR** → **2NR** → **2AR**. Four shorter speeches. {{amber:No CX between rebuttals.}} No new evidence allowed. Just summarizing, defending, and attacking what's already in the round.",
+          "counter": {
+            "label": "Memory trick",
+            "text": "**N-A-N-A.** The rebuttals flip the pattern: Neg-Aff-Neg-Aff. The Neg goes first in rebuttals (the 1NR), but the {{cyan:Aff gets the very last word}} of the entire round (the 2AR). 🎤"
+          }
+        },
+        {
+          "name": "🎤 THE BIG PATTERN: AFF SPEAKS FIRST AND LAST",
+          "description": "The very first speech is the {{cyan:1AC}} (Aff). The very last speech is the {{cyan:2AR}} (Aff). The Aff team **bookends** the entire round.",
+          "counter": {
+            "label": "Why it's set up this way",
+            "text": "The Aff has to *prove* their plan is a good idea — that's a heavier lift than just saying 'no.' So the format gives them the **first word** (to set the case) and the **last word** (to defend it after every attack). Fair trade for carrying the harder burden."
+          }
+        }
+      ]
+    },
+    {
+      "id": "s6-cfu-mcq-construct-vs-rebut",
+      "type": "cfu-mcq",
+      "tag": "⚡ TACTICAL DRILL · CFU 01",
+      "tagTone": "amber",
+      "prompt": {
+        "label": "QUICK CHECK",
+        "question": "🧱 What's the **main job** of a constructive speech?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "letter": "A",
+          "text": "Build your arguments by reading evidence for the first time"
+        },
+        {
+          "id": "b",
+          "letter": "B",
+          "text": "Defend your case and attack the other team's — no new evidence"
+        },
+        {
+          "id": "c",
+          "letter": "C",
+          "text": "Ask the other team questions"
+        },
+        {
+          "id": "d",
+          "letter": "D",
+          "text": "Pick the winner of the round"
+        }
+      ],
+      "correctOptionId": "a",
+      "scoring": {
+        "creditsOnCorrect": 15,
+        "shieldOnWrong": true,
+        "breaksStreakOnWrong": true,
+        "maxAttempts": 1,
+        "mode": "all-or-nothing"
+      },
+      "feedback": {
+        "correct": {
+          "title": "✓ FOUNDATIONS POURED",
+          "body": [
+            "Locked in. {{cyan:Constructives}} are where you **build** — you stack up evidence and arguments like a 🧱 construction worker building a house."
+          ],
+          "followup": "**Pro move:** New evidence is *only* allowed in constructives. If a teammate tries to read a fresh card in a rebuttal, the judge can throw it out. Plan accordingly."
+        },
+        "wrongByChoice": {
+          "b": {
+            "title": "✕ THAT'S THE REBUTTAL",
+            "body": [
+              "Close, but flipped. {{amber:Defending and attacking with no new evidence}} is the **rebuttal** ⚔️. The **constructive** 🧱 is where you *build* — read fresh evidence and set up your arguments for the first time."
+            ]
+          },
+          "c": {
+            "title": "✕ THAT'S CX",
+            "body": [
+              "Asking the other team questions is **Cross-Examination** ❓ — the Q&A period *between* constructives. A constructive is the speech itself, not the questions afterward."
+            ]
+          },
+          "d": {
+            "title": "✕ THAT'S THE JUDGE",
+            "body": [
+              "Picking the winner is the {{amber:judge's}} job ⚖️ — the neutral grown-up in the back of the room. Debaters never pick winners. They just argue."
+            ]
+          }
+        },
+        "wrongDefault": {
+          "title": "✕ MISFIRE",
+          "body": [
+            "The answer is {{cyan:A}}. Constructives 🧱 = **build**. Read evidence. Set up arguments. Rebuttals come later."
+          ]
+        }
+      },
+      "hint": {
+        "imageUrl": "/mission-images/speech-order-v1/1782920739533_Day_2_Constructives.png",
+        "altText": ""
+      }
+    },
+    {
+      "id": "s7-cfu-order-speeches",
+      "type": "cfu-order",
+      "tag": "⚡ TACTICAL DRILL · CFU 02",
+      "tagTone": "amber",
+      "intro": "Put the **8 speeches** of a policy debate round into the correct speaking order. (Don't worry about the CX periods — just the speeches.)",
+      "prompt": {
+        "label": "SEQUENCE LOCK",
+        "question": "Drag each speech into the right position, 1st through 8th."
+      },
+      "items": [
+        {
+          "id": "1ac",
+          "text": "🧱 1AC — First Affirmative Constructive",
+          "correctPosition": 1
+        },
+        {
+          "id": "1nc",
+          "text": "🧱 1NC — First Negative Constructive",
+          "correctPosition": 2
+        },
+        {
+          "id": "2ac",
+          "text": "🧱 2AC — Second Affirmative Constructive",
+          "correctPosition": 3
+        },
+        {
+          "id": "2nc",
+          "text": "🧱 2NC — Second Negative Constructive",
+          "correctPosition": 4
+        },
+        {
+          "id": "1nr",
+          "text": "⚔️ 1NR — First Negative Rebuttal",
+          "correctPosition": 5
+        },
+        {
+          "id": "1ar",
+          "text": "⚔️ 1AR — First Affirmative Rebuttal",
+          "correctPosition": 6
+        },
+        {
+          "id": "2nr",
+          "text": "⚔️ 2NR — Second Negative Rebuttal",
+          "correctPosition": 7
+        },
+        {
+          "id": "2ar",
+          "text": "⚔️ 2AR — Second Affirmative Rebuttal",
+          "correctPosition": 8
+        }
+      ],
+      "scoring": {
+        "creditsOnCorrect": 30,
+        "shieldOnWrong": true,
+        "breaksStreakOnWrong": false,
+        "maxAttempts": 2,
+        "mode": "partial"
+      },
+      "feedback": {
+        "correct": {
+          "title": "✓ PLAYBOOK LOCKED",
+          "body": [
+            "All 8 in order. The pattern: 4 constructives 🧱 (**A-N-A-N**), then 4 rebuttals ⚔️ (**N-A-N-A**). The {{cyan:Aff bookends the round}} — they speak first (1AC) and last (2AR)."
+          ],
+          "followup": "**Pro move:** When you sit down at the table, write the 8-speech order at the top of your flow paper *before the round starts*. It anchors you all round long."
+        },
+        "wrongDefault": {
+          "title": "✕ REORDER REQUIRED",
+          "body": [
+            "Two patterns to lock in: **Constructives go A-N-A-N** (1AC, 1NC, 2AC, 2NC). Then **rebuttals flip to N-A-N-A** (1NR, 1AR, 2NR, 2AR). The Aff always starts the round and always ends it."
+          ]
+        }
+      },
+      "hint": {
+        "imageUrl": "/mission-images/speech-order-v1/1782920833367_Speech_Order_Day_2_CDSI_2026.png",
+        "altText": ""
+      }
+    },
+    {
+      "id": "s8-cfu-sort-speech-type",
+      "type": "cfu-sort",
+      "tag": "⚡ TACTICAL DRILL · CFU 03",
+      "tagTone": "amber",
+      "prompt": {
+        "label": "PHASE CHECK",
+        "scenario": "You're at a debate tournament. 🏆 Each speech below is happening in some round somewhere right now. Drop each one into the right bin.",
+        "question": "Sort each speech as a Constructive 🧱 or a Rebuttal ⚔️."
+      },
+      "bins": [
+        {
+          "id": "bin-construct",
+          "icon": "🧱",
+          "label": "CONSTRUCTIVE (build · read evidence)",
+          "accent": "cyan"
+        },
+        {
+          "id": "bin-rebut",
+          "icon": "⚔️",
+          "label": "REBUTTAL (defend · no new evidence)",
+          "accent": "amber"
+        }
+      ],
+      "cards": [
+        {
+          "id": "c1ac",
+          "text": "1AC",
+          "correctBinId": "bin-construct"
+        },
+        {
+          "id": "c1nc",
+          "text": "1NC",
+          "correctBinId": "bin-construct"
+        },
+        {
+          "id": "c2ac",
+          "text": "2AC",
+          "correctBinId": "bin-construct"
+        },
+        {
+          "id": "c2nc",
+          "text": "2NC",
+          "correctBinId": "bin-construct"
+        },
+        {
+          "id": "c1nr",
+          "text": "1NR",
+          "correctBinId": "bin-rebut"
+        },
+        {
+          "id": "c1ar",
+          "text": "1AR",
+          "correctBinId": "bin-rebut"
+        },
+        {
+          "id": "c2nr",
+          "text": "2NR",
+          "correctBinId": "bin-rebut"
+        },
+        {
+          "id": "c2ar",
+          "text": "2AR",
+          "correctBinId": "bin-rebut"
+        }
+      ],
+      "allowPartialCredit": true,
+      "scoring": {
+        "creditsOnCorrect": 25,
+        "shieldOnWrong": true,
+        "breaksStreakOnWrong": false,
+        "maxAttempts": 2,
+        "mode": "partial"
+      },
+      "feedback": {
+        "correct": {
+          "title": "✓ TWO PHASES SORTED",
+          "body": [
+            "Clean. Every speech name tells you which bin it's in: if it ends in **C**, it's a {{cyan:Constructive}} 🧱. If it ends in **R**, it's a {{amber:Rebuttal}} ⚔️."
+          ],
+          "followup": "**Memory trick:** *C is for Construct. R is for Rebut.* The number tells you which speaker (1 or 2) and the letter in the middle tells you the team (A or N)."
+        },
+        "wrongDefault": {
+          "title": "✕ PHASE CONFUSION",
+          "body": [
+            "Look at the **last letter** of each speech name. **C = Constructive** 🧱 (build, read evidence). **R = Rebuttal** ⚔️ (defend, no new evidence). 1AC ends in C → constructive. 1NR ends in R → rebuttal."
+          ]
+        }
+      },
+      "hint": {
+        "imageUrl": "/mission-images/speech-order-v1/1782920833367_Speech_Order_Day_2_CDSI_2026.png",
+        "altText": ""
+      }
+    },
+    {
+      "id": "s9-cfu-match-speakers",
+      "type": "cfu-match",
+      "tag": "⚡ TACTICAL DRILL · CFU 04",
+      "tagTone": "amber",
+      "prompt": {
+        "label": "SQUAD ASSIGNMENT",
+        "scenario": "Every debater on a 2-person team has **two speeches** to give in a round. Match each player to the pair of speeches they're responsible for.",
+        "question": "Drag from the left to the matching speech pair on the right."
+      },
+      "leftColumn": {
+        "label": "PLAYER",
+        "items": [
+          {
+            "id": "L1",
+            "text": "✅ 1A — First Affirmative",
+            "pairId": "p1"
+          },
+          {
+            "id": "L2",
+            "text": "✅ 2A — Second Affirmative",
+            "pairId": "p2"
+          },
+          {
+            "id": "L3",
+            "text": "🛡️ 1N — First Negative",
+            "pairId": "p3"
+          },
+          {
+            "id": "L4",
+            "text": "🛡️ 2N — Second Negative",
+            "pairId": "p4"
+          }
+        ]
+      },
+      "rightColumn": {
+        "label": "GIVES THESE TWO SPEECHES",
+        "items": [
+          {
+            "id": "R1",
+            "text": "1AC (opens the round) + 1AR",
+            "pairId": "p1"
+          },
+          {
+            "id": "R2",
+            "text": "2AC + 2AR (closes the round)",
+            "pairId": "p2"
+          },
+          {
+            "id": "R3",
+            "text": "1NC + 1NR",
+            "pairId": "p3"
+          },
+          {
+            "id": "R4",
+            "text": "2NC + 2NR",
+            "pairId": "p4"
+          }
+        ]
+      },
+      "scoring": {
+        "creditsOnCorrect": 25,
+        "shieldOnWrong": true,
+        "breaksStreakOnWrong": false,
+        "maxAttempts": 2,
+        "mode": "partial"
+      },
+      "feedback": {
+        "correct": {
+          "title": "✓ SQUAD ASSIGNED",
+          "body": [
+            "Clean match. The pattern is simple: your **number** sticks with you. If you're {{cyan:1A}}, you give the 1AC and the 1AR. If you're {{cyan:2A}}, you give the 2AC and the 2AR. Same on the {{amber:Neg}} side."
+          ],
+          "followup": "**Pro move:** Talk to your {{cyan:Debate Partner}} *before* the season starts about who wants 1 vs. 2. The 1A opens (lots of pressure). The 2A closes (lots of pressure of a different kind). Pick the role that fits your strengths."
+        },
+        "wrongDefault": {
+          "title": "✕ MIXED UP THE ROLES",
+          "body": [
+            "The trick: **your number sticks with you**. 1A = 1AC + 1AR. 2A = 2AC + 2AR. 1N = 1NC + 1NR. 2N = 2NC + 2NR. Each debater gives one constructive and one rebuttal — *their own number's pair*."
+          ]
+        }
+      },
+      "hint": {
+        "imageUrl": "/mission-images/speech-order-v1/1782920833367_Speech_Order_Day_2_CDSI_2026.png",
+        "altText": ""
+      }
+    },
+    {
+      "id": "s10-cfu-mcq-first-and-last",
+      "type": "cfu-mcq",
+      "tag": "⚡ TACTICAL DRILL · CFU 05",
+      "tagTone": "amber",
+      "prompt": {
+        "label": "PATTERN CHECK",
+        "question": "🎤 Which team gets to speak **both first AND last** in a policy debate round?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "letter": "A",
+          "text": "The Affirmative"
+        },
+        {
+          "id": "b",
+          "letter": "B",
+          "text": "The Negative"
+        },
+        {
+          "id": "c",
+          "letter": "C",
+          "text": "Whichever team won the coin flip"
+        },
+        {
+          "id": "d",
+          "letter": "D",
+          "text": "Neither — they alternate exactly"
+        }
+      ],
+      "correctOptionId": "a",
+      "scoring": {
+        "creditsOnCorrect": 15,
+        "shieldOnWrong": true,
+        "breaksStreakOnWrong": true,
+        "maxAttempts": 1,
+        "mode": "all-or-nothing"
+      },
+      "feedback": {
+        "correct": {
+          "title": "✓ BOOKEND CONFIRMED",
+          "body": [
+            "Locked in. The {{cyan:Aff}} opens the round with the **1AC** and closes it with the **2AR**. They bookend the entire debate. 📚"
+          ],
+          "followup": "**Why it's set up this way:** the Aff has the {{cyan:burden of proof}} — they have to *prove* their plan is good, which is a harder job than just saying 'no.' Giving them the first and last word is a fair trade for that heavier lift."
+        },
+        "wrongByChoice": {
+          "b": {
+            "title": "✕ FLIPPED",
+            "body": [
+              "The {{amber:Neg}} speaks a lot in the middle (1NC, 2NC, 1NR, 2NR) but they don't bookend. The {{cyan:Aff}} opens with the **1AC** and closes with the **2AR**."
+            ]
+          },
+          "c": {
+            "title": "✕ NO COIN FLIP",
+            "body": [
+              "Policy debate doesn't use a coin flip for speech order. The order is **always the same**: 1AC first, 2AR last. The {{cyan:Aff bookends}} every round."
+            ]
+          },
+          "d": {
+            "title": "✕ NOT EXACT ALTERNATION",
+            "body": [
+              "The teams don't perfectly alternate. The Negative gets two speeches in a row in the middle (the {{amber:2NC → 1NR}} block — called the *Neg Block*). And the {{cyan:Aff}} gets both the first *and* the last word."
+            ]
+          }
+        },
+        "wrongDefault": {
+          "title": "✕ MISFIRE",
+          "body": [
+            "The answer is {{cyan:A — Affirmative}}. The 1AC is the first speech of the round. The 2AR is the last. Both Aff."
+          ]
+        }
+      },
+      "hint": {
+        "imageUrl": "/mission-images/speech-order-v1/1782920833367_Speech_Order_Day_2_CDSI_2026.png",
+        "altText": ""
+      }
+    },
+    {
+      "id": "s11-cfu-fill-recap",
+      "type": "cfu-fill",
+      "tag": "⚡ TACTICAL DRILL · CFU 06",
+      "tagTone": "amber",
+      "prompt": {
+        "label": "BUILD ORDER",
+        "scenario": "Fill in the missing words to describe the shape of a policy debate round.",
+        "question": "Drop the right word into each blank."
+      },
+      "template": "A policy debate round has two phases. First come the four {{1}} speeches, where each team **builds** their arguments and reads new evidence. Then come the four {{2}} speeches, where teams **defend and attack** what's already in the round. Between each constructive there's a 3-minute {{3}} period where one team asks the other questions.",
+      "blanks": [
+        {
+          "index": 1,
+          "acceptedAnswers": [
+            "constructive",
+            "Constructive",
+            "CONSTRUCTIVE",
+            "constructives",
+            "Constructives"
+          ],
+          "hint": "The 🧱 phase — where evidence gets read for the first time"
+        },
+        {
+          "index": 2,
+          "acceptedAnswers": [
+            "rebuttal",
+            "Rebuttal",
+            "REBUTTAL",
+            "rebuttals",
+            "Rebuttals"
+          ],
+          "hint": "The ⚔️ phase — no new evidence, just defending and attacking"
+        },
+        {
+          "index": 3,
+          "acceptedAnswers": [
+            "cross-examination",
+            "Cross-Examination",
+            "Cross-examination",
+            "cross examination",
+            "Cross Examination",
+            "cx",
+            "CX",
+            "Cx"
+          ],
+          "hint": "Three letters or the full term — the ❓ Q&A period"
+        }
+      ],
+      "wordBank": [
+        "constructive",
+        "rebuttal",
+        "cross-examination"
+      ],
+      "caseSensitive": false,
+      "scoring": {
+        "creditsOnCorrect": 20,
+        "shieldOnWrong": true,
+        "breaksStreakOnWrong": false,
+        "maxAttempts": 2,
+        "mode": "partial"
+      },
+      "feedback": {
+        "correct": {
+          "title": "✓ ROUND ASSEMBLED",
+          "body": [
+            "That's the whole shape: four {{cyan:Constructives}} 🧱 → four {{amber:Rebuttals}} ⚔️, with a {{cyan:CX}} ❓ Q&A after each constructive. Eight speeches, four Q&As, one round."
+          ]
+        },
+        "wrongDefault": {
+          "title": "✕ REBUILD",
+          "body": [
+            "Three terms to lock in: {{cyan:Constructive}} 🧱 (build with new evidence), {{amber:Rebuttal}} ⚔️ (defend and attack, no new evidence), {{cyan:Cross-Examination}} ❓ (the 3-min Q&A after each constructive)."
+          ]
+        }
+      },
+      "hint": {
+        "imageUrl": "/mission-images/what-is-debate-v1/1782670152802_Policy_Debate_Mission_Briefing.png",
+        "altText": "",
+        "delaySeconds": 30
+      }
+    },
+    {
+      "id": "s12-cfu-mcq-big-idea",
+      "type": "cfu-mcq",
+      "tag": "⚡ TACTICAL DRILL · CFU 07",
+      "tagTone": "amber",
+      "prompt": {
+        "label": "BIG IDEA CHECK",
+        "scenario": "Your {{cyan:Debate Partner}} 🤝 leans over in round 2 and whispers: *'Wait — I'm the 1A this round. Quick: what's the biggest difference between a constructive and a rebuttal? I have like 10 seconds.'*",
+        "question": "🎯 What's the **clearest** one-line answer you can give them?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "letter": "A",
+          "text": "Constructives are longer, rebuttals are shorter — that's the only difference."
+        },
+        {
+          "id": "b",
+          "letter": "B",
+          "text": "You can read new evidence in constructives. You can't in rebuttals."
+        },
+        {
+          "id": "c",
+          "letter": "C",
+          "text": "Aff gives all the constructives. Neg gives all the rebuttals."
+        },
+        {
+          "id": "d",
+          "letter": "D",
+          "text": "There's no real difference — just two names for speeches."
+        }
+      ],
+      "correctOptionId": "b",
+      "scoring": {
+        "creditsOnCorrect": 20,
+        "shieldOnWrong": true,
+        "breaksStreakOnWrong": true,
+        "maxAttempts": 1,
+        "mode": "all-or-nothing"
+      },
+      "feedback": {
+        "correct": {
+          "title": "✓ THAT'S THE WHOLE GAME",
+          "body": [
+            "Exactly. The **rule about evidence** is what makes the two phases different. {{cyan:Constructives}} 🧱 = new evidence allowed (build the house). {{amber:Rebuttals}} ⚔️ = no new evidence (defend what you've already built)."
+          ],
+          "followup": "**Pro tip:** This means you have to be *strategic* about what evidence you read and *when*. Save your strongest cards for the constructive where they'll do the most damage — because if you forget, you can't bring them back later."
+        },
+        "wrongByChoice": {
+          "a": {
+            "title": "✕ LENGTH ISN'T THE BIG IDEA",
+            "body": [
+              "It's true rebuttals are shorter — but that's not the *core* difference. The big rule is about **evidence**: constructives 🧱 let you read new evidence; rebuttals ⚔️ don't. *That's* what separates the two phases."
+            ]
+          },
+          "c": {
+            "title": "✕ BOTH TEAMS DO BOTH",
+            "body": [
+              "Both teams give both kinds of speeches. {{cyan:Aff}} gives 1AC and 2AC (constructives) AND 1AR and 2AR (rebuttals). {{amber:Neg}} does the same. The difference between constructive and rebuttal is about **evidence**, not which team is talking."
+            ]
+          },
+          "d": {
+            "title": "✕ HUGE DIFFERENCE",
+            "body": [
+              "There's a *massive* difference. {{cyan:Constructives}} 🧱 let you bring in new evidence and new arguments. {{amber:Rebuttals}} ⚔️ don't — you work with what's already in the round. That rule shapes the whole strategy of a debate."
+            ]
+          }
+        },
+        "wrongDefault": {
+          "title": "✕ MISFIRE",
+          "body": [
+            "The answer is {{cyan:B}}. The big rule: **new evidence is allowed in constructives, not in rebuttals.** That's the line that separates the two phases."
+          ]
+        }
+      },
+      "hint": {
+        "imageUrl": "/mission-images/speech-order-v1/1782920739533_Day_2_Constructives.png",
+        "altText": "",
+        "delaySeconds": 15
+      }
+    },
+    {
+      "id": "s13-complete",
+      "type": "complete",
+      "headline": "PLAYBOOK: MEMORIZED ✅",
+      "subtext": "You know the order. {{cyan:1AC → 1NC → 2AC → 2NC}} (constructives 🧱), then {{amber:1NR → 1AR → 2NR → 2AR}} (rebuttals ⚔️). The {{cyan:Aff}} bookends. Every player has two speeches. CX ❓ comes after every constructive. You're ready for round 1. 🎤",
+      "rewards": [
+        {
+          "icon": "💳",
+          "label": "Credits earned",
+          "staticValue": "+120"
+        },
+        {
+          "icon": "⭐",
+          "label": "Rank XP",
+          "staticValue": "+75"
+        },
+        {
+          "icon": "🧠",
+          "label": "Protected vocab",
+          "staticValue": "Constructive · Rebuttal · Cross-Examination · 1AC · 1NC · 2AC · 2NC · 1NR · 1AR · 2NR · 2AR"
+        }
+      ],
+      "primaryCta": {
+        "label": "RETURN TO BRIDGE",
+        "action": "return-bridge"
+      },
+      "secondaryCta": {
+        "label": "NEXT MISSION",
+        "action": "next-mission"
+      }
+    }
+  ]
+}

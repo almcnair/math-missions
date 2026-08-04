@@ -1,0 +1,599 @@
+{
+  "id": "impact-calculus-v1",
+  "campaignId": "cdsi-2026-summer",
+  "sectorId": "argument-foundations",
+  "number": 7,
+  "title": "Impact Calculus",
+  "subtitle": "Argument Foundations · Mission 07",
+  "tagline": "Both teams say bad things will happen. The judge picks {{amber:one}}. Learn the {{amber:P-T-M}} weighers that tell the judge whose impact matters more.",
+  "estimatedMinutes": 14,
+  "difficulty": "core",
+  "rewards": {
+    "credits": 140,
+    "rankXp": 90
+  },
+  "unlocks": [],
+  "prerequisites": [],
+  "protectedTerms": [
+    "impact calculus",
+    "impact calc",
+    "probability",
+    "timeframe",
+    "magnitude",
+    "weighing",
+    "rebuttal",
+    "outweigh"
+  ],
+  "passingCriteria": {
+    "requireAllCfu": true,
+    "minCorrectCfu": 4,
+    "shieldsAtZero": "allow-continue"
+  },
+  "slides": [
+    {
+      "id": "s1-hook",
+      "type": "hook",
+      "headline": "⚖️ WHOSE IMPACT WINS?",
+      "body": [
+        "Two teams. Both say scary things will happen if the other one wins.",
+        "Team A: *{{cyan:\"The economy will lose 100 jobs.\"}}* 💼",
+        "Team B: *{{amber:\"A million people will die.\"}}* 💀",
+        "Which one is worse? **Obvious**, right? That choice you just made in your head — that's {{amber:impact calculus}}. ⚖️",
+        "But real rounds are trickier. Sometimes both impacts sound huge. If you don't tell the judge {{amber:which one wins}}, the judge has to guess. And guessing is bad for you."
+      ],
+      "sidebar": {
+        "title": "MISSION BRIEFING",
+        "items": [
+          {
+            "num": "01",
+            "label": "Define {{amber:impact calculus}} and why every rebuttal needs it",
+            "state": "todo"
+          },
+          {
+            "num": "02",
+            "label": "Master the three weighers: {{amber:Probability · Timeframe · Magnitude}}",
+            "state": "todo"
+          },
+          {
+            "num": "03",
+            "label": "Build a real impact calc line the judge can flow",
+            "state": "todo"
+          }
+        ],
+        "kind": "stock-list"
+      },
+      "tag": "Day 2 Lesson 7"
+    },
+    {
+      "id": "s2-define-impact-calc",
+      "type": "define",
+      "term": "Impact Calculus",
+      "pronunciation": "IM-pakt KAL-kyoo-lus",
+      "definition": "{{amber:Impact calculus}} (or *impact calc*) is comparing {{cyan:your}} impact to {{amber:the other team's}} impact — and telling the judge {{amber:which one matters more}}. It's how you win a round when both sides sound scary. ⚖️",
+      "plainWords": "You don't just say your impact is bad. You say *why yours is worse than theirs*. The judge is keeping score — help them.",
+      "analogy": "Imagine two kids fighting over the last cookie, both yelling *\"I'm hungrier!\"* The parent has no idea who to give it to. But if one kid says *\"I haven't eaten all day and she just had lunch,\"* — now the parent has a reason to pick. Impact calc = giving the judge a {{amber:reason to pick you}}. 🍪",
+      "image": {
+        "src": "",
+        "alt": ""
+      }
+    },
+    {
+      "id": "s3-concept-ptm",
+      "type": "concept",
+      "headline": "P-T-M: THE THREE WEIGHERS",
+      "intro": "There are three ways to prove your impact is worse than theirs. You don't have to win all three — {{amber:winning one clearly}} is usually enough. Every rebuttal should end with at least one.",
+      "cards": [
+        {
+          "id": "card-probability",
+          "icon": "🎯",
+          "name": "P — PROBABILITY",
+          "description": "How {{amber:likely}} is your impact to actually happen? A 100% sure thing beats a wild guess every time.",
+          "example": {
+            "label": "Think of it like",
+            "text": "Rain vs. a meteor hitting a baseball game. The meteor's worse — but rain is {{amber:way more likely}}. Rain wins on Probability."
+          },
+          "accent": "amber"
+        },
+        {
+          "id": "card-timeframe",
+          "icon": "⏱️",
+          "name": "T — TIMEFRAME",
+          "description": "How {{amber:soon}} does your impact hit? A bad thing next week beats a bad thing in 50 years.",
+          "example": {
+            "label": "Think of it like",
+            "text": "A bad grade on tomorrow's test vs. a bad grade in a college class ten years from now. Tomorrow's grade wins on {{amber:Timeframe}} — it hits {{amber:now}}."
+          },
+          "accent": "cyan"
+        },
+        {
+          "id": "card-magnitude",
+          "icon": "📏",
+          "name": "M — MAGNITUDE",
+          "description": "How {{amber:big}} is your impact? How many people? How badly hurt? Millions beats dozens. Death beats inconvenience.",
+          "example": {
+            "label": "Think of it like",
+            "text": "One kid missing recess vs. the {{amber:whole school}} missing recess. Same problem — but the whole school is a way bigger deal. Magnitude wins."
+          },
+          "accent": "amber"
+        }
+      ]
+    },
+    {
+      "id": "s4-strategy-say-it",
+      "type": "strategy",
+      "headline": "⚡ HOW TO SAY IT IN A ROUND",
+      "intro": "Knowing P-T-M isn't enough. You have to {{amber:say it out loud}} so the judge writes it down. Every rebuttal should have a line like this. Here's the shape.",
+      "rows": [
+        {
+          "name": "1️⃣ Name the weigher",
+          "description": "Start by telling the judge {{amber:which weigher}} you're using. Don't make them guess. Say the word.",
+          "counter": {
+            "label": "Sounds like",
+            "text": "*\"Our impact outweighs on {{amber:Probability}}...\"*"
+          }
+        },
+        {
+          "name": "2️⃣ Compare the two impacts",
+          "description": "Now put {{cyan:your}} impact next to {{amber:their}} impact — directly. Numbers help. Timeframes help. Sources help.",
+          "counter": {
+            "label": "Sounds like",
+            "text": "*\"...our card is peer-reviewed, and their impact is a prediction with no evidence.\"*"
+          }
+        },
+        {
+          "name": "3️⃣ Tell the judge how to vote",
+          "description": "End with the {{amber:ballot instruction}}. The judge needs to hear the words *\"vote AFF\"* or *\"vote NEG\"* connected to your impact calc.",
+          "counter": {
+            "label": "Sounds like",
+            "text": "*\"Because our impact is more likely, you vote AFF.\"* 🗳️"
+          }
+        },
+        {
+          "name": "⭐ Pro move: stack the weighers",
+          "description": "One weigher wins the argument. {{amber:Two or three}} weighers wins the round. If you can hit Probability *and* Timeframe *and* Magnitude, the judge has nowhere to go.",
+          "counter": {
+            "label": "Sounds like",
+            "text": "*\"Our impact is more likely (P), it happens sooner (T), and it kills more people (M). Every weigher goes AFF.\"*"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s5-cfu-match-ptm",
+      "type": "cfu-match",
+      "tag": "⚡ TACTICAL DRILL · CFU 01",
+      "tagTone": "amber",
+      "prompt": {
+        "label": "WEIGHER MATCH",
+        "scenario": "Three quick scenarios. Match each one to the weigher it's using.",
+        "question": "Drag each scenario on the left to the right {{amber:weigher}} on the right."
+      },
+      "leftColumn": {
+        "label": "THE SCENARIO",
+        "items": [
+          {
+            "id": "L1",
+            "text": "*\"Our impact happens next year. Theirs takes 50 years to hit.\"*",
+            "pairId": "p1"
+          },
+          {
+            "id": "L2",
+            "text": "*\"Our card is from a peer-reviewed study. Theirs is a guess from a blog.\"*",
+            "pairId": "p2"
+          },
+          {
+            "id": "L3",
+            "text": "*\"Our impact hurts 68,000 people a year. Theirs hurts a few dozen.\"*",
+            "pairId": "p3"
+          }
+        ]
+      },
+      "rightColumn": {
+        "label": "THE WEIGHER",
+        "items": [
+          {
+            "id": "R1",
+            "text": "⏱️ TIMEFRAME — how soon?",
+            "pairId": "p1"
+          },
+          {
+            "id": "R2",
+            "text": "🎯 PROBABILITY — how likely?",
+            "pairId": "p2"
+          },
+          {
+            "id": "R3",
+            "text": "📏 MAGNITUDE — how big?",
+            "pairId": "p3"
+          }
+        ]
+      },
+      "scoring": {
+        "creditsOnCorrect": 20,
+        "shieldOnWrong": true,
+        "breaksStreakOnWrong": false,
+        "maxAttempts": 2,
+        "mode": "partial"
+      },
+      "feedback": {
+        "correct": {
+          "title": "✓ WEIGHERS LOCKED IN",
+          "body": [
+            "Clean match. When someone talks about *when* → {{cyan:Timeframe}}. When they talk about *how sure* → {{amber:Probability}}. When they talk about *how many / how bad* → {{amber:Magnitude}}. Every impact calc line uses at least one of these three. ⚖️"
+          ],
+          "followup": "**Pro move:** In a real rebuttal, name the weigher {{amber:out loud}} — *\"we outweigh on Probability\"* — before you compare. The judge is writing down keywords, and *Probability / Timeframe / Magnitude* are the ones they're listening for."
+        },
+        "wrongDefault": {
+          "title": "✕ WEIGHERS CROSSED",
+          "body": [
+            "Quick test: is the sentence about {{cyan:when}} it happens → **Timeframe**. About {{amber:how sure}} it is → **Probability**. About {{amber:how big / how many}} → **Magnitude**. Read each scenario and ask which question it's answering."
+          ]
+        }
+      },
+      "hint": {
+        "imageUrl": "/mission-images/impact-calculus-v1/1783181619442_Impact_Calc.png",
+        "altText": "",
+        "delaySeconds": 15
+      }
+    },
+    {
+      "id": "s6-cfu-mcq-meteor",
+      "type": "cfu-mcq",
+      "tag": "⚡ TACTICAL DRILL · CFU 02",
+      "tagTone": "amber",
+      "prompt": {
+        "label": "THE METEOR TEST",
+        "scenario": "It's the middle of a baseball game. Two things could ruin it:\n\n☔ Some **rain** (annoying, but the game gets rescheduled)\n☄️ A **meteor** hitting the field (devastating — but astronomically unlikely)",
+        "question": "If you were the *rain* team, which weigher would you use to win against the meteor team?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "letter": "A",
+          "text": "Magnitude — rain affects more people than a meteor"
+        },
+        {
+          "id": "b",
+          "letter": "B",
+          "text": "Probability — rain is way more likely to actually happen"
+        },
+        {
+          "id": "c",
+          "letter": "C",
+          "text": "Timeframe — rain and meteors both happen instantly"
+        },
+        {
+          "id": "d",
+          "letter": "D",
+          "text": "None — the meteor team wins automatically because it's worse"
+        }
+      ],
+      "correctOptionId": "b",
+      "scoring": {
+        "creditsOnCorrect": 15,
+        "shieldOnWrong": true,
+        "breaksStreakOnWrong": true,
+        "maxAttempts": 1,
+        "mode": "all-or-nothing"
+      },
+      "feedback": {
+        "correct": {
+          "title": "✓ CLEAN HIT",
+          "body": [
+            "Exactly. A meteor would be devastating — but it's basically {{amber:never going to happen}}. Rain is a near-certainty. When one impact is {{amber:way more likely}} than the other, you win on {{amber:Probability}}. 🎯"
+          ],
+          "followup": "**Big lesson:** A {{amber:huge scary impact}} with almost no chance of happening loses to a {{cyan:smaller impact that will definitely happen}}. This is how Neg teams beat sci-fi Aff impacts every day."
+        },
+        "wrongByChoice": {
+          "a": {
+            "title": "✕ WRONG WEIGHER",
+            "body": [
+              "A meteor would hurt more people than rain — so you'd {{amber:lose}} on Magnitude, not win. The whole point is that rain wins because it's {{amber:more likely}}, not because it's bigger."
+            ]
+          },
+          "c": {
+            "title": "✕ NOT ABOUT TIMING",
+            "body": [
+              "Timeframe is about {{cyan:how soon}} an impact hits, not how fast the event is. Both rain and meteors hit the same day — Timeframe doesn't help either side. The difference is {{amber:Probability}}."
+            ]
+          },
+          "d": {
+            "title": "✕ THAT'S NOT HOW IT WORKS",
+            "body": [
+              "\"It's worse\" isn't automatic — it's only Magnitude. And Magnitude can lose to {{amber:Probability}}. If the meteor is 1-in-a-billion, rain wins the round."
+            ]
+          }
+        },
+        "wrongDefault": {
+          "title": "✕ MISFIRE",
+          "body": [
+            "The answer is {{cyan:B — Probability}}. Rain is nearly certain; a meteor is nearly impossible. When your impact is {{amber:way more likely}}, that's the weigher you use."
+          ]
+        }
+      },
+      "hint": {
+        "imageUrl": "/mission-images/impact-calculus-v1/1783181619442_Impact_Calc.png",
+        "altText": "",
+        "delaySeconds": 15
+      }
+    },
+    {
+      "id": "s7-cfu-sort-ptm",
+      "type": "cfu-sort",
+      "tag": "⚡ TACTICAL DRILL · CFU 03",
+      "tagTone": "amber",
+      "prompt": {
+        "label": "IMPACT CALC TRIAGE",
+        "scenario": "You're prepping your rebuttal. Six impact calc lines are on your notes — but they're jumbled. Sort each one into the weigher it's using: {{amber:PROBABILITY}}, {{cyan:TIMEFRAME}}, or {{amber:MAGNITUDE}}.",
+        "question": "Drop each line into the right bin."
+      },
+      "bins": [
+        {
+          "id": "bin-probability",
+          "icon": "🎯",
+          "label": "PROBABILITY",
+          "accent": "amber"
+        },
+        {
+          "id": "bin-timeframe",
+          "icon": "⏱️",
+          "label": "TIMEFRAME",
+          "accent": "cyan"
+        },
+        {
+          "id": "bin-magnitude",
+          "icon": "📏",
+          "label": "MAGNITUDE",
+          "accent": "amber"
+        }
+      ],
+      "cards": [
+        {
+          "id": "c1",
+          "text": "*\"Our impact affects 40 million uninsured Americans.\"*",
+          "correctBinId": "bin-magnitude"
+        },
+        {
+          "id": "c2",
+          "text": "*\"Theirs takes 20 years to materialize. Ours starts on day one.\"*",
+          "correctBinId": "bin-timeframe"
+        },
+        {
+          "id": "c3",
+          "text": "*\"Our evidence is peer-reviewed; theirs is speculation.\"*",
+          "correctBinId": "bin-probability"
+        },
+        {
+          "id": "c4",
+          "text": "*\"68,000 preventable deaths every single year.\"*",
+          "correctBinId": "bin-magnitude"
+        },
+        {
+          "id": "c5",
+          "text": "*\"Their impact requires five things to go wrong in a row. Ours only needs one.\"*",
+          "correctBinId": "bin-probability"
+        },
+        {
+          "id": "c6",
+          "text": "*\"The plan takes effect immediately after passage.\"*",
+          "correctBinId": "bin-timeframe"
+        }
+      ],
+      "allowPartialCredit": true,
+      "scoring": {
+        "creditsOnCorrect": 25,
+        "shieldOnWrong": true,
+        "breaksStreakOnWrong": false,
+        "maxAttempts": 2,
+        "mode": "partial"
+      },
+      "feedback": {
+        "correct": {
+          "title": "✓ SORTED CLEAN",
+          "body": [
+            "That's the triage a good rebuttalist does before every speech. {{amber:Probability}} lines talk about *evidence quality* or *chain of events*. {{cyan:Timeframe}} lines talk about *when*. {{amber:Magnitude}} lines talk about *how many / how bad*."
+          ],
+          "followup": "**Pro move:** Before your rebuttal, group your best impact calc lines by weigher. Then run through P → T → M in order. If you've got a line in every bin, {{amber:you've got a knockout rebuttal}}."
+        },
+        "wrongDefault": {
+          "title": "✕ RE-TRIAGE",
+          "body": [
+            "Litmus test for each card: does it talk about {{amber:how sure}} something is (evidence, chain of causes) → **Probability**. About {{cyan:when}} → **Timeframe**. About {{amber:how big or how many}} → **Magnitude**."
+          ]
+        }
+      },
+      "hint": {
+        "imageUrl": "/mission-images/impact-calculus-v1/1783181619442_Impact_Calc.png",
+        "altText": "",
+        "delaySeconds": 15
+      }
+    },
+    {
+      "id": "s8-cfu-fill-build-calc",
+      "type": "cfu-fill",
+      "tag": "⚡ TACTICAL DRILL · CFU 04",
+      "tagTone": "amber",
+      "prompt": {
+        "label": "BUILD THE IMPACT CALC",
+        "scenario": "You're the AFF. Your impact: {{cyan:*68,000 people die every year from lack of health insurance.*}} Their impact: {{amber:*a recession might happen in 20 years if the plan passes.*}}\n\nBuild your impact calc line by filling in the three weighers.",
+        "question": "Drop the right word into each blank."
+      },
+      "template": "Our impact outweighs on {{1}} — 68,000 deaths a year is huge.\n\nWe also outweigh on {{2}} — our impact happens NOW, theirs takes 20 years.\n\nAnd we outweigh on {{3}} — deaths from lack of insurance are documented; their recession is speculation.\n\nVote AFF.",
+      "blanks": [
+        {
+          "index": 1,
+          "acceptedAnswers": [
+            "magnitude",
+            "Magnitude",
+            "MAGNITUDE"
+          ],
+          "hint": "68,000 deaths — that's about {{amber:how many}} people."
+        },
+        {
+          "index": 2,
+          "acceptedAnswers": [
+            "timeframe",
+            "Timeframe",
+            "TIMEFRAME",
+            "time frame",
+            "Time frame"
+          ],
+          "hint": "NOW vs. 20 years — that's about {{amber:when}}."
+        },
+        {
+          "index": 3,
+          "acceptedAnswers": [
+            "probability",
+            "Probability",
+            "PROBABILITY"
+          ],
+          "hint": "Documented vs. speculation — that's about {{amber:how likely}}."
+        }
+      ],
+      "wordBank": [
+        "Magnitude",
+        "Timeframe",
+        "Probability"
+      ],
+      "caseSensitive": false,
+      "scoring": {
+        "creditsOnCorrect": 25,
+        "shieldOnWrong": true,
+        "breaksStreakOnWrong": false,
+        "maxAttempts": 2,
+        "mode": "partial"
+      },
+      "feedback": {
+        "correct": {
+          "title": "✓ FULL-STACK IMPACT CALC",
+          "body": [
+            "That's a knockout rebuttal. You just hit {{amber:all three weighers}} in a row and told the judge exactly how to vote. Magnitude (huge number), Timeframe (now vs. later), Probability (documented vs. guess) — every weigher goes AFF. ⚖️"
+          ],
+          "followup": "**Pro tip:** You don't always get all three. But when you do — {{amber:say all three out loud}}. Each weigher is a separate reason for the judge to vote your way. Stack them."
+        },
+        "wrongDefault": {
+          "title": "✕ REBUILD",
+          "body": [
+            "Three checkpoints: {{amber:how many}} = **Magnitude**. {{cyan:when}} = **Timeframe**. {{amber:how likely}} = **Probability**. Re-read each sentence and ask which question it's answering."
+          ]
+        }
+      },
+      "hint": {
+        "imageUrl": "/mission-images/impact-calculus-v1/1783181619442_Impact_Calc.png",
+        "altText": "",
+        "delaySeconds": 15
+      }
+    },
+    {
+      "id": "s9-cfu-mcq-why",
+      "type": "cfu-mcq",
+      "tag": "⚡ TACTICAL DRILL · CFU 05",
+      "tagTone": "amber",
+      "prompt": {
+        "label": "BIG IDEA CHECK",
+        "question": "🎯 Why can't you just skip impact calculus and let the judge decide whose impact is worse?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "letter": "A",
+          "text": "If you don't compare, the judge has to guess — and guesses go against you"
+        },
+        {
+          "id": "b",
+          "letter": "B",
+          "text": "Judges aren't allowed to compare impacts on their own"
+        },
+        {
+          "id": "c",
+          "letter": "C",
+          "text": "The bigger impact automatically wins without you saying anything"
+        },
+        {
+          "id": "d",
+          "letter": "D",
+          "text": "Impact calc is optional — most rounds don't need it"
+        }
+      ],
+      "correctOptionId": "a",
+      "scoring": {
+        "creditsOnCorrect": 15,
+        "shieldOnWrong": true,
+        "breaksStreakOnWrong": true,
+        "maxAttempts": 1,
+        "mode": "all-or-nothing"
+      },
+      "feedback": {
+        "correct": {
+          "title": "✓ THAT'S THE WHOLE POINT",
+          "body": [
+            "Exactly. Judges are trained to only decide based on what teams {{amber:actually say}}. If you don't do impact calc, the judge is forced to pick between two scary impacts with no framework — and that guess {{amber:almost always goes to the other team}}. ⚖️"
+          ],
+          "followup": "**Pro tip:** This is why every rebuttal should end with impact calc. It's not a bonus — it's the {{amber:closing argument}} of your speech. No impact calc = no clean way for the judge to vote for you."
+        },
+        "wrongByChoice": {
+          "b": {
+            "title": "✕ JUDGES CAN COMPARE",
+            "body": [
+              "Judges *can* compare impacts on their own — that's the problem. If you don't guide them, they'll compare {{amber:however they feel like}}, which is usually not in your favor."
+            ]
+          },
+          "c": {
+            "title": "✕ NOT AUTOMATIC",
+            "body": [
+              "\"Bigger\" only counts if you {{amber:say it out loud}} and prove it. A huge impact with no calc loses to a smaller impact with strong calc. Every time."
+            ]
+          },
+          "d": {
+            "title": "✕ NOT OPTIONAL",
+            "body": [
+              "Impact calc isn't optional at the varsity level and isn't optional at the novice level either. Every {{amber:rebuttal}} — 1AR, 2NR, 2AR — should end with it."
+            ]
+          }
+        },
+        "wrongDefault": {
+          "title": "✕ MISFIRE",
+          "body": [
+            "The answer is {{cyan:A}}. Without impact calc, the judge has to guess — and their guess almost never picks the team that stayed silent."
+          ]
+        }
+      },
+      "hint": {
+        "imageUrl": "/mission-images/impact-calculus-v1/1783181619442_Impact_Calc.png",
+        "altText": "",
+        "delaySeconds": 15
+      }
+    },
+    {
+      "id": "s10-complete",
+      "type": "complete",
+      "headline": "IMPACT CALC LOCKED IN ⚖️",
+      "subtext": "You've got the three weighers: {{amber:Probability}} (how likely?), {{cyan:Timeframe}} (how soon?), {{amber:Magnitude}} (how big?). Win one clearly and you win the argument. Win all three and you win the round. Every rebuttal ends with impact calc now — no exceptions.",
+      "rewards": [
+        {
+          "icon": "💳",
+          "label": "Credits earned",
+          "staticValue": "+140"
+        },
+        {
+          "icon": "⭐",
+          "label": "Rank XP",
+          "staticValue": "+90"
+        },
+        {
+          "icon": "🧠",
+          "label": "Protected vocab",
+          "staticValue": "Impact Calculus · Probability · Timeframe · Magnitude · Weighing · Outweigh"
+        }
+      ],
+      "primaryCta": {
+        "label": "RETURN TO BRIDGE",
+        "action": "return-bridge"
+      },
+      "secondaryCta": {
+        "label": "NEXT MISSION",
+        "action": "next-mission"
+      }
+    }
+  ]
+}

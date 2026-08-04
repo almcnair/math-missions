@@ -1,0 +1,654 @@
+{
+  "id": "what-is-debate-v1",
+  "campaignId": "cdsi-2026-summer",
+  "sectorId": "orientation",
+  "number": 1,
+  "title": "What IS Debate?",
+  "subtitle": "Orientation · Mission 01",
+  "tagline": "Policy debate is a {{cyan:game}}. Two teams, one judge, one big rule to argue about. Learn the players, the prize, and the rules of the {{amber:arena}}.",
+  "estimatedMinutes": 10,
+  "difficulty": "intro",
+  "rewards": {
+    "credits": 100,
+    "rankXp": 60
+  },
+  "unlocks": [],
+  "prerequisites": [],
+  "protectedTerms": [
+    "policy debate",
+    "affirmative",
+    "negative",
+    "judge",
+    "resolution"
+  ],
+  "passingCriteria": {
+    "requireAllCfu": true,
+    "minCorrectCfu": 4,
+    "shieldsAtZero": "allow-continue"
+  },
+  "slides": [
+    {
+      "id": "s1-hook",
+      "type": "hook",
+      "headline": "🎮 ENTER THE ARENA",
+      "body": [
+        "You and your best friend can't agree: *should your school ban phones?*",
+        "You both feel **strongly**. Neither of you is backing down. How do you settle it without just yelling louder?",
+        "That's what {{cyan: policy debate}} does. It gives you {{amber: rules}}, a {{amber: timer}}, and a judge — so you can win an argument with your {{cyan:brain}}, not your volume.",
+        "Today: meet the game, meet the players, meet the prize. 🏆"
+      ],
+      "sidebar": {
+        "title": "MISSION BRIEFING",
+        "items": [
+          {
+            "num": "01",
+            "label": "Define {{cyan: policy debate}} as an academic game",
+            "state": "todo"
+          },
+          {
+            "num": "02",
+            "label": "Tell apart the {{cyan: Affirmative}}, the {{amber: Negative}}, and the Judge",
+            "state": "todo"
+          },
+          {
+            "num": "03",
+            "label": "Spot a {{cyan: resolution}} and pick which side argues for it",
+            "state": "todo"
+          }
+        ],
+        "kind": "stock-list"
+      },
+      "image": {
+        "src": "/mission-images/what-is-debate-v1/1782668510812_Day_1_Block_A.png",
+        "alt": ""
+      },
+      "tag": "Day 1 Lesson 1"
+    },
+    {
+      "id": "s2-define-policy-debate",
+      "type": "define",
+      "term": "Policy Debate",
+      "pronunciation": "POL-ih-see dih-BAYT",
+      "definition": "{{cyan: Policy debate}} is an academic **game**. Two teams of two argue about whether one big {{cyan: rule}} should change. A judge keeps score and picks the winner. 🎮",
+      "plainWords": "Not a fight. Not yelling. A *game* with sides, a timer, and a referee. You play to win — and you win with your brain.",
+      "analogy": "Think of it like a {{cyan: video game}}. Two players per team. A clock on every move. A scoreboard. And a {{amber: boss fight}} at the end of the tournament: the trophy. 🏆",
+      "image": {
+        "src": "/mission-images/what-is-debate-v1/1782739352374_Day_1_Lesson_1_2.png",
+        "alt": ""
+      }
+    },
+    {
+      "id": "s3-concept-three-roles",
+      "type": "concept",
+      "headline": "MEET THE PLAYERS",
+      "intro": "Every policy debate round has three roles. Two teams play. One judge calls the winner. Here's who does what.",
+      "cards": [
+        {
+          "id": "card-aff",
+          "icon": "✅",
+          "name": "AFFIRMATIVE",
+          "description": "The {{cyan: YES team}}. They say *change the rule.* They bring a {{cyan: plan}} to fix the problem.",
+          "example": {
+            "label": "Sounds like",
+            "text": "\"Yes, schools should ban phones — and here's our plan to do it.\""
+          },
+          "accent": "cyan"
+        },
+        {
+          "id": "card-neg",
+          "icon": "🛡️",
+          "name": "NEGATIVE",
+          "description": "The {{amber: NO team}}. They defend things the way they are now. They prove the Aff's plan is {{amber: a bad idea}}.",
+          "example": {
+            "label": "Sounds like",
+            "text": "\"No, keep things the way they are — the Aff's plan will only make it worse.\""
+          },
+          "accent": "amber"
+        },
+        {
+          "id": "card-judge",
+          "icon": "⚖️",
+          "name": "THE JUDGE",
+          "description": "One neutral grown-up. They listen to {{cyan: both sides}}, track every point, and sign the ballot for the team that argued best.",
+          "example": {
+            "label": "Sounds like",
+            "text": "\"I voted Aff. They proved the plan solves the problem and the Neg never beat that point.\""
+          },
+          "accent": "cyan"
+        }
+      ],
+      "image": {
+        "src": "/mission-images/what-is-debate-v1/1782670152802_Policy_Debate_Mission_Briefing.png",
+        "alt": ""
+      }
+    },
+    {
+      "id": "s4-strategy-house-rules",
+      "type": "strategy",
+      "headline": "🤝 HOUSE RULES OF THE ARENA",
+      "intro": "Debate isn't a free-for-all. There are three rules every debater plays by. Break them and you don't just lose the round — you lose the room.",
+      "rows": [
+        {
+          "name": "🎤 Never interrupt a speech",
+          "description": "When the other team is up, you {{cyan: listen}} and take notes. You'll get your turn. Every speech has a timer — the clock is the only thing that can cut someone off.",
+          "counter": {
+            "label": "Why it works",
+            "text": "Judges *hate* rude debaters. The team that listens calmly looks like the team in control — even before they speak."
+          }
+        },
+        {
+          "name": "🫱 Respect the other team",
+          "description": "You can {{cyan: attack the argument}} as hard as you want. You never attack the person. No name-calling. No eye-rolls. {{amber: Argue the idea, not the kid.}}",
+          "counter": {
+            "label": "Why it works",
+            "text": "Calling out a *bad argument* is sharp. Calling out a *bad person* makes you look small. Sharp wins ballots; small loses them."
+          }
+        },
+        {
+          "name": "💪 Try your hardest, even when it's hard",
+          "description": "Some rounds will feel rough. The topic is tricky, the other team is fast, your brain is tired. You {{cyan: keep going}} anyway. That's how debaters grow.",
+          "counter": {
+            "label": "Why it works",
+            "text": "Every great debater lost a *lot* of rounds before they started winning. The ones who stuck with it got good. The ones who quit didn't."
+          }
+        }
+      ]
+    },
+    {
+      "id": "s5-cfu-mcq-team-size",
+      "type": "cfu-mcq",
+      "tag": "⚡ TACTICAL DRILL · CFU 01",
+      "tagTone": "amber",
+      "prompt": {
+        "label": "QUICK CHECK",
+        "question": "👥 How many people are on one policy debate team?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "letter": "A",
+          "text": "1"
+        },
+        {
+          "id": "b",
+          "letter": "B",
+          "text": "2"
+        },
+        {
+          "id": "c",
+          "letter": "C",
+          "text": "3"
+        },
+        {
+          "id": "d",
+          "letter": "D",
+          "text": "4"
+        }
+      ],
+      "correctOptionId": "b",
+      "scoring": {
+        "creditsOnCorrect": 15,
+        "shieldOnWrong": true,
+        "breaksStreakOnWrong": true,
+        "maxAttempts": 1,
+        "mode": "all-or-nothing"
+      },
+      "feedback": {
+        "correct": {
+          "title": "✓ TARGET ACQUIRED",
+          "body": [
+            "Locked in. Policy debate is **2 vs 2**. You and your {{cyan: debate partner}} are a team — you split the speeches and back each other up the whole round."
+          ],
+          "followup": "**Pro move:** A great team plays like *one brain in two bodies*. When your partner speaks, you're already prepping their next move."
+        },
+        "wrongByChoice": {
+          "a": {
+            "title": "✕ NOT SOLO",
+            "body": [
+              "Policy debate isn't a one-person game. You always have a {{cyan: debate partner}} — **two players per team**, four people total in the round."
+            ]
+          },
+          "c": {
+            "title": "✕ NOT THREE",
+            "body": [
+              "Close, but it's {{cyan: two}}. Every policy debate team is exactly **2 people** — you and your partner."
+            ]
+          },
+          "d": {
+            "title": "✕ THAT'S BOTH TEAMS TOGETHER",
+            "body": [
+              "Four is the *whole round* — two on Aff, two on Neg. One team is just {{cyan: two}}."
+            ]
+          }
+        },
+        "wrongDefault": {
+          "title": "✕ MISFIRE",
+          "body": [
+            "The answer is {{cyan: B — 2}}. You always have a debate partner."
+          ]
+        }
+      },
+      "hint": {
+        "imageUrl": "/mission-images/what-is-debate-v1/1782738884649_Day_1_Lesson_1_2.png",
+        "altText": ""
+      }
+    },
+    {
+      "id": "s6-cfu-match-roles",
+      "type": "cfu-match",
+      "tag": "⚡ TACTICAL DRILL · CFU 02",
+      "tagTone": "amber",
+      "prompt": {
+        "label": "PATTERN MATCH",
+        "scenario": "Match each player to what they do in the round.",
+        "question": "Drag from the left to its match on the right."
+      },
+      "leftColumn": {
+        "label": "PLAYER",
+        "items": [
+          {
+            "id": "L1",
+            "text": "✅ AFFIRMATIVE",
+            "pairId": "p1"
+          },
+          {
+            "id": "L2",
+            "text": "🛡️ NEGATIVE",
+            "pairId": "p2"
+          },
+          {
+            "id": "L3",
+            "text": "⚖️ JUDGE",
+            "pairId": "p3"
+          }
+        ]
+      },
+      "rightColumn": {
+        "label": "JOB",
+        "items": [
+          {
+            "id": "R1",
+            "text": "Says YES — change the rule. Brings a plan.",
+            "pairId": "p1"
+          },
+          {
+            "id": "R2",
+            "text": "Says NO — keep things the way they are.",
+            "pairId": "p2"
+          },
+          {
+            "id": "R3",
+            "text": "Listens to both sides and picks the winner.",
+            "pairId": "p3"
+          }
+        ]
+      },
+      "scoring": {
+        "creditsOnCorrect": 20,
+        "shieldOnWrong": true,
+        "breaksStreakOnWrong": false,
+        "maxAttempts": 2,
+        "mode": "partial"
+      },
+      "feedback": {
+        "correct": {
+          "title": "✓ ROLES LOCKED IN",
+          "body": [
+            "Clean match. {{cyan: Aff}} says yes and brings a plan. {{amber: Neg}} says no and defends what we already do. The Judge picks the team that argued best."
+          ],
+          "followup": "**Pro move:** Before every round, ask yourself one question: *which side am I on this round?* You'll argue {{cyan: both}} sides this summer — sometimes in the same day."
+        },
+        "wrongDefault": {
+          "title": "✕ ROLES CROSSED",
+          "body": [
+            "Use this trick: {{cyan: Aff = AFFIRM = YES}}. {{amber: Neg = NEGATE = NO}}. The Judge is the only one who isn't on a team."
+          ]
+        }
+      },
+      "hint": {
+        "imageUrl": "/mission-images/what-is-debate-v1/1782738802699_Day_1_Lesson_1_2.png",
+        "altText": ""
+      }
+    },
+    {
+      "id": "s7-cfu-mcq-resolution",
+      "type": "cfu-mcq",
+      "tag": "⚡ TACTICAL DRILL · CFU 03",
+      "tagTone": "amber",
+      "prompt": {
+        "label": "FIELD READ",
+        "scenario": "The topic is: *\"Our school should ban cell phones during lunch.\"*\n\nTeam A argues: *\"Yes, ban phones — it'll stop bullying online.\"* 📵\nTeam B argues: *\"No, keep phones — kids need them for emergencies.\"* 📱",
+        "question": "Which team is the AFFIRMATIVE?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "letter": "A",
+          "text": "Team A — they want the rule to change"
+        },
+        {
+          "id": "b",
+          "letter": "B",
+          "text": "Team B — they want things to stay the same"
+        },
+        {
+          "id": "c",
+          "letter": "C",
+          "text": "Both — they're both arguing"
+        },
+        {
+          "id": "d",
+          "letter": "D",
+          "text": "Neither — only the judge decides"
+        }
+      ],
+      "correctOptionId": "a",
+      "scoring": {
+        "creditsOnCorrect": 15,
+        "shieldOnWrong": true,
+        "breaksStreakOnWrong": true,
+        "maxAttempts": 1,
+        "mode": "all-or-nothing"
+      },
+      "feedback": {
+        "correct": {
+          "title": "✓ CLEAN HIT",
+          "body": [
+            "Right. {{cyan: Team A}} wants the rule to change → they're the **Affirmative**. Team B wants to keep things the way they are → they're the **Negative**."
+          ],
+          "followup": "**Memory trick:** The {{cyan: Aff}} *affirms* the resolution. If the resolution says \"ban phones,\" the Aff says **YES, ban them**. The Neg says **NO, don't**."
+        },
+        "wrongByChoice": {
+          "b": {
+            "title": "✕ FLIPPED",
+            "body": [
+              "Team B wants things to stay the *same* — that's the {{amber: Negative}}. The team that wants the rule to **change** (Team A) is the Aff."
+            ]
+          },
+          "c": {
+            "title": "✕ ONLY ONE SIDE IS AFF",
+            "body": [
+              "Both teams argue, true — but only one team is the {{cyan: Affirmative}}. The Aff is the team that says **YES** to the resolution. That's Team A here."
+            ]
+          },
+          "d": {
+            "title": "✕ THE JUDGE DOESN'T ARGUE",
+            "body": [
+              "The judge only picks the winner — they don't take a side. The {{cyan: Aff}} is the team **arguing for** the rule change. That's Team A."
+            ]
+          }
+        },
+        "wrongDefault": {
+          "title": "✕ MISFIRE",
+          "body": [
+            "The answer is {{cyan: A}}. The Aff is the team that wants the rule to change. Team A wants to ban phones, so they're the Aff."
+          ]
+        }
+      },
+      "hint": {
+        "imageUrl": "/mission-images/what-is-debate-v1/1782738339252_Day_1_Block_A.png",
+        "altText": ""
+      }
+    },
+    {
+      "id": "s8-cfu-sort-norms",
+      "type": "cfu-sort",
+      "tag": "⚡ TACTICAL DRILL · CFU 04",
+      "tagTone": "amber",
+      "prompt": {
+        "label": "JUDGE'S EYES",
+        "scenario": "You're the judge. 🧑‍⚖️ Sort each move into how it'd look on your ballot.",
+        "question": "Drop each action into the right bin."
+      },
+      "bins": [
+        {
+          "id": "bin-good",
+          "icon": "✅",
+          "label": "GOOD DEBATER MOVE",
+          "accent": "cyan"
+        },
+        {
+          "id": "bin-bad",
+          "icon": "🚫",
+          "label": "LOSES THE DEBATE",
+          "accent": "amber"
+        }
+      ],
+      "cards": [
+        {
+          "id": "c1",
+          "text": "Taking notes while the other team speaks 📝",
+          "correctBinId": "bin-good"
+        },
+        {
+          "id": "c2",
+          "text": "Calling the other debater \"stupid\" 😒",
+          "correctBinId": "bin-bad"
+        },
+        {
+          "id": "c3",
+          "text": "Making eye contact with the judge 👀",
+          "correctBinId": "bin-good"
+        },
+        {
+          "id": "c4",
+          "text": "Cutting off the other team's speech 🗣️",
+          "correctBinId": "bin-bad"
+        },
+        {
+          "id": "c5",
+          "text": "Trying hard even when you're behind 💪",
+          "correctBinId": "bin-good"
+        }
+      ],
+      "allowPartialCredit": true,
+      "scoring": {
+        "creditsOnCorrect": 25,
+        "shieldOnWrong": true,
+        "breaksStreakOnWrong": false,
+        "maxAttempts": 2,
+        "mode": "partial"
+      },
+      "feedback": {
+        "correct": {
+          "title": "✓ JUDGE'S EYES TRAINED",
+          "body": [
+            "Clean sort. The {{cyan: good moves}} all have one thing in common: they treat the round like a {{cyan: game}}, not a fight. The {{amber: bad moves}} all do the opposite — they break the rules and burn the judge's patience."
+          ],
+          "followup": "**Pro move:** Judges decide *partly* on arguments and *partly* on **vibe**. A calm, kind debater who tries hard wins close rounds. A rude one loses them."
+        },
+        "wrongDefault": {
+          "title": "✕ MISALIGNED",
+          "body": [
+            "Litmus test: ask {{cyan: \"Would the judge nod or frown?\"}} Note-taking, eye contact, and effort = nods. Name-calling, interrupting, and giving up = frowns."
+          ]
+        }
+      }
+    },
+    {
+      "id": "s9-cfu-fill-recap",
+      "type": "cfu-fill",
+      "tag": "⚡ TACTICAL DRILL · CFU 05",
+      "tagTone": "amber",
+      "prompt": {
+        "label": "BUILD ORDER",
+        "scenario": "Fill in the missing words to describe a policy debate round.",
+        "question": "Drop the right word into each blank."
+      },
+      "template": "Policy debate is a game played by two teams of two. The {{1}} team argues YES — change the rule. The {{2}} team argues NO — keep things the way they are. A neutral {{3}} listens to both sides and picks the winner.",
+      "blanks": [
+        {
+          "index": 1,
+          "acceptedAnswers": [
+            "affirmative",
+            "Affirmative",
+            "AFFIRMATIVE",
+            "aff",
+            "Aff",
+            "AFF"
+          ],
+          "hint": "The YES team — the one that wants the rule to change"
+        },
+        {
+          "index": 2,
+          "acceptedAnswers": [
+            "negative",
+            "Negative",
+            "NEGATIVE",
+            "neg",
+            "Neg",
+            "NEG"
+          ],
+          "hint": "The NO team — the one defending what we already do"
+        },
+        {
+          "index": 3,
+          "acceptedAnswers": [
+            "judge",
+            "Judge",
+            "JUDGE"
+          ],
+          "hint": "The neutral person who picks the winner"
+        }
+      ],
+      "wordBank": [
+        "affirmative",
+        "negative",
+        "judge"
+      ],
+      "caseSensitive": false,
+      "scoring": {
+        "creditsOnCorrect": 20,
+        "shieldOnWrong": true,
+        "breaksStreakOnWrong": false,
+        "maxAttempts": 2,
+        "mode": "partial"
+      },
+      "feedback": {
+        "correct": {
+          "title": "✓ ROUND ASSEMBLED",
+          "body": [
+            "That's the whole game in three words: {{cyan: Affirmative}}, {{amber: Negative}}, and {{cyan: Judge}}. Memorize them. You'll use them every single round this summer."
+          ]
+        },
+        "wrongDefault": {
+          "title": "✕ REBUILD",
+          "body": [
+            "Three checkpoints: {{cyan: Affirmative}} = YES, change the rule. {{amber: Negative}} = NO, keep things the same. {{cyan: Judge}} = the neutral grown-up who picks the winner."
+          ]
+        }
+      },
+      "hint": {
+        "imageUrl": "/mission-images/what-is-debate-v1/1782738475865_Day_1_Block_A.png",
+        "altText": "",
+        "delaySeconds": 30
+      }
+    },
+    {
+      "id": "s10-cfu-mcq-game-vs-fight",
+      "type": "cfu-mcq",
+      "tag": "⚡ TACTICAL DRILL · CFU 06",
+      "tagTone": "amber",
+      "prompt": {
+        "label": "BIG IDEA CHECK",
+        "question": "🎯 What makes policy debate **different** from arguing with your friend at lunch?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "letter": "A",
+          "text": "Debate has rules, a timer, and a judge — lunch arguments don't"
+        },
+        {
+          "id": "b",
+          "letter": "B",
+          "text": "Debate is always about lunch food"
+        },
+        {
+          "id": "c",
+          "letter": "C",
+          "text": "Debate is louder"
+        },
+        {
+          "id": "d",
+          "letter": "D",
+          "text": "There's no real difference — both are just arguing"
+        }
+      ],
+      "correctOptionId": "a",
+      "scoring": {
+        "creditsOnCorrect": 15,
+        "shieldOnWrong": true,
+        "breaksStreakOnWrong": true,
+        "maxAttempts": 1,
+        "mode": "all-or-nothing"
+      },
+      "feedback": {
+        "correct": {
+          "title": "✓ THAT'S THE WHOLE GAME",
+          "body": [
+            "Exactly. A lunch argument is whoever talks loudest. A {{cyan: debate round}} has a timer, sides, and a referee — so the team with the best *thinking* wins, not the team with the biggest mouth. 🧠"
+          ],
+          "followup": "**Pro tip:** This is *why* shy kids often become **great** debaters. The rules level the playing field. You don't need to be the loudest — you need to be the **clearest**."
+        },
+        "wrongByChoice": {
+          "b": {
+            "title": "✕ NOT THE TOPIC",
+            "body": [
+              "Policy debate can be about almost anything — phones, recess, school start times, big national rules. The thing that makes it *debate* isn't the topic. It's the {{cyan: rules}}, {{cyan: timer}}, and {{cyan: judge}}."
+            ]
+          },
+          "c": {
+            "title": "✕ LOUDER ISN'T BETTER",
+            "body": [
+              "Actually, the {{amber: opposite}}. Yelling loses rounds. The team with rules on their side — clear arguments, calm voice, eye contact — wins."
+            ]
+          },
+          "d": {
+            "title": "✕ THERE'S A BIG DIFFERENCE",
+            "body": [
+              "A lunch argument has no referee and no clock. A {{cyan: debate round}} has both — plus sides, plans, and a judge keeping score. That structure is what makes it a game."
+            ]
+          }
+        },
+        "wrongDefault": {
+          "title": "✕ MISFIRE",
+          "body": [
+            "The answer is {{cyan: A}}. Debate has {{cyan: rules}}, a {{cyan: timer}}, and a {{cyan: judge}}. That's what makes it a game and not a yelling match."
+          ]
+        }
+      }
+    },
+    {
+      "id": "s11-complete",
+      "type": "complete",
+      "headline": "ARENA: CLEARED ✅",
+      "subtext": "You now know the game. Two teams of two. {{cyan: Aff}} says YES. {{amber: Neg}} says NO. The Judge picks the winner. House rules: listen, respect, try hard. You're ready for the arena. 🎮",
+      "rewards": [
+        {
+          "icon": "💳",
+          "label": "Credits earned",
+          "staticValue": "+100"
+        },
+        {
+          "icon": "⭐",
+          "label": "Rank XP",
+          "staticValue": "+60"
+        },
+        {
+          "icon": "🧠",
+          "label": "Protected vocab",
+          "staticValue": "Policy Debate · Affirmative · Negative · Judge · Resolution"
+        }
+      ],
+      "primaryCta": {
+        "label": "RETURN TO BRIDGE",
+        "action": "return-bridge"
+      },
+      "secondaryCta": {
+        "label": "NEXT MISSION",
+        "action": "next-mission"
+      }
+    }
+  ]
+}
