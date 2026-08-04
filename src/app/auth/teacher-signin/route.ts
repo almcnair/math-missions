@@ -85,6 +85,17 @@ export async function POST(request: NextRequest) {
   });
 
   if (error) {
+    // Surface the real Supabase error to Vercel logs so we can debug what's
+    // actually going wrong (email rate-limit, redirect URL not allow-listed,
+    // SMTP not configured, etc.). Do NOT surface this to the user — error
+    // detail on auth surfaces can leak enumeration.
+    console.error("[teacher-signin] signInWithOtp error:", {
+      message: error.message,
+      status: error.status,
+      code: (error as { code?: string }).code,
+      emailDomain: email.split("@")[1],
+      redirect: callbackUrl.toString(),
+    });
     return errorBack("Could not send sign-in link. Try again in a moment.");
   }
 
