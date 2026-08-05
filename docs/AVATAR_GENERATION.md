@@ -1,6 +1,6 @@
 # Avatar Generation Prompt Pack
 
-The Policy Debate 101 pilot roster is **Path A** — distinct characters, unified blue/silver uniform, single canonical photoreal CG style.
+The Math Missions pilot roster is **Path A** — distinct characters, unified blue/silver uniform, single canonical photoreal CG style.
 
 `pilot-marcus.jpeg` (already in `public/avatars/pilots/`) is the **canonical style reference**. Every other pilot should match its style, uniform, framing, lighting, and background treatment exactly — only the character changes.
 

@@ -12,7 +12,7 @@
 import CollectionHub from "@/components/toolkit/CollectionHub";
 
 export const metadata = {
-  title: "Debater Resources · Policy Debate 101",
+  title: "Debater Resources · Math Missions",
   description:
     "Reference material and study tools for policy debate students — glossary, slide decks, and graphic organizers.",
 };

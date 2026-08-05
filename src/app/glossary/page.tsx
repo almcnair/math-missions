@@ -670,7 +670,7 @@ export default function GlossaryPage() {
         <footer className="mt-10 pt-6 border-t border-border-mid/40 text-xs text-text-dim">
           <p>
             Core terms adapted from the CDSI 2026 Debate Glossary. Additional
-            entries drafted for Policy Debate 101 at a middle-school reading
+            entries drafted for Math Missions at a middle-school reading
             level. Suggestions for more? Tell your coach.
           </p>
           <p className="mt-3">

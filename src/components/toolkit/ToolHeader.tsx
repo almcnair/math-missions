@@ -1,7 +1,7 @@
-// ToolHeader — shared chrome for every page in a Policy Debate 101 toolkit.
+// ToolHeader — shared chrome for every page in a Math Missions toolkit.
 //
 // Renders three visual layers:
-//   1. Small site wordmark (POLICY DEBATE 101) → links home
+//   1. Small site wordmark (MATH MISSIONS) → links home
 //   2. Big collection wordmark (LAB LEADER TOOLKIT / DEBATER RESOURCES)
 //      → opens a switcher scoped to THAT collection's tools
 //   3. Current tool title inside the switcher trigger, if `activeToolId`

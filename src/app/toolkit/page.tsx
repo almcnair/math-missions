@@ -11,7 +11,7 @@
 import CollectionHub from "@/components/toolkit/CollectionHub";
 
 export const metadata = {
-  title: "Lab Leader Toolkit · Policy Debate 101",
+  title: "Lab Leader Toolkit · Math Missions",
   description:
     "Everything a CDSI lab leader needs to run a great debate class — teacher moves, brain breaks, and projection tools.",
 };

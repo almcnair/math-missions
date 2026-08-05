@@ -1,4 +1,4 @@
-# Policy Debate 101 — AI Image Prompt Cookbook
+# Math Missions — AI Image Prompt Cookbook
 
 > Drop-in prompts for generating slide images that look like they belong on **policydebate101.com**. Each recipe is structured for **ChatGPT/DALL-E, Midjourney, or Stable Diffusion** — paste the whole block, swap the `[BRACKETED]` parts for your specific concept, and go.
 >

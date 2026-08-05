@@ -1,4 +1,4 @@
-# Policy Debate 101 — AI Style Guide
+# Math Missions — AI Style Guide
 
 > A one-page brief for any AI tool (image generators, copy assistants, writing models) producing assets, illustrations, or text for **policydebate101.com**. Paste the relevant section into your prompt; the assets you get back will feel like they belong on the platform.
 
@@ -6,7 +6,7 @@
 
 ## 🚀 The Platform in One Sentence
 
-Policy Debate 101 is a **gamified training console for middle school debaters** — students log into the *CDSI Space Station*, take on "missions," and earn credits and rank by mastering one debate skill at a time.
+Math Missions is a **gamified training console for middle school debaters** — students log into the *CDSI Space Station*, take on "missions," and earn credits and rank by mastering one debate skill at a time.
 
 The whole site reads like the **bridge of a friendly spaceship academy**. Think *Star Trek training simulator meets a really good math game*.
 

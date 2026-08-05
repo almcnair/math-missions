@@ -1,4 +1,4 @@
-# Mission Schema v0.1 — Policy Debate 101 Academy
+# Mission Schema v0.1 — Math Missions Academy
 
 This is the canonical shape of a **mission**. Every mission in the platform — Inherency, Solvency, Disadvantages, the First Debate boss node, all of it — is one of these JSON documents.
 

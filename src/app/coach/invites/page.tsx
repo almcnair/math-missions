@@ -25,7 +25,7 @@ import {
 import { CopyLinkButton } from "./CopyLinkButton";
 
 export const dynamic = "force-dynamic";
-export const metadata = { title: "Coach Invites · Policy Debate 101" };
+export const metadata = { title: "Coach Invites · Math Missions" };
 
 type Lab = { id: string; name: string; division: string | null; level: string | null };
 type Invite = {

@@ -1,4 +1,4 @@
-# Mission Rubric — Policy Debate 101
+# Mission Rubric — Math Missions
 
 How to tell whether a mission is **Distinguished**, **Proficient**, or **Developing**.
 
@@ -85,7 +85,7 @@ The mission isn't done when it works. The mission is done when it would be the m
 
 ---
 
-### 7. **Voice & Brand Discipline** — it sounds like Policy Debate 101
+### 7. **Voice & Brand Discipline** — it sounds like Math Missions
 
 | Distinguished | Proficient | Developing |
 |---|---|---|
@@ -94,7 +94,7 @@ The mission isn't done when it works. The mission is done when it would be the m
 **The What-IS-Debate signature:** Cyan = Aff / good move / key concept. Amber = Neg / warning / wrong move. Magenta is absent (correctly — this isn't a boss). "Debate Partner" appears verbatim. Tags follow the standard pattern. Eyebrow language is "MISSION BRIEFING," not "lesson briefing."
 
 > **Brand locks (2026-06-26 / 2026-06-27 / 2026-06-29):**
-> - The platform is **Policy Debate 101**. Never "CDSI" in user-facing copy.
+> - The platform is **Math Missions**. Never "CDSI" in user-facing copy.
 > - The student's teammate is the **Debate Partner**. Never "co-pilot."
 > - Each content-unit is a **Mission**. Never "lesson" or "quiz."
 > - **Analogies stay in the space-station register.** Starship ops, mission briefings, tactical drills, comms protocols, fleet maneuvers, sci-fi crew dynamics. Sports metaphors are allowed *sparingly* — only when nothing space-flavored lands as cleanly. Default question: *"what would a starship cadet recognize?"*

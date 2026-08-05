@@ -44,14 +44,14 @@ export function DebaterNav() {
         <Link href={homeHref} className="flex items-center gap-2 shrink-0 group">
           <Image
             src="/brand/logo-mascot.png"
-            alt="Policy Debate 101"
+            alt="Math Missions"
             width={40}
             height={40}
             className="h-9 w-9"
             priority
           />
           <span className="hidden sm:inline font-mono text-[10px] tracking-[0.3em] text-text-dim group-hover:text-accent-cyan transition-colors">
-            POLICY DEBATE 101
+            MATH MISSIONS
           </span>
         </Link>
 

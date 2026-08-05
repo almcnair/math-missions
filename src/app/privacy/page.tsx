@@ -14,9 +14,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Privacy — Policy Debate 101",
+  title: "Privacy — Math Missions",
   description:
-    "How Policy Debate 101 handles data. Cookie-less analytics, no PII, no advertising trackers.",
+    "How Math Missions handles data. Cookie-less analytics, no PII, no advertising trackers.",
 };
 
 const LAST_UPDATED = "July 8, 2026";
@@ -28,7 +28,7 @@ export default function PrivacyPage() {
       <div className="mx-auto max-w-3xl px-6 py-16">
         <header className="mb-10">
           <p className="font-mono text-xs tracking-[0.2em] text-accent-cyan uppercase mb-3">
-            Policy Debate 101
+            Math Missions
           </p>
           <h1 className="font-display text-4xl md:text-5xl font-bold tracking-tight mb-3">
             Privacy
@@ -38,7 +38,7 @@ export default function PrivacyPage() {
 
         <section className="space-y-6 leading-relaxed text-text-bright/90">
           <p>
-            Policy Debate 101 is built for middle and high school students learning
+            Math Missions is built for middle and high school students learning
             policy debate. That means some of our users are minors, and some are
             using this site inside a classroom. We take that seriously. This page
             explains what data we collect, what we don&rsquo;t, and why.

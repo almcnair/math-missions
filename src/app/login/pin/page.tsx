@@ -33,7 +33,7 @@ export default async function PinLoginPage({ searchParams }: { searchParams: Sea
 
           <div className="text-center space-y-3">
             <div className="font-mono text-xs tracking-[0.3em] text-accent-cyan">
-              ⟡ POLICY DEBATE 101 SPACE STATION
+              ⟡ MATH MISSIONS SPACE STATION
             </div>
             <h1 className="font-display text-3xl font-bold">CAMP SIGN-IN</h1>
             <p className="text-text-dim text-sm">

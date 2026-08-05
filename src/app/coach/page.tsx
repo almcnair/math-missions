@@ -83,7 +83,7 @@ export default async function CoachDashboardPage() {
         <header className="flex items-start justify-between gap-6">
           <div className="space-y-2">
             <div className="font-mono text-xs tracking-[0.3em] text-accent-cyan">
-              ⟡ POLICY DEBATE 101 SPACE STATION · COMMAND DECK
+              ⟡ MATH MISSIONS SPACE STATION · COMMAND DECK
             </div>
             <h1 className="font-display text-4xl font-black">
               WELCOME BACK, {profile.display_name?.toUpperCase() ?? "COACH"}

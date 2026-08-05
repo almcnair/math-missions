@@ -1,4 +1,4 @@
-// CollectionHub — shared hub UI for any Policy Debate 101 toolkit collection.
+// CollectionHub — shared hub UI for any Math Missions toolkit collection.
 //
 // Renders the ToolHeader (with the given collectionId), a gradient hero using
 // the collection's name/tagline, audience filter chips, and a sectioned card

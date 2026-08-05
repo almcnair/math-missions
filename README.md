@@ -1,4 +1,4 @@
-# Policy Debate 101 — Platform App
+# Math Missions — Platform App
 
 Real Next.js + Supabase build of the platform behind **policydebate101.com**.
 The static mockup lives at `~/Desktop/debate-spaceship-mockup/` and is the

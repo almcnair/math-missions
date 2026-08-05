@@ -15,7 +15,7 @@ import { SpaceBackdrop } from "@/components/Starfield";
 import ToolHeader from "@/components/toolkit/ToolHeader";
 
 export const metadata: Metadata = {
-  title: "Jeopardy Games · Lab Leader Toolkit · Policy Debate 101",
+  title: "Jeopardy Games · Lab Leader Toolkit · Math Missions",
   description:
     "Projector-friendly hub of Jeopardy-style review games for policy debate classrooms. One click to project.",
 };

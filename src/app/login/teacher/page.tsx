@@ -22,7 +22,7 @@ export default async function TeacherLoginPage({ searchParams }: { searchParams:
 
           <div className="text-center space-y-3">
             <div className="font-mono text-xs tracking-[0.3em] text-accent-cyan">
-              ⟡ POLICY DEBATE 101 SPACE STATION
+              ⟡ MATH MISSIONS SPACE STATION
             </div>
             <h1 className="font-display text-3xl font-bold">COACH LOGIN</h1>
           </div>

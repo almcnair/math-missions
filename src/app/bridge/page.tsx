@@ -146,7 +146,7 @@ export default async function Bridge() {
         <main className="relative z-10 max-w-4xl mx-auto px-8 py-16 space-y-8">
           <header className="space-y-3">
             <div className="font-mono text-xs tracking-[0.3em] text-accent-cyan">
-              ⟡ POLICY DEBATE 101 SPACE STATION · MISSION CONTROL
+              ⟡ MATH MISSIONS SPACE STATION · MISSION CONTROL
             </div>
             <h1 className="font-display text-5xl font-black">SIGN IN TO BOARD</h1>
             <p className="text-text-dim">
@@ -212,7 +212,7 @@ export default async function Bridge() {
           </Link>
           <div className="flex-1 space-y-3">
             <div className="font-mono text-xs tracking-[0.3em] text-accent-cyan">
-              ⟡ POLICY DEBATE 101 SPACE STATION · MISSION CONTROL
+              ⟡ MATH MISSIONS SPACE STATION · MISSION CONTROL
             </div>
             <h1 className="font-display text-4xl font-black">
               Welcome to Mission Control, {profile.name.split(" ")[0]}.

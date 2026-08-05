@@ -54,7 +54,7 @@ it, flip it on and skip to step 5.
 2. Create a new project named `policydebate101`.
 3. In the left sidebar: **APIs & Services** → **OAuth consent screen**.
    - User type: **External**
-   - App name: `Policy Debate 101 Academy`
+   - App name: `Math Missions Academy`
    - User support email: your email
    - Developer contact: your email
    - Save and continue through the next screens (no scopes needed for basic sign-in)
@@ -150,7 +150,7 @@ Perfect, you're on the right page. Let's walk through this together.
 
 **Step 1: Fill out this form**
 
-- **Organization:** Policy Debate 101 ✅ (already set)
+- **Organization:** Math Missions ✅ (already set)
 - **GitHub:** Skip — leave empty. We'll wire git up separately later.
 - **Project name:** `policydebate101` ✅ (already set)
 - **Database password:** Click **"Generate a password"** (the link on the right). It'll auto-fill a strong one. **CRITICAL: copy it to a password manager or a note immediately.** Supabase won't show it again, and you'll need it if you ever want to connect directly to Postgres. We don't need it for the app itself (the app uses API keys), but losing it = no direct DB access ever.
