@@ -1,0 +1,550 @@
+{
+  "id": "dividing-fractions-v1",
+  "campaignId": "math-missions",
+  "sectorId": "fractions",
+  "number": 1,
+  "title": "Dividing Fractions",
+  "subtitle": "Fractions · Mission 01",
+  "tagline": "Learn the {{cyan:keep–change–flip}} move — and find out {{amber:why it actually works}}.",
+  "estimatedMinutes": 12,
+  "difficulty": "core",
+  "rewards": {
+    "credits": 100,
+    "rankXp": 60
+  },
+  "unlocks": [],
+  "prerequisites": [],
+  "protectedTerms": [
+    "reciprocal",
+    "dividend",
+    "divisor",
+    "quotient"
+  ],
+  "passingCriteria": {
+    "requireAllCfu": true,
+    "minCorrectCfu": 4,
+    "shieldsAtZero": "allow-continue"
+  },
+  "slides": [
+    {
+      "id": "s1-hook",
+      "type": "hook",
+      "tag": "◈ LEVEL 1 · WARM-UP",
+      "tagTone": "default",
+      "headline": "You've got {{cyan:½ of a pizza}} left. You want to split it into {{amber:3 equal pieces}}. How much pizza is one piece?",
+      "body": [
+        "You already know the answer is small. Way smaller than half. Each piece is a slice *of* a half — one-sixth of the whole pizza.",
+        "That's {{cyan:½ ÷ 3}}. Dividing a fraction by a whole number. And here's the wild part: the fastest way to solve it doesn't look like division at all. It looks like *multiplication*.",
+        "Today's power-up: **keep–change–flip.** By the end of this mission, you'll know the move *and* the reason it works — so you can never be tricked into forgetting it."
+      ],
+      "image": {
+        "src": "/mission-images/dividing-fractions-v1/1785958856378_Gemini_Generated_Image_rtrjpxrtrjpxrtrj.png",
+        "alt": ""
+      }
+    },
+    {
+      "id": "s2-define-reciprocal",
+      "type": "define",
+      "tag": "◈ NEW ITEM UNLOCKED",
+      "term": "Reciprocal",
+      "pronunciation": "/rɪˈsɪp.rə.kəl/ · noun · math",
+      "definition": "The reciprocal of a fraction is the same fraction {{cyan:flipped upside down}}.",
+      "plainWords": "Swap the top and the bottom.",
+      "analogy": "Think of it like a **power-up in a video game**. The number `¾` walks up to a mirror, and the mirror hands it back as `⁴⁄₃`. Same digits — different roles. `3` used to be the top; now it's the bottom. Every fraction has a reciprocal, and every reciprocal has a reciprocal (it flips back)."
+    },
+    {
+      "id": "s3-define-parts",
+      "type": "define",
+      "tag": "◈ VOCAB CHECKPOINT",
+      "term": "Dividend, Divisor, Quotient",
+      "pronunciation": "the three parts of any division problem",
+      "definition": "In `A ÷ B = C`, `A` is the {{cyan:dividend}}, `B` is the {{amber:divisor}}, and `C` is the answer — the {{cyan:quotient}}.",
+      "plainWords": "The first number is what you're splitting up. The second number is what you're splitting it into. The answer is what each piece looks like.",
+      "analogy": "**Loot-drop analogy:** the `dividend` is the pile of loot you just picked up. The `divisor` is how many teammates you're sharing with. The `quotient` is what each teammate walks away with."
+    },
+    {
+      "id": "s4-concept-kcf",
+      "type": "concept",
+      "tag": "◈ THE MOVE",
+      "headline": "Keep–Change–Flip: three tiny moves, one big power-up",
+      "intro": "Every fraction-division problem gets solved with the same three-step combo. Memorize the combo, then we'll break down why it works.",
+      "cards": [
+        {
+          "id": "keep",
+          "icon": "①",
+          "name": "KEEP",
+          "description": "**Keep** the first fraction exactly the way it is. Don't touch it. Copy it down.",
+          "example": {
+            "label": "EXAMPLE",
+            "text": "⅔ ÷ ¾  →  keep the ⅔"
+          },
+          "accent": "cyan"
+        },
+        {
+          "id": "change",
+          "icon": "②",
+          "name": "CHANGE",
+          "description": "**Change** the `÷` sign to a `×` sign. Division becomes multiplication.",
+          "example": {
+            "label": "EXAMPLE",
+            "text": "⅔ ÷ ¾  →  ⅔ × ¾"
+          },
+          "accent": "amber"
+        },
+        {
+          "id": "flip",
+          "icon": "③",
+          "name": "FLIP",
+          "description": "**Flip** the second fraction to its `reciprocal` — swap the top and bottom.",
+          "example": {
+            "label": "EXAMPLE",
+            "text": "⅔ × ¾  →  ⅔ × ⁴⁄₃"
+          },
+          "accent": "cyan"
+        }
+      ]
+    },
+    {
+      "id": "s5-concept-why",
+      "type": "concept",
+      "tag": "◈ WHY IT WORKS",
+      "headline": "Dividing by a fraction = multiplying by its reciprocal",
+      "intro": "This isn't a trick. It's the actual rule. Here's the reason in plain language:",
+      "cards": [
+        {
+          "id": "why-1",
+          "icon": "◇",
+          "name": "DIVISION ASKS \"HOW MANY FITS?\"",
+          "description": "`6 ÷ 2` asks: **how many 2's fit inside 6?** Answer: three. So `6 ÷ ½` asks: **how many halves fit inside 6?** Answer: {{cyan:twelve}} — because every whole thing has *two* halves.",
+          "accent": "amber"
+        },
+        {
+          "id": "why-2",
+          "icon": "◇",
+          "name": "DIVIDING BY A SMALL NUMBER MAKES THE ANSWER BIGGER",
+          "description": "This is the part that feels weird. When you divide `6` by `½`, you don't get `3`. You get `12`. That's why the flip works — flipping `½` gives you `2`, and `6 × 2 = 12`. The math checks out.",
+          "accent": "cyan"
+        },
+        {
+          "id": "why-3",
+          "icon": "◇",
+          "name": "SO WHEN YOU FLIP, YOU'RE ASKING THE SAME QUESTION IN AN EASIER FORM",
+          "description": "`⅔ ÷ ¾` and `⅔ × ⁴⁄₃` have the exact same answer. The flipped version is just the version your calculator can handle in one shot.",
+          "accent": "amber"
+        }
+      ]
+    },
+    {
+      "id": "s6-strategy",
+      "type": "strategy",
+      "tag": "◈ TACTICAL WALKTHROUGH",
+      "headline": "How to solve any fraction ÷ fraction problem",
+      "intro": "Do these three moves, in this order, every single time. No skipping. No shortcuts.",
+      "rows": [
+        {
+          "name": "Step 1 — Write down the first fraction",
+          "description": "Copy the {{cyan:dividend}} exactly as it appears. Don't simplify yet, don't flip it, don't touch it."
+        },
+        {
+          "name": "Step 2 — Flip the `÷` to a `×`",
+          "description": "The division sign is the trigger. Change it to a multiplication sign so you can use the multiply move you already know."
+        },
+        {
+          "name": "Step 3 — Flip the second fraction",
+          "description": "The {{cyan:divisor}} becomes its `reciprocal`. Top and bottom swap. This is the whole magic of the move.",
+          "counter": {
+            "label": "COMMON TRAP",
+            "text": "Do NOT flip the first fraction. Only the second one flips. Ever."
+          }
+        },
+        {
+          "name": "Step 4 — Multiply straight across",
+          "description": "New top = top × top. New bottom = bottom × bottom. Then simplify if you can."
+        }
+      ]
+    },
+    {
+      "id": "s7-cfu-mcq-reciprocal",
+      "type": "cfu-mcq",
+      "tag": "⚡ CHECK 01 · RECIPROCAL RECALL",
+      "prompt": {
+        "label": "QUICK CHECK",
+        "question": "What is the reciprocal of `⅖`?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "letter": "A",
+          "text": "⅖"
+        },
+        {
+          "id": "b",
+          "letter": "B",
+          "text": "⁵⁄₂"
+        },
+        {
+          "id": "c",
+          "letter": "C",
+          "text": "−⅖"
+        },
+        {
+          "id": "d",
+          "letter": "D",
+          "text": "⁷⁄₁₀"
+        }
+      ],
+      "correctOptionId": "b",
+      "scoring": {
+        "creditsOnCorrect": 15,
+        "shieldOnWrong": true,
+        "breaksStreakOnWrong": true,
+        "maxAttempts": 1
+      },
+      "feedback": {
+        "correct": {
+          "title": "✓ FLIPPED IT",
+          "body": [
+            "Top and bottom swapped. `⅖` → `⁵⁄₂`. That's the reciprocal, every time."
+          ],
+          "followup": "**Pro move:** whenever you see the word `reciprocal`, your hand should already be flipping the fraction — no thinking required."
+        },
+        "wrongByChoice": {
+          "a": {
+            "title": "✕ NOT QUITE — THAT'S THE SAME FRACTION",
+            "body": [
+              "You copied `⅖` back down. A reciprocal has to **flip**. Swap the top and the bottom."
+            ]
+          },
+          "c": {
+            "title": "✕ CLOSE — BUT NEGATIVE ISN'T THE MOVE",
+            "body": [
+              "Reciprocals aren't about **signs** (positive/negative). They're about **positions** (top/bottom). `⅖` flipped is `⁵⁄₂`, and it stays positive."
+            ]
+          },
+          "d": {
+            "title": "✕ MISFIRE — WHERE DID THAT 7 COME FROM?",
+            "body": [
+              "A reciprocal only uses the digits *already in the fraction*. `⅖` has a `2` and a `5`. The reciprocal is `⁵⁄₂` — same digits, swapped."
+            ]
+          }
+        },
+        "wrongDefault": {
+          "title": "✕ RECALIBRATE",
+          "body": [
+            "Reciprocal = flip the fraction. `⅖` becomes `⁵⁄₂`."
+          ]
+        }
+      }
+    },
+    {
+      "id": "s8-cfu-order-kcf",
+      "type": "cfu-order",
+      "tag": "⚡ CHECK 02 · KEEP–CHANGE–FLIP COMBO",
+      "prompt": {
+        "label": "TACTICAL DRILL",
+        "scenario": "You need to solve `¾ ÷ ⅖`. Put the four steps in the correct order.",
+        "question": "Drag the moves into the right sequence."
+      },
+      "items": [
+        {
+          "id": "step-multiply",
+          "text": "Multiply straight across: top × top, bottom × bottom.",
+          "correctPosition": 4
+        },
+        {
+          "id": "step-keep",
+          "text": "Keep the first fraction (`¾`) exactly as it is.",
+          "correctPosition": 1
+        },
+        {
+          "id": "step-flip",
+          "text": "Flip the second fraction (`⅖` → `⁵⁄₂`).",
+          "correctPosition": 3
+        },
+        {
+          "id": "step-change",
+          "text": "Change the `÷` sign to a `×` sign.",
+          "correctPosition": 2
+        }
+      ],
+      "scoring": {
+        "creditsOnCorrect": 25,
+        "shieldOnWrong": true,
+        "breaksStreakOnWrong": false,
+        "maxAttempts": 2,
+        "mode": "partial"
+      },
+      "feedback": {
+        "correct": {
+          "title": "✓ COMBO EXECUTED",
+          "body": [
+            "Keep. Change. Flip. Multiply. That's the whole move, in order. This is the combo you'll use for every fraction-division problem from here on."
+          ],
+          "followup": "**Memory trick:** say it out loud when you're solving — \"keep, change, flip\" — until your hand does it automatically."
+        },
+        "wrongDefault": {
+          "title": "✕ ALMOST — ONE STEP IS OUT OF PLACE",
+          "body": [
+            "The order is: **① Keep** the first fraction, **② Change** the sign, **③ Flip** the second fraction, **④ Multiply** across. If you flip before you change the sign, or multiply before you flip, you'll get a wrong answer."
+          ]
+        }
+      }
+    },
+    {
+      "id": "s9-cfu-match",
+      "type": "cfu-match",
+      "tag": "⚡ CHECK 03 · MATCH THE DIVISORS",
+      "prompt": {
+        "label": "LOOT SORT",
+        "scenario": "Each division problem below has a matching flipped-multiplication version. Pair them up.",
+        "question": "Match each problem on the left to the correct rewritten version on the right."
+      },
+      "leftColumn": {
+        "label": "DIVISION PROBLEM",
+        "items": [
+          {
+            "id": "prob-1",
+            "text": "½ ÷ ⅓",
+            "pairId": "pair-1"
+          },
+          {
+            "id": "prob-2",
+            "text": "⅔ ÷ ¼",
+            "pairId": "pair-2"
+          },
+          {
+            "id": "prob-3",
+            "text": "¾ ÷ ⅖",
+            "pairId": "pair-3"
+          },
+          {
+            "id": "prob-4",
+            "text": "⅕ ÷ ⅚",
+            "pairId": "pair-4"
+          }
+        ]
+      },
+      "rightColumn": {
+        "label": "REWRITTEN AS ×",
+        "items": [
+          {
+            "id": "rewrite-1",
+            "text": "½ × ³⁄₁",
+            "pairId": "pair-1"
+          },
+          {
+            "id": "rewrite-2",
+            "text": "⅔ × ⁴⁄₁",
+            "pairId": "pair-2"
+          },
+          {
+            "id": "rewrite-3",
+            "text": "¾ × ⁵⁄₂",
+            "pairId": "pair-3"
+          },
+          {
+            "id": "rewrite-4",
+            "text": "⅕ × ⁶⁄₅",
+            "pairId": "pair-4"
+          }
+        ]
+      },
+      "scoring": {
+        "creditsOnCorrect": 20,
+        "shieldOnWrong": true,
+        "breaksStreakOnWrong": false,
+        "maxAttempts": 2,
+        "mode": "partial"
+      },
+      "feedback": {
+        "correct": {
+          "title": "✓ ALL PAIRS LOCKED",
+          "body": [
+            "You spotted the pattern: the first fraction stays exactly the same, the sign changes, and the *second* fraction flips. Every time."
+          ],
+          "followup": "**Pro move:** when you're not sure which fraction to flip, remember — the first one never moves. Only the divisor flips."
+        },
+        "wrongDefault": {
+          "title": "✕ ONE OR MORE PAIRS ARE OFF",
+          "body": [
+            "Check each pair one at a time. In every correct pair, the **first fraction is untouched** and the **second fraction is flipped** (top and bottom swapped)."
+          ]
+        }
+      }
+    },
+    {
+      "id": "s10-cfu-fill-solve",
+      "type": "cfu-fill",
+      "tag": "⚡ CHECK 04 · SOLVE IT",
+      "prompt": {
+        "label": "BOSS-ROOM WARM-UP",
+        "scenario": "Solve: `½ ÷ ¾`. Show your work by filling in each blank.",
+        "question": "Fill in the missing pieces of the keep–change–flip solution."
+      },
+      "template": "½ ÷ ¾  =  ½ × {{1}}⁄{{2}}  =  {{3}}⁄{{4}}",
+      "blanks": [
+        {
+          "index": 1,
+          "acceptedAnswers": [
+            "4"
+          ],
+          "hint": "The reciprocal of ¾ has this number on top."
+        },
+        {
+          "index": 2,
+          "acceptedAnswers": [
+            "3"
+          ],
+          "hint": "The reciprocal of ¾ has this number on bottom."
+        },
+        {
+          "index": 3,
+          "acceptedAnswers": [
+            "4"
+          ],
+          "hint": "Top × top: 1 × 4 = ?"
+        },
+        {
+          "index": 4,
+          "acceptedAnswers": [
+            "6"
+          ],
+          "hint": "Bottom × bottom: 2 × 3 = ?"
+        }
+      ],
+      "caseSensitive": false,
+      "scoring": {
+        "creditsOnCorrect": 25,
+        "shieldOnWrong": true,
+        "breaksStreakOnWrong": false,
+        "maxAttempts": 2,
+        "mode": "partial"
+      },
+      "feedback": {
+        "correct": {
+          "title": "✓ SOLVED",
+          "body": [
+            "`½ ÷ ¾ = ⁴⁄₆`, which simplifies to `⅔`. You flipped the divisor, multiplied across, and got the answer. That's the whole game."
+          ],
+          "followup": "**Next level:** try `⁴⁄₆` in your head — is that already simplified? Both 4 and 6 divide by 2, so `⁴⁄₆` = `⅔`. Simplifying is a separate move, and you'll get faster with practice."
+        },
+        "wrongDefault": {
+          "title": "✕ CHECK YOUR FLIP",
+          "body": [
+            "The reciprocal of `¾` is `⁴⁄₃` — the `4` goes on top, the `3` goes on bottom. Then multiply straight across: `1 × 4 = 4` on top, `2 × 3 = 6` on bottom. Answer: `⁴⁄₆` (or `⅔` simplified)."
+          ]
+        }
+      }
+    },
+    {
+      "id": "s11-cfu-mcq-why",
+      "type": "cfu-mcq",
+      "tag": "⚡ CHECK 05 · WHY IT WORKS",
+      "prompt": {
+        "label": "CONCEPT CHECK",
+        "scenario": "Your friend says: \"I hate keep–change–flip. It's just a random trick. Why does flipping the second fraction even work?\"",
+        "question": "Which explanation is the best answer?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "letter": "A",
+          "text": "It's not a trick — dividing by a number is the same as multiplying by its reciprocal. Flipping just rewrites the problem in a form you can actually calculate."
+        },
+        {
+          "id": "b",
+          "letter": "B",
+          "text": "It works because fractions are hard, and flipping makes them easier to look at."
+        },
+        {
+          "id": "c",
+          "letter": "C",
+          "text": "It works because the ÷ sign has a top dot and a bottom dot, so you flip."
+        },
+        {
+          "id": "d",
+          "letter": "D",
+          "text": "It's a rule your teacher made up so tests would be easier to grade."
+        }
+      ],
+      "correctOptionId": "a",
+      "scoring": {
+        "creditsOnCorrect": 15,
+        "shieldOnWrong": true,
+        "breaksStreakOnWrong": true,
+        "maxAttempts": 1
+      },
+      "feedback": {
+        "correct": {
+          "title": "✓ LOCKED IN",
+          "body": [
+            "That's the real answer. `÷ B` and `× (1/B)` mean the exact same thing. Flipping the second fraction turns division into multiplication — same question, easier form."
+          ],
+          "followup": "**Pro move:** when someone tells you a math rule feels random, there's almost always a reason underneath it. Ask *why* until you find the reason. Then it stops being a trick and starts being knowledge."
+        },
+        "wrongByChoice": {
+          "b": {
+            "title": "✕ NOT QUITE — THERE'S A REAL REASON",
+            "body": [
+              "Flipping isn't just for convenience. It's a **mathematical identity** — dividing by a number and multiplying by its reciprocal give the exact same answer, always. That's why it works."
+            ]
+          },
+          "c": {
+            "title": "✕ FUN GUESS, BUT NO",
+            "body": [
+              "The `÷` symbol having dots is a coincidence. The reason flipping works is that division and multiplication-by-reciprocal are literally the same operation."
+            ]
+          },
+          "d": {
+            "title": "✕ TEACHERS DIDN'T INVENT THIS ONE",
+            "body": [
+              "This rule comes from how fractions and division work — not from a grading convenience. It's been true for centuries."
+            ]
+          }
+        },
+        "wrongDefault": {
+          "title": "✕ RECALIBRATE",
+          "body": [
+            "The reason keep–change–flip works: dividing by any number is the same thing as multiplying by its reciprocal. Flipping is what turns a division problem into a multiplication problem you already know how to solve."
+          ]
+        }
+      }
+    },
+    {
+      "id": "s-complete",
+      "type": "complete",
+      "headline": "MISSION COMPLETE",
+      "subtext": "You've got keep–change–flip. Fraction division is unlocked.",
+      "rewards": [
+        {
+          "icon": "◇",
+          "label": "CREDITS EARNED",
+          "dynamicValue": "credits"
+        },
+        {
+          "icon": "⬢",
+          "label": "RANK XP",
+          "dynamicValue": "rank-delta"
+        },
+        {
+          "icon": "✓",
+          "label": "ACCURACY",
+          "dynamicValue": "accuracy"
+        },
+        {
+          "icon": "🔓",
+          "label": "UNLOCKED",
+          "dynamicValue": "unlocked-next"
+        }
+      ],
+      "primaryCta": {
+        "label": "Return to Bridge",
+        "action": "return-bridge"
+      },
+      "secondaryCta": {
+        "label": "Next Mission",
+        "action": "next-mission"
+      }
+    }
+  ]
+}

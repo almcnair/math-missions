@@ -59,6 +59,18 @@ export async function middleware(request: NextRequest) {
     return new NextResponse("Not found", { status: 404 });
   }
 
+  // ---- DEV-ONLY AUTH BYPASS ---------------------------------------------
+  // Local preview escape hatch so Austin can eyeball missions without a
+  // magic-link round-trip. Fenced to development + non-Vercel env so it
+  // can never activate on prod/preview. Remove or comment out when done.
+  if (
+    process.env.NODE_ENV === "development" &&
+    !process.env.VERCEL_ENV &&
+    (pathname.startsWith("/play") || pathname.startsWith("/author"))
+  ) {
+    return NextResponse.next();
+  }
+
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 

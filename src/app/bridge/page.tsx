@@ -13,12 +13,7 @@
 //       ✓ complete   ▶ in progress / next   ○ available   🔒 locked by rank
 
 import Link from "next/link";
-import claimWarrantImpact from "@/content/missions/claim-warrant-impact-v1.json";
-import whatIsDebate from "@/content/missions/what-is-debate-v1.json";
-import speechOrder from "@/content/missions/speech-order-v1.json";
-import affBasics from "@/content/missions/aff-basics-v1.json";
-import disadvantages from "@/content/missions/disadvantages-v1.json";
-import impactCalculus from "@/content/missions/impact-calculus-v1.json";
+import dividingFractions from "@/content/missions/dividing-fractions-v1.json";
 import type { Mission } from "@/lib/mission-schema";
 import { SpaceBackdrop } from "@/components/Starfield";
 import { DebaterNav } from "@/components/DebaterNav";
@@ -35,12 +30,7 @@ export const dynamic = "force-dynamic";
 // welcome-aboard, day1_block1, and inherency are still registered in
 // /play/[id]/page.tsx (accessible by direct URL) but are not on the student path.
 const missions: Mission[] = [
-  whatIsDebate        as Mission,
-  claimWarrantImpact  as Mission,
-  speechOrder         as Mission,
-  affBasics           as Mission,
-  disadvantages       as Mission,
-  impactCalculus      as Mission,
+  dividingFractions   as Mission,
 ].sort((a, b) => a.number - b.number);
 
 type ProgressRow = {
