@@ -14,6 +14,8 @@
 
 import Link from "next/link";
 import dividingFractions from "@/content/missions/dividing-fractions-v1.json";
+import ratiosIntro from "@/content/missions/ratios-intro-v1.json";
+import ratiosLab from "@/content/missions/ratios-lab-v1.json";
 import type { Mission } from "@/lib/mission-schema";
 import { SpaceBackdrop } from "@/components/Starfield";
 import { DebaterNav } from "@/components/DebaterNav";
@@ -30,6 +32,8 @@ export const dynamic = "force-dynamic";
 // welcome-aboard, day1_block1, and inherency are still registered in
 // /play/[id]/page.tsx (accessible by direct URL) but are not on the student path.
 const missions: Mission[] = [
+  ratiosIntro         as Mission,
+  ratiosLab           as Mission,
   dividingFractions   as Mission,
 ].sort((a, b) => a.number - b.number);
 

@@ -20,6 +20,7 @@ import {
   FillSlideView, LabelSlideView, HighlightSlideView,
   type HintState,
 } from "./slides/CfuSlides";
+import { SimulationSlideView } from "./slides/SimulationSlides";
 import {
   initState, reducer, canAdvance, accuracy, isCfuType,
   type CfuOutcome,
@@ -425,6 +426,7 @@ function SlideRenderer({
     case "cfu-fill":      return <FillSlideView      slide={slide} outcome={outcome} onResult={onCfuResult} hintState={hintState} />;
     case "cfu-label":     return <LabelSlideView     slide={slide} outcome={outcome} onResult={onCfuResult} hintState={hintState} />;
     case "cfu-highlight": return <HighlightSlideView slide={slide} outcome={outcome} onResult={onCfuResult} hintState={hintState} />;
+    case "cfu-simulation": return <SimulationSlideView slide={slide} outcome={outcome} onResult={onCfuResult} />;
     case "complete":
       return (
         <CompleteSlideView

@@ -145,6 +145,7 @@ const CFU_TYPES: SlideType[] = [
   "cfu-fill",
   "cfu-label",
   "cfu-highlight",
+  "cfu-simulation",
 ];
 
 export function isCfuType(t: SlideType): boolean {

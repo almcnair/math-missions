@@ -52,6 +52,7 @@ export type Slide =
   | FillSlide
   | LabelSlide
   | HighlightSlide
+  | SimulationSlide
   | CompleteSlide;
 
 export type SlideType = Slide["type"];
@@ -302,6 +303,51 @@ export interface HighlightSpan {
   end: number;
 }
 
+// ---------- Simulation (interactive lab) -------------------------------------
+//
+// Hands-on interactive slide. The variant discriminator lets us add new lab
+// shapes over time (number line, fraction bar, area model, etc.) without
+// exploding the SlideType union. Each variant carries its own config shape.
+//
+// Advancement is gated exactly like any CFU: the sim reports a CfuOutcome
+// via `onResult` once the student hits the target, then Continue unlocks.
+
+export type SimulationVariant = FruitPunchRatioConfig;
+
+export interface FruitPunchRatioConfig {
+  variant: "fruit-punch-ratio";
+  /** Target cups of juice (cyan ingredient). */
+  targetJuice: number;
+  /** Target cups of soda (pink ingredient). */
+  targetSoda: number;
+  /** Max total cups the chamber can hold. */
+  maxCapacity: number;
+  /**
+   * If true, student must land the exact (targetJuice, targetSoda) pair
+   * to complete (used for scaling missions where the total matters).
+   * If false, ANY equivalent ratio that matches counts (2:1, 4:2, 6:3...).
+   */
+  requireExactAmount: boolean;
+  /** Human-readable instruction shown under the question banner. */
+  instruction: string;
+  /** Coach-mode hint revealed by the "NEED A HINT?" accordion. */
+  hint: string;
+}
+
+export interface SimulationSlide extends SlideCommon {
+  type: "cfu-simulation";
+  prompt: {
+    label?: string;
+    question: string;
+  };
+  scoring: CfuScoring;
+  feedback: {
+    correct: FeedbackBlock;
+    wrongDefault: FeedbackBlock;
+  };
+  config: SimulationVariant;
+}
+
 // ---------- Complete ---------------------------------------------------------
 
 export interface CompleteSlide extends SlideCommon {
@@ -335,6 +381,8 @@ export interface Attempt {
   missionId: string;
   slideId: string;
   type: Exclude<SlideType, "hook" | "define" | "concept" | "strategy" | "complete">;
+  // Note: cfu-simulation is included in the CFU union above via SlideType.
+  // AttemptDetails for it lives in the union below.
   correct: boolean;
   details: AttemptDetails;
   startedAt: string;
@@ -350,7 +398,8 @@ export type AttemptDetails =
   | { pairs: { leftId: string; rightId: string; correct: boolean }[] }
   | { blanks: { index: number; value: string; correct: boolean }[] }
   | { placements: { labelId: string; targetId: string; correct: boolean }[] }
-  | { picked: string[] };
+  | { picked: string[] }
+  | { simulation: { variant: string; finalState: Record<string, number>; attempts: number } };
 
 export interface Completion {
   id: string;
@@ -374,6 +423,7 @@ export function isCfuSlide(slide: Slide): slide is
   | MatchSlide
   | FillSlide
   | LabelSlide
-  | HighlightSlide {
+  | HighlightSlide
+  | SimulationSlide {
   return slide.type.startsWith("cfu-");
 }

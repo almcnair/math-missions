@@ -1,0 +1,191 @@
+{
+  "id": "ratios-lab-v1",
+  "campaignId": "math-missions",
+  "sectorId": "ratios",
+  "number": 3,
+  "title": "Ratios: The Cosmic Fuel Lab",
+  "subtitle": "Ratios · Mission 02",
+  "tagline": "Mix {{cyan:Cosmic Juice}} and {{magenta:Nebula Soda}} — and prove you can scale a recipe without breaking it.",
+  "estimatedMinutes": 10,
+  "difficulty": "core",
+  "rewards": {
+    "credits": 150,
+    "rankXp": 60
+  },
+  "unlocks": [],
+  "prerequisites": ["ratios-intro-v1"],
+  "protectedTerms": [
+    "ratio",
+    "equivalent",
+    "unit rate"
+  ],
+  "passingCriteria": {
+    "requireAllCfu": true,
+    "minCorrectCfu": 3,
+    "shieldsAtZero": "allow-continue"
+  },
+  "slides": [
+    {
+      "id": "s1-hook",
+      "type": "hook",
+      "tag": "◈ INCOMING TRANSMISSION",
+      "tagTone": "default",
+      "headline": "The fleet needs {{cyan:Cosmic Fuel}} — and the mix has to be perfect.",
+      "body": [
+        "Cosmic Fuel is a two-ingredient recipe: **Cosmic Juice** (cyan) and **Nebula Soda** (pink). The standard mix is `2 cups of juice for every 1 cup of soda` — a `2 : 1` ratio.",
+        "Your job: get on the ingredient console and mix real batches. First a standard batch. Then an inversion test. Then scale it up — without breaking the recipe.",
+        "Three lab challenges. The chamber tells you what's happening. Continue unlocks when your mix is right."
+      ]
+    },
+    {
+      "id": "s2-sim-warmup",
+      "type": "cfu-simulation",
+      "tag": "◈ LEVEL 1 · WARM-UP",
+      "tagTone": "default",
+      "prompt": {
+        "label": "LEVEL 1 · STANDARD BATCH",
+        "question": "Mix a standard batch of {{cyan:Cosmic Fuel}}: {{cyan:2 cups of juice}} for every {{magenta:1 cup of soda}}. Add ingredients until the chamber locks in a `2 : 1` ratio."
+      },
+      "scoring": {
+        "creditsOnCorrect": 30,
+        "shieldOnWrong": false,
+        "breaksStreakOnWrong": false
+      },
+      "feedback": {
+        "correct": {
+          "title": "✓ FUEL CERTIFIED",
+          "body": [
+            "That's the standard mix: **2 cups juice, 1 cup soda**. Twice as much juice as soda. The comparison — the *ratio* — is what makes this fuel work."
+          ],
+          "followup": "The word `ratio` just means \"the comparison between two quantities.\" You wrote yours as `2 : 1`."
+        },
+        "wrongDefault": {
+          "title": "✕ KEEP MIXING",
+          "body": [
+            "Not there yet. Check the telemetry panel — your current ratio has to match the target ratio."
+          ]
+        }
+      },
+      "config": {
+        "variant": "fruit-punch-ratio",
+        "targetJuice": 2,
+        "targetSoda": 1,
+        "maxCapacity": 6,
+        "requireExactAmount": false,
+        "instruction": "Target ratio is 2 : 1. Add 2 cups of Cosmic Juice and 1 cup of Nebula Soda to lock in.",
+        "hint": "Add 2 cups of Cosmic Juice (cyan +) and 1 cup of Nebula Soda (pink +). Watch the TARGET RATIO card match your MIXTURE card."
+      }
+    },
+    {
+      "id": "s3-sim-inversion",
+      "type": "cfu-simulation",
+      "tag": "◈ LEVEL 2 · ORDER MATTERS",
+      "tagTone": "amber",
+      "prompt": {
+        "label": "LEVEL 2 · INVERSION TEST",
+        "question": "Now flip it. Mix {{magenta:2 cups of soda}} for every {{cyan:1 cup of juice}} — a `1 : 2` ratio. Same ingredients, different comparison."
+      },
+      "scoring": {
+        "creditsOnCorrect": 40,
+        "shieldOnWrong": false,
+        "breaksStreakOnWrong": false
+      },
+      "feedback": {
+        "correct": {
+          "title": "✓ INVERSION LOGGED",
+          "body": [
+            "Notice: `1 : 2` is a **totally different fuel** than `2 : 1`. Same ingredients, same total volume — but the *comparison* flipped. That's why order matters in a ratio.",
+            "This is the whole reason we write `2 : 1` instead of just `3` (the total): the ratio carries information the total can't."
+          ],
+          "followup": "In `A : B`, the first number always refers to the first thing named. `juice : soda = 1 : 2` means \"1 juice for every 2 soda\" — read it left to right."
+        },
+        "wrongDefault": {
+          "title": "✕ CHECK THE ORDER",
+          "body": [
+            "This one asks for MORE soda than juice. If your juice number is bigger than your soda number, you've still got the old recipe."
+          ]
+        }
+      },
+      "config": {
+        "variant": "fruit-punch-ratio",
+        "targetJuice": 1,
+        "targetSoda": 2,
+        "maxCapacity": 6,
+        "requireExactAmount": false,
+        "instruction": "Target ratio is 1 : 2. Cosmic Juice on the low side, Nebula Soda on the high side.",
+        "hint": "You want MORE soda than juice this time. Try 1 cup of juice and 2 cups of soda — or 2 cups of juice and 4 cups of soda, since 2 : 4 = 1 : 2."
+      }
+    },
+    {
+      "id": "s4-sim-scale",
+      "type": "cfu-simulation",
+      "tag": "◈ LEVEL 3 · HYPER-DRIVE",
+      "tagTone": "magenta",
+      "prompt": {
+        "label": "LEVEL 3 · SCALE THE RECIPE",
+        "question": "The fleet needs a bigger batch. Keep the original `2 : 1` ratio — but produce {{magenta:exactly 6 cups}} of Cosmic Fuel this time."
+      },
+      "scoring": {
+        "creditsOnCorrect": 60,
+        "shieldOnWrong": false,
+        "breaksStreakOnWrong": false
+      },
+      "feedback": {
+        "correct": {
+          "title": "✓ HYPER-DRIVE FUELED",
+          "body": [
+            "**4 cups juice, 2 cups soda.** Total = 6. Ratio = `4 : 2`, which simplifies back to `2 : 1` — same recipe, triple batch.",
+            "That's the trick with `equivalent ratios`: multiply *both sides* by the same number and the comparison doesn't change. `2 : 1` × 2 = `4 : 2`. The fuel tastes the same, there's just more of it."
+          ],
+          "followup": "This is exactly how a `unit rate` works in reverse. `2 : 1` is already a unit rate (\"2 juice per 1 soda\"). Any equivalent ratio — `4 : 2`, `6 : 3`, `20 : 10` — hides that same unit rate inside it."
+        },
+        "wrongDefault": {
+          "title": "✕ RIGHT RATIO, WRONG TOTAL",
+          "body": [
+            "The ratio might be right, but the fleet needs **exactly 6 cups total**. Check the dashed TARGET line on the beaker — your fluid has to reach it exactly, still at a 2 : 1 mix."
+          ]
+        }
+      },
+      "config": {
+        "variant": "fruit-punch-ratio",
+        "targetJuice": 4,
+        "targetSoda": 2,
+        "maxCapacity": 9,
+        "requireExactAmount": true,
+        "instruction": "Target ratio is 2 : 1, and total volume must be exactly 6 cups. Scale up without breaking the recipe.",
+        "hint": "You need 6 cups total, split 2 : 1. That means 2 parts juice + 1 part soda = 3 parts total. Each part = 6 ÷ 3 = 2 cups. So: 2 parts × 2 = 4 cups of juice, 1 part × 2 = 2 cups of soda."
+      }
+    },
+    {
+      "id": "s-complete",
+      "type": "complete",
+      "headline": "LAB CERTIFIED",
+      "subtext": "You mixed the standard batch, proved that order matters, and scaled the recipe without breaking it. That's ratios, cadet.",
+      "rewards": [
+        {
+          "icon": "◇",
+          "label": "CREDITS EARNED",
+          "dynamicValue": "credits"
+        },
+        {
+          "icon": "⬢",
+          "label": "RANK XP",
+          "dynamicValue": "rank-delta"
+        },
+        {
+          "icon": "✓",
+          "label": "ACCURACY",
+          "dynamicValue": "accuracy"
+        }
+      ],
+      "primaryCta": {
+        "label": "Return to Bridge",
+        "action": "return-bridge"
+      },
+      "secondaryCta": {
+        "label": "Next Mission",
+        "action": "next-mission"
+      }
+    }
+  ]
+}

@@ -17,6 +17,7 @@ import type {
   FillSlide,
   LabelSlide,
   HighlightSlide,
+  SimulationSlide,
   CompleteSlide,
 } from "@/lib/mission-schema";
 
@@ -324,6 +325,34 @@ export function blankSlide(type: SlideType): Slide {
         },
       } as HighlightSlide;
 
+    case "cfu-simulation":
+      return {
+        type: "cfu-simulation",
+        id: uid("sim"),
+        prompt: {
+          label: "INTERACTIVE LAB",
+          question: "Mix the target ratio using the ingredient controls.",
+        },
+        scoring: {
+          creditsOnCorrect: 30,
+          shieldOnWrong: false,
+          breaksStreakOnWrong: false,
+        },
+        feedback: {
+          correct: { title: "✓ Mix locked in.", body: ["Nice ratio work."] },
+          wrongDefault: { title: "✕ Keep mixing.", body: ["Check the target ratio."] },
+        },
+        config: {
+          variant: "fruit-punch-ratio",
+          targetJuice: 2,
+          targetSoda: 1,
+          maxCapacity: 6,
+          requireExactAmount: false,
+          instruction: "Target ratio is 2 : 1.",
+          hint: "Add 2 cups of juice and 1 cup of soda.",
+        },
+      } as SimulationSlide;
+
     case "complete":
       return {
         type: "complete",
@@ -357,6 +386,7 @@ export const SLIDE_TYPE_LABELS: Record<SlideType, string> = {
   "cfu-fill": "CFU · Fill the Blank",
   "cfu-label": "CFU · Label Diagram",
   "cfu-highlight": "CFU · Highlight Evidence",
+  "cfu-simulation": "CFU · Interactive Lab",
   complete: "Complete",
 };
 
@@ -364,7 +394,7 @@ export const SLIDE_TYPE_GROUPS: { label: string; types: SlideType[] }[] = [
   { label: "Content", types: ["hook", "define", "concept", "strategy"] },
   {
     label: "Check for Understanding",
-    types: ["cfu-mcq", "cfu-multi", "cfu-sort", "cfu-order", "cfu-match", "cfu-fill", "cfu-label", "cfu-highlight"],
+    types: ["cfu-mcq", "cfu-multi", "cfu-sort", "cfu-order", "cfu-match", "cfu-fill", "cfu-label", "cfu-highlight", "cfu-simulation"],
   },
   { label: "Closing", types: ["complete"] },
 ];
