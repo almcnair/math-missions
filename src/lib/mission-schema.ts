@@ -312,7 +312,9 @@ export interface HighlightSpan {
 // Advancement is gated exactly like any CFU: the sim reports a CfuOutcome
 // via `onResult` once the student hits the target, then Continue unlocks.
 
-export type SimulationVariant = FruitPunchRatioConfig;
+export type SimulationVariant =
+  | FruitPunchRatioConfig
+  | EquivalentFractionsTankConfig;
 
 export interface FruitPunchRatioConfig {
   variant: "fruit-punch-ratio";
@@ -328,6 +330,35 @@ export interface FruitPunchRatioConfig {
    * If false, ANY equivalent ratio that matches counts (2:1, 4:2, 6:3...).
    */
   requireExactAmount: boolean;
+  /** Human-readable instruction shown under the question banner. */
+  instruction: string;
+  /** Coach-mode hint revealed by the "NEED A HINT?" accordion. */
+  hint: string;
+}
+
+// ---------- Equivalent Fractions Tank ----------------------------------------
+//
+// Student is shown a TARGET tank filled to targetNum/targetDenom. They pick a
+// multiplier from `allowedMultipliers` which cuts YOUR tank into
+// (targetDenom * multiplier) slices, then click slices to fill fuel until the
+// two tanks are equal. Solve = (multiplier > 0) AND filled slices ===
+// targetNum * multiplier (i.e. student produced a genuine equivalent fraction,
+// not just eyeballed the fill level).
+export interface EquivalentFractionsTankConfig {
+  variant: "equivalent-fractions-tank";
+  /** Target fraction numerator (e.g. 2 in 2/3). */
+  targetNum: number;
+  /** Target fraction denominator (e.g. 3 in 2/3). */
+  targetDenom: number;
+  /** Which multiplier buttons to offer (e.g. [1, 2, 3, 4]). */
+  allowedMultipliers: number[];
+  /**
+   * Optional: require a specific multiplier for solve. If omitted, ANY
+   * multiplier from allowedMultipliers is valid as long as fill matches.
+   * Used for missions where the point is a specific scaling (e.g. "cut into
+   * twelfths").
+   */
+  requireMultiplier?: number;
   /** Human-readable instruction shown under the question banner. */
   instruction: string;
   /** Coach-mode hint revealed by the "NEED A HINT?" accordion. */

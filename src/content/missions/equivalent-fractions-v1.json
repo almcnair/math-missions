@@ -1,0 +1,191 @@
+{
+  "id": "equivalent-fractions-v1",
+  "campaignId": "math-missions",
+  "sectorId": "fractions",
+  "number": 2,
+  "title": "Equivalent Fractions: Fuel Tank Fix",
+  "subtitle": "Fractions · Mission 02",
+  "tagline": "Calibrate the fuel tank by finding {{cyan:equivalent fractions}} — same fuel, different slices.",
+  "estimatedMinutes": 10,
+  "difficulty": "core",
+  "rewards": {
+    "credits": 150,
+    "rankXp": 60
+  },
+  "unlocks": [],
+  "prerequisites": [],
+  "protectedTerms": [
+    "equivalent",
+    "numerator",
+    "denominator",
+    "multiplier"
+  ],
+  "passingCriteria": {
+    "requireAllCfu": true,
+    "minCorrectCfu": 3,
+    "shieldsAtZero": "allow-continue"
+  },
+  "slides": [
+    {
+      "id": "s1-hook",
+      "type": "hook",
+      "tag": "◈ INCOMING TRANSMISSION",
+      "tagTone": "default",
+      "headline": "The ship's fuel tank is out of calibration.",
+      "body": [
+        "Engineering needs the tank filled to match a target fraction — but the tank you have is sliced differently than the target. Same fuel, different slices.",
+        "Your job: pick a **multiplier** that re-slices your tank so its fill can equal the target. Then fill it. When your fill is `equivalent` to the target, the ship starts.",
+        "Three calibrations. Each one asks for a different target. Continue unlocks when your fuel is equivalent."
+      ]
+    },
+    {
+      "id": "s2-sim-halves",
+      "type": "cfu-simulation",
+      "tag": "◈ LEVEL 1 · WARM-UP",
+      "tagTone": "default",
+      "prompt": {
+        "label": "LEVEL 1 · HALVES",
+        "question": "Target: `1 / 2`. Slice your tank and fill it until your fuel is equivalent to one-half."
+      },
+      "scoring": {
+        "creditsOnCorrect": 30,
+        "shieldOnWrong": false,
+        "breaksStreakOnWrong": false
+      },
+      "feedback": {
+        "correct": {
+          "title": "✓ TANK CALIBRATED",
+          "body": [
+            "You matched `1 / 2`. Any equivalent works — `2/4`, `3/6`, `4/8`, `5/10` — because multiplying the numerator and denominator by the same number doesn't change the fraction's value.",
+            "That's what `equivalent fractions` means: different names, same amount."
+          ],
+          "followup": "The multiplier you picked cut each part of the tank into equal sub-parts. If you doubled the denominator, you had to double the numerator to keep the fill the same."
+        },
+        "wrongDefault": {
+          "title": "✕ KEEP CALIBRATING",
+          "body": [
+            "Not equivalent yet. Watch the equation preview — the fraction after the `=` sign is what your tank needs to read."
+          ]
+        }
+      },
+      "config": {
+        "variant": "equivalent-fractions-tank",
+        "targetNum": 1,
+        "targetDenom": 2,
+        "allowedMultipliers": [1, 2, 3, 4],
+        "instruction": "Pick a multiplier (1x–4x), then click slices on Your Tank to fill fuel equivalent to 1/2.",
+        "hint": "If you pick 2x, your tank has 4 slices (2 × 2). Half of 4 is 2, so fill 2 slices. If you pick 4x, your tank has 8 slices — fill 4 of them."
+      }
+    },
+    {
+      "id": "s3-sim-thirds",
+      "type": "cfu-simulation",
+      "tag": "◈ LEVEL 2 · THIRDS",
+      "tagTone": "amber",
+      "prompt": {
+        "label": "LEVEL 2 · TWO-THIRDS",
+        "question": "Target: `2 / 3`. Same idea — slice the tank, fill until it matches two-thirds."
+      },
+      "scoring": {
+        "creditsOnCorrect": 40,
+        "shieldOnWrong": false,
+        "breaksStreakOnWrong": false
+      },
+      "feedback": {
+        "correct": {
+          "title": "✓ TWO-THIRDS LOCKED",
+          "body": [
+            "You produced an equivalent to `2/3`. If you chose 3x, that's `6/9`. If you chose 4x, that's `8/12`. Both name the same amount of fuel.",
+            "The `numerator` (top) grew, the `denominator` (bottom) grew — but the *ratio* between them stayed at 2 to 3."
+          ],
+          "followup": "This is the same rule you'll use later for adding fractions with unlike denominators: find a common bottom by re-slicing."
+        },
+        "wrongDefault": {
+          "title": "✕ NOT EQUIVALENT YET",
+          "body": [
+            "Check the equation preview above the tank. The target is `2/3` — your fill needs to match the fraction after the equals sign."
+          ]
+        }
+      },
+      "config": {
+        "variant": "equivalent-fractions-tank",
+        "targetNum": 2,
+        "targetDenom": 3,
+        "allowedMultipliers": [1, 2, 3, 4],
+        "instruction": "Pick any multiplier, then fill Your Tank until it's equivalent to 2/3.",
+        "hint": "Try 4x. That gives you 12 slices (3 × 4). Two-thirds of 12 is 8 — so fill 8 slices."
+      }
+    },
+    {
+      "id": "s4-sim-fifths-exact",
+      "type": "cfu-simulation",
+      "tag": "◈ LEVEL 3 · SPECIFIC SLICES",
+      "tagTone": "magenta",
+      "prompt": {
+        "label": "LEVEL 3 · CUT INTO FIFTEENTHS",
+        "question": "Target: `3 / 5`. Engineering needs the tank cut into **fifteenths** specifically. Pick the right multiplier, then fill."
+      },
+      "scoring": {
+        "creditsOnCorrect": 60,
+        "shieldOnWrong": false,
+        "breaksStreakOnWrong": false
+      },
+      "feedback": {
+        "correct": {
+          "title": "✓ FIFTEENTHS CERTIFIED",
+          "body": [
+            "**9 out of 15 slices.** `3/5 = 9/15` because 5 × 3 = 15 (the multiplier you picked) and 3 × 3 = 9 (same multiplier, applied to the numerator).",
+            "This is the whole move: **multiply top and bottom by the same number** to get an equivalent fraction with a specific denominator."
+          ],
+          "followup": "Later, when you need to add `3/5 + 1/3`, you'll re-slice both fractions to fifteenths first — for the same reason engineering asked for fifteenths here."
+        },
+        "wrongDefault": {
+          "title": "✕ CHECK THE SLICES",
+          "body": [
+            "Two things to check: (1) the multiplier — 5 × ? = 15? — and (2) the fill count, once your tank is sliced right."
+          ]
+        }
+      },
+      "config": {
+        "variant": "equivalent-fractions-tank",
+        "targetNum": 3,
+        "targetDenom": 5,
+        "allowedMultipliers": [1, 2, 3, 4],
+        "requireMultiplier": 3,
+        "instruction": "Slice the tank into fifteenths (so you need the multiplier that turns 5 into 15), then fill it equivalent to 3/5.",
+        "hint": "5 × 3 = 15, so pick 3x. That cuts your tank into 15 slices. Three-fifths of 15 is 9 — fill 9 slices."
+      }
+    },
+    {
+      "id": "s-complete",
+      "type": "complete",
+      "headline": "TANK CALIBRATED",
+      "subtext": "You calibrated three tanks by finding equivalent fractions. Same fuel, different slice counts — that's the whole move.",
+      "rewards": [
+        {
+          "icon": "◇",
+          "label": "CREDITS EARNED",
+          "dynamicValue": "credits"
+        },
+        {
+          "icon": "⬢",
+          "label": "RANK XP",
+          "dynamicValue": "rank-delta"
+        },
+        {
+          "icon": "✓",
+          "label": "ACCURACY",
+          "dynamicValue": "accuracy"
+        }
+      ],
+      "primaryCta": {
+        "label": "Return to Bridge",
+        "action": "return-bridge"
+      },
+      "secondaryCta": {
+        "label": "Next Mission",
+        "action": "next-mission"
+      }
+    }
+  ]
+}

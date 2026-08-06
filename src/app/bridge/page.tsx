@@ -14,6 +14,7 @@
 
 import Link from "next/link";
 import dividingFractions from "@/content/missions/dividing-fractions-v1.json";
+import equivalentFractions from "@/content/missions/equivalent-fractions-v1.json";
 import ratiosIntro from "@/content/missions/ratios-intro-v1.json";
 import ratiosLab from "@/content/missions/ratios-lab-v1.json";
 import type { Mission } from "@/lib/mission-schema";
@@ -35,6 +36,7 @@ const missions: Mission[] = [
   ratiosIntro         as Mission,
   ratiosLab           as Mission,
   dividingFractions   as Mission,
+  equivalentFractions as Mission,
 ].sort((a, b) => a.number - b.number);
 
 type ProgressRow = {

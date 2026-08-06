@@ -26,7 +26,11 @@ import {
   Volume2,
   VolumeX,
 } from "lucide-react";
-import type { SimulationSlide, FruitPunchRatioConfig } from "@/lib/mission-schema";
+import type {
+  SimulationSlide,
+  FruitPunchRatioConfig,
+  EquivalentFractionsTankConfig,
+} from "@/lib/mission-schema";
 import { scoreCfu, type CfuOutcome } from "../state";
 import { Inline } from "@/lib/inline-markup";
 
@@ -142,6 +146,15 @@ export function SimulationSlideView({
     case "fruit-punch-ratio":
       return (
         <FruitPunchRatioLab
+          slide={slide}
+          config={slide.config}
+          onResult={onResult}
+          outcome={outcome}
+        />
+      );
+    case "equivalent-fractions-tank":
+      return (
+        <EquivalentFractionsTankLab
           slide={slide}
           config={slide.config}
           onResult={onResult}
@@ -583,6 +596,369 @@ function FruitPunchRatioLab({
         }
         .animate-spin-slow { animation: spinSlow 12s linear infinite; }
       `}</style>
+    </div>
+  );
+}
+
+// ============================================================================
+// VARIANT 2: Equivalent Fractions Tank
+// ----------------------------------------------------------------------------
+// Student sees a TARGET fuel tank filled to targetNum/targetDenom. They pick
+// a multiplier which cuts YOUR tank into (targetDenom * multiplier) slices.
+// Clicking a slice fills fuel up to that slice (clicking the same slice again
+// backs off by one). Solve = fill matches an equivalent fraction of the
+// target, i.e. filled === targetNum * multiplier.
+//
+// Design notes vs. the standalone Desktop prototype:
+//   - No internal HUD (shields/streak/credits/level dots/HOME button). The
+//     Math Missions shell already renders those; duplicating them fights the
+//     real economy.
+//   - No success modal or manual "START SHIP" submit. Solve is auto-detected
+//     the moment the ratio matches (same UX as FruitPunchRatioLab). Continue
+//     unlocks via CfuOutcome.
+//   - Palette recolored to site tokens (bg-panel / accent-cyan / pink-500 /
+//     border-mid) instead of the prototype's raw cyan/pink hexes.
+//   - Mechanics preserved: multiplier buttons, click-to-fill slice grid,
+//     live equation preview, target/your-tank visual, alignment guide when
+//     equivalent.
+// ============================================================================
+
+function EquivalentFractionsTankLab({
+  slide,
+  config,
+  onResult,
+  outcome,
+}: {
+  slide: SimulationSlide;
+  config: EquivalentFractionsTankConfig;
+  onResult: (o: CfuOutcome) => void;
+  outcome?: CfuOutcome;
+}) {
+  const answered = !!outcome;
+
+  // Default multiplier: first allowed value.
+  const [multiplier, setMultiplier] = useState<number>(
+    config.allowedMultipliers[0] ?? 1,
+  );
+  const [filled, setFilled] = useState(0);
+  const [muted, setMuted] = useState(true);
+  const [showHint, setShowHint] = useState(false);
+
+  const sfxRef = useRef<SoundFX | null>(null);
+  useEffect(() => {
+    if (!sfxRef.current) sfxRef.current = new SoundFX();
+    sfxRef.current.muted = muted;
+  }, [muted]);
+
+  // ---- Derived math ------------------------------------------------------
+  const totalSlices = config.targetDenom * multiplier;
+  const targetFillPct = (config.targetNum / config.targetDenom) * 100;
+  const yourFillPct = totalSlices > 0 ? (filled / totalSlices) * 100 : 0;
+
+  // Equivalent iff filled * targetDenom === targetNum * totalSlices
+  // (cross-multiply, integer-safe; avoids float precision issues).
+  const isEquivalent =
+    filled > 0 && filled * config.targetDenom === config.targetNum * totalSlices;
+
+  const multiplierOk =
+    config.requireMultiplier === undefined ||
+    multiplier === config.requireMultiplier;
+
+  const isSolved = isEquivalent && multiplierOk;
+
+  // Simplify displayed fraction (for the "YOUR TANK" readout parity).
+  const displayGCD = filled > 0 ? gcd(filled, totalSlices) : 1;
+  const simpNum = displayGCD > 0 ? filled / displayGCD : 0;
+  const simpDenom = displayGCD > 0 ? totalSlices / displayGCD : 0;
+
+  const attemptCountRef = useRef(0);
+  useEffect(() => {
+    if (isSolved && !answered) {
+      attemptCountRef.current += 1;
+      sfxRef.current?.playSuccess();
+      onResult(scoreCfu({ scoring: slide.scoring, fullyCorrect: true }));
+    }
+  }, [isSolved, answered, onResult, slide.scoring]);
+
+  // ---- Handlers ----------------------------------------------------------
+  function handleSelectMultiplier(m: number) {
+    if (answered) return;
+    if (m === multiplier) return;
+    setMultiplier(m);
+    setFilled(0); // reset fill when slice count changes
+    sfxRef.current?.playBubble(800);
+  }
+  function handleSliceClick(idx: number) {
+    if (answered) return;
+    // Click slice N → fill up to N+1. Click again at same edge → back off by 1.
+    const targetFill = idx + 1;
+    const next = filled === targetFill ? targetFill - 1 : targetFill;
+    if (next !== filled) {
+      setFilled(next);
+      sfxRef.current?.playBubble(300 + next * 35);
+    }
+  }
+  function handleReset() {
+    if (answered) return;
+    setFilled(0);
+    sfxRef.current?.playWarning();
+  }
+
+  // ---- Wrong-mixture status --------------------------------------------
+  const yourRatio = totalSlices > 0 ? filled / totalSlices : 0;
+  const targetRatio = config.targetNum / config.targetDenom;
+  const overFilled = filled > 0 && yourRatio > targetRatio;
+  const underFilled = filled > 0 && yourRatio < targetRatio;
+
+  return (
+    <div className="space-y-4">
+      {/* Question banner */}
+      <div className="space-y-3">
+        {slide.prompt.label && (
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent-cyan/10 border border-accent-cyan/40 text-accent-cyan text-xs font-mono tracking-wider uppercase">
+            <span className="w-2 h-2 rounded-full bg-accent-cyan animate-pulse" />
+            {slide.prompt.label}
+          </div>
+        )}
+        <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold tracking-tight leading-snug text-text-bright">
+          <Inline>{slide.prompt.question}</Inline>
+        </h2>
+        <p className="text-xs sm:text-sm text-text-dim flex items-start gap-2">
+          <Info className="w-4 h-4 text-accent-cyan shrink-0 mt-0.5" />
+          <span>{config.instruction}</span>
+        </p>
+      </div>
+
+      {/* Tanks panel */}
+      <div className="bg-bg-panel/80 border border-border-mid rounded-2xl p-4 sm:p-6 shadow-2xl relative overflow-hidden">
+        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-cyan-500 to-pink-500" />
+
+        {/* Panel header */}
+        <div className="flex items-center justify-between border-b border-border-mid pb-2 mb-4">
+          <span className="text-xs font-mono text-accent-cyan uppercase tracking-widest flex items-center gap-1.5">
+            <Beaker className="w-4 h-4" /> FUEL TANK CALIBRATION
+          </span>
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => setMuted((m) => !m)}
+              className="text-text-dim hover:text-accent-cyan transition-colors"
+              title={muted ? "Un-mute sound effects" : "Mute sound effects"}
+            >
+              {muted ? <VolumeX className="w-3.5 h-3.5" /> : <Volume2 className="w-3.5 h-3.5" />}
+            </button>
+            <button
+              onClick={handleReset}
+              disabled={answered}
+              className="text-text-dim hover:text-accent-cyan text-xs flex items-center gap-1 transition-colors disabled:opacity-30"
+              title="Empty tank"
+            >
+              <RotateCcw className="w-3.5 h-3.5" /> Empty
+            </button>
+          </div>
+        </div>
+
+        {/* TARGET TANK */}
+        <div className="space-y-1.5 mb-4">
+          <div className="flex items-center justify-between text-xs sm:text-sm font-mono">
+            <span className="text-text-dim flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-pink-500 shadow-[0_0_6px_#f43f5e]" />
+              TARGET TANK
+            </span>
+            <span className="font-extrabold text-accent-cyan text-base sm:text-lg">
+              {config.targetNum} / {config.targetDenom}
+            </span>
+          </div>
+          <div className="relative h-12 sm:h-14 w-full rounded-xl bg-bg-deep border border-border-mid overflow-hidden flex shadow-inner">
+            <div
+              className="h-full bg-gradient-to-r from-cyan-600 to-cyan-400 shadow-[0_0_12px_rgba(6,182,212,0.4)] transition-all duration-300"
+              style={{ width: `${targetFillPct}%` }}
+            />
+            <div className="absolute inset-0 flex w-full h-full pointer-events-none">
+              {Array.from({ length: config.targetDenom }).map((_, i) => (
+                <div
+                  key={i}
+                  className="flex-1 border-r border-border-mid/60 last:border-r-0 h-full"
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Multiplier picker + live equation */}
+        <div className="flex flex-wrap items-center justify-between gap-3 text-xs text-text-dim py-3 border-y border-border-mid/60 mb-4">
+          <div className="flex items-center gap-2 flex-wrap">
+            <span className="font-mono uppercase tracking-wider text-text-dim">
+              Slice each part into:
+            </span>
+            <div className="flex items-center gap-1.5">
+              {config.allowedMultipliers.map((m) => {
+                const active = m === multiplier;
+                return (
+                  <button
+                    key={m}
+                    onClick={() => handleSelectMultiplier(m)}
+                    disabled={answered}
+                    className={`px-3 py-1.5 rounded-md text-xs font-mono font-bold border transition-all ${
+                      active
+                        ? "bg-accent-cyan/20 border-accent-cyan text-accent-cyan shadow-[0_0_10px_rgba(6,182,212,0.35)]"
+                        : "bg-bg-deep/80 border-border-mid text-text-dim hover:text-accent-cyan hover:border-accent-cyan/50"
+                    } disabled:opacity-40 disabled:cursor-not-allowed`}
+                  >
+                    {m}x
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+          <div className="font-mono font-semibold text-text-bright text-sm">
+            {config.targetNum}/{config.targetDenom} ×{" "}
+            <span className="text-pink-400">
+              {multiplier}/{multiplier}
+            </span>{" "}
+            ={" "}
+            <span className="text-accent-cyan">
+              {config.targetNum * multiplier}/{totalSlices}
+            </span>
+          </div>
+        </div>
+
+        {/* YOUR TANK (clickable) */}
+        <div className="space-y-1.5">
+          <div className="flex items-center justify-between text-xs sm:text-sm font-mono">
+            <span className="text-text-dim flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-accent-cyan shadow-[0_0_6px_#22d3ee]" />
+              YOUR TANK
+              <span className="hidden sm:inline text-[10px] text-text-dim/70">
+                (click to fill)
+              </span>
+            </span>
+            <span
+              className={`font-extrabold text-base sm:text-lg transition-colors ${
+                isSolved ? "text-emerald-400" : "text-pink-400"
+              }`}
+            >
+              {filled} / {totalSlices}
+              {filled > 0 && displayGCD > 1 && (
+                <span className="ml-2 text-[10px] text-text-dim font-mono">
+                  = {simpNum}/{simpDenom}
+                </span>
+              )}
+            </span>
+          </div>
+
+          <div className="relative h-14 sm:h-16 w-full rounded-xl bg-bg-deep border-2 border-accent-cyan/50 overflow-hidden flex shadow-2xl group">
+            {/* Fluid */}
+            <div
+              className={`h-full transition-all duration-200 ${
+                isSolved
+                  ? "bg-gradient-to-r from-emerald-600 to-emerald-400 shadow-[0_0_18px_rgba(16,185,129,0.5)]"
+                  : "bg-gradient-to-r from-cyan-600 to-cyan-400 shadow-[0_0_12px_rgba(6,182,212,0.4)]"
+              }`}
+              style={{ width: `${yourFillPct}%` }}
+            />
+
+            {/* Alignment guide: green vertical line at target ratio when solved */}
+            {isSolved && (
+              <div
+                className="absolute top-0 bottom-0 w-0.5 bg-emerald-400 z-30 pointer-events-none shadow-[0_0_12px_#34d399]"
+                style={{ left: `${targetFillPct}%` }}
+              >
+                <div className="absolute top-1 -translate-x-1/2 bg-emerald-400 text-bg-deep text-[9px] font-mono font-extrabold px-1.5 py-0.5 rounded shadow whitespace-nowrap">
+                  ✓ EQUIVALENT
+                </div>
+              </div>
+            )}
+
+            {/* Clickable slice overlay */}
+            <div className="absolute inset-0 flex w-full h-full z-10">
+              {Array.from({ length: totalSlices }).map((_, i) => (
+                <button
+                  key={i}
+                  type="button"
+                  onClick={() => handleSliceClick(i)}
+                  disabled={answered}
+                  aria-label={`Slice ${i + 1} of ${totalSlices}`}
+                  className="flex-1 border-r border-border-mid/60 last:border-r-0 h-full hover:bg-accent-cyan/10 transition-colors disabled:cursor-not-allowed disabled:hover:bg-transparent"
+                />
+              ))}
+            </div>
+          </div>
+
+          <p className="text-[11px] text-accent-cyan/80 text-center font-medium pt-1">
+            Click a slice to fill up to it. Click the same slice again to empty one back.
+          </p>
+        </div>
+
+        {/* Status banner */}
+        <div className="mt-4 py-2 px-4 rounded-xl bg-bg-deep border border-border-mid text-center">
+          {filled === 0 ? (
+            <span className="text-xs sm:text-sm text-text-dim">
+              Awaiting fuel. Click Your Tank to start filling.
+            </span>
+          ) : isSolved ? (
+            <span className="text-xs sm:text-sm font-bold text-emerald-400">
+              MATCH FOUND — {config.targetNum}/{config.targetDenom} = {filled}/{totalSlices}
+            </span>
+          ) : isEquivalent && !multiplierOk ? (
+            <span className="text-xs sm:text-sm text-amber-300">
+              Fill is equivalent, but this mission needs a specific multiplier. Try{" "}
+              <span className="font-mono font-bold">{config.requireMultiplier}x</span>.
+            </span>
+          ) : overFilled ? (
+            <span className="text-xs sm:text-sm text-pink-400">
+              Too much fuel. Click further left to empty back.
+            </span>
+          ) : underFilled ? (
+            <span className="text-xs sm:text-sm text-amber-300">
+              Not enough fuel yet. Click further right to add more.
+            </span>
+          ) : (
+            <span className="text-xs sm:text-sm text-text-dim">Keep filling.</span>
+          )}
+        </div>
+
+        {/* Hint */}
+        <div className="mt-3">
+          <button
+            onClick={() => setShowHint((v) => !v)}
+            className="w-full flex items-center justify-between text-xs text-amber-400/90 hover:text-amber-300 bg-amber-950/20 hover:bg-amber-950/40 border border-amber-500/30 p-2 rounded-lg transition-colors"
+          >
+            <span className="flex items-center gap-1.5 font-mono">
+              <HelpCircle className="w-3.5 h-3.5" /> NEED A HINT?
+            </span>
+            <span>{showHint ? "▲" : "▼"}</span>
+          </button>
+          {showHint && (
+            <div className="mt-2 p-2.5 rounded-lg bg-amber-950/30 border border-amber-500/40 text-amber-200 text-xs leading-relaxed">
+              {config.hint}
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* Success feedback banner */}
+      {answered && outcome?.correct && (
+        <div className="rounded-md border border-status-good bg-status-good/10 p-4">
+          <div className="flex items-start gap-2">
+            <Atom className="w-5 h-5 text-status-good shrink-0 mt-0.5 animate-spin-slow" />
+            <div className="flex-1">
+              <div className="font-display font-bold text-status-good text-sm tracking-wider uppercase mb-1">
+                {slide.feedback.correct.title}
+              </div>
+              {slide.feedback.correct.body.map((line, i) => (
+                <p key={i} className="text-sm text-text-bright leading-relaxed">
+                  <Inline>{line}</Inline>
+                </p>
+              ))}
+              {slide.feedback.correct.followup && (
+                <p className="text-sm text-text-dim mt-2 italic">
+                  <Inline>{slide.feedback.correct.followup}</Inline>
+                </p>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
