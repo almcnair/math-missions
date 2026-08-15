@@ -13,8 +13,8 @@
 //      paste a /coach URL get bounced to /bridge.
 //
 // Public routes: /, /landing/*, /glossary, /brain-breaks, /toolkit,
-// /resources, /teacher-moves, /games/*, /login, /auth/*, /api/public/*.
-// Everything else is gated.
+// /resources, /teacher-moves, /games/*, /login, /auth/*, /api/public/*,
+// /play/* (pre-user demo path). Everything else is gated.
 //
 // Cookie handling: Supabase's session refresh rotates cookies during
 // getUser(); we forward those onto the redirect response so the refreshed
@@ -44,6 +44,13 @@ const PUBLIC_PREFIXES = [
   // Anonymous visitors must be able to click the invite URL, and the
   // expired page must render even for users who never became a teacher.
   "/coach/join",
+  // 2026-08-14: /play/* is now a public demo path. The hero CTA on the
+  // landing page links straight into a sample mission with no account.
+  // The mission player still checks auth server-side for XP writes
+  // (completeMission returns not-authenticated for demo users, which the
+  // completion panel handles as a soft "sign up to save" prompt); the
+  // route itself just needs to render.
+  "/play",
 ];
 
 function isPublicRoute(pathname: string): boolean {
@@ -66,7 +73,9 @@ export async function middleware(request: NextRequest) {
   if (
     process.env.NODE_ENV === "development" &&
     !process.env.VERCEL_ENV &&
-    (pathname.startsWith("/play") || pathname.startsWith("/author"))
+    (pathname.startsWith("/play") ||
+      pathname.startsWith("/author") ||
+      pathname.startsWith("/api/author"))
   ) {
     return NextResponse.next();
   }

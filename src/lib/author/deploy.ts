@@ -79,11 +79,19 @@ function addMissionImport(src: string, id: string, varName: string): string {
 // Append a mission to the bridge page's `missions[]` array.
 function addToBridgeMissionsArray(src: string, varName: string): { next: string; changed: boolean } {
   // Match the whole `const missions: Mission[] = [ ... ].sort(...)` block.
-  const re = /(const\s+missions:\s*Mission\[\]\s*=\s*\[)([\s\S]*?)(\]\.sort\(\(a,\s*b\)\s*=>\s*a\.number\s*-\s*b\.number\)\);)/m;
+  //
+  // 2026-08-14: the tail was previously `\)\);` (two closing parens), which
+  // matched an older bridge shape where the arrow body was parenthesized:
+  //   .sort((a, b) => (a.number - b.number));
+  // The current bridge shape drops those parens:
+  //   .sort((a, b) => a.number - b.number);
+  // The tail is now `\)?\);` so both shapes match — whichever way the arrow
+  // body is written, the deploy tool will keep working.
+  const re = /(const\s+missions:\s*Mission\[\]\s*=\s*\[)([\s\S]*?)(\]\.sort\(\(a,\s*b\)\s*=>\s*\(?\s*a\.number\s*-\s*b\.number\s*\)?\);)/m;
   const match = src.match(re);
   if (!match) {
     throw new Error(
-      "Could not find `const missions: Mission[] = [ ... ].sort((a,b)=>a.number-b.number);` " +
+      "Could not find `const missions: Mission[] = [ ... ].sort((a, b) => a.number - b.number);` " +
       "in bridge/page.tsx. Shape has drifted; refusing to edit."
     );
   }
