@@ -2,7 +2,7 @@
   "id": "ratios-intro-v1",
   "campaignId": "math-missions",
   "sectorId": "ratios",
-  "number": 2,
+  "number": 1,
   "title": "Ratios: The Basics",
   "subtitle": "Ratios · Mission 01",
   "tagline": "Learn what a {{cyan:ratio}} is — and why {{amber:order matters}}.",
@@ -38,8 +38,8 @@
         "Today's power-up: `ratios`. A ratio is how you write down that comparison — so the recipe tastes right every single time, whether you're making one cup or twenty."
       ],
       "image": {
-        "src": "/mission-images/ratios-intro-v1/s1-hook.png",
-        "alt": "A pitcher of fruit punch next to two measuring cups labeled juice and soda"
+        "src": "/mission-images/ratios-intro-v1/1786746326600_cosmic_fuel_ratio.jpg",
+        "alt": "Geometric illustration of a central glass pitcher filled with glowing orange fuel next to a cyan juice beaker and a pink soda beaker, representing the ratio ingredients of Cosmic Fuel.\""
       }
     },
     {
@@ -52,8 +52,8 @@
       "plainWords": "It tells you how much of one thing you have compared to another.",
       "analogy": "Think of it like a **recipe**. If you're making fruit punch, the ratio tells you how many cups of juice to mix with how many cups of soda — so it tastes right every single time.",
       "image": {
-        "src": "/mission-images/ratios-intro-v1/s2-define-ratio.png",
-        "alt": "Three apples and two oranges arranged side by side"
+        "src": "/mission-images/ratios-intro-v1/1786746361766_apple_orange_ratio.jpg",
+        "alt": "Geometric illustration of three red apples and two bright oranges sitting on a floating holographic console, representing the concept of a 3 to 2 ratio."
       }
     },
     {
@@ -98,106 +98,8 @@
         }
       ],
       "image": {
-        "src": "/mission-images/ratios-intro-v1/s3-three-ways.png",
-        "alt": "Three panels showing the same ratio written as 3 to 2, 3:2, and 3/2"
-      }
-    },
-    {
-      "id": "s4-concept-order",
-      "type": "concept",
-      "tag": "◈ IMPORTANT RULE",
-      "headline": "Order matters — a lot",
-      "intro": "The number you write **first** is the thing you're talking about first. Switch the order, and you've written a different ratio entirely.",
-      "cards": [
-        {
-          "id": "order-apples-first",
-          "icon": "◆",
-          "name": "APPLES TO ORANGES",
-          "description": "If the question asks for `apples to oranges`, write the apples first: {{cyan:3 : 2}}.",
-          "accent": "cyan"
-        },
-        {
-          "id": "order-oranges-first",
-          "icon": "◇",
-          "name": "ORANGES TO APPLES",
-          "description": "If the question asks for `oranges to apples`, write the oranges first: {{amber:2 : 3}}.",
-          "accent": "amber"
-        },
-        {
-          "id": "order-rule",
-          "icon": "⚠",
-          "name": "READ THE QUESTION CAREFULLY",
-          "description": "Whichever thing the question names *first* — that's the number that goes first in your ratio.",
-          "accent": "cyan"
-        }
-      ]
-    },
-    {
-      "id": "s5-concept-two-types",
-      "type": "concept",
-      "tag": "◈ TWO KINDS OF RATIOS",
-      "headline": "Part-to-part vs. part-to-whole",
-      "intro": "Ratios can compare two groups to *each other*, or one group to the *total*. Same math, different question.",
-      "cards": [
-        {
-          "id": "type-part-to-part",
-          "icon": "◆",
-          "name": "PART-TO-PART",
-          "description": "Compares one group to another group.",
-          "example": {
-            "label": "EXAMPLE",
-            "text": "3 apples to 2 oranges  →  3 : 2"
-          },
-          "accent": "cyan"
-        },
-        {
-          "id": "type-part-to-whole",
-          "icon": "◇",
-          "name": "PART-TO-WHOLE",
-          "description": "Compares one group to the total of everything.",
-          "example": {
-            "label": "EXAMPLE",
-            "text": "3 apples out of 5 pieces of fruit  →  3 : 5"
-          },
-          "accent": "amber"
-        }
-      ],
-      "image": {
-        "src": "/mission-images/ratios-intro-v1/s5-two-types.png",
-        "alt": "Two labeled illustrations — left shows apples and oranges compared to each other, right shows apples compared to the full fruit bowl"
-      }
-    },
-    {
-      "id": "s6-strategy-equivalent",
-      "type": "strategy",
-      "tag": "◈ SCALING UP AND DOWN",
-      "headline": "Equivalent ratios — same recipe, different batch size",
-      "intro": "Just like fractions, ratios can be scaled up or down. As long as you {{cyan:multiply or divide both numbers by the same value}}, the relationship stays the same. Same taste, bigger batch.",
-      "rows": [
-        {
-          "name": "Step 1 — Start with your ratio",
-          "description": "Write down the ratio you already have. Example: `2 : 1` for one batch of fruit punch (2 cups juice, 1 cup soda)."
-        },
-        {
-          "name": "Step 2 — Pick a number to scale by",
-          "description": "Decide how much bigger or smaller you want the batch to be. Doubling? Pick 2. Tripling? Pick 3. Cutting in half? Pick 2, but you'll divide instead."
-        },
-        {
-          "name": "Step 3 — Do the same thing to *both* numbers",
-          "description": "Multiply *both* sides by the same number (or divide *both* sides by the same number). Both, always. Never just one.",
-          "counter": {
-            "label": "COMMON TRAP",
-            "text": "Do NOT change only one number. If you double the juice but not the soda, you get a different recipe — not an equivalent ratio."
-          }
-        },
-        {
-          "name": "Step 4 — Check the taste",
-          "description": "The relationship stayed balanced. `2 : 1` doubled becomes `4 : 2`. Tripled: `6 : 3`. All three are `equivalent` — same drink, different batch size."
-        }
-      ],
-      "image": {
-        "src": "/mission-images/ratios-intro-v1/s6-batch-scaling.png",
-        "alt": "A table showing three batches of fruit punch: single (2:1), double (4:2), and triple (6:3)"
+        "src": "/mission-images/ratios-intro-v1/1786747113448_ratio_notation_panel.jpg",
+        "alt": "Three-panel holographic diagram showing the three ways to write a ratio of three apples to two oranges: the leftmost section displays '3 to 2', the middle section displays '3 : 2', and the rightmost section displays '3 / 2' in clean white text below matching pictographs."
       }
     },
     {
@@ -272,6 +174,41 @@
             "The three ways to write a ratio are: `3 to 2`, `3 : 2`, and `3 / 2`. Any other format isn't a ratio."
           ]
         }
+      }
+    },
+    {
+      "id": "s5-concept-two-types",
+      "type": "concept",
+      "tag": "◈ TWO KINDS OF RATIOS",
+      "headline": "Part-to-part vs. part-to-whole",
+      "intro": "Ratios can compare two groups to *each other*, or one group to the *total*. Same math, different question.",
+      "cards": [
+        {
+          "id": "type-part-to-part",
+          "icon": "◆",
+          "name": "PART-TO-PART",
+          "description": "Compares one group to another group.",
+          "example": {
+            "label": "EXAMPLE",
+            "text": "3 apples to 2 oranges  →  3 : 2"
+          },
+          "accent": "cyan"
+        },
+        {
+          "id": "type-part-to-whole",
+          "icon": "◇",
+          "name": "PART-TO-WHOLE",
+          "description": "Compares one group to the total of everything.",
+          "example": {
+            "label": "EXAMPLE",
+            "text": "3 apples out of 5 pieces of fruit  →  3 : 5"
+          },
+          "accent": "amber"
+        }
+      ],
+      "image": {
+        "src": "/mission-images/ratios-intro-v1/1786751721930_part_whole_ratio_panel.jpg",
+        "alt": ""
       }
     },
     {
@@ -352,6 +289,69 @@
           ]
         }
       }
+    },
+    {
+      "id": "s4-concept-order",
+      "type": "concept",
+      "tag": "◈ IMPORTANT RULE",
+      "headline": "Order matters — a lot",
+      "intro": "The number you write **first** is the thing you're talking about first. Switch the order, and you've written a different ratio entirely.",
+      "cards": [
+        {
+          "id": "order-apples-first",
+          "icon": "◆",
+          "name": "APPLES TO ORANGES",
+          "description": "If the question asks for `apples to oranges`, write the apples first: {{cyan:3 : 2}}.",
+          "accent": "cyan"
+        },
+        {
+          "id": "order-oranges-first",
+          "icon": "◇",
+          "name": "ORANGES TO APPLES",
+          "description": "If the question asks for `oranges to apples`, write the oranges first: {{amber:2 : 3}}.",
+          "accent": "amber"
+        },
+        {
+          "id": "order-rule",
+          "icon": "⚠",
+          "name": "READ THE QUESTION CAREFULLY",
+          "description": "Whichever thing the question names *first* — that's the number that goes first in your ratio.",
+          "accent": "cyan"
+        }
+      ],
+      "image": {
+        "src": "/mission-images/ratios-intro-v1/1786751132942_fruit_punch_ratio_comparison.jpg",
+        "alt": ""
+      }
+    },
+    {
+      "id": "s6-strategy-equivalent",
+      "type": "strategy",
+      "tag": "◈ SCALING UP AND DOWN",
+      "headline": "Equivalent ratios — same recipe, different batch size",
+      "intro": "Just like fractions, ratios can be scaled up or down. As long as you {{cyan:multiply or divide both numbers by the same value}}, the relationship stays the same. Same taste, bigger batch.",
+      "rows": [
+        {
+          "name": "Step 1 — Start with your ratio",
+          "description": "Write down the ratio you already have. Example: `2 : 1` for one batch of fruit punch (2 cups juice, 1 cup soda)."
+        },
+        {
+          "name": "Step 2 — Pick a number to scale by",
+          "description": "Decide how much bigger or smaller you want the batch to be. Doubling? Pick 2. Tripling? Pick 3. Cutting in half? Pick 2, but you'll divide instead."
+        },
+        {
+          "name": "Step 3 — Do the same thing to *both* numbers",
+          "description": "Multiply *both* sides by the same number (or divide *both* sides by the same number). Both, always. Never just one.",
+          "counter": {
+            "label": "COMMON TRAP",
+            "text": "Do NOT change only one number. If you double the juice but not the soda, you get a different recipe — not an equivalent ratio."
+          }
+        },
+        {
+          "name": "Step 4 — Check the taste",
+          "description": "The relationship stayed balanced. `2 : 1` doubled becomes `4 : 2`. Tripled: `6 : 3`. All three are `equivalent` — same drink, different batch size."
+        }
+      ]
     },
     {
       "id": "s9-cfu-match-equivalent",
