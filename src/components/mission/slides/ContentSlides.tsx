@@ -377,6 +377,23 @@ export function CompleteSlideView({
 
 function XpBreakdownPanel({ dynamics }: { dynamics: CompleteDynamics }) {
   if (dynamics.saveError) {
+    // Demo / hiring-manager path: unauthenticated users hit the complete
+    // slide and `completeMission` returns `not-authenticated`. That's the
+    // expected happy path for the public demo, not a broken save — render
+    // it as a soft "sign up to save" CTA instead of a red error tray.
+    if (dynamics.saveError === "not-authenticated") {
+      return (
+        <div className="border border-accent-cyan/60 bg-accent-cyan/10 rounded-md p-4 text-left">
+          <div className="font-mono text-xs tracking-[0.18em] text-accent-cyan">◈ DEMO RUN COMPLETE</div>
+          <div className="text-sm leading-relaxed text-text-bright mt-1">
+            Nice work — you finished the mission!
+          </div>
+          <div className="text-sm leading-relaxed text-text-dim mt-1">
+            <a href="/login" className="underline text-accent-cyan hover:text-accent-cyan/80">Create an account</a> to save your XP, unlock more missions, and track your progress.
+          </div>
+        </div>
+      );
+    }
     return (
       <div className="border border-accent-amber/60 bg-accent-amber/10 rounded-md p-4 text-left">
         <div className="font-mono text-xs tracking-[0.18em] text-accent-amber">⚠ XP SAVE FAILED</div>

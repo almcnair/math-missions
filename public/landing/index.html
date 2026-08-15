@@ -792,51 +792,21 @@
         Build your math skills, one mission at a time!
       </p>
 
-      <!-- Primary CTA — email + password (2026-07-20)
-           One form, one submit. /auth/debater-signin tries sign-in first;
-           if the email doesn't exist yet, creates the account and signs
-           the student in the same request. No confirmation email, no
-           magic link. Rostered camp students still use /login/pin. -->
+      <!-- Primary CTA — direct demo launch (2026-08-14)
+           Previously: email + password form gated the site. For
+           pre-user / hiring-manager demos we now launch straight into
+           a hands-on sample mission (ratios-lab-v1, the fruit-punch
+           sim) with no account. `?from=demo` sends the Home button
+           back here instead of /bridge. Sign-up is preserved as a
+           smaller link below for anyone who actually wants progress
+           saved. Rostered camp students still use /login/pin. -->
       <div class="primary-cta-stack animate-fadein delay-3">
-        <form action="/auth/debater-signin" method="post" class="primary-cta-form">
-          <input type="hidden" name="next" value="/bridge" />
+        <a href="/play/ratios-lab-v1?from=demo" class="btn-primary-hero" aria-label="Launch a sample mission — no account needed">
+          <span class="btn-primary-hero-label">▸ Launch Mission 1</span>
+          <span class="btn-primary-hero-sub">No account needed — try it now</span>
+        </a>
 
-          <div class="pin-fields">
-            <label class="pin-field-label">
-              Email
-              <input
-                type="email"
-                name="email"
-                required
-                autocomplete="email"
-                autocapitalize="none"
-                autocorrect="off"
-                spellcheck="false"
-                placeholder="you@school.edu"
-                class="pin-field-input"
-              />
-            </label>
-            <label class="pin-field-label">
-              Password
-              <input
-                type="password"
-                name="password"
-                required
-                minlength="6"
-                autocomplete="current-password"
-                placeholder="At least 6 characters"
-                class="pin-field-input"
-              />
-            </label>
-          </div>
-
-          <button type="submit" class="btn-primary-hero" aria-label="Sign in or sign up with email and password" style="margin-top: 14px;">
-            <span class="btn-primary-hero-label">▸ Launch Mission 1</span>
-            <span class="btn-primary-hero-sub">Same button for new and returning Math Cadets</span>
-          </button>
-        </form>
-
-        <p class="primary-cta-footnote">Returning? Same email + password. New? We&rsquo;ll create your account automatically.</p>
+        <p class="primary-cta-footnote">Want to save your progress? <a href="/login" style="color: inherit; text-decoration: underline;">Sign in or create an account</a>.</p>
 
         <a href="/coach" class="secondary-cta-link">
           <span class="secondary-cta-eyebrow">◈ For Coaches</span>
@@ -903,10 +873,10 @@
               <span>🎯 5 checkpoints</span>
               <span>💰 40 credits</span>
             </div>
-            <a class="btn-access" style="color:var(--magenta);text-decoration:none;" href="/login"
+            <a class="btn-access" style="color:var(--magenta);text-decoration:none;" href="/play/dividing-fractions-v1?from=demo"
               onmouseenter="this.style.background='#EC5D9E';this.style.color='#090C1F'"
               onmouseleave="this.style.background='';this.style.color='var(--magenta)'"
-              aria-label="Sign in to launch Welcome Aboard mission">Sign In to Launch</a>
+              aria-label="Launch Dividing Fractions mission — no account needed">Launch Mission</a>
           </div>
         </article>
 

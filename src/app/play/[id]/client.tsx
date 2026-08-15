@@ -22,6 +22,10 @@ const RETURN_TARGETS: Record<string, string> = {
   teacher: "/coach/roster",
   coach: "/coach",
   roster: "/coach/roster",
+  // Public / hiring-manager demo entry from the landing page. Home returns
+  // to "/" (marketing) instead of the auth-gated /bridge so an unauthed
+  // demo user doesn't get bounced into a sign-in wall on exit.
+  demo: "/",
 };
 
 export default function PlayClient({ mission }: { mission: Mission }) {
