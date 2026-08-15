@@ -5,7 +5,7 @@
   "number": 3,
   "title": "Ratios: The Cosmic Fuel Lab",
   "subtitle": "Ratios · Mission 02",
-  "tagline": "Mix {{cyan:Cosmic Juice}} and {{magenta:Nebula Soda}} — and prove you can scale a recipe without breaking it.",
+  "tagline": "Mix {{cyan:Cosmic Juice}} and {{orange:Solar Soda}} — and prove you can scale a recipe without breaking it.",
   "estimatedMinutes": 10,
   "difficulty": "core",
   "rewards": {
@@ -50,7 +50,7 @@
       "tagTone": "default",
       "prompt": {
         "label": "LEVEL 1 · STANDARD BATCH",
-        "question": "Mix a standard batch of {{cyan:Cosmic Fuel}}: {{cyan:2 cups of juice}} for every {{magenta:1 cup of soda}}. Add ingredients until the chamber locks in a `2 : 1` ratio."
+        "question": "Mix a standard batch of Cosmic Fuel: {{cyan:2 cups of Cosmic Juice}} for every {{orange:1 cup of Solar Soda}}. Add ingredients until the chamber locks in a `2 : 1` ratio."
       },
       "scoring": {
         "creditsOnCorrect": 30,
@@ -93,7 +93,7 @@
       "tagTone": "amber",
       "prompt": {
         "label": "LEVEL 2 · INVERSION TEST",
-        "question": "Now flip it. Mix {{magenta:2 cups of soda}} for every {{cyan:1 cup of juice}} — a `1 : 2` ratio. Same ingredients, different comparison."
+        "question": "Now flip it. Mix {{lime:2 cups of Plasma Soda}} for every {{violet:1 cup of Void Juice}} — a `1 : 2` ratio. New ingredients, and this time soda outnumbers juice."
       },
       "scoring": {
         "creditsOnCorrect": 40,
@@ -104,15 +104,15 @@
         "correct": {
           "title": "✓ INVERSION LOGGED",
           "body": [
-            "Notice: `1 : 2` is a **totally different fuel** than `2 : 1`. Same ingredients, same total volume — but the *comparison* flipped. That's why order matters in a ratio.",
+            "Notice: `1 : 2` is a **totally different fuel** than `2 : 1`. Same total volume — but the *comparison* flipped. That's why order matters in a ratio.",
             "This is the whole reason we write `2 : 1` instead of just `3` (the total): the ratio carries information the total can't."
           ],
-          "followup": "In `A : B`, the first number always refers to the first thing named. `juice : soda = 1 : 2` means \"1 juice for every 2 soda\" — read it left to right."
+          "followup": "In `A : B`, the first number always refers to the first thing named. `Void Juice : Plasma Soda = 1 : 2` means \"1 Void Juice for every 2 Plasma Soda\" — read it left to right."
         },
         "wrongDefault": {
           "title": "✕ CHECK THE ORDER",
           "body": [
-            "This one asks for MORE soda than juice. If your juice number is bigger than your soda number, you've still got the old recipe."
+            "This one asks for MORE Plasma Soda than Void Juice. If your juice number is bigger than your soda number, you've still got the old recipe."
           ]
         }
       },
@@ -123,7 +123,7 @@
         "maxCapacity": 6,
         "requireExactAmount": false,
         "instruction": "Target ratio is 1 : 2. Void Juice on the low side, Plasma Soda on the high side.",
-        "hint": "You want MORE soda than juice this time. Try 1 cup of Void Juice and 2 cups of Plasma Soda — or 2 cups of juice and 4 cups of soda, since 2 : 4 = 1 : 2.",
+        "hint": "You want MORE Plasma Soda than Void Juice this time. Try 1 cup of Void Juice and 2 cups of Plasma Soda — or 2 cups of Void Juice and 4 cups of Plasma Soda, since 2 : 4 = 1 : 2.",
         "palette": {
           "juice": { "name": "Void Juice",   "hex": "#a78bfa", "rgb": [167, 139, 250] },
           "soda":  { "name": "Plasma Soda", "hex": "#a3e635", "rgb": [163, 230, 53] }
@@ -137,7 +137,7 @@
       "tagTone": "magenta",
       "prompt": {
         "label": "LEVEL 3 · SCALE THE RECIPE",
-        "question": "The fleet needs a bigger batch. Keep the original `2 : 1` ratio — but produce {{magenta:exactly 6 cups}} of Cosmic Fuel this time."
+        "question": "The fleet needs a bigger batch of Cosmic Fuel. Keep the `2 : 1` ratio — {{pink:Warp Juice}} to {{green:Fuel Soda}} — but produce {{amber:exactly 6 cups}} this time."
       },
       "scoring": {
         "creditsOnCorrect": 60,
@@ -148,7 +148,7 @@
         "correct": {
           "title": "✓ HYPER-DRIVE FUELED",
           "body": [
-            "**4 cups juice, 2 cups soda.** Total = 6. Ratio = `4 : 2`, which simplifies back to `2 : 1` — same recipe, triple batch.",
+            "**4 cups Warp Juice, 2 cups Fuel Soda.** Total = 6. Ratio = `4 : 2`, which simplifies back to `2 : 1` — same recipe, doubled batch.",
             "That's the trick with `equivalent ratios`: multiply *both sides* by the same number and the comparison doesn't change. `2 : 1` × 2 = `4 : 2`. The fuel tastes the same, there's just more of it."
           ],
           "followup": "This is exactly how a `unit rate` works in reverse. `2 : 1` is already a unit rate (\"2 juice per 1 soda\"). Any equivalent ratio — `4 : 2`, `6 : 3`, `20 : 10` — hides that same unit rate inside it."

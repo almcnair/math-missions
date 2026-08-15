@@ -11,15 +11,45 @@
 //   {{amber: text}}     -> <span class="text-accent-amber">text</span>
 //   {{magenta: text}}   -> <span class="text-accent-magenta">text</span>  (boss only)
 //
+// Palette tokens (Mission 3 Cosmic Fuel Lab palettes, added 2026-08-15):
+//   {{orange: text}}    -> Solar Soda color   (#fb923c)
+//   {{violet: text}}    -> Void Juice color   (#a78bfa)
+//   {{lime: text}}      -> Plasma Soda color  (#a3e635)
+//   {{pink: text}}      -> Warp Juice color   (#ec4899)
+//   {{green: text}}     -> Fuel Soda color    (#84cc16)
+//
 // Strict by design. If writers need more, add tokens here — never raw HTML.
 // ============================================================================
 
 import React from "react";
 
-type Node = string | { tag: "strong" | "em" | "key-term" | "cyan" | "amber" | "magenta"; children: Node[] };
+type Tag =
+  | "strong"
+  | "em"
+  | "key-term"
+  | "cyan"
+  | "amber"
+  | "magenta"
+  | "orange"
+  | "violet"
+  | "lime"
+  | "pink"
+  | "green";
+
+type Node = string | { tag: Tag; children: Node[] };
+
+// Palette tokens → exact hex used by the Cosmic Fuel Lab. Keep in sync with
+// src/content/missions/ratios-lab-v1.json palette definitions.
+const PALETTE_HEX: Record<"orange" | "violet" | "lime" | "pink" | "green", string> = {
+  orange: "#fb923c",
+  violet: "#a78bfa",
+  lime: "#a3e635",
+  pink: "#ec4899",
+  green: "#84cc16",
+};
 
 // Order matters: longest/most-specific patterns first.
-const TOKEN = /(\{\{(cyan|amber|magenta):\s*([^}]+)\}\})|(\*\*([^*]+)\*\*)|(\*([^*]+)\*)|(`([^`]+)`)/;
+const TOKEN = /(\{\{(cyan|amber|magenta|orange|violet|lime|pink|green):\s*([^}]+)\}\})|(\*\*([^*]+)\*\*)|(\*([^*]+)\*)|(`([^`]+)`)/;
 
 function parse(input: string): Node[] {
   const out: Node[] = [];
@@ -33,7 +63,7 @@ function parse(input: string): Node[] {
     if (m.index > 0) out.push(rest.slice(0, m.index));
     if (m[2]) {
       // {{accent: ...}}
-      const tag = m[2] as "cyan" | "amber" | "magenta";
+      const tag = m[2] as Tag;
       out.push({ tag, children: parse(m[3]) });
     } else if (m[4]) {
       out.push({ tag: "strong", children: parse(m[5]) });
@@ -77,6 +107,16 @@ function render(nodes: Node[], keyPrefix = ""): React.ReactNode {
       case "magenta":
         return (
           <span key={k} className="text-accent-magenta">
+            {render(node.children, k + ".")}
+          </span>
+        );
+      case "orange":
+      case "violet":
+      case "lime":
+      case "pink":
+      case "green":
+        return (
+          <span key={k} className="font-semibold" style={{ color: PALETTE_HEX[node.tag] }}>
             {render(node.children, k + ".")}
           </span>
         );
