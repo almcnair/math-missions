@@ -316,6 +316,27 @@ export type SimulationVariant =
   | FruitPunchRatioConfig
   | EquivalentFractionsTankConfig;
 
+/**
+ * Per-ingredient visual identity. Optional on the config — when omitted,
+ * the sim falls back to the classic Cosmic Juice (cyan) + Nebula Soda
+ * (pink) look. When present, drives the ingredient name, big-number color
+ * on the mission brief, ingredient row accent, and the beaker fluid
+ * gradient math (which mixes juice.rgb and soda.rgb by cup proportion).
+ */
+export interface FruitPunchIngredient {
+  /** Display name (e.g. "Cosmic Juice", "Solar Soda"). */
+  name: string;
+  /** Hex color for text/badge accents (e.g. "#22d3ee"). */
+  hex: string;
+  /** RGB tuple (0-255) for the beaker gradient math. Must match `hex`. */
+  rgb: [number, number, number];
+}
+
+export interface FruitPunchPalette {
+  juice: FruitPunchIngredient;
+  soda: FruitPunchIngredient;
+}
+
 export interface FruitPunchRatioConfig {
   variant: "fruit-punch-ratio";
   /** Target cups of juice (cyan ingredient). */
@@ -334,6 +355,13 @@ export interface FruitPunchRatioConfig {
   instruction: string;
   /** Coach-mode hint revealed by the "NEED A HINT?" accordion. */
   hint: string;
+  /**
+   * Optional per-slide palette. When set, overrides the default cyan/pink
+   * Cosmic Juice / Nebula Soda styling. Used to give each mission a
+   * contrasting color pair for visual variety and to help distinguish
+   * levels (Austin 2026-08-15).
+   */
+  palette?: FruitPunchPalette;
 }
 
 // ---------- Equivalent Fractions Tank ----------------------------------------

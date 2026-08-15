@@ -13,7 +13,9 @@
     "rankXp": 60
   },
   "unlocks": [],
-  "prerequisites": ["ratios-intro-v1"],
+  "prerequisites": [
+    "ratios-intro-v1"
+  ],
   "protectedTerms": [
     "ratio",
     "equivalent",
@@ -32,10 +34,14 @@
       "tagTone": "default",
       "headline": "The fleet needs {{cyan:Cosmic Fuel}} — and the mix has to be perfect.",
       "body": [
-        "Cosmic Fuel is a two-ingredient recipe: **Cosmic Juice** (cyan) and **Nebula Soda** (pink). The standard mix is `2 cups of juice for every 1 cup of soda` — a `2 : 1` ratio.",
+        "Cosmic Fuel is a two-ingredient recipe. Each level uses a different pair of ingredients, but the math stays the same: it's all about the *ratio* between them.",
         "Your job: get on the ingredient console and mix real batches. First a standard batch. Then an inversion test. Then scale it up — without breaking the recipe.",
-        "Three lab challenges. The chamber tells you what's happening. Continue unlocks when your mix is right."
-      ]
+        "Three lab challenges. Three color pairs. The chamber tells you what's happening. Continue unlocks when your mix is right."
+      ],
+      "image": {
+        "src": "/mission-images/ratios-lab-v1/1786817563968_Woman_standing_in_science_lab_202608151312.jpeg",
+        "alt": ""
+      }
     },
     {
       "id": "s2-sim-warmup",
@@ -72,8 +78,12 @@
         "targetSoda": 1,
         "maxCapacity": 6,
         "requireExactAmount": false,
-        "instruction": "Target ratio is 2 : 1. Add 2 cups of Cosmic Juice and 1 cup of Nebula Soda to lock in.",
-        "hint": "Add 2 cups of Cosmic Juice (cyan +) and 1 cup of Nebula Soda (pink +). Watch the TARGET RATIO card match your MIXTURE card."
+        "instruction": "Target ratio is 2 : 1. Add 2 cups of Cosmic Juice and 1 cup of Solar Soda to lock in.",
+        "hint": "Add 2 cups of Cosmic Juice (cyan +) and 1 cup of Solar Soda (orange +). Twice as much juice as soda.",
+        "palette": {
+          "juice": { "name": "Cosmic Juice", "hex": "#22d3ee", "rgb": [34, 211, 238] },
+          "soda":  { "name": "Solar Soda",   "hex": "#fb923c", "rgb": [251, 146, 60] }
+        }
       }
     },
     {
@@ -112,8 +122,12 @@
         "targetSoda": 2,
         "maxCapacity": 6,
         "requireExactAmount": false,
-        "instruction": "Target ratio is 1 : 2. Cosmic Juice on the low side, Nebula Soda on the high side.",
-        "hint": "You want MORE soda than juice this time. Try 1 cup of juice and 2 cups of soda — or 2 cups of juice and 4 cups of soda, since 2 : 4 = 1 : 2."
+        "instruction": "Target ratio is 1 : 2. Void Juice on the low side, Plasma Soda on the high side.",
+        "hint": "You want MORE soda than juice this time. Try 1 cup of Void Juice and 2 cups of Plasma Soda — or 2 cups of juice and 4 cups of soda, since 2 : 4 = 1 : 2.",
+        "palette": {
+          "juice": { "name": "Void Juice",   "hex": "#a78bfa", "rgb": [167, 139, 250] },
+          "soda":  { "name": "Plasma Soda", "hex": "#a3e635", "rgb": [163, 230, 53] }
+        }
       }
     },
     {
@@ -153,7 +167,11 @@
         "maxCapacity": 9,
         "requireExactAmount": true,
         "instruction": "Target ratio is 2 : 1, and total volume must be exactly 6 cups. Scale up without breaking the recipe.",
-        "hint": "You need 6 cups total, split 2 : 1. That means 2 parts juice + 1 part soda = 3 parts total. Each part = 6 ÷ 3 = 2 cups. So: 2 parts × 2 = 4 cups of juice, 1 part × 2 = 2 cups of soda."
+        "hint": "You need 6 cups total, split 2 : 1. That means 2 parts Warp Juice + 1 part Fuel Soda = 3 parts total. Each part = 6 ÷ 3 = 2 cups. So: 4 cups of Warp Juice and 2 cups of Fuel Soda.",
+        "palette": {
+          "juice": { "name": "Warp Juice", "hex": "#ec4899", "rgb": [236, 72, 153] },
+          "soda":  { "name": "Fuel Soda", "hex": "#84cc16", "rgb": [132, 204, 22] }
+        }
       }
     },
     {
