@@ -3,6 +3,10 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   async rewrites() {
     return [
+      // Proxy Google App to bypass school WiFi filters
+      { source: "/ratios", destination: "https://potion-ratio-alchemist.ai.studio" },
+      { source: "/ratios/:path*", destination: "https://potion-ratio-alchemist.ai.studio/:path*" },
+
       // Public marketing/landing homepage (static HTML in public/landing/).
       // App routes like /bridge, /play/*, /author, /login keep their behavior.
       { source: "/", destination: "/landing/index.html" },
