@@ -27,6 +27,7 @@ import { createServerClient } from "@supabase/ssr";
 
 // Prefix match. Root "/" is handled separately.
 const PUBLIC_PREFIXES = [
+  "/ratios",
   "/play",
   "/ratios", 
   "/landing",
