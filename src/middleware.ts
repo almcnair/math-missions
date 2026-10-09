@@ -28,8 +28,11 @@ import { createServerClient } from "@supabase/ssr";
 // Prefix match. Root "/" is handled separately.
 const PUBLIC_PREFIXES = [
   "/ratios",
+  // Telemetry + Teacher Math Guide stats/export for the anonymous /ratios
+  // game — must stay reachable without a Supabase session (students never
+  // log in, and the teacher page gates itself with its own PIN check).
+  "/api/ratios",
   "/play",
-  "/ratios", 
   "/landing",
   "/glossary",
   "/brain-breaks",

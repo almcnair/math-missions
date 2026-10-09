@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import confetti from 'canvas-confetti';
 import { Creepster } from 'next/font/google';
 import { playSound } from '@/lib/audio';
@@ -39,6 +39,11 @@ export default function PotionGame() {
   const [isSuccess, setIsSuccess] = useState(false);
   const [playerName, setPlayerName] = useState<string | null>(null);
   const [showNameModal, setShowNameModal] = useState(false);
+  // Counts how many times the cauldron reached the right TOTAL item count
+  // but the wrong ratio, before the student finally nailed it. Reported to
+  // the Teacher Math Guide as a "struggling vs. clicking through" signal.
+  const wrongAttemptsRef = useRef(0);
+  const lastWrongCheckTotalRef = useRef<number | null>(null);
 
   const quest = QUESTS[currentQuestIndex];
 
@@ -48,6 +53,8 @@ export default function PotionGame() {
     quest.ingredients.forEach(i => initial[i.id] = 0);
     setAmounts(initial);
     setIsSuccess(false);
+    wrongAttemptsRef.current = 0;
+    lastWrongCheckTotalRef.current = null;
   }, [currentQuestIndex]);
 
   const handleAdjust = (ingId: string, delta: number) => {
@@ -88,8 +95,25 @@ export default function PotionGame() {
       }
     }
 
+    const targetTotal = quest.ingredients.reduce(
+      (acc, ing) => acc + ing.baseAmount * quest.targetMultiplier,
+      0
+    );
+
     if (isCorrectRatio && currentMultiplier === quest.targetMultiplier && !isSuccess) {
       handleSuccess();
+    } else if (
+      !isSuccess &&
+      totalItems === targetTotal &&
+      !isCorrectRatio &&
+      lastWrongCheckTotalRef.current !== totalItems
+    ) {
+      // Student hit the right total item count but the wrong mix — count it
+      // as a wrong attempt once per time they land on that total (avoids
+      // double-counting while they fiddle with +/- around the same total).
+      wrongAttemptsRef.current += 1;
+      lastWrongCheckTotalRef.current = totalItems;
+      playSound('error');
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [amounts, isSuccess, quest]);
@@ -102,6 +126,22 @@ export default function PotionGame() {
       spread: 70,
       origin: { y: 0.6 },
       colors: ['#a855f7', '#fde047', '#34d399']
+    });
+
+    // Fire-and-forget telemetry for the Teacher Math Guide. Never blocks or
+    // breaks gameplay if it fails (table missing, offline, etc.).
+    fetch('/api/ratios/track', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        playerName: playerName || 'Anonymous Alchemist',
+        questId: quest.id,
+        questTitle: quest.title,
+        targetMultiplier: quest.targetMultiplier,
+        wrongAttempts: wrongAttemptsRef.current,
+      }),
+    }).catch(() => {
+      // Ignore — telemetry is best-effort only.
     });
 
     // If beat quest 1 and no name, ask for it
