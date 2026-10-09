@@ -35,6 +35,13 @@ export default function AllQuestsPage() {
                     Quest {quest.id}
                   </div>
                   <h2 className="text-white text-xl font-bold">{quest.title}</h2>
+                  <div className="flex items-center gap-1.5 mt-1.5">
+                    <span className="text-amber-400 text-sm tracking-tight" aria-hidden="true">
+                      {"★".repeat(quest.difficulty)}
+                      <span className="text-slate-700">{"★".repeat(5 - quest.difficulty)}</span>
+                    </span>
+                    <span className="text-slate-400 text-xs font-semibold uppercase tracking-wide">{quest.difficultyLabel}</span>
+                  </div>
                 </div>
                 <div className="bg-yellow-400/10 border border-yellow-400/40 text-yellow-400 px-3 py-1.5 rounded-lg font-extrabold text-lg whitespace-nowrap">
                   🎯 {quest.targetMultiplier}x
