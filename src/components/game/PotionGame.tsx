@@ -287,14 +287,14 @@ export default function PotionGame() {
         </div>
       )}
 
-      {/* Professor Bramble Box */}
+      {/* Mr. Mc Box */}
       <div className="bg-[#141625] border border-[#24273e] rounded-xl p-4 sm:p-6 flex items-start gap-4 mb-6 relative overflow-hidden">
         <div className="w-12 h-12 bg-[#2a1b38] rounded-xl flex items-center justify-center text-2xl border border-purple-500 shrink-0 z-10">
           🧙‍♂️
         </div>
         <div className="flex-1 z-10">
           <div className="flex items-center gap-2 mb-1">
-            <span className="font-semibold text-white">Professor Bramble</span>
+            <span className="font-semibold text-white">Mr. Mc</span>
             <span className="text-slate-400 text-sm hidden sm:inline">Academy Caretaker •</span>
             <span className="text-xs bg-yellow-400/20 text-yellow-400 px-2 py-0.5 rounded font-semibold">Level {currentQuestIndex + 1}</span>
           </div>
