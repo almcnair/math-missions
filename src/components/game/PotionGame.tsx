@@ -208,7 +208,7 @@ export default function PotionGame() {
             "{quest.dialogue}"
           </div>
           <div className="flex items-center gap-3">
-            <div className="bg-yellow-400/10 border border-yellow-400/30 text-yellow-400 px-3 py-1 rounded-md font-semibold text-sm">
+            <div className="bg-yellow-400/10 border-2 border-yellow-400/40 text-yellow-400 px-4 py-2 rounded-lg font-bold text-2xl sm:text-3xl">
               🎯 Target: {quest.targetMultiplier} Batches ({quest.targetMultiplier}x)
             </div>
           </div>
@@ -238,12 +238,12 @@ export default function PotionGame() {
                   1 Batch = {quest.recipe.batchSize} items
                 </div>
               </div>
-              <div className="text-slate-400 text-sm mb-3 flex items-center gap-2">
-                Base Ratio:
+              <div className="text-slate-300 text-xl sm:text-2xl font-bold mb-3 flex items-center flex-wrap gap-2">
+                <span className="text-slate-400 text-sm font-semibold uppercase tracking-wide mr-1">Base Ratio:</span>
                 {quest.ingredients.map((ing, idx) => (
                   <React.Fragment key={ing.id}>
                     {idx > 0 && <span className="mx-1">:</span>}
-                    {ing.emoji} <span className="text-yellow-400 font-bold">{ing.baseAmount}</span>
+                    {ing.emoji} <span className="text-yellow-400">{ing.baseAmount}</span>
                   </React.Fragment>
                 ))}
               </div>
