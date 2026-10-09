@@ -4,35 +4,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 import confetti from 'canvas-confetti';
 import { Creepster } from 'next/font/google';
 import { playSound } from '@/lib/audio';
+import { QUESTS } from '@/lib/potion-quests';
 import styles from './PotionGame.module.css';
 
 const creepster = Creepster({ weight: '400', subsets: ['latin'], variable: '--font-potion-instruction' });
-
-// Our quest data structure
-const QUESTS = [
-  {
-    id: 1,
-    title: "Double the Recipe",
-    dialogue: "Greetings young apprentice! I need twice as much Elixir of Levitation for tomorrow's ceiling dusting. Please brew 2x the recipe!",
-    recipe: { name: "Elixir of Levitation", batchSize: 5 },
-    ingredients: [
-      { id: 'dragon', name: 'Dragon Scales', emoji: '🐉', baseAmount: 2 },
-      { id: 'moon', name: 'Moonstones', emoji: '🌙', baseAmount: 3 }
-    ],
-    targetMultiplier: 2
-  },
-  {
-    id: 2,
-    title: "Triple the Sunflare",
-    dialogue: "Excellent work! Now, we have a large order from the Academy of Light. They need three times the usual Sunflare Draught.",
-    recipe: { name: "Sunflare Draught", batchSize: 5 },
-    ingredients: [
-      { id: 'sun', name: 'Sun Motes', emoji: '☀️', baseAmount: 1 },
-      { id: 'ember', name: 'Phoenix Embers', emoji: '🔥', baseAmount: 4 }
-    ],
-    targetMultiplier: 3
-  }
-];
 
 type FlyingPotion = {
   key: number;
@@ -65,6 +40,18 @@ export default function PotionGame() {
   const cauldronRef = useRef<HTMLDivElement | null>(null);
 
   const quest = QUESTS[currentQuestIndex];
+
+  // Deep-link support: the "All Quests" picker links here as
+  // /ratios?quest=<id>. Plain window.location (not next/navigation's
+  // useSearchParams) on purpose, so this page doesn't need a Suspense
+  // boundary just to read one query param.
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const questParam = new URLSearchParams(window.location.search).get('quest');
+    if (!questParam) return;
+    const idx = QUESTS.findIndex(q => String(q.id) === questParam);
+    if (idx !== -1) setCurrentQuestIndex(idx);
+  }, []);
 
   // Initialize amounts when quest changes
   useEffect(() => {

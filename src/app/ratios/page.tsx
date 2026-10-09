@@ -12,7 +12,7 @@ export default function RatiosPage() {
         </div>
         <div className="flex gap-4 sm:gap-8 overflow-x-auto w-full sm:w-auto pb-2 sm:pb-0">
           <Link href="/bridge" className="text-yellow-400 border-b-2 border-yellow-400 pb-1 font-semibold text-sm shrink-0">📜 Story Quests</Link>
-          <a href="#" className="text-slate-400 hover:text-slate-300 font-medium text-sm shrink-0 transition">📖 Recipe Grimoire</a>
+          <Link href="/ratios/quests" className="text-slate-400 hover:text-slate-300 font-medium text-sm shrink-0 transition">📖 All Quests</Link>
           <Link href="/ratios/teacher" className="text-slate-400 hover:text-slate-300 font-medium text-sm shrink-0 transition">👩‍🏫 Teacher Math Guide</Link>
         </div>
         <button className="hidden sm:flex items-center gap-2 border border-white/10 text-slate-400 px-3 py-1.5 rounded-md text-xs hover:bg-white/5 transition">
