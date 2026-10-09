@@ -208,8 +208,8 @@ export default function PotionGame() {
             "{quest.dialogue}"
           </div>
           <div className="flex items-center gap-3">
-            <div className="bg-yellow-400/10 border-2 border-yellow-400/40 text-yellow-400 px-4 py-2 rounded-lg font-bold text-2xl sm:text-3xl">
-              🎯 Target: {quest.targetMultiplier} Batches ({quest.targetMultiplier}x)
+            <div className="bg-yellow-400/10 border-2 border-yellow-400/40 text-yellow-400 px-5 py-3 rounded-xl font-extrabold text-3xl sm:text-4xl leading-tight">
+              🎯 Target: {quest.targetMultiplier}x
             </div>
           </div>
         </div>
@@ -238,14 +238,16 @@ export default function PotionGame() {
                   1 Batch = {quest.recipe.batchSize} items
                 </div>
               </div>
-              <div className="text-slate-300 text-xl sm:text-2xl font-bold mb-3 flex items-center flex-wrap gap-2">
-                <span className="text-slate-400 text-sm font-semibold uppercase tracking-wide mr-1">Base Ratio:</span>
-                {quest.ingredients.map((ing, idx) => (
-                  <React.Fragment key={ing.id}>
-                    {idx > 0 && <span className="mx-1">:</span>}
-                    {ing.emoji} <span className="text-yellow-400">{ing.baseAmount}</span>
-                  </React.Fragment>
-                ))}
+              <div className="mb-3">
+                <div className="text-slate-400 text-xs font-semibold uppercase tracking-wide mb-1">Base Ratio</div>
+                <div className="text-white text-3xl sm:text-4xl font-extrabold flex items-center flex-wrap gap-2 leading-tight">
+                  {quest.ingredients.map((ing, idx) => (
+                    <React.Fragment key={ing.id}>
+                      {idx > 0 && <span className="mx-1 text-slate-500">:</span>}
+                      {ing.emoji} <span className="text-yellow-400">{ing.baseAmount}</span>
+                    </React.Fragment>
+                  ))}
+                </div>
               </div>
             </div>
 
