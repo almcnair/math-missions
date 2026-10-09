@@ -20,13 +20,35 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ error: "Invalid PIN" }, { status: 401 });
   }
 
-  const { data, error } = await adminClient()
-    .from("ratios_attempts")
-    .select("player_name, quest_id, quest_title, target_multiplier, wrong_attempts, completed_at")
-    .order("completed_at", { ascending: false });
+  let data: unknown[] | null = null;
+  try {
+    const result = await adminClient()
+      .from("ratios_attempts")
+      .select("player_name, quest_id, quest_title, target_multiplier, wrong_attempts, completed_at")
+      .order("completed_at", { ascending: false });
 
-  if (error) {
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    if (result.error) {
+      console.error("ratios_attempts select failed:", result.error);
+      return NextResponse.json(
+        {
+          error: result.error.message,
+          hint: "Has the supabase/migrations/2026-10-08_ratios_attempts.sql migration been run in the Supabase SQL editor yet?",
+        },
+        { status: 500 }
+      );
+    }
+    data = result.data;
+  } catch (err) {
+    const message = err instanceof Error ? err.message : String(err);
+    const stack = err instanceof Error ? err.stack : undefined;
+    console.error("ratios_attempts fetch threw:", message, stack);
+    return NextResponse.json(
+      {
+        error: message,
+        hint: "Has the supabase/migrations/2026-10-08_ratios_attempts.sql migration been run in the Supabase SQL editor yet?",
+      },
+      { status: 500 }
+    );
   }
 
   type Row = {
