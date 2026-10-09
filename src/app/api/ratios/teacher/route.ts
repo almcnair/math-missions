@@ -6,6 +6,10 @@
 import { NextRequest, NextResponse } from "next/server";
 import { adminClient } from "@/lib/supabase/admin";
 
+// Force Node.js runtime — the admin Supabase client needs full Node fetch
+// behavior, and this must never run on the Edge runtime.
+export const runtime = "nodejs";
+
 const DEFAULT_PIN = "1550";
 
 function pinIsValid(pin: string | null): boolean {

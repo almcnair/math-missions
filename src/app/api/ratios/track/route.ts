@@ -6,6 +6,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { adminClient } from "@/lib/supabase/admin";
 
+export const runtime = "nodejs";
+
 const MAX_NAME_LENGTH = 40;
 
 export async function POST(req: NextRequest) {
