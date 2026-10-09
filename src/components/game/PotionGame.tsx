@@ -1,5 +1,6 @@
 "use client";
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import confetti from 'canvas-confetti';
 import { Creepster } from 'next/font/google';
 import { playSound } from '@/lib/audio';
@@ -33,17 +34,35 @@ const QUESTS = [
   }
 ];
 
+type FlyingPotion = {
+  key: number;
+  emoji: string;
+  startX: number;
+  startY: number;
+  endX: number;
+  endY: number;
+  ingId: string;
+};
+
+let flyKeySeq = 0;
+
 export default function PotionGame() {
   const [currentQuestIndex, setCurrentQuestIndex] = useState(0);
   const [amounts, setAmounts] = useState<Record<string, number>>({});
   const [isSuccess, setIsSuccess] = useState(false);
   const [playerName, setPlayerName] = useState<string | null>(null);
   const [showNameModal, setShowNameModal] = useState(false);
+  const [flyingPotions, setFlyingPotions] = useState<FlyingPotion[]>([]);
+  const [liquidPulseKey, setLiquidPulseKey] = useState(0);
+
   // Counts how many times the cauldron reached the right TOTAL item count
   // but the wrong ratio, before the student finally nailed it. Reported to
   // the Teacher Math Guide as a "struggling vs. clicking through" signal.
   const wrongAttemptsRef = useRef(0);
   const lastWrongCheckTotalRef = useRef<number | null>(null);
+
+  const ingredientIconRefs = useRef<Record<string, HTMLDivElement | null>>({});
+  const cauldronRef = useRef<HTMLDivElement | null>(null);
 
   const quest = QUESTS[currentQuestIndex];
 
@@ -53,21 +72,63 @@ export default function PotionGame() {
     quest.ingredients.forEach(i => initial[i.id] = 0);
     setAmounts(initial);
     setIsSuccess(false);
+    setFlyingPotions([]);
     wrongAttemptsRef.current = 0;
     lastWrongCheckTotalRef.current = null;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentQuestIndex]);
+
+  const applyIncrement = useCallback((ingId: string) => {
+    setAmounts(prev => ({ ...prev, [ingId]: (prev[ingId] || 0) + 1 }));
+    playSound('plop');
+    setLiquidPulseKey(k => k + 1);
+  }, []);
 
   const handleAdjust = (ingId: string, delta: number) => {
     if (isSuccess) return; // Frozen on success
 
-    setAmounts(prev => {
-      const current = prev[ingId] || 0;
-      const next = Math.max(0, current + delta);
-      if (next !== current) {
-        playSound('plop');
-      }
-      return { ...prev, [ingId]: next };
-    });
+    if (delta < 0) {
+      // Removing ingredients happens instantly — no flight animation needed.
+      setAmounts(prev => {
+        const current = prev[ingId] || 0;
+        const next = Math.max(0, current + delta);
+        if (next !== current) playSound('plop');
+        return { ...prev, [ingId]: next };
+      });
+      return;
+    }
+
+    // Adding: launch a flying potion bottle from the ingredient to the
+    // cauldron. The actual amount only updates once it "lands", so students
+    // clearly see WHICH ingredient is traveling into the brew.
+    const ing = quest.ingredients.find(i => i.id === ingId);
+    const startEl = ingredientIconRefs.current[ingId];
+    const endEl = cauldronRef.current;
+    if (!ing || !startEl || !endEl) {
+      // Fallback: no animation possible, just apply instantly.
+      applyIncrement(ingId);
+      return;
+    }
+
+    const startRect = startEl.getBoundingClientRect();
+    const endRect = endEl.getBoundingClientRect();
+
+    const flying: FlyingPotion = {
+      key: ++flyKeySeq,
+      emoji: ing.emoji,
+      startX: startRect.left + startRect.width / 2,
+      startY: startRect.top + startRect.height / 2,
+      endX: endRect.left + endRect.width / 2,
+      endY: endRect.top + endRect.height / 2,
+      ingId,
+    };
+
+    setFlyingPotions(prev => [...prev, flying]);
+  };
+
+  const handleFlightComplete = (flying: FlyingPotion) => {
+    setFlyingPotions(prev => prev.filter(p => p.key !== flying.key));
+    applyIncrement(flying.ingId);
   };
 
   // Check victory condition
@@ -158,16 +219,62 @@ export default function PotionGame() {
 
   // Calculate cauldron state
   const totalInCauldron = Object.values(amounts).reduce((a,b) => a+b, 0);
+  const targetTotalForFill = quest.ingredients.reduce(
+    (acc, ing) => acc + ing.baseAmount * quest.targetMultiplier,
+    0
+  );
+  // How full the cauldron looks, 0 -> 1. We let it overfill visually a touch
+  // past 100% so over-adding still reads as "more liquid", capped at 1.15.
+  const fillRatio = Math.max(0, Math.min(1.15, totalInCauldron / targetTotalForFill));
 
-  // Cauldron color logic
-  let cauldronColor = '#1e1b4b'; // Empty dark
+  // Cauldron color logic — shifts as ingredients mix, glows gold on success
+  let cauldronColor = '#2d2a6e'; // Empty / just starting — faint violet
   if (totalInCauldron > 0) {
-     if (isSuccess) cauldronColor = '#a855f7'; // Perfect purple
-     else cauldronColor = '#3f3f46'; // Sludge grey when mixing
+     if (isSuccess) cauldronColor = '#c084fc'; // Perfect, glowing lavender
+     else cauldronColor = '#7c6a9c'; // Murky mixing color while incomplete
   }
+  const cauldronColorLight = isSuccess ? '#f0abfc' : '#9d8ab8';
+
+  // Liquid surface Y position inside the pot's glass cavity (viewBox 0-150).
+  // 128 = basically empty puddle at the bottom, 50 = all the way to the rim.
+  const liquidTopY = 128 - fillRatio * 78;
 
   return (
     <div className={`w-full ${creepster.variable}`}>
+
+      {/* Flying ingredient animations — fixed to viewport so they can travel
+          between the two panels regardless of DOM nesting. */}
+      <AnimatePresence>
+        {flyingPotions.map(flying => (
+          <motion.div
+            key={flying.key}
+            initial={{ x: flying.startX, y: flying.startY, opacity: 1, scale: 1, rotate: 0 }}
+            animate={{
+              x: flying.endX,
+              y: flying.endY,
+              opacity: [1, 1, 0.9, 0],
+              scale: [1, 1.2, 0.9, 0.4],
+              rotate: 360,
+            }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.65, ease: 'easeIn' }}
+            onAnimationComplete={() => handleFlightComplete(flying)}
+            style={{
+              position: 'fixed',
+              left: 0,
+              top: 0,
+              translateX: '-50%',
+              translateY: '-50%',
+              fontSize: '2rem',
+              zIndex: 200,
+              pointerEvents: 'none',
+              filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.5))',
+            }}
+          >
+            {flying.emoji}
+          </motion.div>
+        ))}
+      </AnimatePresence>
 
       {/* Name Onboarding Modal */}
       {showNameModal && (
@@ -259,7 +366,10 @@ export default function PotionGame() {
               {quest.ingredients.map(ing => (
                 <div key={ing.id} className="bg-black/20 border border-[#3b3f58] rounded-xl p-3 sm:p-4 flex justify-between items-center transition-all">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-white/5 border border-white/5 rounded-xl flex items-center justify-center text-xl sm:text-2xl">
+                    <div
+                      ref={(el) => { ingredientIconRefs.current[ing.id] = el; }}
+                      className="w-10 h-10 sm:w-12 sm:h-12 bg-white/5 border border-white/5 rounded-xl flex items-center justify-center text-xl sm:text-2xl"
+                    >
                       {ing.emoji}
                     </div>
                     <div>
@@ -310,27 +420,79 @@ export default function PotionGame() {
               )}
             </div>
 
-            <div className="flex-1 flex justify-center items-center my-8 z-10 relative">
-              <svg viewBox="0 0 200 150" className="w-[280px] h-[200px] drop-shadow-2xl">
+            {/* The cauldron itself is the landing target for flying ingredients */}
+            <div ref={cauldronRef} className="flex-1 flex justify-center items-center my-8 z-10 relative">
+              <motion.svg
+                key={liquidPulseKey}
+                viewBox="0 0 200 150"
+                className="w-[280px] h-[220px] drop-shadow-2xl"
+                initial={{ scale: 1 }}
+                animate={{ scale: [1, 1.07, 1] }}
+                transition={{ duration: 0.4, ease: 'easeOut' }}
+              >
+                <defs>
+                  {/* Clip region = the interior cavity of the pot, so liquid
+                      and bubbles never render outside the glass walls. */}
+                  <clipPath id="cauldronInterior">
+                    <path d="M 32 52 C 32 132, 168 132, 168 52 L 168 52 C 168 52 168 56 100 56 C 32 56 32 52 32 52 Z" />
+                  </clipPath>
+                </defs>
+
+                {/* Drop shadow + legs */}
                 <ellipse cx="100" cy="140" rx="70" ry="12" fill="rgba(0,0,0,0.6)" />
                 <path d="M 45 90 L 20 145 L 40 145 Z" fill="#94a3b8" stroke="#cbd5e1" strokeWidth="1"/>
                 <path d="M 155 90 L 180 145 L 160 145 Z" fill="#94a3b8" stroke="#cbd5e1" strokeWidth="1"/>
-                <path d="M 30 50 C 30 135, 170 135, 170 50 Z" fill="#0f172a" stroke="#334155" strokeWidth="2"/>
+
+                {/* Liquid, clipped to the glass interior, rising as ingredients are added */}
+                <g clipPath="url(#cauldronInterior)">
+                  <motion.rect
+                    x="25"
+                    width="150"
+                    height="90"
+                    fill={cauldronColor}
+                    animate={{ y: liquidTopY }}
+                    transition={{ type: 'spring', stiffness: 120, damping: 16 }}
+                  />
+                  <motion.ellipse
+                    cx="100"
+                    rx="68"
+                    ry="10"
+                    fill={cauldronColorLight}
+                    fillOpacity={0.6}
+                    animate={{ cy: liquidTopY }}
+                    transition={{ type: 'spring', stiffness: 120, damping: 16 }}
+                  />
+
+                  {/* Bubbles rising inside the see-through liquid */}
+                  {totalInCauldron > 0 && (
+                    <g className={styles.bubbling}>
+                      <circle cx="80" cy="110" r="4" fill="rgba(255,255,255,0.5)" />
+                      <circle cx="120" cy="100" r="3" fill="rgba(255,255,255,0.4)" />
+                      <circle cx="105" cy="120" r="5" fill="rgba(255,255,255,0.45)" />
+                      <circle cx="65" cy="95" r="2.5" fill="rgba(255,255,255,0.35)" />
+                    </g>
+                  )}
+                </g>
+
+                {/* Glass walls — stroke only, very low fill, so the liquid
+                    color is clearly visible "through" the cauldron. */}
+                <path
+                  d="M 30 50 C 30 135, 170 135, 170 50 Z"
+                  fill="rgba(255,255,255,0.03)"
+                  stroke="#94a3b8"
+                  strokeWidth="2.5"
+                />
+                {/* Glass highlight for extra "see-through" readability */}
+                <path d="M 45 65 C 40 95, 45 115, 55 125" fill="none" stroke="rgba(255,255,255,0.15)" strokeWidth="3" strokeLinecap="round" />
+
+                {/* Handles */}
                 <path d="M 30 70 C 10 70, 10 95, 30 95" fill="none" stroke="#64748b" strokeWidth="4" strokeLinecap="round"/>
                 <path d="M 170 70 C 190 70, 190 95, 170 95" fill="none" stroke="#64748b" strokeWidth="4" strokeLinecap="round"/>
 
-                {/* Dynamic Liquid */}
-                <ellipse cx="100" cy="50" rx="70" ry="15" fill={cauldronColor} stroke={isSuccess ? "#fde047" : "#b45309"} strokeWidth="4" className="transition-colors duration-500"/>
-
-                {/* Bubbles if mixing */}
-                {totalInCauldron > 0 && !isSuccess && (
-                  <g className={`${styles.bubbling} transition-opacity duration-300`}>
-                    <circle cx="80" cy="45" r="4" fill="#a1a1aa" />
-                    <circle cx="120" cy="55" r="3" fill="#a1a1aa" />
-                    <circle cx="105" cy="40" r="5" fill="#a1a1aa" />
-                  </g>
-                )}
-              </svg>
+                {/* Rim — drawn last so it reads crisply on top of the liquid */}
+                <ellipse cx="100" cy="50" rx="70" ry="15" fill="none" stroke={isSuccess ? "#fde047" : "#b45309"} strokeWidth="4" className="transition-colors duration-500"/>
+                <ellipse cx="100" cy="50" rx="70" ry="15" fill="none" stroke="rgba(255,255,255,0.2)" strokeWidth="1"/>
+              </motion.svg>
             </div>
 
             <div className="z-10 relative mt-auto">
