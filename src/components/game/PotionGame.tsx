@@ -39,6 +39,14 @@ export default function PotionGame() {
   const ingredientIconRefs = useRef<Record<string, HTMLDivElement | null>>({});
   const cauldronRef = useRef<HTMLDivElement | null>(null);
 
+  // Guards against a single flying potion's amount ever being applied more
+  // than once. framer-motion's onAnimationComplete can fire more than once
+  // for the same element when the `animate` prop mixes scalar targets
+  // (x, y, rotate) with keyframe arrays (opacity, scale) on an object that's
+  // re-created every render -- without this guard, one click of "+" could
+  // silently add 2+ to the ingredient count instead of exactly 1.
+  const appliedFlightsRef = useRef<Set<number>>(new Set());
+
   const quest = QUESTS[currentQuestIndex];
 
   // Deep-link support: the "All Quests" picker links here as
@@ -62,6 +70,7 @@ export default function PotionGame() {
     setFlyingPotions([]);
     wrongAttemptsRef.current = 0;
     lastWrongCheckTotalRef.current = null;
+    appliedFlightsRef.current.clear();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentQuestIndex]);
 
@@ -115,6 +124,13 @@ export default function PotionGame() {
 
   const handleFlightComplete = (flying: FlyingPotion) => {
     setFlyingPotions(prev => prev.filter(p => p.key !== flying.key));
+
+    // Idempotency guard: only the first completion event for this flight
+    // actually applies the +1. Any duplicate firing for the same flying.key
+    // is ignored.
+    if (appliedFlightsRef.current.has(flying.key)) return;
+    appliedFlightsRef.current.add(flying.key);
+
     applyIncrement(flying.ingId);
   };
 
