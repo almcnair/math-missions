@@ -167,8 +167,13 @@ export function rankCrossed(
 // mission is gated only by linear order via the path list on /bridge, but this
 // helper lets future content require a rank explicitly.
 export function rankRequiredFor(missionNumber: number): { xp: number; name: string } | null {
-  // Free up through mission 3 (Cadet), Pilot unlocks 4-7, Officer 8-12, Commander 13+.
-  if (missionNumber <= 3)  return null;
+  // Free up through mission 4 (Cadet) -- all 4 currently-live missions must
+  // stay unlocked for everyone (Austin's standing rule: nothing locked until
+  // he explicitly says so). Bumped from <=3 to <=4 on 2026-10-12 when
+  // ratios-lab-v1 was renumbered from 3 to 4; without this bump it would have
+  // silently become PILOT-gated the moment the renumber shipped.
+  // Pilot unlocks 5-7, Officer 8-12, Commander 13+.
+  if (missionNumber <= 4)  return null;
   if (missionNumber <= 7)  return { xp: 3,  name: "PILOT" };
   if (missionNumber <= 12) return { xp: 7,  name: "OFFICER" };
   return { xp: 12, name: "COMMANDER" };
