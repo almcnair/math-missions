@@ -26,17 +26,53 @@ import {
   type CfuOutcome,
 } from "./state";
 import { logCfuAttempt, completeMission } from "@/app/play/[id]/actions";
+import { saveMissionRun, deleteMissionRun, type SavedRun } from "@/app/play/[id]/run-actions";
 import { rankFor } from "@/lib/xp";
 import { trackEvent } from "@/lib/analytics";
 
 export function MissionPlayer({
   mission,
+  savedRun,
   onExit,
 }: {
   mission: Mission;
+  savedRun?: SavedRun | null;
   onExit?: () => void;
 }) {
   const [state, dispatch] = useReducer(reducer, mission, (m) => initState(m));
+
+  // ---- Resume prompt gate -------------------------------------------------
+  // If the server loaded a saved run (student has mid-mission progress),
+  // we show a Resume? modal before any slide renders. "Resume" hydrates
+  // state from the snapshot; "Start Over" deletes the saved row and plays
+  // from slide 1. Unauthenticated / fresh runs skip this gate entirely.
+  const hasResumableRun = !!savedRun && savedRun.currentIndex > 0;
+  const [resumeDecided, setResumeDecided] = useState(!hasResumableRun);
+
+  function doResume() {
+    if (savedRun) {
+      dispatch({
+        kind: "hydrate",
+        snapshot: {
+          currentIndex: savedRun.currentIndex,
+          credits:      savedRun.credits,
+          shields:      savedRun.shields,
+          streak:       savedRun.streak,
+          cfuOutcomes:  savedRun.cfuOutcomes,
+          hintsUsed:    savedRun.hintsUsed,
+        },
+      });
+      // Restore the CFU-order tracking so completeMission's streak math is
+      // correct when the student finishes the resumed run.
+      cfuOrderRef.current = [...(savedRun.cfuOrder ?? [])];
+    }
+    setResumeDecided(true);
+  }
+
+  function doStartOver() {
+    if (savedRun) void deleteMissionRun(mission.id);
+    setResumeDecided(true);
+  }
   const slide = mission.slides[state.currentIndex];
   const advanceOk = canAdvance(state, slide);
 
@@ -59,6 +95,42 @@ export function MissionPlayer({
   const completionFiredRef = useRef(false);
   const [completeXp, setCompleteXp] = useState<CompleteDynamics["xp"]>(undefined);
   const [saveError, setSaveError] = useState<string | undefined>(undefined);
+
+  // ---- Mid-mission auto-save (debounced) ---------------------------------
+  // Every state change schedules a save ~1.5s later. If another change comes
+  // in during that window, the previous save is cancelled and the clock
+  // restarts. Prevents thrashing on rapid CFU interactions. Fire-and-forget;
+  // the server action no-ops gracefully for unauthenticated callers (demo
+  // path) and for the pre-migration period when mission_runs doesn't exist.
+  useEffect(() => {
+    if (!resumeDecided) return;
+    if (slide.type === "complete") return;
+    const timer = setTimeout(() => {
+      void saveMissionRun({
+        missionId: mission.id,
+        run: {
+          currentIndex: state.currentIndex,
+          credits:      state.credits,
+          shields:      state.shields,
+          streak:       state.streak,
+          cfuOutcomes:  state.cfuOutcomes,
+          hintsUsed:    state.hintsUsed,
+          cfuOrder:     cfuOrderRef.current,
+        },
+      });
+    }, 1500);
+    return () => clearTimeout(timer);
+  }, [
+    resumeDecided,
+    slide.type,
+    mission.id,
+    state.currentIndex,
+    state.credits,
+    state.shields,
+    state.streak,
+    state.cfuOutcomes,
+    state.hintsUsed,
+  ]);
 
   // Keyboard nav
   useEffect(() => {
@@ -121,6 +193,11 @@ export function MissionPlayer({
           previousRankXp,
           rankName: rank.name,
         });
+        // Mission is done — clear the in-progress save so re-opening the
+        // mission starts fresh (replay path) rather than resuming the
+        // just-finished run. Best-score bookkeeping lives in
+        // mission_progress, which completeMission already wrote.
+        void deleteMissionRun(mission.id);
       })
       .catch((err: unknown) => setSaveError(err instanceof Error ? err.message : String(err)));
   }, [slide.type, mission, state.cfuOutcomes]);
@@ -142,6 +219,24 @@ export function MissionPlayer({
         attemptNumber: 1, // v1: each CFU only answered once per run
       });
     };
+  }
+
+  // Resume prompt gates the whole player — if the student has a saved run
+  // and hasn't decided yet, we render only the modal (over the starfield) so
+  // nothing from slide 0 flashes behind it.
+  if (!resumeDecided && savedRun) {
+    return (
+      <div className="relative min-h-screen flex items-center justify-center">
+        <SpaceBackdrop />
+        <ResumePromptModal
+          savedIndex={savedRun.currentIndex}
+          totalSlides={mission.slides.length}
+          lastSavedAt={savedRun.lastSavedAt}
+          onResume={doResume}
+          onStartOver={doStartOver}
+        />
+      </div>
+    );
   }
 
   return (
@@ -250,8 +345,8 @@ function LeaveMissionModal({
           Leave this mission?
         </h2>
         <p className="text-text-bright text-base leading-relaxed mb-6">
-          Your progress on this mission <strong className="font-bold">won&apos;t be saved</strong>. You can
-          restart it from home anytime.
+          Don&apos;t worry — we&apos;ll save your spot. When you come back,
+          you&apos;ll pick up right where you left off.
         </p>
         <div className="flex justify-end gap-3">
           <button
@@ -268,6 +363,84 @@ function LeaveMissionModal({
             Stay & finish ▸
           </button>
         </div>
+      </div>
+    </div>
+  );
+}
+
+// ---------- Resume prompt modal ---------------------------------------------
+// Shown on mission entry when the server loaded a saved run with
+// currentIndex > 0. Pressing Resume hydrates state from the snapshot;
+// Start Over deletes the saved row and begins from slide 1.
+
+function ResumePromptModal({
+  savedIndex,
+  totalSlides,
+  lastSavedAt,
+  onResume,
+  onStartOver,
+}: {
+  savedIndex: number;
+  totalSlides: number;
+  lastSavedAt: string;
+  onResume: () => void;
+  onStartOver: () => void;
+}) {
+  // ESC = Resume (the safe default — don't nuke progress on an errant key).
+  useEffect(() => {
+    function onKey(e: KeyboardEvent) {
+      if (e.key === "Escape") onResume();
+    }
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [onResume]);
+
+  const whenLabel = (() => {
+    if (!lastSavedAt) return "earlier";
+    const d = new Date(lastSavedAt);
+    if (Number.isNaN(d.getTime())) return "earlier";
+    return d.toLocaleString("en-US", {
+      month: "short",
+      day: "numeric",
+      hour: "numeric",
+      minute: "2-digit",
+    });
+  })();
+
+  return (
+    <div
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="resume-mission-title"
+      className="relative z-10 w-full max-w-md mx-4 bg-bg-panel-solid border border-accent-cyan/60 rounded-xl p-7 shadow-2xl"
+    >
+      <div className="font-mono text-xs tracking-[0.18em] text-accent-cyan mb-2">⟲ WELCOME BACK</div>
+      <h2
+        id="resume-mission-title"
+        className="font-display font-bold text-xl tracking-wide uppercase text-text-bright mb-3"
+      >
+        Pick up where you left off?
+      </h2>
+      <p className="text-text-bright text-base leading-relaxed mb-2">
+        You were on <strong className="font-bold">slide {savedIndex + 1} of {totalSlides}</strong>.
+      </p>
+      <p className="text-text-dim text-sm mb-6">
+        Last saved {whenLabel}.
+      </p>
+      <div className="flex flex-col sm:flex-row justify-end gap-3">
+        <button
+          onClick={onStartOver}
+          className="px-5 py-2 font-mono text-xs tracking-[0.15em] uppercase text-text-dim border border-border-strong rounded hover:text-text-bright hover:border-text-dim transition-colors"
+        >
+          Start over
+        </button>
+        <button
+          onClick={onResume}
+          autoFocus
+          className="px-5 py-2 font-mono text-xs tracking-[0.15em] uppercase font-bold bg-accent-cyan text-bg-deep rounded hover:bg-accent-cyan-soft"
+        >
+          Resume ▸
+        </button>
       </div>
     </div>
   );

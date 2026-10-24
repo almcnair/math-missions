@@ -57,7 +57,20 @@ export type MissionAction =
   | { kind: "prev" }
   | { kind: "goto"; index: number }
   | { kind: "submit-cfu"; slideId: string; outcome: CfuOutcome }
-  | { kind: "use-hint"; slideId: string };
+  | { kind: "use-hint"; slideId: string }
+  // Replace the current state wholesale from a persisted snapshot. Used by
+  // the save/resume flow when a student picks "Resume" on the prompt. The
+  // snapshot is clamped: currentIndex must be in range for the loaded
+  // mission (slides may have been added/removed since the save), and
+  // shields are bounded to [0, 3].
+  | { kind: "hydrate"; snapshot: {
+      currentIndex: number;
+      credits: number;
+      shields: number;
+      streak: number;
+      cfuOutcomes: Record<string, CfuOutcome>;
+      hintsUsed: Record<string, true>;
+    }};
 
 export function reducer(state: MissionState, action: MissionAction): MissionState {
   switch (action.kind) {
@@ -97,6 +110,18 @@ export function reducer(state: MissionState, action: MissionAction): MissionStat
         ...state,
         hintsUsed: { ...state.hintsUsed, [action.slideId]: true },
         streak: 0,
+      };
+    }
+    case "hydrate": {
+      const snap = action.snapshot;
+      return {
+        ...state,
+        currentIndex: Math.max(0, Math.min(snap.currentIndex, state.totalSlides - 1)),
+        credits: Math.max(0, snap.credits),
+        shields: Math.max(0, Math.min(3, snap.shields)),
+        streak: Math.max(0, snap.streak),
+        cfuOutcomes: snap.cfuOutcomes ?? {},
+        hintsUsed: snap.hintsUsed ?? {},
       };
     }
   }

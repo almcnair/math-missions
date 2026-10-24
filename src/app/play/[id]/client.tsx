@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { MissionPlayer } from "@/components/mission/MissionPlayer";
 import type { Mission } from "@/lib/mission-schema";
+import type { SavedRun } from "./run-actions";
 import { trackEvent } from "@/lib/analytics";
 
 // Home button routing.
@@ -28,7 +29,7 @@ const RETURN_TARGETS: Record<string, string> = {
   demo: "/",
 };
 
-export default function PlayClient({ mission }: { mission: Mission }) {
+export default function PlayClient({ mission, savedRun }: { mission: Mission; savedRun: SavedRun | null }) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const from = searchParams.get("from") ?? "";
@@ -42,5 +43,5 @@ export default function PlayClient({ mission }: { mission: Mission }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  return <MissionPlayer mission={mission} onExit={() => router.push(target)} />;
+  return <MissionPlayer mission={mission} savedRun={savedRun} onExit={() => router.push(target)} />;
 }
