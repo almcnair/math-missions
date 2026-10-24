@@ -160,6 +160,16 @@ export default async function CoachDashboardPage() {
             description="Quick links to the tools debaters use directly. Anyone can view these — no login required."
             cta="Open Glossary"
           />
+
+          <CommandCard
+            href="/coach/export-answers"
+            icon="📊"
+            title="EXPORT ANSWERS"
+            tone="cyan"
+            stat="CSV · opens in Excel"
+            description="Download a spreadsheet of every student's answers — name, mission, question, correct?, when. One row per answer."
+            cta="Download CSV"
+          />
         </section>
 
         {/* Footer footnote */}
