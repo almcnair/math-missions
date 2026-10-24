@@ -106,11 +106,15 @@ export async function POST(request: NextRequest) {
   });
 
   if (createErr || !created?.user) {
-    // Most likely: email already exists (race between uniqueness check and
-    // create). Treat as a username collision.
+    // Surface the real Supabase error so we can see what's actually failing.
+    // Logged to Vercel function logs AND included in the user-visible error
+    // (prefixed with [debug]) so Austin can screenshot it. Will be re-hidden
+    // behind a friendly generic once we know the root cause.
+    const detail = createErr?.message ?? "no user returned";
+    console.error("[student-signup] createUser failed:", detail, "email:", email);
     return back(
       origin,
-      `Couldn't create that account — try a slightly different name.`,
+      `[debug] createUser failed: ${detail}`,
       displayNameRaw,
     );
   }
