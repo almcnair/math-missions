@@ -87,7 +87,7 @@ export default async function SignupPage({ searchParams }: { searchParams: Searc
                 name="pin"
                 required
                 inputMode="numeric"
-                pattern="\\d{4}"
+                pattern="[0-9]{4}"
                 minLength={4}
                 maxLength={4}
                 autoComplete="new-password"
@@ -105,7 +105,7 @@ export default async function SignupPage({ searchParams }: { searchParams: Searc
                 name="pin2"
                 required
                 inputMode="numeric"
-                pattern="\\d{4}"
+                pattern="[0-9]{4}"
                 minLength={4}
                 maxLength={4}
                 autoComplete="new-password"
