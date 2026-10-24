@@ -41,6 +41,9 @@ const PUBLIC_PREFIXES = [
   "/teacher-moves",
   "/games",
   "/login",
+  // Self-serve student signup (2026-10-24). Anyone can create a name + PIN
+  // account without a coach pre-provisioning them. See /auth/student-signup.
+  "/signup",
   "/auth",
   "/api/public",
   // 2026-07-08: /privacy is the site's data-collection notice, linked

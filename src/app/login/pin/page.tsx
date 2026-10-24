@@ -94,7 +94,10 @@ export default async function PinLoginPage({ searchParams }: { searchParams: Sea
           )}
 
           <p className="font-mono text-[10px] tracking-[0.25em] text-text-faint text-center">
-            Don&apos;t have a PIN? Ask your coach.
+            Don&apos;t have an account yet?{" "}
+            <Link href="/signup" className="text-accent-cyan hover:text-accent-cyan-soft underline">
+              CREATE ONE
+            </Link>
           </p>
         </div>
 
