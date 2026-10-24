@@ -57,8 +57,8 @@ export async function POST(request: NextRequest) {
   if (displayNameRaw.length > 32) {
     return back(origin, "Name is too long (32 characters max).", displayNameRaw.slice(0, 32));
   }
-  if (!/^\d{4}$/.test(pinRaw)) {
-    return back(origin, "Your code must be exactly 4 digits.", displayNameRaw);
+  if (!/^\d{6}$/.test(pinRaw)) {
+    return back(origin, "Your code must be exactly 6 digits.", displayNameRaw);
   }
   if (pinRaw !== pin2Raw) {
     return back(origin, "The two codes didn't match. Try again.", displayNameRaw);
@@ -106,15 +106,15 @@ export async function POST(request: NextRequest) {
   });
 
   if (createErr || !created?.user) {
-    // Surface the real Supabase error so we can see what's actually failing.
-    // Logged to Vercel function logs AND included in the user-visible error
-    // (prefixed with [debug]) so Austin can screenshot it. Will be re-hidden
-    // behind a friendly generic once we know the root cause.
+    // Log the real error for debugging; show a friendly message to the user.
+    // Most common cause is a duplicate email (orphaned auth.users row from a
+    // half-failed prior attempt). Password length / format errors shouldn't
+    // reach here anymore now that we enforce exactly 6 digits above.
     const detail = createErr?.message ?? "no user returned";
     console.error("[student-signup] createUser failed:", detail, "email:", email);
     return back(
       origin,
-      `[debug] createUser failed: ${detail}`,
+      "Couldn't create that account — try a slightly different name.",
       displayNameRaw,
     );
   }

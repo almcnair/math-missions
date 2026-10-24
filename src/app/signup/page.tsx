@@ -39,7 +39,7 @@ export default async function SignupPage({ searchParams }: { searchParams: Searc
             </div>
             <h1 className="font-display text-3xl font-bold">CREATE ACCOUNT</h1>
             <p className="text-text-dim text-sm">
-              Pick your pilot name and a secret 4-digit code.
+              Pick your pilot name and a secret 6-digit code.
             </p>
           </div>
 
@@ -49,7 +49,7 @@ export default async function SignupPage({ searchParams }: { searchParams: Searc
               ⚠️ WRITE THIS DOWN
             </div>
             <p className="text-text-bright text-sm leading-relaxed">
-              If you forget your name <span className="font-bold">or</span> your 4-digit code,
+              If you forget your name <span className="font-bold">or</span> your 6-digit code,
               your coach <span className="font-bold">cannot</span> get your account back.
               You&apos;ll have to start over from scratch.
             </p>
@@ -80,18 +80,18 @@ export default async function SignupPage({ searchParams }: { searchParams: Searc
 
             <label className="block space-y-1">
               <span className="font-mono text-[10px] tracking-[0.3em] text-text-dim">
-                PICK A 4-DIGIT CODE
+                PICK A 6-DIGIT CODE
               </span>
               <input
                 type="password"
                 name="pin"
                 required
                 inputMode="numeric"
-                pattern="[0-9]{4}"
-                minLength={4}
-                maxLength={4}
+                pattern="[0-9]{6}"
+                minLength={6}
+                maxLength={6}
                 autoComplete="new-password"
-                placeholder="····"
+                placeholder="······"
                 className="w-full px-4 py-3 rounded-md bg-bg-deep border border-border-strong focus:border-accent-cyan focus:outline-none text-text-bright placeholder:text-text-faint tracking-[0.5em] text-center"
               />
             </label>
@@ -105,11 +105,11 @@ export default async function SignupPage({ searchParams }: { searchParams: Searc
                 name="pin2"
                 required
                 inputMode="numeric"
-                pattern="[0-9]{4}"
-                minLength={4}
-                maxLength={4}
+                pattern="[0-9]{6}"
+                minLength={6}
+                maxLength={6}
                 autoComplete="new-password"
-                placeholder="····"
+                placeholder="······"
                 className="w-full px-4 py-3 rounded-md bg-bg-deep border border-border-strong focus:border-accent-cyan focus:outline-none text-text-bright placeholder:text-text-faint tracking-[0.5em] text-center"
               />
             </label>
