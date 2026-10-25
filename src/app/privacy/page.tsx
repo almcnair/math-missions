@@ -39,7 +39,7 @@ export default function PrivacyPage() {
         <section className="space-y-6 leading-relaxed text-text-bright/90">
           <p>
             Math Missions is built for middle and high school students learning
-            policy debate. That means some of our users are minors, and some are
+            math. That means some of our users are minors, and some are
             using this site inside a classroom. We take that seriously. This page
             explains what data we collect, what we don&rsquo;t, and why.
           </p>

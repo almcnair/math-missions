@@ -50,7 +50,7 @@ const ibmPlexSans = IBM_Plex_Sans({
 
 export const metadata: Metadata = {
   title: "Math Missions",
-  description: "Debate training in space — learn policy debate as a starship debater.",
+  description: "Math training in space — practice fractions, ratios, and problem-solving as a Math Cadet.",
 };
 
 export default function RootLayout({

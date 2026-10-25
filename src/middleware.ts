@@ -36,9 +36,6 @@ const PUBLIC_PREFIXES = [
   "/landing",
   "/glossary",
   "/brain-breaks",
-  "/toolkit",
-  "/resources",
-  "/teacher-moves",
   "/games",
   "/login",
   // Self-serve student signup (2026-10-24). Anyone can create a name + PIN

@@ -23,7 +23,6 @@ type Tab = {
 const TABS: Tab[] = [
   { href: "/camp",      label: "Today",     matchPrefixes: ["/camp"] },
   { href: "/bridge",    label: "Missions",  matchPrefixes: ["/bridge", "/play"] },
-  { href: "/resources", label: "Resources", matchPrefixes: ["/resources", "/glossary"] },
 ];
 
 function isActive(pathname: string, tab: Tab): boolean {

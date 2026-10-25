@@ -18,7 +18,6 @@ import equivalentFractions from "@/content/missions/equivalent-fractions-v1.json
 import ratiosIntro from "@/content/missions/ratios-intro-v1.json";
 import ratiosLab from "@/content/missions/ratios-lab-v1.json";
 import scalingRatiosV1 from "@/content/missions/scaling-ratios-v1.json";
-import ratiosIntroV1 from "@/content/missions/ratios-intro-v1.json";
 import type { Mission } from "@/lib/mission-schema";
 import { SpaceBackdrop } from "@/components/Starfield";
 import { DebaterNav } from "@/components/DebaterNav";
@@ -40,7 +39,6 @@ const missions: Mission[] = [
   dividingFractions   as Mission,
   equivalentFractions as Mission,
   scalingRatiosV1     as Mission,
-  ratiosIntroV1       as Mission,
 ].sort((a, b) => a.number - b.number);
 
 type ProgressRow = {
@@ -218,8 +216,8 @@ export default async function Bridge() {
               Welcome to Mission Control, {profile.name.split(" ")[0]}.
             </h1>
             <p className="text-text-dim">
-              This is your home base for policy debate. Start a mission below —
-              each one builds a skill you&apos;ll use in real rounds.
+              This is your home base for math. Start a mission below —
+              each one builds a skill you&apos;ll use in real problems.
             </p>
             {!profile.hasClass && (
               <div className="inline-flex items-center gap-2 border border-border-mid bg-bg-panel-solid/60 rounded-md px-3 py-1.5">

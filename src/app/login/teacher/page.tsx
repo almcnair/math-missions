@@ -92,7 +92,7 @@ export default async function TeacherLoginPage({ searchParams }: { searchParams:
             href="/login"
             className="font-mono text-[10px] tracking-[0.3em] text-text-faint hover:text-accent-cyan"
           >
-            ← DEBATER LOGIN
+            ← STUDENT LOGIN
           </Link>
         </div>
       </main>
