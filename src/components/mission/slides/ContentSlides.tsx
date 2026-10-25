@@ -1,6 +1,7 @@
 // Content slides — hook, define, concept, strategy, complete.
 // CFU slides live in their own file (CfuSlides.tsx).
 
+import { useEffect, useState } from "react";
 import type {
   HookSlide,
   DefineSlide,
@@ -382,17 +383,7 @@ function XpBreakdownPanel({ dynamics }: { dynamics: CompleteDynamics }) {
     // expected happy path for the public demo, not a broken save — render
     // it as a soft "sign up to save" CTA instead of a red error tray.
     if (dynamics.saveError === "not-authenticated") {
-      return (
-        <div className="border border-accent-cyan/60 bg-accent-cyan/10 rounded-md p-4 text-left">
-          <div className="font-mono text-xs tracking-[0.18em] text-accent-cyan">◈ DEMO RUN COMPLETE</div>
-          <div className="text-sm leading-relaxed text-text-bright mt-1">
-            Nice work — you finished the mission!
-          </div>
-          <div className="text-sm leading-relaxed text-text-dim mt-1">
-            <a href="/login" className="underline text-accent-cyan hover:text-accent-cyan/80">Create an account</a> to save your XP, unlock more missions, and track your progress.
-          </div>
-        </div>
-      );
+      return <DemoCompletePanel />;
     }
     return (
       <div className="border border-accent-amber/60 bg-accent-amber/10 rounded-md p-4 text-left">
@@ -470,3 +461,50 @@ function XpBreakdownPanel({ dynamics }: { dynamics: CompleteDynamics }) {
     </div>
   );
 }
+
+
+// DemoCompletePanel — rendered when an unauthenticated (demo-mode) student
+// finishes a mission. Reads the name captured by DemoNameGate from
+// sessionStorage and prefills /signup?name=... so the student only has to
+// pick a 6-digit PIN. Falls back to a plain Create-an-account CTA if no
+// name was captured.
+function DemoCompletePanel() {
+  const [demoName, setDemoName] = useState<string | null>(null);
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const v = window.sessionStorage.getItem("mm:demoName");
+    setDemoName(v && v.trim() ? v : null);
+  }, []);
+
+  const prefilled = demoName ? "/signup?name=" + encodeURIComponent(demoName) : "/signup";
+
+  return (
+    <div className="border border-accent-cyan/60 bg-accent-cyan/10 rounded-md p-4 text-left">
+      <div className="font-mono text-xs tracking-[0.18em] text-accent-cyan">◈ DEMO RUN COMPLETE</div>
+      <div className="text-sm leading-relaxed text-text-bright mt-1">
+        Nice work{demoName ? ", " + demoName : ""} — you finished the mission!
+      </div>
+      {demoName ? (
+        <div className="mt-4 space-y-2">
+          <a
+            href={prefilled}
+            className="block w-full text-center px-4 py-3 bg-accent-cyan text-bg-deep font-mono text-xs tracking-[0.2em] font-bold hover:bg-accent-cyan-soft rounded-md"
+          >
+            LOCK IN AS {demoName.toUpperCase()} — PICK A 6-DIGIT CODE →
+          </a>
+          <a
+            href="/signup"
+            className="block text-center text-xs text-text-dim underline hover:text-accent-cyan pt-1"
+          >
+            Different name? Start a new profile instead →
+          </a>
+        </div>
+      ) : (
+        <div className="text-sm leading-relaxed text-text-dim mt-1">
+          <a href="/signup" className="underline text-accent-cyan hover:text-accent-cyan/80">Create an account</a> to save your XP, unlock more missions, and track your progress.
+        </div>
+      )}
+    </div>
+  );
+}
+

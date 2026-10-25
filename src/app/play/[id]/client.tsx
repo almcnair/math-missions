@@ -1,8 +1,9 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { MissionPlayer } from "@/components/mission/MissionPlayer";
+import { DemoNameGate, readDemoName } from "@/components/mission/DemoNameGate";
 import type { Mission } from "@/lib/mission-schema";
 import type { SavedRun } from "./run-actions";
 import { trackEvent } from "@/lib/analytics";
@@ -35,13 +36,26 @@ export default function PlayClient({ mission, savedRun }: { mission: Mission; sa
   const from = searchParams.get("from") ?? "";
   const target = RETURN_TARGETS[from] ?? "/bridge";
 
-  // Fire game_started once when a mission mounts. Not dedupe-guarded so
-  // legitimate restarts of the same mission (reload, replay from bridge)
-  // do count — that's the interesting signal.
+  // Demo-mode cadet check-in: capture First Name + Last Initial BEFORE the
+  // mission starts, so the completion panel can offer "LOCK IN AS [Name I]".
+  // Non-demo entries (bridge, author, coach) skip the gate entirely.
+  const isDemo = from === "demo";
+  const [demoReady, setDemoReady] = useState(!isDemo);
   useEffect(() => {
+    if (isDemo && readDemoName()) setDemoReady(true);
+  }, [isDemo]);
+
+  // Fire game_started once when the mission ACTUALLY starts (post-gate for
+  // demo mode). Not dedupe-guarded so legitimate restarts do count.
+  useEffect(() => {
+    if (isDemo && !demoReady) return;
     trackEvent("game_started", { missionId: mission.id, from: from || null });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [demoReady]);
+
+  if (isDemo && !demoReady) {
+    return <DemoNameGate onReady={() => setDemoReady(true)} />;
+  }
 
   return <MissionPlayer mission={mission} savedRun={savedRun} onExit={() => router.push(target)} />;
 }
