@@ -79,7 +79,7 @@ export async function GET(request: NextRequest) {
         user.user_metadata.full_name ??
         user.user_metadata.name ??
         user.email?.split("@")[0] ??
-        "Debater";
+        "Cadet";
       await supabase.from("profiles").insert({
         id: user.id,
         email: user.email!,

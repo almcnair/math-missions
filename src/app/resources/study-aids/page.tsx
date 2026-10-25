@@ -36,7 +36,7 @@ export default function StudyAidsPage() {
       <SpaceBackdrop />
 
       <ToolHeader
-        collectionId="debater"
+        collectionId="student"
         activeToolId="study-aids"
         maxWidth="max-w-6xl"
       />
@@ -45,7 +45,7 @@ export default function StudyAidsPage() {
         {/* Page intro */}
         <div className="mb-6">
           <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-text-faint">
-            Debater Resources
+            Resources
           </p>
           <h1 className="mt-1 font-display text-2xl md:text-3xl font-bold tracking-[0.06em] text-accent-cyan">
             LESSON SLIDE DECKS &amp; GRAPHIC ORGANIZERS

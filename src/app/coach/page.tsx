@@ -106,8 +106,8 @@ export default async function CoachDashboardPage() {
             icon="👥"
             title="ROSTER"
             tone="cyan"
-            stat={`${data.classCount} class${data.classCount === 1 ? "" : "es"} · ${data.studentCount} debater${data.studentCount === 1 ? "" : "s"}`}
-            description="Create classes, assign debaters, promote coaches. Every profile on the station lives here."
+            stat={`${data.classCount} class${data.classCount === 1 ? "" : "es"} · ${data.studentCount} student${data.studentCount === 1 ? "" : "s"}`}
+            description="Create classes, assign students, promote coaches. Every profile on the station lives here."
             cta="Open Roster"
           />
 
@@ -124,10 +124,10 @@ export default async function CoachDashboardPage() {
           <CommandCard
             href="/resources"
             icon="📚"
-            title="DEBATER RESOURCES"
+            title="STUDENT RESOURCES"
             tone="violet"
             stat="Glossary · slide decks · more"
-            description="Student-facing hub — glossary, class slide decks, and graphic organizers. Point your debaters here."
+            description="Student-facing hub — glossary, class slide decks, and graphic organizers. Point your students here."
             cta="Browse Resources"
           />
 
@@ -137,7 +137,7 @@ export default async function CoachDashboardPage() {
             title="MISSIONS"
             tone="cyan"
             stat={`${data.missionCount} published`}
-            description="See what your debaters see — the student mission bridge. Great for previewing before class."
+            description="See what your students see — the student mission bridge. Great for previewing before class."
             cta="View Missions"
           />
 
@@ -157,7 +157,7 @@ export default async function CoachDashboardPage() {
             title="STUDENT TOOLS"
             tone="violet"
             stat="Public"
-            description="Quick links to the tools debaters use directly. Anyone can view these — no login required."
+            description="Quick links to the tools students use directly. Anyone can view these — no login required."
             cta="Open Glossary"
           />
 
@@ -175,7 +175,7 @@ export default async function CoachDashboardPage() {
         {/* Footer footnote */}
         <footer className="pt-6 border-t border-border-mid/30">
           <p className="font-mono text-[10px] tracking-[0.25em] text-text-faint">
-            {data.teacherCount} coach{data.teacherCount === 1 ? "" : "es"} on the station · you can promote debaters to coach from the Roster page
+            {data.teacherCount} coach{data.teacherCount === 1 ? "" : "es"} on the station · you can promote students to coach from the Roster page
           </p>
         </footer>
 

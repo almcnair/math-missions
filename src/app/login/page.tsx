@@ -1,7 +1,7 @@
 // ============================================================================
-// /login — Debater login. Email + password.
+// /login — Student login. Email + password.
 // ----------------------------------------------------------------------------
-// One form, one button. Route (/auth/debater-signin) tries sign-in first;
+// One form, one button. Route (/auth/student-signin) tries sign-in first;
 // if the email doesn't exist yet, it creates the account and signs the
 // student in the same request. No confirmation email, no magic link, no
 // PIN — just password auth.
@@ -51,7 +51,7 @@ export default async function LoginPage({ searchParams }: { searchParams: Search
             <div className="font-mono text-xs tracking-[0.3em] text-accent-cyan">
               ⟡ MATH MISSIONS SPACE STATION
             </div>
-            <h1 className="font-display text-3xl font-bold">DEBATER LOGIN</h1>
+            <h1 className="font-display text-3xl font-bold">STUDENT LOGIN</h1>
             <p className="text-text-dim text-sm">
               Sign in or create an account.
             </p>
@@ -63,7 +63,7 @@ export default async function LoginPage({ searchParams }: { searchParams: Search
             </div>
           )}
 
-          <form action="/auth/debater-signin" method="post" className="space-y-4">
+          <form action="/auth/student-signin" method="post" className="space-y-4">
             <input type="hidden" name="next" value={nextValue} />
 
             <label className="block space-y-1">

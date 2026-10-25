@@ -1,9 +1,9 @@
-// DebaterNav — shared post-login navigation for debaters.
+// StudentNav — shared post-login navigation for students.
 //
 // Renders three tabs (TODAY / MISSIONS / RESOURCES) plus the site wordmark
 // and a HOME link. Highlights the current tab based on the pathname.
 //
-// Mount this at the top of every gated debater page: /camp, /bridge,
+// Mount this at the top of every gated student page: /camp, /bridge,
 // /play/[id], and (as a compact variant) inside the Resources hub if we
 // want the same chrome there.
 
@@ -31,7 +31,7 @@ function isActive(pathname: string, tab: Tab): boolean {
   );
 }
 
-export function DebaterNav() {
+export function StudentNav() {
   const pathname = usePathname() ?? "";
   const homeHref = useHomeHref();
 
@@ -39,7 +39,7 @@ export function DebaterNav() {
     <header className="border-b border-border-mid/50 bg-bg-panel-solid/40 backdrop-blur-sm">
       <div className="mx-auto max-w-5xl px-4 sm:px-6 py-3 flex items-center justify-between gap-4">
         {/* Brand — points to the viewer's dashboard (coach → /coach,
-            debater → /bridge, anonymous → /). See useHomeHref. */}
+            student → /bridge, anonymous → /). See useHomeHref. */}
         <Link href={homeHref} className="flex items-center gap-2 shrink-0 group">
           <Image
             src="/brand/logo-mascot.png"
@@ -55,7 +55,7 @@ export function DebaterNav() {
         </Link>
 
         {/* Tabs */}
-        <nav className="flex items-center gap-1 sm:gap-2" aria-label="Debater navigation">
+        <nav className="flex items-center gap-1 sm:gap-2" aria-label="Student navigation">
           {TABS.map((tab) => {
             const active = isActive(pathname, tab);
             return (

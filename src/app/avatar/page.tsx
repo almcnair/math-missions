@@ -111,7 +111,7 @@ export default async function AvatarPickerPage({ searchParams }: { searchParams:
             ← BACK TO MISSION CONTROL
           </Link>
           <div className="font-mono text-[10px] tracking-[0.25em] text-text-dim">
-            DEBATER: <span className="text-text-bright">{profile?.display_name ?? "—"}</span>
+            CADET: <span className="text-text-bright">{profile?.display_name ?? "—"}</span>
           </div>
         </footer>
       </main>

@@ -490,7 +490,7 @@ export default function GlossaryPage() {
   return (
     <div className="relative min-h-screen bg-bg-deep text-text-bright">
       <SpaceBackdrop />
-      <ToolHeader collectionId="debater" activeToolId="glossary" />
+      <ToolHeader collectionId="student" activeToolId="glossary" />
 
       <main className="relative z-10 mx-auto max-w-5xl px-4 sm:px-6 py-6 sm:py-10">
         {/* Intro */}

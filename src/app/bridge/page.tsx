@@ -20,7 +20,7 @@ import ratiosLab from "@/content/missions/ratios-lab-v1.json";
 import scalingRatiosV1 from "@/content/missions/scaling-ratios-v1.json";
 import type { Mission } from "@/lib/mission-schema";
 import { SpaceBackdrop } from "@/components/Starfield";
-import { DebaterNav } from "@/components/DebaterNav";
+import { StudentNav } from "@/components/StudentNav";
 import { Avatar } from "@/components/Avatar";
 import { portraitIdFromConfig, MYSTERY_PILOT_ID } from "@/lib/avatars";
 import { createClient } from "@/lib/supabase/server";
@@ -140,7 +140,7 @@ export default async function Bridge() {
     return (
       <div className="relative min-h-screen">
         <SpaceBackdrop />
-        <DebaterNav />
+        <StudentNav />
         <main className="relative z-10 max-w-4xl mx-auto px-8 py-16 space-y-8">
           <header className="space-y-3">
             <div className="font-mono text-xs tracking-[0.3em] text-accent-cyan">
@@ -191,7 +191,7 @@ export default async function Bridge() {
   return (
     <div className="relative min-h-screen">
       <SpaceBackdrop />
-      <DebaterNav />
+      <StudentNav />
       <main className="relative z-10 max-w-4xl mx-auto px-8 py-12 space-y-10">
 
         {/* Welcome header */}

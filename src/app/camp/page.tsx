@@ -17,7 +17,7 @@ import { Suspense, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { trackEventOnce } from "@/lib/analytics";
 import { SpaceBackdrop } from "@/components/Starfield";
-import { DebaterNav } from "@/components/DebaterNav";
+import { StudentNav } from "@/components/StudentNav";
 import scheduleData from "@/content/camp/schedule.json";
 
 type Block = {
@@ -124,7 +124,7 @@ function findCurrentBlock(
 // -------- Presentational pieces --------------------------------------------
 
 function Header() {
-  return <DebaterNav />;
+  return <StudentNav />;
 }
 
 function RightNowCard({ block }: { block: Block }) {

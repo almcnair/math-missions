@@ -1,5 +1,5 @@
 // ============================================================================
-// /auth/debater-signin — Email + password sign-in AND sign-up for debaters.
+// /auth/student-signin — Email + password sign-in AND sign-up for students.
 // ----------------------------------------------------------------------------
 // Single form → single route. Strategy:
 //   1. Try signInWithPassword. If it succeeds → done, redirect to next.
@@ -143,7 +143,7 @@ export async function POST(request: NextRequest) {
   const userId = signUp.data.user?.id;
   if (userId) {
     const admin = adminClient();
-    const displayName = emailRaw.split("@")[0] || "Debater";
+    const displayName = emailRaw.split("@")[0] || "Cadet";
     await admin.from("profiles").upsert(
       {
         id: userId,

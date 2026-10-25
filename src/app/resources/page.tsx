@@ -12,15 +12,15 @@
 import CollectionHub from "@/components/toolkit/CollectionHub";
 
 export const metadata = {
-  title: "Debater Resources · Math Missions",
+  title: "Resources · Math Missions",
   description:
-    "Reference material and study tools for policy debate students — glossary, slide decks, and graphic organizers.",
+    "Reference material and study tools — glossary, slide decks, and graphic organizers.",
 };
 
-export default function DebaterResourcesHubPage() {
+export default function StudentResourcesHubPage() {
   return (
     <CollectionHub
-      collectionId="debater"
+      collectionId="student"
       moreComingNote="More study aids and reference material slot in here as they ship."
     />
   );

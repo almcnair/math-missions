@@ -138,13 +138,13 @@ export default async function RosterPage() {
                 </div>
               </div>
               <div className="font-mono text-[10px] tracking-[0.3em] text-text-faint">
-                {students.length} DEBATER{students.length === 1 ? "" : "S"}
+                {students.length} STUDENT{students.length === 1 ? "" : "S"}
               </div>
             </header>
 
             {students.length === 0 && (
               <p className="text-text-dim text-sm">
-                No debaters in this class yet. Assign them from the People section below.
+                No students in this class yet. Assign them from the People section below.
               </p>
             )}
 

@@ -19,13 +19,13 @@
         { "id": "adults",     "label": "For the Adults",    "toolIds": ["teacher-moves"] },
         { "id": "curriculum", "label": "Curriculum",        "toolIds": ["study-aids"] },
         { "id": "classroom",  "label": "In the Classroom",  "toolIds": ["brain-breaks", "jeopardy-day1"] },
-        { "id": "preview",    "label": "Preview Student View", "toolIds": ["debater-missions-preview"] },
-        { "id": "reference",  "label": "Reference (shared with debaters)", "toolIds": ["speech-timeline", "glossary"] }
+        { "id": "preview",    "label": "Preview Student View", "toolIds": ["student-missions-preview"] },
+        { "id": "reference",  "label": "Reference (shared with students)", "toolIds": ["speech-timeline", "glossary"] }
       ]
     },
     {
-      "id": "debater",
-      "name": "DEBATER RESOURCES",
+      "id": "student",
+      "name": "STUDENT RESOURCES",
       "hubHref": "/resources",
       "tagline": "Reference material and study tools for policy debate students — search terms, review the slides from class, and grab worksheets for practice.",
       "audienceChips": [
@@ -81,7 +81,7 @@
     },
     {
       "id": "missions",
-      "collectionId": "debater",
+      "collectionId": "student",
       "title": "MISSIONS",
       "shortTitle": "Missions",
       "href": "/bridge",
@@ -93,7 +93,7 @@
       "meta": "Sign in to play"
     },
     {
-      "id": "debater-missions-preview",
+      "id": "student-missions-preview",
       "collectionId": "lab-leader",
       "title": "PREVIEW MISSIONS",
       "shortTitle": "Preview Missions",
@@ -102,12 +102,12 @@
       "tone": "violet",
       "audience": "For Lab Leaders",
       "audienceChip": "leaders",
-      "description": "See what your students see — open the debater Bridge to browse the mission path before class.",
+      "description": "See what your students see — open the student Bridge to browse the mission path before class.",
       "meta": "Opens the student mission list"
     },
     {
       "id": "study-aids",
-      "collectionId": "debater",
+      "collectionId": "student",
       "title": "LESSONS",
       "shortTitle": "Lessons",
       "href": "/resources/study-aids",
@@ -120,7 +120,7 @@
     },
     {
       "id": "speech-timeline",
-      "collectionId": "debater",
+      "collectionId": "student",
       "title": "ROUND PLAYBOOK",
       "shortTitle": "Round Playbook",
       "href": "/games/speech-timeline.html",
@@ -134,7 +134,7 @@
     },
     {
       "id": "glossary",
-      "collectionId": "debater",
+      "collectionId": "student",
       "title": "GLOSSARY",
       "shortTitle": "Glossary",
       "href": "/glossary",
