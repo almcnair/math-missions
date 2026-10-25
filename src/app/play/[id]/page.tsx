@@ -7,6 +7,7 @@ import ratiosIntro from "@/content/missions/ratios-intro-v1.json";
 import ratiosLab from "@/content/missions/ratios-lab-v1.json";
 import scalingRatios from "@/content/missions/scaling-ratios-v1.json";
 import scalingRatiosV1 from "@/content/missions/scaling-ratios-v1.json";
+import ratiosIntroV1 from "@/content/missions/ratios-intro-v1.json";
 import PlayClient from "./client";
 import { loadMissionRun } from "./run-actions";
 

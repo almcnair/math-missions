@@ -18,6 +18,7 @@ import equivalentFractions from "@/content/missions/equivalent-fractions-v1.json
 import ratiosIntro from "@/content/missions/ratios-intro-v1.json";
 import ratiosLab from "@/content/missions/ratios-lab-v1.json";
 import scalingRatiosV1 from "@/content/missions/scaling-ratios-v1.json";
+import ratiosIntroV1 from "@/content/missions/ratios-intro-v1.json";
 import type { Mission } from "@/lib/mission-schema";
 import { SpaceBackdrop } from "@/components/Starfield";
 import { DebaterNav } from "@/components/DebaterNav";
@@ -39,6 +40,7 @@ const missions: Mission[] = [
   dividingFractions   as Mission,
   equivalentFractions as Mission,
   scalingRatiosV1     as Mission,
+  ratiosIntroV1       as Mission,
 ].sort((a, b) => a.number - b.number);
 
 type ProgressRow = {
