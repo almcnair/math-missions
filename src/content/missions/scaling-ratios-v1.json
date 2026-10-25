@@ -1,0 +1,666 @@
+{
+  "id": "scaling-ratios-v1",
+  "campaignId": "math-missions",
+  "sectorId": "ratios",
+  "number": 1,
+  "title": "Scaling Ratios: The 5-Step Warp Routine",
+  "subtitle": "Ratios · Mission 02",
+  "tagline": "Scale a ratio {{cyan:up}} or {{amber:down}} without wrecking the recipe — in five clean steps.",
+  "estimatedMinutes": 14,
+  "difficulty": "core",
+  "rewards": {
+    "credits": 110,
+    "rankXp": 70
+  },
+  "unlocks": [],
+  "prerequisites": [
+    "ratios-intro-v1"
+  ],
+  "protectedTerms": [
+    "ratio",
+    "equivalent",
+    "scale factor",
+    "scale up",
+    "scale down",
+    "unit rate",
+    "waystation"
+  ],
+  "passingCriteria": {
+    "requireAllCfu": true,
+    "minCorrectCfu": 4,
+    "shieldsAtZero": "allow-continue"
+  },
+  "slides": [
+    {
+      "id": "s1-hook",
+      "type": "hook",
+      "tag": "◈ MISSION BRIEFING",
+      "tagTone": "default",
+      "headline": "Space Command just radioed in: {{cyan:7 Alien Cadets}} need {{amber:5 Fuel Crystals}}. But {{cyan:28 cadets}} just boarded. How many crystals now?",
+      "body": [
+        "You already know you can't just add more crystals and hope. The recipe is `7 to 5` — mess with that, and the fleet runs out of fuel halfway to the next waystation.",
+        "The move: `scale` the ratio. Multiply (or divide) both sides by the same number — the `scale factor` — and the recipe stays balanced no matter how big the mission gets.",
+        "Today's power-up: a **5-step warp routine** you can run on any ratio, any mission, any time. By the end of this briefing you'll solve the 28-cadet problem yourself — and Space Command gets its answer. 🚀"
+      ],
+      "image": {
+        "src": "/mission-images/scaling-ratios-v1/1792940899482_scale.png",
+        "alt": ""
+      }
+    },
+    {
+      "id": "s2-define-scale-factor",
+      "type": "define",
+      "tag": "◈ NEW ITEM UNLOCKED",
+      "term": "Scale Factor",
+      "pronunciation": "/skeɪl ˈfæk.tər/ · noun · math",
+      "definition": "The `scale factor` is the number you {{cyan:multiply or divide both parts}} of a ratio by to grow or shrink it — without changing the recipe.",
+      "plainWords": "It's the warp multiplier. Whatever you do to one side, you do to the other.",
+      "analogy": "Think of it like **doubling a recipe**. If 1 batch of cookies needs 2 cups flour and 1 cup sugar, a scale factor of 3 means 6 cups flour and 3 cups sugar. Same cookies — just more of them."
+    },
+    {
+      "id": "s3-define-waystation",
+      "type": "define",
+      "tag": "◈ NEW ITEM UNLOCKED",
+      "term": "Waystation (Unit Rate)",
+      "pronunciation": "/ˈweɪ.steɪ.ʃən/ · noun · navigation",
+      "definition": "A `waystation` is a {{cyan:stopover at 1}} — the `unit rate`. When direct scaling isn't a clean whole number, you dock at 1 first, then warp up to the target.",
+      "plainWords": "If you can't jump straight from 3 to 10, scale down to 1 first, then scale up to 10.",
+      "analogy": "Think of it like a **layover flight**. No direct route from Chicago to Tokyo today? Fly through LA. Takes an extra step, but you still land on time. 🛰️"
+    },
+    {
+      "id": "s4-concept-up-down",
+      "type": "concept",
+      "tag": "◈ TWO DIRECTIONS",
+      "headline": "A ratio can scale **up** or scale **down**. Same rules, opposite move.",
+      "intro": "Every ratio is a pair of `cargo bays` of equal size. When you scale, you add or remove bays — but each bay stays the same inside.",
+      "cards": [
+        {
+          "id": "scale-up",
+          "icon": "🚀",
+          "name": "SCALE UP (×)",
+          "description": "You need a {{cyan:bigger fleet}}. **Multiply** both parts of the ratio by the same whole number. Add identical cargo pods to the fleet.",
+          "example": {
+            "label": "EXAMPLE",
+            "text": "`3 : 2` scaled up by ×4 becomes `12 : 8`. Four times the cadets, four times the crystals. Recipe stays `3 to 2`."
+          },
+          "accent": "cyan"
+        },
+        {
+          "id": "scale-down",
+          "icon": "🛸",
+          "name": "SCALE DOWN (÷)",
+          "description": "You need a {{amber:smaller scout team}}. **Divide** both parts by the same whole number. Beam alien groups out of the cargo bays, keeping each bay the same size.",
+          "example": {
+            "label": "EXAMPLE",
+            "text": "`20 : 15` scaled down by ÷5 becomes `4 : 3`. Smaller crew, same recipe."
+          },
+          "accent": "amber"
+        }
+      ]
+    },
+    {
+      "id": "s5-strategy-5-steps",
+      "type": "strategy",
+      "tag": "◈ THE 5-STEP WARP ROUTINE",
+      "headline": "Run these five steps — in order — on every scaling mission. 🧮",
+      "intro": "Lock this routine in. Every single ratio-scaling problem you'll ever hit yields to this exact sequence.",
+      "rows": [
+        {
+          "name": "Step 1 — Locate the Base Command Pair",
+          "description": "Find the row where **both** numbers are known. That's your baseline recipe. Example: `7 Cadets : 5 Crystals`.",
+          "counter": {
+            "label": "COMMON TRAP",
+            "text": "Don't grab the row with the unknown. The base pair is the one that's fully logged."
+          }
+        },
+        {
+          "name": "Step 2 — Identify the Target Mission Row",
+          "description": "Find the row with the {{amber:unknown}} you need to solve for. Example: `12 Cadets : ? Crystals`."
+        },
+        {
+          "name": "Step 3 — Calculate the Warp Scale Factor",
+          "description": "Ask: *what do I multiply (or divide) the known side of the base pair by to reach the target?* Example: `4 × ? = 12` → scale factor is **3**.",
+          "counter": {
+            "label": "DIRECTION CHECK",
+            "text": "Target is bigger → multiply (scale up). Target is smaller → divide (scale down)."
+          }
+        },
+        {
+          "name": "Step 4 — Apply the Same Fleet Operation",
+          "description": "Do the **exact same thing** to the other side. If you multiplied cadets by 3, multiply crystals by 3. `3 × 3 = 9 Crystals`."
+        },
+        {
+          "name": "Step 5 — Log and Verify",
+          "description": "Write the answer in. Then {{cyan:check}}: does your new ratio simplify back to the base pair? `12 : 9` ÷ 3 = `4 : 3`. ✓ Fleet balanced."
+        }
+      ]
+    },
+    {
+      "id": "s6-concept-sentence-stems",
+      "type": "concept",
+      "tag": "◈ TALK LIKE A CADET",
+      "headline": "Say it out loud. These `sentence stems` turn the math into language you can share with your Math Navigator.",
+      "intro": "Use these when you're working with a partner, explaining to a teacher, or thinking through a tricky problem on your own.",
+      "cards": [
+        {
+          "id": "stem-recipe",
+          "icon": "🗣️",
+          "name": "THE RECIPE STEM",
+          "description": "Use this to **name the base ratio** before you touch any numbers.",
+          "example": {
+            "label": "SAY",
+            "text": "*\"For every ___ Alien Cadets, Space Command requires ___ Fuel Crystals.\"*"
+          },
+          "accent": "cyan"
+        },
+        {
+          "id": "stem-balance",
+          "icon": "⚖️",
+          "name": "THE BALANCE STEM",
+          "description": "Use this to **justify your move** after you apply the scale factor.",
+          "example": {
+            "label": "SAY",
+            "text": "*\"Because I scaled the Cadets up/down by multiplying/dividing by ___, I must scale the Crystals by ___ to maintain orbital equilibrium.\"*"
+          },
+          "accent": "amber"
+        }
+      ]
+    },
+    {
+      "id": "s7-cfu-fill-full-scaffold",
+      "type": "cfu-fill",
+      "tag": "⚡ TACTICAL DRILL · CFU 01 · FULL SCAFFOLD",
+      "prompt": {
+        "label": "SUPPORTED SOLVE",
+        "scenario": "Base pair: `2 Alien Cadets : 3 Fuel Crystals`. Target: `10 Alien Cadets : ? Crystals`. Walk the 5 steps.",
+        "question": "Fill in each blank to run the warp routine."
+      },
+      "template": "Scale factor: 2 × {{1}} = 10.  Apply to crystals: 3 × {{2}} = {{3}} Crystals.  Verify: 10 : {{3}} ÷ {{1}} = 2 : 3. ✓",
+      "blanks": [
+        {
+          "index": 1,
+          "acceptedAnswers": [
+            "5"
+          ],
+          "hint": "What times 2 gets you to 10?"
+        },
+        {
+          "index": 2,
+          "acceptedAnswers": [
+            "5"
+          ],
+          "hint": "Same scale factor as cadets. Both sides, same move."
+        },
+        {
+          "index": 3,
+          "acceptedAnswers": [
+            "15"
+          ],
+          "hint": "3 × 5 = ?"
+        }
+      ],
+      "caseSensitive": false,
+      "scoring": {
+        "creditsOnCorrect": 20,
+        "shieldOnWrong": true,
+        "breaksStreakOnWrong": false,
+        "maxAttempts": 2,
+        "mode": "partial"
+      },
+      "hint": {
+        "imageUrl": "",
+        "altText": "Step 3 of the warp routine: compare base to target to find the scale factor.",
+        "delaySeconds": 30
+      },
+      "feedback": {
+        "correct": {
+          "title": "✓ FLEET BALANCED",
+          "body": [
+            "You ran all five steps clean. Scale factor **5**, applied to both sides, verified back to `2 : 3`.",
+            "**Pro move:** Any time you solve a scaling problem, write the scale factor *first* and circle it. Everything else flows from that one number."
+          ],
+          "followup": "Say it with the stem: *\"For every 2 cadets, Space Command requires 3 crystals.\"*"
+        },
+        "wrongDefault": {
+          "title": "✕ RECALIBRATE",
+          "body": [
+            "Close — check your scale factor first. **2 × ? = 10.** Lock that number in, then apply the same number to the crystals.",
+            "Remember: whatever you do to one side, you do to the other."
+          ]
+        }
+      }
+    },
+    {
+      "id": "s8-cfu-order-steps",
+      "type": "cfu-order",
+      "tag": "⚡ TACTICAL DRILL · CFU 02 · ROUTINE RECALL",
+      "prompt": {
+        "label": "SEQUENCE CHECK",
+        "question": "Put the 5 steps of the warp routine in the correct order."
+      },
+      "items": [
+        {
+          "id": "verify",
+          "text": "Log and verify: does the new ratio simplify back to the base pair?",
+          "correctPosition": 5
+        },
+        {
+          "id": "locate",
+          "text": "Locate the Base Command Pair (the row where both numbers are known).",
+          "correctPosition": 1
+        },
+        {
+          "id": "apply",
+          "text": "Apply the same scale factor to the other side of the ratio.",
+          "correctPosition": 4
+        },
+        {
+          "id": "identify",
+          "text": "Identify the Target Mission Row (the row with the unknown).",
+          "correctPosition": 2
+        },
+        {
+          "id": "calculate",
+          "text": "Calculate the Warp Scale Factor: known base × ? = known target.",
+          "correctPosition": 3
+        }
+      ],
+      "scoring": {
+        "creditsOnCorrect": 20,
+        "shieldOnWrong": true,
+        "breaksStreakOnWrong": false,
+        "maxAttempts": 2,
+        "mode": "partial"
+      },
+      "feedback": {
+        "correct": {
+          "title": "✓ ROUTINE LOCKED IN",
+          "body": [
+            "Locate → Identify → Calculate → Apply → Verify. That's the whole mission.",
+            "**Memory trick:** *Little Imps Can't Avoid Verification.* Dumb mnemonic. It works."
+          ]
+        },
+        "wrongDefault": {
+          "title": "✕ ORDER'S OFF",
+          "body": [
+            "Think about it this way: you can't calculate a scale factor until you know the base pair AND the target. And you can't verify until you've applied.",
+            "Locate first. Identify second. Then math."
+          ]
+        }
+      }
+    },
+    {
+      "id": "s9-cfu-fill-medium-scaffold",
+      "type": "cfu-fill",
+      "tag": "⚡ TACTICAL DRILL · CFU 03 · LIGHT SCAFFOLD",
+      "prompt": {
+        "label": "APPLIED SOLVE",
+        "scenario": "Base pair: `4 Cadets : 5 Crystals`. Target: `20 Cadets : ? Crystals`.",
+        "question": "Find the scale factor and the missing number. Two blanks only."
+      },
+      "template": "Scale factor = {{1}}.  Missing crystals = {{2}}.",
+      "blanks": [
+        {
+          "index": 1,
+          "acceptedAnswers": [
+            "5"
+          ],
+          "hint": "4 × ? = 20."
+        },
+        {
+          "index": 2,
+          "acceptedAnswers": [
+            "25"
+          ],
+          "hint": "5 × scale factor."
+        }
+      ],
+      "caseSensitive": false,
+      "scoring": {
+        "creditsOnCorrect": 20,
+        "shieldOnWrong": true,
+        "breaksStreakOnWrong": false,
+        "maxAttempts": 2,
+        "mode": "partial"
+      },
+      "feedback": {
+        "correct": {
+          "title": "✓ SCALED UP",
+          "body": [
+            "Scale factor **5**, applied cleanly. `20 : 25` ÷ 5 = `4 : 5`. ✓",
+            "**Pro move:** Notice you didn't need every step written out this time. Once the routine is in your head, you can run it fast."
+          ]
+        },
+        "wrongDefault": {
+          "title": "✕ CHECK THE SCALE FACTOR",
+          "body": [
+            "Start over at Step 3. What number times 4 equals 20? That's your scale factor. Then multiply 5 by that same number."
+          ]
+        }
+      }
+    },
+    {
+      "id": "s10-cfu-mcq-scale-down",
+      "type": "cfu-mcq",
+      "tag": "⚡ TACTICAL DRILL · CFU 04 · SCALE DOWN",
+      "prompt": {
+        "label": "SMALLER CREW",
+        "scenario": "Base pair logged in the mission log: `20 Cadets : 24 Fuel Crystals`. The commander only needs a scout team of `5 Cadets`.",
+        "question": "How many Fuel Crystals does the scout team need?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "letter": "A",
+          "text": "9 Crystals"
+        },
+        {
+          "id": "b",
+          "letter": "B",
+          "text": "6 Crystals"
+        },
+        {
+          "id": "c",
+          "letter": "C",
+          "text": "4 Crystals"
+        },
+        {
+          "id": "d",
+          "letter": "D",
+          "text": "19 Crystals"
+        }
+      ],
+      "correctOptionId": "b",
+      "scoring": {
+        "creditsOnCorrect": 15,
+        "shieldOnWrong": true,
+        "breaksStreakOnWrong": true,
+        "maxAttempts": 1
+      },
+      "feedback": {
+        "correct": {
+          "title": "✓ CLEAN SCALE-DOWN",
+          "body": [
+            "Scale factor: `20 ÷ 4 = 5`, so you divided by **4**. Then `24 ÷ 4 = 6 Crystals`. ✓",
+            "**Pro move:** When the target is *smaller* than the base, you're dividing. The direction tells you the operation."
+          ]
+        },
+        "wrongByChoice": {
+          "a": {
+            "title": "✕ CLOSE — BUT CHECK THE OPERATION",
+            "body": [
+              "**9 Crystals** would happen if you *subtracted* 15 from 24. But scaling isn't subtraction — it's division (when going down) or multiplication (when going up).",
+              "Scale factor: `20 ÷ 4 = 5`, so divide crystals: `24 ÷ 4 = 6`."
+            ]
+          },
+          "c": {
+            "title": "✕ RIGHT MOVE, WRONG NUMBER",
+            "body": [
+              "You divided — good instinct — but **4** is `24 ÷ 6`, not `24 ÷ 4`.",
+              "Scale factor comes from the cadets: `20 ÷ 5 = 4`. Then crystals: `24 ÷ 4 = 6`."
+            ]
+          },
+          "d": {
+            "title": "✕ MISFIRE — THAT'S SUBTRACTION",
+            "body": [
+              "**19 Crystals** = `24 − 5`. That's a subtraction move. Scaling multiplies or divides, it never subtracts.",
+              "Scale factor is 4 (down). `24 ÷ 4 = 6 Crystals`."
+            ]
+          }
+        },
+        "wrongDefault": {
+          "title": "✕ RECALIBRATE",
+          "body": [
+            "Base pair: `20 : 24`. Target: `5 : ?`. Scale factor: `20 ÷ ? = 5`, so you're dividing by **4**. Apply to crystals: `24 ÷ 4 = 6`."
+          ]
+        }
+      }
+    },
+    {
+      "id": "s11-cfu-fill-waystation",
+      "type": "cfu-fill",
+      "tag": "⚡ TACTICAL DRILL · CFU 05 · WAYSTATION ROUTE",
+      "prompt": {
+        "label": "DOCK AT 1 FIRST",
+        "scenario": "Base pair: `3 Cadets : 12 Crystals`. Target: `? Crystals for 7 Cadets`. There's no clean whole number scale factor from 3 to 7 — so dock at the `waystation` first.",
+        "question": "Fill in the waystation route."
+      },
+      "template": "Step A — Dock at 1 Cadet. 12 ÷ 3 = {{1}} Crystals per Cadet (unit rate).  Step B — Warp up: {{1}} × 7 = {{2}} Crystals.",
+      "blanks": [
+        {
+          "index": 1,
+          "acceptedAnswers": [
+            "4"
+          ],
+          "hint": "Divide crystals by cadets to get crystals per 1 cadet."
+        },
+        {
+          "index": 2,
+          "acceptedAnswers": [
+            "28"
+          ],
+          "hint": "Multiply the unit rate by the number of cadets you actually need."
+        }
+      ],
+      "caseSensitive": false,
+      "scoring": {
+        "creditsOnCorrect": 25,
+        "shieldOnWrong": true,
+        "breaksStreakOnWrong": false,
+        "maxAttempts": 2,
+        "mode": "partial"
+      },
+      "hint": {
+        "imageUrl": "",
+        "altText": "Dock at the unit rate (1 cadet) first, then multiply up to the target number of cadets.",
+        "delaySeconds": 30
+      },
+      "feedback": {
+        "correct": {
+          "title": "✓ WAYSTATION ROUTE COMPLETE",
+          "body": [
+            "Unit rate is **4 Crystals per Cadet**. Multiply by 7 cadets → **28 Crystals**. Scenic route, same destination.",
+            "**Pro move:** The waystation (unit rate) always works, even when the direct scale factor is clean. If you ever get stuck, dock at 1."
+          ],
+          "followup": "Say it with the stem: *\"For every 1 Cadet, Space Command requires 4 Crystals.\"*"
+        },
+        "wrongDefault": {
+          "title": "✕ RECALIBRATE AT THE WAYSTATION",
+          "body": [
+            "First get to **1 Cadet**: `12 ÷ 3 = 4 Crystals per Cadet`. That's your unit rate.",
+            "Then warp up: `4 × 7 = 28 Crystals`."
+          ]
+        }
+      }
+    },
+    {
+      "id": "s12-cfu-mcq-why",
+      "type": "cfu-mcq",
+      "tag": "⚡ TACTICAL DRILL · CFU 06 · BIG IDEA CHECK",
+      "prompt": {
+        "label": "WHY DOES IT WORK?",
+        "question": "Why do you have to multiply (or divide) **both** parts of the ratio by the same scale factor?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "letter": "A",
+          "text": "Because it's a math rule teachers made up."
+        },
+        {
+          "id": "b",
+          "letter": "B",
+          "text": "Because the two parts have to stay in the same recipe — if you change one and not the other, the ratio becomes a different recipe."
+        },
+        {
+          "id": "c",
+          "letter": "C",
+          "text": "Because big numbers are harder than small numbers."
+        },
+        {
+          "id": "d",
+          "letter": "D",
+          "text": "Because scale factors only work on even numbers."
+        }
+      ],
+      "correctOptionId": "b",
+      "scoring": {
+        "creditsOnCorrect": 15,
+        "shieldOnWrong": true,
+        "breaksStreakOnWrong": true,
+        "maxAttempts": 1
+      },
+      "feedback": {
+        "correct": {
+          "title": "✓ YOU GET IT",
+          "body": [
+            "A ratio is a *comparison*. If you change one side but not the other, you've changed what you're comparing — and the recipe is gone.",
+            "**Pro move:** This is why the balance stem matters: *\"Because I scaled Cadets by ___, I must scale Crystals by ___ to maintain orbital equilibrium.\"* The 'must' is doing real work in that sentence."
+          ]
+        },
+        "wrongByChoice": {
+          "a": {
+            "title": "✕ IT'S NOT ARBITRARY",
+            "body": [
+              "Math rules aren't invented — they're how the comparison stays true. If you double only the cadets but not the crystals, you've changed the recipe. The crystals-per-cadet amount is different now.",
+              "The correct answer: both sides stay in the same recipe."
+            ]
+          },
+          "c": {
+            "title": "✕ NOT ABOUT SIZE",
+            "body": [
+              "Big numbers aren't the issue. A ratio of `2 : 3` works the same whether you scale it to `20 : 30` or `200 : 300`. The point is keeping *both* parts in balance."
+            ]
+          },
+          "d": {
+            "title": "✕ NO — ANY WHOLE NUMBER WORKS",
+            "body": [
+              "Scale factors work with any whole number: 2, 3, 5, 7, whatever. The reason you scale both sides is to keep the recipe intact."
+            ]
+          }
+        },
+        "wrongDefault": {
+          "title": "✕ THINK RECIPE",
+          "body": [
+            "Picture doubling a cookie recipe. If you double the flour but keep the sugar the same, you've made a *different* cookie. Same with ratios: both parts, same move."
+          ]
+        }
+      }
+    },
+    {
+      "id": "s13-cfu-callback",
+      "type": "cfu-mcq",
+      "tag": "⚡ TACTICAL DRILL · CFU 07 · MISSION DEBRIEF",
+      "prompt": {
+        "label": "CLOSE THE LOOP",
+        "scenario": "Remember the 28 Alien Cadets that boarded at the start of your shift? Space Command is still on the comms, waiting. Base pair: `7 Cadets : 5 Crystals`. Target: `28 Cadets : ? Crystals`. Run the warp routine.",
+        "question": "How many Fuel Crystals does Space Command need for 28 Alien Cadets?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "letter": "A",
+          "text": "4 Crystals"
+        },
+        {
+          "id": "b",
+          "letter": "B",
+          "text": "20 Crystals"
+        },
+        {
+          "id": "c",
+          "letter": "C",
+          "text": "33 Crystals"
+        },
+        {
+          "id": "d",
+          "letter": "D",
+          "text": "140 Crystals"
+        }
+      ],
+      "correctOptionId": "b",
+      "scoring": {
+        "creditsOnCorrect": 25,
+        "shieldOnWrong": true,
+        "breaksStreakOnWrong": false,
+        "maxAttempts": 2
+      },
+      "feedback": {
+        "correct": {
+          "title": "✓ FLEET FUELED · MISSION CLOSED",
+          "body": [
+            "Scale factor **4** (because `7 × 4 = 28`). Apply it: `5 × 4 = 20 Crystals`. Space Command confirms receipt — the fleet eats tonight.",
+            "**Pro move:** You just ran the whole warp routine on the problem that opened this mission. That's the entire skill — the recipe stays true no matter how big the fleet gets."
+          ],
+          "followup": "Say it with the balance stem: *\"Because I scaled the Cadets up by multiplying by 4, I must scale the Crystals by 4 to maintain orbital equilibrium.\"*"
+        },
+        "wrongByChoice": {
+          "a": {
+            "title": "✕ THAT'S THE SCALE FACTOR, NOT THE ANSWER",
+            "body": [
+              "**4** is the scale factor (`7 × 4 = 28`). That's Step 3 — you're not done yet.",
+              "Step 4: apply the same scale factor to the crystals. `5 × 4 = 20 Crystals`."
+            ]
+          },
+          "c": {
+            "title": "✕ THAT'S ADDITION, NOT SCALING",
+            "body": [
+              "**33** = `5 + 28` — you added the two numbers together. Scaling isn't addition; it's multiplication (or division).",
+              "Scale factor is **4** (`7 × 4 = 28`). Then `5 × 4 = 20 Crystals`."
+            ]
+          },
+          "d": {
+            "title": "✕ TOO MANY CRYSTALS — CHECK THE ROUTINE",
+            "body": [
+              "**140** = `5 × 28`. You multiplied the two numbers directly instead of scaling by the right factor.",
+              "The warp routine: find the scale factor from the SAME side first (`7 × ? = 28` → **4**), then multiply the OTHER side by that factor (`5 × 4 = 20`)."
+            ]
+          }
+        },
+        "wrongDefault": {
+          "title": "✕ SPACE COMMAND IS STILL WAITING",
+          "body": [
+            "Step 3: **7 × ? = 28**. Lock in that scale factor first.",
+            "Step 4: do the same thing to the crystals — 5 × that scale factor."
+          ]
+        }
+      },
+      "image": {
+        "src": "/mission-images/scaling-ratios-v1/1792940899482_scale.png",
+        "alt": ""
+      }
+    },
+    {
+      "id": "s13-complete",
+      "type": "complete",
+      "tag": "◈ MISSION COMPLETE",
+      "headline": "WARP ROUTINE LOCKED IN",
+      "subtext": "You can scale any ratio up or down. 5 steps. 2 directions. 1 recipe that stays true. The fleet eats tonight. 🚀",
+      "rewards": [
+        {
+          "icon": "◈",
+          "label": "CREDITS EARNED",
+          "dynamicValue": "credits"
+        },
+        {
+          "icon": "▲",
+          "label": "RANK XP",
+          "dynamicValue": "rank-delta"
+        },
+        {
+          "icon": "★",
+          "label": "ACCURACY",
+          "dynamicValue": "accuracy"
+        }
+      ],
+      "primaryCta": {
+        "label": "RETURN TO BRIDGE",
+        "action": "return-bridge"
+      },
+      "secondaryCta": {
+        "label": "NEXT MISSION",
+        "action": "next-mission"
+      }
+    }
+  ]
+}

@@ -5,6 +5,8 @@ import dividingFractions from "@/content/missions/dividing-fractions-v1.json";
 import equivalentFractions from "@/content/missions/equivalent-fractions-v1.json";
 import ratiosIntro from "@/content/missions/ratios-intro-v1.json";
 import ratiosLab from "@/content/missions/ratios-lab-v1.json";
+import scalingRatios from "@/content/missions/scaling-ratios-v1.json";
+import scalingRatiosV1 from "@/content/missions/scaling-ratios-v1.json";
 import PlayClient from "./client";
 import { loadMissionRun } from "./run-actions";
 
@@ -13,6 +15,7 @@ const REGISTRY: Record<string, Mission> = {
   "equivalent-fractions-v1":    equivalentFractions as Mission,
   "ratios-intro-v1":            ratiosIntro         as Mission,
   "ratios-lab-v1":              ratiosLab           as Mission,
+  "scaling-ratios-v1":          scalingRatios       as Mission,
 };
 
 export default async function PlayPage({
