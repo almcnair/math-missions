@@ -25,12 +25,17 @@ import {
   Volume2,
   VolumeX,
   Sparkles,
+  ScanLine,
+  Ruler,
+  Weight,
+  Droplets,
 } from "lucide-react";
 import type {
   SimulationSlide,
   FruitPunchRatioConfig,
   FruitPunchPalette,
   EquivalentFractionsTankConfig,
+  CargoScannerConfig,
 } from "@/lib/mission-schema";
 import { scoreCfu, type CfuOutcome } from "../state";
 import { Inline } from "@/lib/inline-markup";
@@ -154,6 +159,16 @@ export function SimulationSlideView({
     case "fruit-punch-ratio":
       return (
         <FruitPunchRatioLab
+          slide={slide}
+          config={slide.config}
+          onResult={onResult}
+          outcome={outcome}
+        />
+      );
+
+    case "cargo-scanner":
+      return (
+        <CargoScannerLab
           slide={slide}
           config={slide.config}
           onResult={onResult}
@@ -1148,6 +1163,259 @@ function IngredientRow({
           +
         </button>
       </div>
+    </div>
+  );
+}
+
+
+// ============================================================================
+// VARIANT 3: Cargo Scanner Lab
+// ----------------------------------------------------------------------------
+// Student must calibrate a scanner by locking in the property (Length/Mass/Volume)
+// and the specific unit.
+// ============================================================================
+
+function CargoScannerLab({
+  slide,
+  config,
+  onResult,
+  outcome,
+}: {
+  slide: SimulationSlide;
+  config: CargoScannerConfig;
+  onResult: (o: CfuOutcome) => void;
+  outcome?: CfuOutcome;
+}) {
+  const answered = !!outcome;
+
+  const [selectedProperty, setSelectedProperty] = useState<"Length" | "Mass" | "Volume" | null>(null);
+  const [selectedUnit, setSelectedUnit] = useState<string | null>(null);
+  
+  const [muted, setMuted] = useState(true);
+  const [showHint, setShowHint] = useState(false);
+
+  const sfxRef = useRef<SoundFX | null>(null);
+  useEffect(() => {
+    if (!sfxRef.current) sfxRef.current = new SoundFX();
+    sfxRef.current.muted = muted;
+  }, [muted]);
+
+  const isSolved = selectedProperty === config.targetProperty && selectedUnit === config.targetUnit;
+  
+  // Wrong combinations for nudging
+  const wrongProperty = selectedProperty && selectedProperty !== config.targetProperty;
+  const wrongUnit = selectedProperty === config.targetProperty && selectedUnit && selectedUnit !== config.targetUnit;
+
+  const attemptCountRef = useRef(0);
+  useEffect(() => {
+    if (isSolved && !answered) {
+      attemptCountRef.current += 1;
+      sfxRef.current?.playSuccess();
+      onResult(scoreCfu({ scoring: slide.scoring, fullyCorrect: true }));
+    }
+  }, [isSolved, answered, onResult, slide.scoring]);
+
+  function handleSelectProperty(prop: "Length" | "Mass" | "Volume") {
+    if (answered) return;
+    setSelectedProperty(prop);
+    setSelectedUnit(null); // Reset unit when property changes
+    if (prop === config.targetProperty) {
+       sfxRef.current?.playBubble(600);
+    } else {
+       sfxRef.current?.playWarning();
+    }
+  }
+
+  function handleSelectUnit(unit: string) {
+    if (answered) return;
+    setSelectedUnit(unit);
+    if (selectedProperty === config.targetProperty && unit !== config.targetUnit) {
+      sfxRef.current?.playWarning();
+    } else {
+      sfxRef.current?.playBubble(800);
+    }
+  }
+
+  return (
+    <div className="space-y-4">
+      {/* Question banner */}
+      <div className="space-y-3">
+        {slide.prompt.label && (
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent-cyan/10 border border-accent-cyan/40 text-accent-cyan text-xs font-mono tracking-wider uppercase">
+            <span className="w-2 h-2 rounded-full bg-accent-cyan animate-pulse" />
+            {slide.prompt.label}
+          </div>
+        )}
+        <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold tracking-tight leading-snug text-text-bright">
+          <Inline>{slide.prompt.question}</Inline>
+        </h2>
+        <p className="text-xs sm:text-sm text-text-dim flex items-start gap-2">
+          <Info className="w-4 h-4 text-accent-cyan shrink-0 mt-0.5" />
+          <span>{config.instruction}</span>
+        </p>
+      </div>
+
+      {/* Scanner HUD */}
+      <div className="bg-bg-panel/80 border border-border-mid rounded-2xl p-4 sm:p-6 shadow-2xl relative overflow-hidden flex flex-col md:flex-row gap-6">
+        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-500 to-cyan-500" />
+        
+        {/* Left: The Object being scanned */}
+        <div className="flex-1 flex flex-col items-center justify-center min-h-[200px] border-2 border-dashed border-border-mid/80 rounded-xl bg-bg-deep/50 relative overflow-hidden group p-6">
+           <ScanLine className="absolute inset-0 w-full h-full text-emerald-500/10 animate-pulse pointer-events-none" />
+           <div className="text-center z-10 space-y-2">
+             <div className="text-xs font-mono text-text-dim tracking-widest uppercase">Target Object</div>
+             <div className="text-2xl sm:text-3xl font-black text-text-bright tracking-wide drop-shadow-[0_0_15px_rgba(255,255,255,0.2)]">
+               {config.objectName}
+             </div>
+           </div>
+           
+           {/* Scanning laser animation */}
+           <div className="absolute top-0 left-0 right-0 h-0.5 bg-emerald-400/50 shadow-[0_0_15px_#34d399] animate-[scan_3s_ease-in-out_infinite] z-20 pointer-events-none" />
+        </div>
+
+        {/* Right: Controls */}
+        <div className="flex-[1.5] space-y-6">
+          <div className="flex items-center justify-between border-b border-border-mid pb-2">
+            <span className="text-xs font-mono text-emerald-400 uppercase tracking-widest flex items-center gap-1.5">
+              <ScanLine className="w-4 h-4" /> SENSOR CALIBRATION
+            </span>
+             <button
+              onClick={() => setMuted((m) => !m)}
+              className="text-text-dim hover:text-emerald-400 transition-colors"
+              title={muted ? "Un-mute sound effects" : "Mute sound effects"}
+            >
+              {muted ? <VolumeX className="w-3.5 h-3.5" /> : <Volume2 className="w-3.5 h-3.5" />}
+            </button>
+          </div>
+
+          {/* Property Selection */}
+          <div className="space-y-2">
+            <div className="text-xs font-mono text-text-dim uppercase tracking-wider">1. Select Property</div>
+            <div className="grid grid-cols-3 gap-2">
+              {[
+                { prop: "Length", icon: Ruler, color: "text-blue-400", border: "border-blue-500/50", bg: "bg-blue-900/20" },
+                { prop: "Mass", icon: Weight, color: "text-amber-400", border: "border-amber-500/50", bg: "bg-amber-900/20" },
+                { prop: "Volume", icon: Droplets, color: "text-purple-400", border: "border-purple-500/50", bg: "bg-purple-900/20" }
+              ].map(({ prop, icon: Icon, color, border, bg }) => {
+                const active = selectedProperty === prop;
+                return (
+                  <button
+                    key={prop}
+                    onClick={() => handleSelectProperty(prop as "Length"|"Mass"|"Volume")}
+                    disabled={answered}
+                    className={`flex flex-col items-center justify-center p-3 rounded-lg border transition-all ${
+                      active 
+                        ? `${bg} ${border} ${color} shadow-[0_0_15px_currentColor]`
+                        : "bg-bg-deep/80 border-border-mid text-text-dim hover:border-text-dim/50"
+                    } disabled:opacity-40 disabled:cursor-not-allowed`}
+                  >
+                    <Icon className="w-6 h-6 mb-1" />
+                    <span className="text-xs font-bold font-mono tracking-wide">{prop}</span>
+                  </button>
+                )
+              })}
+            </div>
+            {wrongProperty && (
+               <div className="text-xs text-pink-400 flex items-center gap-1.5 mt-2 animate-nudge-in">
+                 <AlertTriangle className="w-3.5 h-3.5" /> Incorrect property. What are we trying to measure here?
+               </div>
+            )}
+          </div>
+
+          {/* Unit Selection (Only shows if they pick the correct property) */}
+          <div className={`space-y-2 transition-all duration-300 ${selectedProperty === config.targetProperty ? 'opacity-100 translate-y-0' : 'opacity-30 pointer-events-none translate-y-2'}`}>
+             <div className="text-xs font-mono text-text-dim uppercase tracking-wider">2. Select Unit Scale</div>
+             <div className="flex flex-wrap gap-2">
+               {config.availableUnits.map(unit => {
+                 const active = selectedUnit === unit;
+                 return (
+                    <button
+                      key={unit}
+                      onClick={() => handleSelectUnit(unit)}
+                      disabled={answered || selectedProperty !== config.targetProperty}
+                      className={`px-3 py-2 rounded-lg text-sm font-bold transition-all border ${
+                         active 
+                           ? "bg-emerald-900/30 border-emerald-500 text-emerald-400 shadow-[0_0_12px_rgba(52,211,153,0.3)]"
+                           : "bg-bg-deep/80 border-border-mid text-text-dim hover:text-text-bright hover:border-text-dim/50"
+                      } disabled:cursor-not-allowed`}
+                    >
+                      {unit}
+                    </button>
+                 )
+               })}
+             </div>
+              {wrongUnit && (
+               <div className="text-xs text-pink-400 flex items-center gap-1.5 mt-2 animate-nudge-in">
+                 <AlertTriangle className="w-3.5 h-3.5" /> Right property, but wrong scale! Is that unit too big or too small?
+               </div>
+            )}
+          </div>
+        </div>
+
+        {/* Success Overlay */}
+         {answered && outcome?.correct && (
+          <div className="absolute inset-0 z-40 rounded-2xl bg-bg-deep/95 backdrop-blur-sm border-2 border-emerald-500/60 shadow-[0_0_40px_rgba(16,185,129,0.4)] p-5 sm:p-8 flex flex-col items-center justify-center text-center overflow-hidden animate-success-in">
+             <div className="relative flex flex-col items-center gap-3 max-w-xl">
+              <div className="flex items-center gap-2 text-emerald-400">
+                <Sparkles className="w-6 h-6 animate-pulse" />
+                <CheckCircle2 className="w-10 h-10 sm:w-12 sm:h-12" />
+                <Sparkles className="w-6 h-6 animate-pulse" />
+              </div>
+
+              <h3 className="font-display font-black text-2xl sm:text-3xl md:text-4xl text-emerald-300 tracking-wider uppercase">
+                {slide.feedback.correct.title || "Scan Complete!"}
+              </h3>
+
+              <div className="space-y-2 mt-1">
+                {slide.feedback.correct.body.map((line, i) => (
+                  <p key={i} className="text-sm sm:text-base text-text-bright leading-relaxed">
+                    <Inline>{line}</Inline>
+                  </p>
+                ))}
+                {slide.feedback.correct.followup && (
+                  <p className="text-xs sm:text-sm text-text-dim italic mt-2">
+                    <Inline>{slide.feedback.correct.followup}</Inline>
+                  </p>
+                )}
+              </div>
+
+              <p className="text-[11px] font-mono text-emerald-400/80 uppercase tracking-widest mt-3">
+                ↓ Press Continue to keep going ↓
+              </p>
+            </div>
+          </div>
+        )}
+      </div>
+
+       {/* Hint accordion */}
+      {!answered && (
+        <div>
+          <button
+            onClick={() => setShowHint((v) => !v)}
+            className="w-full flex items-center justify-between text-xs text-amber-400/90 hover:text-amber-300 bg-amber-950/20 hover:bg-amber-950/40 border border-amber-500/30 p-2 rounded-lg transition-colors"
+          >
+            <span className="flex items-center gap-1.5 font-mono">
+              <HelpCircle className="w-3.5 h-3.5" /> NEED A HINT?
+            </span>
+            <span>{showHint ? "▲" : "▼"}</span>
+          </button>
+          {showHint && (
+            <div className="mt-2 p-2.5 rounded-lg bg-amber-950/30 border border-amber-500/40 text-amber-200 text-xs leading-relaxed">
+              {config.hint}
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* Scanner Animation Keyframe */}
+      <style>{`
+        @keyframes scan {
+          0%, 100% { transform: translateY(0); opacity: 0; }
+          10% { opacity: 1; }
+          90% { opacity: 1; }
+          50% { transform: translateY(200px); }
+        }
+      `}</style>
     </div>
   );
 }

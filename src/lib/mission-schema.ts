@@ -312,9 +312,31 @@ export interface HighlightSpan {
 // Advancement is gated exactly like any CFU: the sim reports a CfuOutcome
 // via `onResult` once the student hits the target, then Continue unlocks.
 
+
+// ---------- Cargo Scanner Simulation -----------------------------------------
+//
+// Student is shown an object (e.g. "Cargo door", "Coolant tank") and must calibrate
+// the scanner by selecting the correct property (Length, Mass, Volume) and unit.
+export interface CargoScannerConfig {
+  variant: "cargo-scanner";
+  /** Target object to measure (e.g. "Microchip", "Coolant tank") */
+  objectName: string;
+  /** Property we are measuring. */
+  targetProperty: "Length" | "Mass" | "Volume";
+  /** Correct base unit / prefix combined (e.g. "Millimeters", "Liters") */
+  targetUnit: string;
+  /** Options available for selection to make it a CFU (e.g. ["Millimeters", "Meters", "Kilometers"]) */
+  availableUnits: string[];
+  /** Human-readable instruction shown under the question banner. */
+  instruction: string;
+  /** Coach-mode hint revealed by the "NEED A HINT?" accordion. */
+  hint: string;
+}
+
 export type SimulationVariant =
   | FruitPunchRatioConfig
-  | EquivalentFractionsTankConfig;
+  | EquivalentFractionsTankConfig
+  | CargoScannerConfig;
 
 /**
  * Per-ingredient visual identity. Optional on the config — when omitted,

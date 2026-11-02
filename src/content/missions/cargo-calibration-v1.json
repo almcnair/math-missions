@@ -1,0 +1,310 @@
+{
+  "id": "cargo-calibration-v1",
+  "campaignId": "measurements-and-data",
+  "sectorId": "measurement-units",
+  "number": 4,
+  "title": "Cargo Bay Calibration",
+  "subtitle": "Length, Mass, & Volume",
+  "tagline": "The inventory robot's sensors are glitching. Recalibrate the scanner before the cargo bay overflows.",
+  "estimatedMinutes": 10,
+  "difficulty": "intro",
+  "rewards": {
+    "credits": 250,
+    "rankXp": 50
+  },
+  "unlocks": [],
+  "prerequisites": [],
+  "protectedTerms": [
+    "length",
+    "mass",
+    "volume",
+    "meter",
+    "gram",
+    "liter"
+  ],
+  "passingCriteria": {
+    "requireAllCfu": true,
+    "shieldsAtZero": "allow-continue"
+  },
+  "slides": [
+    {
+      "id": "cargo-s1-hook",
+      "type": "hook",
+      "tag": "⟡ MISSION BRIEFING",
+      "tagTone": "amber",
+      "headline": "Warning: Sensor Malfunction",
+      "body": [
+        "A heavy cargo ship just docked, but our inventory robot is completely glitching out. It's trying to measure the volume of a wrench and the length of our coolant water!",
+        "If it keeps logging these broken measurements, the cargo bay will overflow. The Math Cadet needs to take manual control of the Cargo Scanner and recalibrate the units."
+      ]
+    },
+    {
+      "id": "cargo-s2-concept",
+      "type": "concept",
+      "tag": "⟡ THE BIG THREE",
+      "headline": "What are we measuring?",
+      "intro": "Before you calibrate the scanner, you need to know which property to check.",
+      "cards": [
+        {
+          "id": "prop-length",
+          "icon": "Ruler",
+          "name": "Length / Distance",
+          "description": "How long, wide, or far something is.",
+          "example": {
+            "label": "BASE UNIT",
+            "text": "Meter (m)"
+          },
+          "accent": "cyan"
+        },
+        {
+          "id": "prop-mass",
+          "icon": "Weight",
+          "name": "Mass / Weight",
+          "description": "How heavy something is.",
+          "example": {
+            "label": "BASE UNIT",
+            "text": "Gram (g)"
+          },
+          "accent": "amber"
+        },
+        {
+          "id": "prop-volume",
+          "icon": "Droplets",
+          "name": "Volume / Capacity",
+          "description": "How much space a liquid takes up.",
+          "example": {
+            "label": "BASE UNIT",
+            "text": "Liter (L)"
+          },
+          "accent": "magenta"
+        }
+      ]
+    },
+    {
+      "id": "cargo-s3-length-sim",
+      "type": "cfu-simulation",
+      "tag": "⟡ CALIBRATION 1",
+      "prompt": {
+        "question": "Calibrate the scanner for this item."
+      },
+      "scoring": {
+        "creditsOnCorrect": 50,
+        "shieldOnWrong": false,
+        "breaksStreakOnWrong": false
+      },
+      "feedback": {
+        "correct": {
+          "title": "Lock Confirmed!",
+          "body": [
+            "We use **Meters** to measure length. Millimeters are for tiny things (like a bug), and Kilometers are for long distances (like between cities)."
+          ]
+        },
+        "wrongDefault": {
+          "title": "Sensor Error",
+          "body": [
+            "Try again!"
+          ]
+        }
+      },
+      "config": {
+        "variant": "cargo-scanner",
+        "objectName": "Cargo Bay Door",
+        "targetProperty": "Length",
+        "targetUnit": "Meters",
+        "availableUnits": [
+          "Millimeters",
+          "Meters",
+          "Kilometers"
+        ],
+        "instruction": "Select what property to measure, then lock in the correct unit scale.",
+        "hint": "A cargo door is pretty tall. You wouldn't want to measure it in tiny millimeters, but a kilometer is way too big."
+      }
+    },
+    {
+      "id": "cargo-s4-mass-sim",
+      "type": "cfu-simulation",
+      "tag": "⟡ CALIBRATION 2",
+      "prompt": {
+        "question": "Scan the heavy machinery."
+      },
+      "scoring": {
+        "creditsOnCorrect": 50,
+        "shieldOnWrong": false,
+        "breaksStreakOnWrong": false
+      },
+      "feedback": {
+        "correct": {
+          "title": "Mass Logged!",
+          "body": [
+            "Heavy objects are measured in **Kilograms**. Grams are for light things like a paperclip, and Milligrams are for tiny amounts of medicine."
+          ]
+        },
+        "wrongDefault": {
+          "title": "Sensor Error",
+          "body": [
+            "Try again!"
+          ]
+        }
+      },
+      "config": {
+        "variant": "cargo-scanner",
+        "objectName": "Anti-Gravity Engine",
+        "targetProperty": "Mass",
+        "targetUnit": "Kilograms",
+        "availableUnits": [
+          "Milligrams",
+          "Grams",
+          "Kilograms"
+        ],
+        "instruction": "Lock in the correct property and unit for measuring something heavy.",
+        "hint": "An engine is very heavy. You need the biggest unit of mass on this list."
+      }
+    },
+    {
+      "id": "cargo-s5-volume-sim",
+      "type": "cfu-simulation",
+      "tag": "⟡ CALIBRATION 3",
+      "prompt": {
+        "question": "Scan the liquid supply."
+      },
+      "scoring": {
+        "creditsOnCorrect": 50,
+        "shieldOnWrong": false,
+        "breaksStreakOnWrong": false
+      },
+      "feedback": {
+        "correct": {
+          "title": "Volume Locked!",
+          "body": [
+            "A large tank holds **Liters** of liquid. Milliliters are too small — you'd use those for a spoonful of medicine."
+          ]
+        },
+        "wrongDefault": {
+          "title": "Sensor Error",
+          "body": [
+            "Try again!"
+          ]
+        }
+      },
+      "config": {
+        "variant": "cargo-scanner",
+        "objectName": "Coolant Tank",
+        "targetProperty": "Volume",
+        "targetUnit": "Liters",
+        "availableUnits": [
+          "Milliliters",
+          "Liters"
+        ],
+        "instruction": "Lock in the correct property and unit for measuring a large liquid tank.",
+        "hint": "A tank holds a lot of liquid. Think about a large soda bottle."
+      }
+    },
+    {
+      "id": "cargo-s6-traps",
+      "type": "strategy",
+      "tag": "⟡ MATH TRAPS",
+      "headline": "The Reasonableness Check",
+      "intro": "Even when the robot picks the right unit, the number might be totally wrong. Always ask yourself: **Does this make sense?**",
+      "rows": [
+        {
+          "name": "The \"Too Big\" Trap",
+          "description": "Logging a coffee cup as holding 5 Liters. (A 2-Liter soda bottle is huge — a coffee cup is much smaller!).",
+          "counter": {
+            "label": "CHECK",
+            "text": "Is the number too big for real life?"
+          }
+        },
+        {
+          "name": "The \"Too Small\" Trap",
+          "description": "Logging a spacesuit as weighing 5 grams. (A nickel weighs about 5 grams!).",
+          "counter": {
+            "label": "CHECK",
+            "text": "Is the number too small for real life?"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cargo-s7-final-check",
+      "type": "cfu-mcq",
+      "tag": "⟡ FINAL REVIEW",
+      "prompt": {
+        "scenario": "The robot submitted one last cargo log. Perform a Reasonableness Check.",
+        "question": "Which of these log entries is definitely BROKEN?"
+      },
+      "options": [
+        {
+          "id": "opt-a",
+          "letter": "A",
+          "text": "Wrench length: 15 centimeters"
+        },
+        {
+          "id": "opt-b",
+          "letter": "B",
+          "text": "Astronaut mass: 80 kilograms"
+        },
+        {
+          "id": "opt-c",
+          "letter": "C",
+          "text": "Water bottle volume: 400 liters"
+        }
+      ],
+      "correctOptionId": "opt-c",
+      "scoring": {
+        "creditsOnCorrect": 100,
+        "shieldOnWrong": true,
+        "breaksStreakOnWrong": true
+      },
+      "feedback": {
+        "correct": {
+          "title": "Log Deleted!",
+          "body": [
+            "Exactly! A single water bottle does not hold 400 liters (that's like a small swimming pool). The robot messed up."
+          ]
+        },
+        "wrongByChoice": {
+          "opt-a": {
+            "title": "That one is fine!",
+            "body": [
+              "A wrench is about 15 centimeters long (a bit shorter than a standard ruler). Try checking the other logs."
+            ]
+          },
+          "opt-b": {
+            "title": "That one is fine!",
+            "body": [
+              "An adult astronaut weighing 80 kilograms makes perfect sense. Check the other logs."
+            ]
+          }
+        },
+        "wrongDefault": {
+          "title": "Math Trap",
+          "body": [
+            "Think about how big these objects are in real life."
+          ]
+        }
+      }
+    },
+    {
+      "id": "cargo-s8-complete",
+      "type": "complete",
+      "headline": "Mission Complete",
+      "subtext": "The Cargo Scanner is recalibrated and the station is fully supplied.",
+      "rewards": [
+        {
+          "icon": "coins",
+          "label": "CREDITS",
+          "dynamicValue": "credits"
+        },
+        {
+          "icon": "target",
+          "label": "ACCURACY",
+          "dynamicValue": "accuracy"
+        }
+      ],
+      "primaryCta": {
+        "label": "RETURN TO BRIDGE",
+        "action": "return-bridge"
+      }
+    }
+  ]
+}

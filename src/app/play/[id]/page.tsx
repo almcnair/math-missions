@@ -7,6 +7,7 @@ import ratiosIntro from "@/content/missions/ratios-intro-v1.json";
 import ratiosLab from "@/content/missions/ratios-lab-v1.json";
 import scalingRatios from "@/content/missions/scaling-ratios-v1.json";
 import scalingRatiosV1 from "@/content/missions/scaling-ratios-v1.json";
+import cargoCalibrationV1 from "@/content/missions/cargo-calibration-v1.json";
 import ratiosIntroV1 from "@/content/missions/ratios-intro-v1.json";
 import PlayClient from "./client";
 import { loadMissionRun } from "./run-actions";
@@ -17,6 +18,7 @@ const REGISTRY: Record<string, Mission> = {
   "ratios-intro-v1":            ratiosIntro         as Mission,
   "ratios-lab-v1":              ratiosLab           as Mission,
   "scaling-ratios-v1":          scalingRatios       as Mission,
+  "cargo-calibration-v1":    cargoCalibrationV1 as Mission,
 };
 
 export default async function PlayPage({
