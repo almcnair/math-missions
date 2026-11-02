@@ -321,6 +321,8 @@ export interface CargoScannerConfig {
   variant: "cargo-scanner";
   /** Target object to measure (e.g. "Microchip", "Coolant tank") */
   objectName: string;
+  /** Optional image URL to display inside the scanner */
+  objectImage?: string;
   /** Property we are measuring. */
   targetProperty: "Length" | "Mass" | "Volume";
   /** Correct base unit / prefix combined (e.g. "Millimeters", "Liters") */

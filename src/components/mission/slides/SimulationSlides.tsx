@@ -1262,9 +1262,15 @@ function CargoScannerLab({
         {/* Left: The Object being scanned */}
         <div className="flex-1 flex flex-col items-center justify-center min-h-[200px] border-2 border-dashed border-border-mid/80 rounded-xl bg-bg-deep/50 relative overflow-hidden group p-6">
            <ScanLine className="absolute inset-0 w-full h-full text-emerald-500/10 animate-pulse pointer-events-none" />
-           <div className="text-center z-10 space-y-2">
+           <div className="text-center z-10 space-y-2 flex flex-col items-center justify-center">
              <div className="text-xs font-mono text-text-dim tracking-widest uppercase">Target Object</div>
-             <div className="text-2xl sm:text-3xl font-black text-text-bright tracking-wide drop-shadow-[0_0_15px_rgba(255,255,255,0.2)]">
+             {config.objectImage ? (
+                <div className="relative w-32 h-32 sm:w-40 sm:h-40 my-2 rounded-xl overflow-hidden shadow-[0_0_20px_rgba(52,211,153,0.15)] border border-emerald-500/20 bg-bg-deep">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={config.objectImage} alt={config.objectName} className="w-full h-full object-contain" />
+                </div>
+             ) : null}
+             <div className="text-xl sm:text-2xl font-black text-text-bright tracking-wide drop-shadow-[0_0_15px_rgba(255,255,255,0.2)]">
                {config.objectName}
              </div>
            </div>

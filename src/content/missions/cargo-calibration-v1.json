@@ -117,7 +117,8 @@
           "Kilometers"
         ],
         "instruction": "Select what property to measure, then lock in the correct unit scale.",
-        "hint": "A cargo door is pretty tall. You wouldn't want to measure it in tiny millimeters, but a kilometer is way too big."
+        "hint": "A cargo door is pretty tall. You wouldn't want to measure it in tiny millimeters, but a kilometer is way too big.",
+        "objectImage": "/mission-images/cargo-calibration-v1/cargo-door.png"
       }
     },
     {
@@ -157,7 +158,8 @@
           "Kilograms"
         ],
         "instruction": "Lock in the correct property and unit for measuring something heavy.",
-        "hint": "An engine is very heavy. You need the biggest unit of mass on this list."
+        "hint": "An engine is very heavy. You need the biggest unit of mass on this list.",
+        "objectImage": "/mission-images/cargo-calibration-v1/anti-gravity-engine.png"
       }
     },
     {
@@ -196,7 +198,8 @@
           "Liters"
         ],
         "instruction": "Lock in the correct property and unit for measuring a large liquid tank.",
-        "hint": "A tank holds a lot of liquid. Think about a large soda bottle."
+        "hint": "A tank holds a lot of liquid. Think about a large soda bottle.",
+        "objectImage": "/mission-images/cargo-calibration-v1/coolant-tank.png"
       }
     },
     {
