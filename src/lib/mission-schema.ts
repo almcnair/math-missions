@@ -324,7 +324,7 @@ export interface CargoScannerConfig {
   /** Optional image URL to display inside the scanner */
   objectImage?: string;
   /** Property we are measuring. */
-  targetProperty: "Length" | "Mass" | "Volume";
+  targetProperty: "Length" | "Mass" | "Volume" | "Weight";
   /** Correct base unit / prefix combined (e.g. "Millimeters", "Liters") */
   targetUnit: string;
   /** Options available for selection to make it a CFU (e.g. ["Millimeters", "Meters", "Kilometers"]) */

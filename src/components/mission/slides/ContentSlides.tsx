@@ -211,7 +211,7 @@ export function ConceptSlideView({ slide }: { slide: ConceptSlide }) {
       {slide.intro && (
         <p className="max-w-prose text-lg leading-relaxed text-text-bright"><Inline>{slide.intro}</Inline></p>
       )}
-      <MissionImageView image={slide.image} />
+      <MissionImageView image={slide.image} className="max-w-sm mx-auto" />
       <div className="grid md:grid-cols-3 gap-4">
         {slide.cards.map((c) => (
           <div
@@ -248,7 +248,7 @@ export function StrategySlideView({ slide }: { slide: StrategySlide }) {
       {slide.intro && (
         <p className="max-w-prose text-lg leading-relaxed text-text-bright"><Inline>{slide.intro}</Inline></p>
       )}
-      <MissionImageView image={slide.image} />
+      <MissionImageView image={slide.image} className="max-w-sm mx-auto" />
       <ol className="space-y-4 pt-2">
         {slide.rows.map((row, i) => (
           <StrategyRowView key={i} row={row} num={i + 1} />

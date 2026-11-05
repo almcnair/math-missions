@@ -29,6 +29,7 @@ import {
   Ruler,
   Weight,
   Droplets,
+  Scale,
 } from "lucide-react";
 import type {
   SimulationSlide,
@@ -1188,7 +1189,7 @@ function CargoScannerLab({
 }) {
   const answered = !!outcome;
 
-  const [selectedProperty, setSelectedProperty] = useState<"Length" | "Mass" | "Volume" | null>(null);
+  const [selectedProperty, setSelectedProperty] = useState<"Length" | "Mass" | "Volume" | "Weight" | null>(null);
   const [selectedUnit, setSelectedUnit] = useState<string | null>(null);
   
   const [muted, setMuted] = useState(true);
@@ -1215,7 +1216,7 @@ function CargoScannerLab({
     }
   }, [isSolved, answered, onResult, slide.scoring]);
 
-  function handleSelectProperty(prop: "Length" | "Mass" | "Volume") {
+  function handleSelectProperty(prop: "Length" | "Mass" | "Volume" | "Weight") {
     if (answered) return;
     setSelectedProperty(prop);
     setSelectedUnit(null); // Reset unit when property changes
@@ -1297,17 +1298,18 @@ function CargoScannerLab({
           {/* Property Selection */}
           <div className="space-y-2">
             <div className="text-xs font-mono text-text-dim uppercase tracking-wider">1. Select Property</div>
-            <div className="grid grid-cols-3 gap-2">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
               {[
                 { prop: "Length", icon: Ruler, color: "text-blue-400", border: "border-blue-500/50", bg: "bg-blue-900/20" },
-                { prop: "Mass", icon: Weight, color: "text-amber-400", border: "border-amber-500/50", bg: "bg-amber-900/20" },
-                { prop: "Volume", icon: Droplets, color: "text-purple-400", border: "border-purple-500/50", bg: "bg-purple-900/20" }
+                { prop: "Volume", icon: Droplets, color: "text-purple-400", border: "border-purple-500/50", bg: "bg-purple-900/20" },
+                { prop: "Weight", icon: Scale, color: "text-amber-400", border: "border-amber-500/50", bg: "bg-amber-900/20" },
+                { prop: "Mass", icon: Weight, color: "text-emerald-400", border: "border-emerald-500/50", bg: "bg-emerald-900/20" }
               ].map(({ prop, icon: Icon, color, border, bg }) => {
                 const active = selectedProperty === prop;
                 return (
                   <button
                     key={prop}
-                    onClick={() => handleSelectProperty(prop as "Length"|"Mass"|"Volume")}
+                    onClick={() => handleSelectProperty(prop as "Length"|"Mass"|"Volume"|"Weight")}
                     disabled={answered}
                     className={`flex flex-col items-center justify-center p-3 rounded-lg border transition-all ${
                       active 

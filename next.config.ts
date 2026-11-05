@@ -1,6 +1,11 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // Allow dev HMR/resources when accessing the dev server through the OpenClaw
+  // portal proxy (127.0.0.1:<random>) instead of localhost:3000. Without this,
+  // Next.js 16 blocks the client JS cross-origin and buttons stop working.
+  // Dev-only — ignored in production builds.
+  allowedDevOrigins: ["127.0.0.1", "localhost"],
   async rewrites() {
     return [
       // Public marketing/landing homepage (static HTML in public/landing/).
