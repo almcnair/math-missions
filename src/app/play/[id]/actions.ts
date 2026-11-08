@@ -31,19 +31,33 @@ export async function logCfuAttempt(args: LogCfuArgs): Promise<{ ok: boolean; er
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) return { ok: false, error: "not-authenticated" };
 
-  const { error } = await supabase.from("cfu_attempts").insert({
+  // Get the student's class_id (assuming one class for now)
+  const { data: enrollments } = await supabase
+    .from("enrollments")
+    .select("class_id")
+    .eq("student_id", user.id)
+    .limit(1);
+    
+  const class_id = enrollments?.[0]?.class_id;
+  if (!class_id) return { ok: false, error: "not-enrolled" };
+
+  // Insert into the actual 'attempts' table per schema.sql
+  const { error } = await supabase.from("attempts").insert({
     student_id: user.id,
+    class_id: class_id,
     mission_id: args.missionId,
-    cfu_id: args.cfuId,
-    cfu_type: args.cfuType,
-    is_correct: args.isCorrect,
-    partial_score: args.partialScore ?? null,
-    credits_earned: args.creditsEarned,
-    attempt_number: args.attemptNumber,
-    raw_response: args.rawResponse ?? null,
+    slide_id: args.cfuId,
+    type: args.cfuType,
+    correct: args.isCorrect,
+    details: args.rawResponse ?? {},
+    started_at: new Date().toISOString(),
+    time_spent_ms: 5000 // Placeholder until timer is added to MissionPlayer
   });
 
-  if (error) return { ok: false, error: error.message };
+  if (error) {
+    console.error("Failed to log attempt:", error);
+    return { ok: false, error: error.message };
+  }
   return { ok: true };
 }
 

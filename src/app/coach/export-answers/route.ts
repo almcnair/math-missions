@@ -14,7 +14,7 @@
 // Question numbers come from each mission's JSON — we count CFU-type slides
 // in slide order (Q1, Q2, Q3...). Non-CFU slides are skipped. If a CFU id
 // can't be resolved (mission removed, slide renamed), we fall back to the
-// raw cfu_id so the row still exports.
+// raw slide_id so the row still exports.
 // ============================================================================
 
 import { NextRequest, NextResponse } from "next/server";
@@ -76,7 +76,7 @@ export async function GET(_request: NextRequest) {
 
   const { data: attempts, error: attemptsErr } = await admin
     .from("cfu_attempts")
-    .select("student_id, mission_id, cfu_id, is_correct, partial_score, created_at")
+    .select("student_id, mission_id, slide_id, is_correct, partial_score, created_at")
     .order("created_at", { ascending: true });
 
   if (attemptsErr) {
@@ -112,9 +112,9 @@ export async function GET(_request: NextRequest) {
     const name = profile?.display_name ?? "(unknown student)";
     const email = profile?.email ?? "";
 
-    const meta = missionIndex.get(`${a.mission_id}:${a.cfu_id}`);
+    const meta = missionIndex.get(`${a.mission_id}:${a.slide_id}`);
     const missionTitle = meta?.missionTitle ?? String(a.mission_id);
-    const questionCol = meta ? `Q${meta.questionNumber}` : String(a.cfu_id);
+    const questionCol = meta ? `Q${meta.questionNumber}` : String(a.slide_id);
 
     let correct: string;
     if (a.is_correct) {
