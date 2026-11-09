@@ -4,23 +4,27 @@
   "sectorId": "measurement-units",
   "number": 4,
   "title": "Cargo Bay Calibration",
-  "subtitle": "Length, Mass, & Volume",
+  "subtitle": "Length, Volume, Weight & Mass",
   "tagline": "The inventory robot's sensors are glitching. Recalibrate the scanner before the cargo bay overflows.",
-  "estimatedMinutes": 10,
+  "estimatedMinutes": 12,
   "difficulty": "intro",
   "rewards": {
-    "credits": 250,
+    "credits": 280,
     "rankXp": 50
   },
   "unlocks": [],
   "prerequisites": [],
   "protectedTerms": [
     "length",
-    "mass",
     "volume",
+    "weight",
+    "mass",
     "meter",
-    "gram",
-    "liter"
+    "foot",
+    "liter",
+    "gallon",
+    "pound",
+    "kilogram"
   ],
   "passingCriteria": {
     "requireAllCfu": true,
@@ -35,50 +39,71 @@
       "headline": "Warning: Sensor Malfunction",
       "body": [
         "A heavy cargo ship just docked, but our inventory robot is completely glitching out. It's trying to measure the volume of a wrench and the length of our coolant water!",
-        "If it keeps logging these broken measurements, the cargo bay will overflow. The Math Cadet needs to take manual control of the Cargo Scanner and recalibrate the units."
-      ]
+        "The Math Cadet needs to take manual control of the Cargo Scanner and recalibrate every sensor — length, volume, weight, and mass — before the whole bay goes offline."
+      ],
+      "image": {
+        "src": "/mission-images/cargo-calibration-v1/sensor-glitch.png",
+        "alt": "An inventory robot stands beside cargo crates, its sensor display glitching with error symbols while an amber warning light flashes above.",
+        "aspectRatio": 1.7777777777777777
+      }
     },
     {
       "id": "cargo-s2-concept",
       "type": "concept",
-      "tag": "⟡ THE BIG THREE",
-      "headline": "What are we measuring?",
-      "intro": "Before you calibrate the scanner, you need to know which property to check.",
+      "tag": "⟡ THE BIG FOUR",
+      "headline": "Four properties. Four scanners.",
+      "intro": "Before you calibrate, you need to know which property to check — and which unit system goes with it. Use the **Measurement Graphic Organizer** as your reference.",
       "cards": [
         {
           "id": "prop-length",
           "icon": "Ruler",
-          "name": "Length / Distance",
+          "name": "Length",
           "description": "How long, wide, or far something is.",
           "example": {
-            "label": "BASE UNIT",
-            "text": "Meter (m)"
+            "label": "BASE UNITS",
+            "text": "Meters (metric) · Feet (customary)"
           },
           "accent": "cyan"
         },
         {
-          "id": "prop-mass",
-          "icon": "Weight",
-          "name": "Mass / Weight",
-          "description": "How heavy something is.",
+          "id": "prop-volume",
+          "icon": "Beaker",
+          "name": "Volume",
+          "description": "How much space a liquid fills.",
+          "example": {
+            "label": "BASE UNITS",
+            "text": "Liters (metric) · Gallons (customary)"
+          },
+          "accent": "cyan"
+        },
+        {
+          "id": "prop-weight",
+          "icon": "Scale",
+          "name": "Weight",
+          "description": "How heavy something feels on Earth. **Customary system.**",
           "example": {
             "label": "BASE UNIT",
-            "text": "Gram (g)"
+            "text": "Pound (lb)"
           },
           "accent": "amber"
         },
         {
-          "id": "prop-volume",
-          "icon": "Droplets",
-          "name": "Volume / Capacity",
-          "description": "How much space a liquid takes up.",
+          "id": "prop-mass",
+          "icon": "Weight",
+          "name": "Mass",
+          "description": "How much matter is inside an object. **Metric system.**",
           "example": {
             "label": "BASE UNIT",
-            "text": "Liter (L)"
+            "text": "Kilogram (kg)"
           },
-          "accent": "magenta"
+          "accent": "amber"
         }
-      ]
+      ],
+      "image": {
+        "src": "/mission-images/cargo-calibration-v1/four-properties.png",
+        "alt": "Four holographic sensor panels in a row showing icons for length (ruler), volume (beaker), weight (balance scale), and mass (digital scale).",
+        "aspectRatio": 1.7777777777777777
+      }
     },
     {
       "id": "cargo-s3-length-sim",
@@ -96,7 +121,7 @@
         "correct": {
           "title": "Lock Confirmed!",
           "body": [
-            "We use **Meters** to measure length. Millimeters are for tiny things (like a bug), and Kilometers are for long distances (like between cities)."
+            "We use **Meters** (metric) or **Feet** (customary) to measure length. Reference: 1 Foot = 12 Inches, 1 Meter = 100 cm."
           ]
         },
         "wrongDefault": {
@@ -122,9 +147,50 @@
       }
     },
     {
-      "id": "cargo-s4-mass-sim",
+      "id": "cargo-s4-weight-sim",
       "type": "cfu-simulation",
       "tag": "⟡ CALIBRATION 2",
+      "prompt": {
+        "question": "Weigh the incoming supplies."
+      },
+      "scoring": {
+        "creditsOnCorrect": 50,
+        "shieldOnWrong": false,
+        "breaksStreakOnWrong": false
+      },
+      "feedback": {
+        "correct": {
+          "title": "Weight Confirmed!",
+          "body": [
+            "Weight is a **customary** measurement. Ounces for small items (a slice of bread ≈ 1 oz), **Pounds** for mid-weight items, Tons for vehicles or shipping containers. Reference: 1 Pound = 16 Ounces, 1 Ton = 2,000 Pounds."
+          ]
+        },
+        "wrongDefault": {
+          "title": "Sensor Error",
+          "body": [
+            "Try again!"
+          ]
+        }
+      },
+      "config": {
+        "variant": "cargo-scanner",
+        "objectName": "Supply Crate",
+        "targetProperty": "Weight",
+        "targetUnit": "Pounds",
+        "availableUnits": [
+          "Ounces",
+          "Pounds",
+          "Tons"
+        ],
+        "instruction": "Lock in the correct property and unit for weighing this crate.",
+        "hint": "A supply crate is heavy, but not vehicle-heavy. 1 Ton = 2,000 pounds — way more than one crate.",
+        "objectImage": "/mission-images/cargo-calibration-v1/supply-crate.png"
+      }
+    },
+    {
+      "id": "cargo-s5-mass-sim",
+      "type": "cfu-simulation",
+      "tag": "⟡ CALIBRATION 3",
       "prompt": {
         "question": "Scan the heavy machinery."
       },
@@ -137,7 +203,7 @@
         "correct": {
           "title": "Mass Logged!",
           "body": [
-            "Heavy objects are measured in **Kilograms**. Grams are for light things like a paperclip, and Milligrams are for tiny amounts of medicine."
+            "Mass is a **metric** measurement — **Kilograms** for heavy objects, Grams for a paperclip, Milligrams for medicine doses. 1 kg = 1,000 g. (Remember: Weight uses pounds — Mass uses kilograms.)"
           ]
         },
         "wrongDefault": {
@@ -163,9 +229,9 @@
       }
     },
     {
-      "id": "cargo-s5-volume-sim",
+      "id": "cargo-s6-volume-sim",
       "type": "cfu-simulation",
-      "tag": "⟡ CALIBRATION 3",
+      "tag": "⟡ CALIBRATION 4",
       "prompt": {
         "question": "Scan the liquid supply."
       },
@@ -178,7 +244,7 @@
         "correct": {
           "title": "Volume Locked!",
           "body": [
-            "A large tank holds **Liters** of liquid. Milliliters are too small — you'd use those for a spoonful of medicine."
+            "**Liters** (metric) and **Gallons** (customary) both measure volume. 1 Liter = 10 Deciliters; 1 Gallon = 4 Quarts. Milliliters are way too small for a tank — you'd use those for a spoonful of medicine."
           ]
         },
         "wrongDefault": {
@@ -195,15 +261,16 @@
         "targetUnit": "Liters",
         "availableUnits": [
           "Milliliters",
-          "Liters"
+          "Liters",
+          "Gallons"
         ],
         "instruction": "Lock in the correct property and unit for measuring a large liquid tank.",
-        "hint": "A tank holds a lot of liquid. Think about a large soda bottle.",
+        "hint": "A tank holds a lot of liquid. Think about a large soda bottle — bigger than a milliliter, smaller than a gallon-sized jug.",
         "objectImage": "/mission-images/cargo-calibration-v1/coolant-tank.png"
       }
     },
     {
-      "id": "cargo-s6-traps",
+      "id": "cargo-s7-traps",
       "type": "strategy",
       "tag": "⟡ MATH TRAPS",
       "headline": "The Reasonableness Check",
@@ -219,37 +286,47 @@
         },
         {
           "name": "The \"Too Small\" Trap",
-          "description": "Logging a spacesuit as weighing 5 grams. (A nickel weighs about 5 grams!).",
+          "description": "Logging a spacesuit's **mass** as 5 grams. (A nickel has a mass of about 5 grams!).",
           "counter": {
             "label": "CHECK",
             "text": "Is the number too small for real life?"
           }
         }
-      ]
+      ],
+      "image": {
+        "src": "/mission-images/cargo-calibration-v1/reasonableness-check.png",
+        "alt": "Two side-by-side scanner displays — one showing a coffee cup with an absurdly huge volume readout, the other showing a spacesuit with an absurdly tiny mass readout — both flagged with warning symbols.",
+        "aspectRatio": 1.7777777777777777
+      }
     },
     {
-      "id": "cargo-s7-final-check",
+      "id": "cargo-s8-final-check",
       "type": "cfu-mcq",
       "tag": "⟡ FINAL REVIEW",
       "prompt": {
-        "scenario": "The robot submitted one last cargo log. Perform a Reasonableness Check.",
-        "question": "Which of these log entries is definitely BROKEN?"
+        "scenario": "**📋 CARGO MANIFEST — PENDING REVIEW**\n\nThe inventory robot just submitted this manifest. One of these log entries is definitely BROKEN. Perform a Reasonableness Check and flag the error.",
+        "question": "Which log entry is broken?"
       },
       "options": [
         {
           "id": "opt-a",
           "letter": "A",
-          "text": "Wrench length: 15 centimeters"
+          "text": "📏  Wrench length: 15 centimeters"
         },
         {
           "id": "opt-b",
           "letter": "B",
-          "text": "Astronaut mass: 80 kilograms"
+          "text": "🏋️  Astronaut mass: 80 kilograms"
         },
         {
           "id": "opt-c",
           "letter": "C",
-          "text": "Water bottle volume: 400 liters"
+          "text": "💧  Water bottle volume: 400 liters"
+        },
+        {
+          "id": "opt-d",
+          "letter": "D",
+          "text": "⚖️  Shipping container weight: 2 ounces"
         }
       ],
       "correctOptionId": "opt-c",
@@ -275,7 +352,13 @@
           "opt-b": {
             "title": "That one is fine!",
             "body": [
-              "An adult astronaut weighing 80 kilograms makes perfect sense. Check the other logs."
+              "An adult astronaut with a mass of 80 kilograms makes perfect sense. Check the other logs."
+            ]
+          },
+          "opt-d": {
+            "title": "Close — but not the broken one.",
+            "body": [
+              "A shipping container at 2 ounces IS wrong (they weigh tons!), but there's an even MORE obviously broken log. Keep looking."
             ]
           }
         },
@@ -288,10 +371,10 @@
       }
     },
     {
-      "id": "cargo-s8-complete",
+      "id": "cargo-s9-complete",
       "type": "complete",
       "headline": "Mission Complete",
-      "subtext": "The Cargo Scanner is recalibrated and the station is fully supplied.",
+      "subtext": "Length, volume, weight, and mass — every scanner is green. The cargo bay is fully supplied. Keep the Measurement Graphic Organizer handy for your next calibration run.",
       "rewards": [
         {
           "icon": "coins",
@@ -307,6 +390,11 @@
       "primaryCta": {
         "label": "RETURN TO BRIDGE",
         "action": "return-bridge"
+      },
+      "image": {
+        "src": "/mission-images/cargo-calibration-v1/bay-complete.png",
+        "alt": "A fully stocked cargo bay with neat rows of labeled crates, calm cyan lighting, and the inventory robot standing confidently with a steady checkmark on its display.",
+        "aspectRatio": 1.7777777777777777
       }
     }
   ]
